@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dictionary SYSTEM "file://localhost/System/Library/DTDs/sdef.dtd">
+<dictionary title="">
+  <suite name="Color Oracle Suite" code="Orcl"
+    description="Commands and classes for Color Oracle Scripting">
+    <classes>
+      <class name="application" code="capp" description="" inherits="NSCoreSuite.NSApplication"> 
+        <cocoa class="NSApplication"/>
+          <properties>
+            <property name="simulation" code="SIMU" type="string" 
+              description="Simulate deutan, protan or tritan color blind vision. E.g.: set simulation to &quot;deutanope&quot; - or: set simulation to &quot;normal&quot;">
+              <cocoa method="simulation"/>
+            </property>
+          </properties>
+        </class>
+      </classes>
+  </suite>
+</dictionary>

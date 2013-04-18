@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		BA10336609C1B3730073BCE0 /* ClickableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA10336409C1B3730073BCE0 /* ClickableImageView.m */; };
+		BA1033E909C1C7880073BCE0 /* KeyableWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1033E709C1C7880073BCE0 /* KeyableWindow.m */; };
+		BA4E750A0A06BAE600CC2E04 /* ColorOracleScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */; };
+		BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA854B6C09C34CAB00BCBB77 /* RoundedView.m */; };
+		BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */; };
+		BAA0A74009F2DE1E000AACAB /* LoginItemsAE.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A73E09F2DE1E000AACAB /* LoginItemsAE.c */; };
+		BAB435A00A07AED200173879 /* menuIconAnimation.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAB4359F0A07AED200173879 /* menuIconAnimation.tif */; };
+		BACFEE8308C760B900727089 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACFEE8208C760B900727089 /* AppController.m */; };
+		BAE1C23F09F7AE9A00A7009E /* menuIconTritan.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAE1C23E09F7AE9A00A7009E /* menuIconTritan.tif */; };
+		BAE1C24D09F7AF3100A7009E /* menuIcon.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAE1C24A09F7AF3100A7009E /* menuIcon.tif */; };
+		BAE1C24E09F7AF3100A7009E /* menuIconDeutan.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAE1C24B09F7AF3100A7009E /* menuIconDeutan.tif */; };
+		BAE1C24F09F7AF3100A7009E /* menuIconProtan.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAE1C24C09F7AF3100A7009E /* menuIconProtan.tif */; };
+		BAE416A90A0896BB006994E7 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416910A0896BB006994E7 /* 1.png */; };
+		BAE416AA0A0896BB006994E7 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416920A0896BB006994E7 /* 10.png */; };
+		BAE416AB0A0896BB006994E7 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416930A0896BB006994E7 /* 11.png */; };
+		BAE416AC0A0896BB006994E7 /* 12.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416940A0896BB006994E7 /* 12.png */; };
+		BAE416AD0A0896BB006994E7 /* 13.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416950A0896BB006994E7 /* 13.png */; };
+		BAE416AE0A0896BB006994E7 /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416960A0896BB006994E7 /* 14.png */; };
+		BAE416AF0A0896BB006994E7 /* 15.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416970A0896BB006994E7 /* 15.png */; };
+		BAE416B00A0896BB006994E7 /* 16.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416980A0896BB006994E7 /* 16.png */; };
+		BAE416B10A0896BB006994E7 /* 17.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416990A0896BB006994E7 /* 17.png */; };
+		BAE416B20A0896BB006994E7 /* 18.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE4169A0A0896BB006994E7 /* 18.png */; };
+		BAE416B30A0896BB006994E7 /* 19.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE4169B0A0896BB006994E7 /* 19.png */; };
+		BAE416B40A0896BB006994E7 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE4169C0A0896BB006994E7 /* 2.png */; };
+		BAE416B50A0896BB006994E7 /* 20.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE4169D0A0896BB006994E7 /* 20.png */; };
+		BAE416B60A0896BB006994E7 /* 21.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE4169E0A0896BB006994E7 /* 21.png */; };
+		BAE416B70A0896BB006994E7 /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE4169F0A0896BB006994E7 /* 22.png */; };
+		BAE416B80A0896BB006994E7 /* 23.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A00A0896BB006994E7 /* 23.png */; };
+		BAE416B90A0896BB006994E7 /* 24.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A10A0896BB006994E7 /* 24.png */; };
+		BAE416BA0A0896BB006994E7 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A20A0896BB006994E7 /* 3.png */; };
+		BAE416BB0A0896BB006994E7 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A30A0896BB006994E7 /* 4.png */; };
+		BAE416BC0A0896BB006994E7 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A40A0896BB006994E7 /* 5.png */; };
+		BAE416BD0A0896BB006994E7 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A50A0896BB006994E7 /* 6.png */; };
+		BAE416BE0A0896BB006994E7 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A60A0896BB006994E7 /* 7.png */; };
+		BAE416BF0A0896BB006994E7 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A70A0896BB006994E7 /* 8.png */; };
+		BAE416C00A0896BB006994E7 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A80A0896BB006994E7 /* 9.png */; };
+		BAE4186F0A08E948006994E7 /* ColorOracle.sdef in Resources */ = {isa = PBXBuildFile; fileRef = BAE4186E0A08E948006994E7 /* ColorOracle.sdef */; };
+		BAE7178309C316210030D896 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAE7178209C316210030D896 /* icon.icns */; };
+		BAF911C209BF91130035C73D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF911C109BF91130035C73D /* OpenGL.framework */; };
+		BAF9124E09BF91E00035C73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF9124D09BF91E00035C73D /* Carbon.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* test_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* Color Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Oracle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA10336309C1B3730073BCE0 /* ClickableImageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ClickableImageView.h; sourceTree = "<group>"; };
+		BA10336409C1B3730073BCE0 /* ClickableImageView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ClickableImageView.m; sourceTree = "<group>"; };
+		BA1033E609C1C7880073BCE0 /* KeyableWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = KeyableWindow.h; sourceTree = "<group>"; };
+		BA1033E709C1C7880073BCE0 /* KeyableWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = KeyableWindow.m; sourceTree = "<group>"; };
+		BA4E75080A06BAE600CC2E04 /* ColorOracleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorOracleScriptCommand.h; sourceTree = "<group>"; };
+		BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorOracleScriptCommand.m; sourceTree = "<group>"; };
+		BA854B6B09C34CAB00BCBB77 /* RoundedView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundedView.h; sourceTree = "<group>"; };
+		BA854B6C09C34CAB00BCBB77 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundedView.m; sourceTree = "<group>"; };
+		BA854B6D09C34CAB00BCBB77 /* TransparentWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TransparentWindow.h; sourceTree = "<group>"; };
+		BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TransparentWindow.m; sourceTree = "<group>"; };
+		BAA0A73E09F2DE1E000AACAB /* LoginItemsAE.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = LoginItemsAE.c; sourceTree = "<group>"; };
+		BAA0A73F09F2DE1E000AACAB /* LoginItemsAE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LoginItemsAE.h; sourceTree = "<group>"; };
+		BAB4359F0A07AED200173879 /* menuIconAnimation.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = menuIconAnimation.tif; sourceTree = "<group>"; };
+		BACFEE8108C760B900727089 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
+		BACFEE8208C760B900727089 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		BADBBBC41453894200B53AF9 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		BADD54B709C9679A00C76C20 /* WindowLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowLevel.h; sourceTree = "<group>"; };
+		BAE1C23E09F7AE9A00A7009E /* menuIconTritan.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = menuIconTritan.tif; sourceTree = "<group>"; };
+		BAE1C24A09F7AF3100A7009E /* menuIcon.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = menuIcon.tif; sourceTree = "<group>"; };
+		BAE1C24B09F7AF3100A7009E /* menuIconDeutan.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = menuIconDeutan.tif; sourceTree = "<group>"; };
+		BAE1C24C09F7AF3100A7009E /* menuIconProtan.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = menuIconProtan.tif; sourceTree = "<group>"; };
+		BAE416910A0896BB006994E7 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		BAE416920A0896BB006994E7 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		BAE416930A0896BB006994E7 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
+		BAE416940A0896BB006994E7 /* 12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 12.png; sourceTree = "<group>"; };
+		BAE416950A0896BB006994E7 /* 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13.png; sourceTree = "<group>"; };
+		BAE416960A0896BB006994E7 /* 14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 14.png; sourceTree = "<group>"; };
+		BAE416970A0896BB006994E7 /* 15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 15.png; sourceTree = "<group>"; };
+		BAE416980A0896BB006994E7 /* 16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 16.png; sourceTree = "<group>"; };
+		BAE416990A0896BB006994E7 /* 17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 17.png; sourceTree = "<group>"; };
+		BAE4169A0A0896BB006994E7 /* 18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 18.png; sourceTree = "<group>"; };
+		BAE4169B0A0896BB006994E7 /* 19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 19.png; sourceTree = "<group>"; };
+		BAE4169C0A0896BB006994E7 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		BAE4169D0A0896BB006994E7 /* 20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 20.png; sourceTree = "<group>"; };
+		BAE4169E0A0896BB006994E7 /* 21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 21.png; sourceTree = "<group>"; };
+		BAE4169F0A0896BB006994E7 /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
+		BAE416A00A0896BB006994E7 /* 23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 23.png; sourceTree = "<group>"; };
+		BAE416A10A0896BB006994E7 /* 24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 24.png; sourceTree = "<group>"; };
+		BAE416A20A0896BB006994E7 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		BAE416A30A0896BB006994E7 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		BAE416A40A0896BB006994E7 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		BAE416A50A0896BB006994E7 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		BAE416A60A0896BB006994E7 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		BAE416A70A0896BB006994E7 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		BAE416A80A0896BB006994E7 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		BAE4186E0A08E948006994E7 /* ColorOracle.sdef */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.sdef; path = ColorOracle.sdef; sourceTree = "<group>"; };
+		BAE61D5F09C5B18A001C1FB4 /* InfoText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoText.h; sourceTree = "<group>"; };
+		BAE7178209C316210030D896 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		BAEF496209C56C2A00D1B983 /* Microseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Microseconds.h; sourceTree = "<group>"; };
+		BAF911C109BF91130035C73D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		BAF9124D09BF91E00035C73D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BAF9124E09BF91E00035C73D /* Carbon.framework in Frameworks */,
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				BAF911C209BF91130035C73D /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				BACFEE8108C760B900727089 /* AppController.h */,
+				BACFEE8208C760B900727089 /* AppController.m */,
+				BA10336309C1B3730073BCE0 /* ClickableImageView.h */,
+				BA10336409C1B3730073BCE0 /* ClickableImageView.m */,
+				BA1033E609C1C7880073BCE0 /* KeyableWindow.h */,
+				BA1033E709C1C7880073BCE0 /* KeyableWindow.m */,
+				BA854B6B09C34CAB00BCBB77 /* RoundedView.h */,
+				BA854B6C09C34CAB00BCBB77 /* RoundedView.m */,
+				BA854B6D09C34CAB00BCBB77 /* TransparentWindow.h */,
+				BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */,
+				BAE61D5F09C5B18A001C1FB4 /* InfoText.h */,
+				BAEF496209C56C2A00D1B983 /* Microseconds.h */,
+				BADD54B709C9679A00C76C20 /* WindowLevel.h */,
+				BAA0A73E09F2DE1E000AACAB /* LoginItemsAE.c */,
+				BAA0A73F09F2DE1E000AACAB /* LoginItemsAE.h */,
+				BA4E75080A06BAE600CC2E04 /* ColorOracleScriptCommand.h */,
+				BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAF9124D09BF91E00035C73D /* Carbon.framework */,
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BADBBBC41453894200B53AF9 /* ApplicationServices.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				BAF911C109BF91130035C73D /* OpenGL.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* Color Oracle.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* test */ = {
+			isa = PBXGroup;
+			children = (
+				BAE4186E0A08E948006994E7 /* ColorOracle.sdef */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* test_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BAE416900A0896BB006994E7 /* animation_frames */,
+				BAE7178209C316210030D896 /* icon.icns */,
+				BAE1C24A09F7AF3100A7009E /* menuIcon.tif */,
+				BAB4359F0A07AED200173879 /* menuIconAnimation.tif */,
+				BAE1C24B09F7AF3100A7009E /* menuIconDeutan.tif */,
+				BAE1C24C09F7AF3100A7009E /* menuIconProtan.tif */,
+				BAE1C23E09F7AE9A00A7009E /* menuIconTritan.tif */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BAE416900A0896BB006994E7 /* animation_frames */ = {
+			isa = PBXGroup;
+			children = (
+				BAE416910A0896BB006994E7 /* 1.png */,
+				BAE416920A0896BB006994E7 /* 10.png */,
+				BAE416930A0896BB006994E7 /* 11.png */,
+				BAE416940A0896BB006994E7 /* 12.png */,
+				BAE416950A0896BB006994E7 /* 13.png */,
+				BAE416960A0896BB006994E7 /* 14.png */,
+				BAE416970A0896BB006994E7 /* 15.png */,
+				BAE416980A0896BB006994E7 /* 16.png */,
+				BAE416990A0896BB006994E7 /* 17.png */,
+				BAE4169A0A0896BB006994E7 /* 18.png */,
+				BAE4169B0A0896BB006994E7 /* 19.png */,
+				BAE4169C0A0896BB006994E7 /* 2.png */,
+				BAE4169D0A0896BB006994E7 /* 20.png */,
+				BAE4169E0A0896BB006994E7 /* 21.png */,
+				BAE4169F0A0896BB006994E7 /* 22.png */,
+				BAE416A00A0896BB006994E7 /* 23.png */,
+				BAE416A10A0896BB006994E7 /* 24.png */,
+				BAE416A20A0896BB006994E7 /* 3.png */,
+				BAE416A30A0896BB006994E7 /* 4.png */,
+				BAE416A40A0896BB006994E7 /* 5.png */,
+				BAE416A50A0896BB006994E7 /* 6.png */,
+				BAE416A60A0896BB006994E7 /* 7.png */,
+				BAE416A70A0896BB006994E7 /* 8.png */,
+				BAE416A80A0896BB006994E7 /* 9.png */,
+			);
+			path = animation_frames;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* Color Oracle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BACFEE6F08C75AC100727089 /* Build configuration list for PBXNativeTarget "Color Oracle" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				BAE418810A08E9C9006994E7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Color Oracle";
+			productInstallPath = "$(HOME)/Applications";
+			productName = test;
+			productReference = 8D1107320486CEB800E47090 /* Color Oracle.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = BACFEE7308C75AC100727089 /* Build configuration list for PBXProject "ColorOracle" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* test */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1107260486CEB800E47090 /* Color Oracle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				BAE7178309C316210030D896 /* icon.icns in Resources */,
+				BAE1C23F09F7AE9A00A7009E /* menuIconTritan.tif in Resources */,
+				BAE1C24D09F7AF3100A7009E /* menuIcon.tif in Resources */,
+				BAE1C24E09F7AF3100A7009E /* menuIconDeutan.tif in Resources */,
+				BAE1C24F09F7AF3100A7009E /* menuIconProtan.tif in Resources */,
+				BAB435A00A07AED200173879 /* menuIconAnimation.tif in Resources */,
+				BAE416A90A0896BB006994E7 /* 1.png in Resources */,
+				BAE416AA0A0896BB006994E7 /* 10.png in Resources */,
+				BAE416AB0A0896BB006994E7 /* 11.png in Resources */,
+				BAE416AC0A0896BB006994E7 /* 12.png in Resources */,
+				BAE416AD0A0896BB006994E7 /* 13.png in Resources */,
+				BAE416AE0A0896BB006994E7 /* 14.png in Resources */,
+				BAE416AF0A0896BB006994E7 /* 15.png in Resources */,
+				BAE416B00A0896BB006994E7 /* 16.png in Resources */,
+				BAE416B10A0896BB006994E7 /* 17.png in Resources */,
+				BAE416B20A0896BB006994E7 /* 18.png in Resources */,
+				BAE416B30A0896BB006994E7 /* 19.png in Resources */,
+				BAE416B40A0896BB006994E7 /* 2.png in Resources */,
+				BAE416B50A0896BB006994E7 /* 20.png in Resources */,
+				BAE416B60A0896BB006994E7 /* 21.png in Resources */,
+				BAE416B70A0896BB006994E7 /* 22.png in Resources */,
+				BAE416B80A0896BB006994E7 /* 23.png in Resources */,
+				BAE416B90A0896BB006994E7 /* 24.png in Resources */,
+				BAE416BA0A0896BB006994E7 /* 3.png in Resources */,
+				BAE416BB0A0896BB006994E7 /* 4.png in Resources */,
+				BAE416BC0A0896BB006994E7 /* 5.png in Resources */,
+				BAE416BD0A0896BB006994E7 /* 6.png in Resources */,
+				BAE416BE0A0896BB006994E7 /* 7.png in Resources */,
+				BAE416BF0A0896BB006994E7 /* 8.png in Resources */,
+				BAE416C00A0896BB006994E7 /* 9.png in Resources */,
+				BAE4186F0A08E948006994E7 /* ColorOracle.sdef in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BAE418810A08E9C9006994E7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/sdp -f st -V 10.3 -o \"$BUILD_DIR/$BUILD_STYLE/$FULL_PRODUCT_NAME/Contents/Resources\" \"$SOURCE_ROOT/ColorOracle.sdef\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				BACFEE8308C760B900727089 /* AppController.m in Sources */,
+				BA10336609C1B3730073BCE0 /* ClickableImageView.m in Sources */,
+				BA1033E909C1C7880073BCE0 /* KeyableWindow.m in Sources */,
+				BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */,
+				BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */,
+				BAA0A74009F2DE1E000AACAB /* LoginItemsAE.c in Sources */,
+				BA4E750A0A06BAE600CC2E04 /* ColorOracleScriptCommand.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				29B97319FDCFA39411CA2CEA /* English */,
+			);
+			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BACFEE7008C75AC100727089 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = test_Prefix.pch;
+				GCC_VERSION = 4.0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				PREBINDING = NO;
+				PRODUCT_NAME = "Color-Blinder";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		BACFEE7108C75AC100727089 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_AUTO_VECTORIZATION = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_FAST_OBJC_DISPATCH = NO;
+				GCC_FEEDBACK_DIRECTED_OPTIMIZATION = Off;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = "";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = test_Prefix.pch;
+				GCC_UNROLL_LOOPS = NO;
+				GCC_VERSION = 4.0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				PREBINDING = NO;
+				PRODUCT_NAME = "Color Oracle";
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		BACFEE7208C75AC100727089 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = test_Prefix.pch;
+				GCC_VERSION = 4.0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				PRODUCT_NAME = "Color-Blinder";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+		BACFEE7408C75AC100727089 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = stabs;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = macosx;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		BACFEE7508C75AC100727089 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		BACFEE7608C75AC100727089 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				SDKROOT = macosx;
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BACFEE6F08C75AC100727089 /* Build configuration list for PBXNativeTarget "Color Oracle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BACFEE7008C75AC100727089 /* Debug */,
+				BACFEE7108C75AC100727089 /* Release */,
+				BACFEE7208C75AC100727089 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		BACFEE7308C75AC100727089 /* Build configuration list for PBXProject "ColorOracle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BACFEE7408C75AC100727089 /* Debug */,
+				BACFEE7508C75AC100727089 /* Release */,
+				BACFEE7608C75AC100727089 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
