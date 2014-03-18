@@ -59,6 +59,7 @@
 -(IBAction)selItemProtan:(id)sender;
 -(IBAction)selItemDeutan:(id)sender;
 -(IBAction)selItemTritan:(id)sender;
+-(IBAction)selItemGrayscale:(id)sender;
 -(IBAction)selItemNormal:(id)sender;
 -(IBAction)selItemSave:(id)sender;
 -(IBAction)selItemPreferences:(id)sender;
