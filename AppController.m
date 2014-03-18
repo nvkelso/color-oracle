@@ -1028,7 +1028,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			[self compute: 9591 k2: 23173 k3: -730];
 			break;
 		case tritan:
-			[self computeTritan];
+			[self computeGrayscale];
 			break;
 	}
 	
