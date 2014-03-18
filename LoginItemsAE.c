@@ -237,7 +237,8 @@ static OSStatus SendAppleEvent(const AEDesc *event, AEDesc *reply)
 		err = AEGetParamPtr(
 			reply, 
 			keyErrorNumber, 
-			typeShortInteger, 
+			//typeShortInteger,
+			cShortInteger,
 			&junkType,
 			&replyErr, 
 			sizeof(replyErr), 
@@ -813,7 +814,7 @@ extern OSStatus LIAERemove(CFIndex itemIndex)
 	// Build object specifier for "login item X".
 
 	itemIndexPlusOne = itemIndex + 1;	// AppleScript is one-based, CF is zero-based
-	err = AECreateDesc(typeLongInteger, &itemIndexPlusOne, sizeof(itemIndexPlusOne), &indexDesc);
+	err = AECreateDesc(cLongInteger, &itemIndexPlusOne, sizeof(itemIndexPlusOne), &indexDesc);
 	if (err == noErr) {
 		err = CreateObjSpecifier(cLoginItem, (AEDesc *) &kAENull, formAbsolutePosition, &indexDesc, false, &loginItemAtIndex);
 	}
