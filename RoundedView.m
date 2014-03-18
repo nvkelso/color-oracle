@@ -248,8 +248,9 @@
 			
 			// Prevent enlargement into the menu bar area
 			NSRect  screenFrame = [[NSScreen mainScreen] frame];
-			if( (windowFrame.origin.y + windowFrame.size.height) > (NSMaxY(screenFrame) - [NSMenuView menuBarHeight]) ){
-				windowFrame.origin.y = NSMaxY(screenFrame) - windowFrame.size.height - [NSMenuView menuBarHeight];
+			CGFloat mbarHeight = [[[NSApplication sharedApplication] mainMenu] menuBarHeight];
+			if( (windowFrame.origin.y + windowFrame.size.height) > (NSMaxY(screenFrame) - mbarHeight) ){
+				windowFrame.origin.y = NSMaxY(screenFrame) - windowFrame.size.height - mbarHeight;
 			}
 			
 			[[self window] setFrame:windowFrame display:YES animate:YES];
@@ -316,9 +317,10 @@
 		newOrigin.x = currentLocation.x - dragInitialLocation.x;
 		newOrigin.y = currentLocation.y - dragInitialLocation.y;
 		
-		if( (newOrigin.y + windowFrame.size.height) > (NSMaxY(screenFrame) - [NSMenuView menuBarHeight]) ){
+		CGFloat mbarHeight = [[[NSApplication sharedApplication] mainMenu] menuBarHeight];
+		if( (newOrigin.y + windowFrame.size.height) > (NSMaxY(screenFrame) - mbarHeight) ){
 			// Prevent dragging into the menu bar area
-			newOrigin.y = NSMaxY(screenFrame) - windowFrame.size.height - [NSMenuView menuBarHeight];
+			newOrigin.y = NSMaxY(screenFrame) - windowFrame.size.height - mbarHeight;
 		}
 		[win setFrameOrigin:newOrigin];
 	}
