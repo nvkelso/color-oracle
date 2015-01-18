@@ -73,7 +73,7 @@ in the list of login items. Range of possible values [0..1]. */
 In seconds */
 #define WELCOME_ANIMATION_INTERVAL 0.1
 
-enum simulation {normalView, protan, deutan, tritan};
+enum simulation {normalView, protan, deutan, tritan, grayscale};
 
 // fading speed
 #define FADETIMEINTERVAL 0.05
@@ -1030,6 +1030,9 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		case tritan:
 			[self computeGrayscale];
 			break;
+		case grayscale:
+			[self computeGrayscale];
+			break;
 	}
 	
 	int rows = [screenshot pixelsHigh];
@@ -1074,6 +1077,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		case tritan:
 			[infoView setTitle:TRITANTEXT];
 			[infoView setInfo1:TRITANINFOTEXT];
+			break;
+		case grayscale:
+			[infoView setTitle:GRAYSCTEXT];
+			[infoView setInfo1:GRAYSCINFOTEXT];
 			break;
 	}
 	
@@ -1479,6 +1486,26 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	
 	[self takeScreenshotAndUpdateSimulation];
 }
+
+/* sender == self indicates that this method is being called from an AppleScript */
+-(IBAction)selItemGrayscale:(id)sender
+{
+	// close welcome dialog, should it still be open
+	[self closeWelcomeDialog:self];
+	simulationID = grayscale;
+	//[statusItem setImage:[NSImage imageNamed:@"menuIconTritan"]]; Ignore this for now
+	
+	// hide the menu if this method was called from the menu
+	if (sender != nil && sender != self)
+		[self hideMenu];
+	
+	// set the level of the main window to normal level if this method is called
+	// from an AppleScript, set it to a level covering the dock otherwise.
+	[mainWindow setLevel:sender == self ? kCGNormalWindowLevel : WINDOWLEVEL];
+	
+	[self takeScreenshotAndUpdateSimulation];
+}
+
 
 -(IBAction)selItemSave:(id)sender
 {
