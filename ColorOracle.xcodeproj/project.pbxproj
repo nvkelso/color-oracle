@@ -290,6 +290,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = BACFEE7308C75AC100727089 /* Build configuration list for PBXProject "ColorOracle" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
@@ -364,7 +366,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/bin/sdp -f st -V 10.3 -o \"$BUILD_DIR/$BUILD_STYLE/$FULL_PRODUCT_NAME/Contents/Resources\" \"$SOURCE_ROOT/ColorOracle.sdef\"";
+			shellScript = "/usr/bin/sdp -f st -V 10.3 -o \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Resources\" \"$SOURCE_ROOT/ColorOracle.sdef\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -409,6 +411,7 @@
 		BACFEE7008C75AC100727089 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -416,14 +419,16 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = test_Prefix.pch;
-				GCC_VERSION = 4.0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PREBINDING = NO;
-				PRODUCT_NAME = "Color-Blinder";
+				PRODUCT_NAME = "Color Oracle";
+				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -432,6 +437,7 @@
 		BACFEE7108C75AC100727089 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_AUTO_VECTORIZATION = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -443,7 +449,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = test_Prefix.pch;
 				GCC_UNROLL_LOOPS = NO;
-				GCC_VERSION = 4.0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
@@ -451,6 +457,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
 				PREBINDING = NO;
 				PRODUCT_NAME = "Color Oracle";
+				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -459,16 +467,19 @@
 		BACFEE7208C75AC100727089 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = test_Prefix.pch;
-				GCC_VERSION = 4.0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.3;
-				PRODUCT_NAME = "Color-Blinder";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				PRODUCT_NAME = "Color Oracle";
+				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
