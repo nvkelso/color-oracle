@@ -876,6 +876,145 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	}
 }
 
+-(void)computeGrayscale
+{
+	/* Code for grayscale computation, modified from computeTritan.
+	 Based on https://en.wikipedia.org/wiki/Grayscale#Colorimetric_.28luminance-preserving.29_conversion_to_grayscale
+	 Tim van Werkhoven 20140318
+	 */
+	
+	// OpenGL screen capture has to be vertically inverted, Quartz capture not.
+	int invertImage = CGDisplayCreateImage == NULL;
+	
+	// RGBA (OpenGL capture) or ARGB (Quartz capture)?
+	int alphaFirst = [screenshot bitmapFormat] & NSAlphaFirstBitmapFormat;
+	
+//	double anchor_e0 = 0.05059983 + 0.08585369 + 0.00952420;
+//	double anchor_e1 = 0.01893033 + 0.08925308 + 0.01370054;
+//	double anchor_e2 = 0.00292202 + 0.00975732 + 0.07145979;
+//	double inflection = anchor_e1 / anchor_e0;
+//	
+//	/* Set 1: regions where lambda_a=575, set 2: lambda_a=475 */
+//	double a1 = -anchor_e2 * 0.007009;
+//	double b1 = anchor_e2 * 0.0914;
+//	double c1 = anchor_e0 * 0.007009 - anchor_e1 * 0.0914;
+//	double a2 = anchor_e1 * 0.3636  - anchor_e2 * 0.2237;
+//	double b2 = anchor_e2 * 0.1284  - anchor_e0 * 0.3636;
+//	double c2 = anchor_e0 * 0.2237  - anchor_e1 * 0.1284;
+	
+	int r, c;
+	
+	int rows = [screenshot pixelsHigh];
+	int cols = [screenshot pixelsWide];
+	int bytesPerRow = [screenshot bytesPerRow];
+	unsigned char *srcBitmapData = [screenshot bitmapData];
+	if (srcBitmapData == nil)
+		return;
+	if (invertImage)
+		srcBitmapData += (rows - 1) * bytesPerRow;
+	
+	// recycle the buffer if it has been allocated before and if it's
+	// the right size.
+	if (cols != simulationBufferWidth || rows != simulationBufferHeight
+			|| simulationBuffer == nil) {
+		if (simulationBuffer != nil)
+			free (simulationBuffer);
+		simulationBuffer = malloc(cols * rows * 4);
+		simulationBufferWidth = cols;
+		simulationBufferHeight = rows;
+	}
+	
+	long *dstBitmapData = (long*)simulationBuffer;
+	
+	long prevSrc = 0;
+	long color = 0x000000ff;
+	
+	for (r = 0; r < rows; r++) {
+		const unsigned char * srcPtr = srcBitmapData;
+		for (c = 0; c < cols; c++) {
+			if (*((long*)srcPtr) == prevSrc) {
+				*(dstBitmapData++) = color;
+			} else {
+				prevSrc = *((long*)srcPtr);
+				
+				// get linear rgb values in the range 0..2^15-1
+				double red = rgb2lin_red_LUT[srcPtr[0 + alphaFirst]] / 32767.;
+				double green = rgb2lin_red_LUT[srcPtr[1 + alphaFirst]] / 32767.;
+				double blue = rgb2lin_red_LUT[srcPtr[2 + alphaFirst]] / 32767.;
+
+				/* Convert to grayscale (dot product with transform matrix) */
+
+				// Step 1. sRGB color space gamma expansion (not required here?)
+//				if (red <= 0.04045)
+//					red = red/12.92;
+//				else
+//					red = pow((red+0.055)/1.055, 2.4);
+//
+//				if (green <= 0.04045)
+//					green = green/12.92;
+//				else
+//					green = pow((green+0.055)/1.055, 2.4);
+//
+//				if (blue <= 0.04045)
+//					blue = blue/12.92;
+//				else
+//					blue = pow((blue+0.055)/1.055, 2.4);
+
+				// Step 2. luminance calculation
+				double luminance = 0.2126*red + 0.7152*green + 0.0722*blue;
+				
+				// Step 3. gamma compression (not required here?)
+//				if (luminance > 0.0031308)
+//					luminance = 12.92*luminance;
+//				else
+//					luminance = 1.055*pow(luminance, 1.0/2.4) - 0.055;
+
+				// Convert to RGB [0, 255]
+				long ired   = (int)(255. * luminance);
+				long igreen = (int)(255. * luminance);
+				long iblue  = (int)(255. * luminance);
+				
+				// convert reduced linear rgb to gamma corrected rgb
+				if (ired < 0)
+					ired = 0;
+				else if (ired > 255)
+					ired = 255;
+				else
+					ired = lin2rgb_LUT[(int)(ired)];
+				
+				if (igreen < 0)
+					igreen = 0;
+				else if (igreen > 255)
+					igreen = 255;
+				else
+					igreen = lin2rgb_LUT[(int)(igreen)];
+				
+				if (iblue < 0)
+					iblue = 0;
+				else if (iblue > 255)
+					iblue = 255;
+				else
+					iblue = lin2rgb_LUT[(int)(iblue)];
+				
+#ifdef __BIG_ENDIAN__
+				color = ired << 24 | igreen << 16 | iblue << 8 | 0x000000ff;
+#endif
+#ifdef __LITTLE_ENDIAN__
+				color = ired | igreen << 8 | iblue << 16 | 0xff000000;
+#endif
+				*(dstBitmapData++) = color;
+			}
+			
+			srcPtr+=4;
+		}
+		if (invertImage)
+			srcBitmapData-=bytesPerRow;
+		else
+			srcBitmapData+=bytesPerRow;
+	}
+}	
+
+
 -(void)simulate
 {
 	if (screenshot == nil)
@@ -889,7 +1028,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			[self compute: 9591 k2: 23173 k3: -730];
 			break;
 		case tritan:
-			[self computeTritan];
+			[self computeGrayscale];
 			break;
 	}
 	
