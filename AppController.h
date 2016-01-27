@@ -35,6 +35,7 @@
 	IBOutlet NSPopUpButton *deutanHotKeyMenu;
 	IBOutlet NSPopUpButton *protanHotKeyMenu;
 	IBOutlet NSPopUpButton *tritanHotKeyMenu;
+	IBOutlet NSPopUpButton *grayscaleHotKeyMenu;
 	IBOutlet NSButton *startAtLoginSwitch;
 	IBOutlet NSPanel *aboutBox;
 	IBOutlet NSButton *prefsDefaultsButton;

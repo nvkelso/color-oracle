@@ -21,7 +21,7 @@
 #define INFOMESSAGE @"Click the mouse or press any key to return to normal vision.\n\
 Click and drag to move this panel.\n%@"
 
-#define INFOMESSAGEPRESS @"Press %@%@%@ color vision."
+#define INFOMESSAGEPRESS @"Press %@%@%@%@ color vision."
 #define INFOMESSAGEPRESS_DEUTAN @" %@ for deutan"
 #define INFOMESSAGEPRESS_PROTAN @" %@ for protan"
 #define INFOMESSAGEPRESS_TRITAN @" %@ for tritan"

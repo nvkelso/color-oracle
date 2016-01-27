@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1050" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -11,11 +11,12 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="206" userLabel="AppController" customClass="AppController">
             <connections>
                 <outlet property="aboutBox" destination="387" id="393"/>
                 <outlet property="deutanHotKeyMenu" destination="324" id="344"/>
+                <outlet property="grayscaleHotKeyMenu" destination="kY3-yg-7mv" id="M2n-tv-u0N"/>
                 <outlet property="infoView" destination="243" id="246"/>
                 <outlet property="infoWindow" destination="241" id="245"/>
                 <outlet property="m_menu" destination="250" id="260"/>
@@ -27,7 +28,7 @@
                 <outlet property="welcomeDialog" destination="409" id="419"/>
             </connections>
         </customObject>
-        <window title="RoundedView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="241" userLabel="InfoWindow" customClass="TransparentWindow">
+        <window title="RoundedView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="241" userLabel="InfoWindow" customClass="TransparentWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="562" y="357" width="390" height="176"/>
@@ -106,25 +107,25 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="Color Oracle Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="269" userLabel="PrefsPanel" customClass="NSPanel">
+        <window title="Color Oracle Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="269" userLabel="PrefsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="324" y="123" width="490" height="227"/>
+            <rect key="contentRect" x="324" y="123" width="490" height="262"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="270">
-                <rect key="frame" x="0.0" y="0.0" width="490" height="227"/>
+                <rect key="frame" x="0.0" y="-1" width="490" height="262"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box title="Keyboard Shortcuts" id="273">
-                        <rect key="frame" x="170" y="44" width="303" height="163"/>
+                        <rect key="frame" x="170" y="54" width="303" height="188"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <view key="contentView">
-                            <rect key="frame" x="2" y="2" width="299" height="146"/>
+                            <rect key="frame" x="2" y="2" width="299" height="171"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="275">
-                                    <rect key="frame" x="13" y="87" width="176" height="17"/>
+                                    <rect key="frame" x="13" y="112" width="176" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Protanopia (Rare):" id="423">
                                         <font key="font" metaFont="system"/>
@@ -133,7 +134,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="277">
-                                    <rect key="frame" x="13" y="117" width="176" height="17"/>
+                                    <rect key="frame" x="13" y="142" width="176" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Deuteranopia (Common):" id="424">
                                         <font key="font" metaFont="system"/>
@@ -142,11 +143,11 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" id="278">
-                                    <rect key="frame" x="191" y="81" width="77" height="26"/>
+                                    <rect key="frame" x="191" y="106" width="77" height="26"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <popUpButtonCell key="cell" type="push" title="F6" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="280" id="425">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
+                                        <font key="font" metaFont="menu"/>
                                         <menu key="menu" title="OtherViews" id="279">
                                             <items>
                                                 <menuItem title="None" id="348"/>
@@ -177,11 +178,11 @@
                                     </connections>
                                 </popUpButton>
                                 <popUpButton verticalHuggingPriority="750" id="324">
-                                    <rect key="frame" x="191" y="111" width="77" height="26"/>
+                                    <rect key="frame" x="191" y="136" width="77" height="26"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <popUpButtonCell key="cell" type="push" title="F5" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="336" id="426">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
+                                        <font key="font" metaFont="menu"/>
                                         <menu key="menu" title="OtherViews" id="325">
                                             <items>
                                                 <menuItem title="None" id="331"/>
@@ -212,7 +213,7 @@
                                     </connections>
                                 </popUpButton>
                                 <textField verticalHuggingPriority="750" id="351">
-                                    <rect key="frame" x="13" y="57" width="176" height="17"/>
+                                    <rect key="frame" x="13" y="83" width="176" height="17"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Tritanopia (Very Rare):" id="427">
                                         <font key="font" metaFont="system"/>
@@ -221,11 +222,11 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" id="352">
-                                    <rect key="frame" x="191" y="51" width="77" height="26"/>
+                                    <rect key="frame" x="191" y="77" width="77" height="26"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="369" id="428">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
+                                        <font key="font" metaFont="menu"/>
                                         <menu key="menu" title="OtherViews" id="353">
                                             <items>
                                                 <menuItem title="None" state="on" id="369"/>
@@ -256,7 +257,7 @@
                                     </connections>
                                 </popUpButton>
                                 <button verticalHuggingPriority="750" id="404">
-                                    <rect key="frame" x="123" y="7" width="148" height="32"/>
+                                    <rect key="frame" x="123" y="6" width="148" height="32"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <buttonCell key="cell" type="push" title="Reset to Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="429">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -266,13 +267,54 @@
                                         <action selector="prefrencesDefaults:" target="206" id="405"/>
                                     </connections>
                                 </button>
+                                <textField verticalHuggingPriority="750" id="YAM-ru-rgL">
+                                    <rect key="frame" x="13" y="53" width="176" height="17"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Grayscale: " id="Qmi-xP-NIX">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <popUpButton verticalHuggingPriority="750" id="kY3-yg-7mv">
+                                    <rect key="frame" x="191" y="47" width="77" height="26"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="pvq-lE-GDD" id="auv-e8-Fh3">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="menu"/>
+                                        <menu key="menu" title="OtherViews" id="jMB-mf-IRi">
+                                            <items>
+                                                <menuItem title="None" state="on" id="pvq-lE-GDD"/>
+                                                <menuItem isSeparatorItem="YES" id="B0N-0m-Nj3">
+                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                                                </menuItem>
+                                                <menuItem title="F1" id="h3G-I2-PTN"/>
+                                                <menuItem title="F2" id="txw-Bi-PmL"/>
+                                                <menuItem title="F3" id="1eR-u4-rmd"/>
+                                                <menuItem title="F4" id="pMj-do-px3"/>
+                                                <menuItem title="F5" id="ryH-yh-Acq"/>
+                                                <menuItem title="F6" id="Mjq-nn-EuJ"/>
+                                                <menuItem title="F7" id="0F1-PN-IyQ"/>
+                                                <menuItem title="F8" id="pz2-ID-cJY"/>
+                                                <menuItem title="F9" id="RaK-Xd-hC9"/>
+                                                <menuItem title="F10" id="dhI-W8-Kv3"/>
+                                                <menuItem title="F11" id="Ixy-Mr-xR1"/>
+                                                <menuItem title="F12" id="pSm-Fj-ug6"/>
+                                                <menuItem title="F13" id="xvn-Nc-JDZ"/>
+                                                <menuItem title="F14" id="VcO-8a-BJs"/>
+                                                <menuItem title="F15" id="wxC-an-kEZ"/>
+                                                <menuItem title="F16" id="tIR-Ey-Gbr"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                </popUpButton>
                             </subviews>
                         </view>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
                     <button id="374">
-                        <rect key="frame" x="181" y="18" width="189" height="18"/>
+                        <rect key="frame" x="181" y="25" width="189" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="check" title="Start Color Oracle at Login" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="430">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -283,7 +325,7 @@
                         </connections>
                     </button>
                     <imageView id="403">
-                        <rect key="frame" x="20" y="64" width="128" height="128"/>
+                        <rect key="frame" x="20" y="99" width="128" height="128"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="431"/>
                     </imageView>
@@ -292,8 +334,9 @@
             <connections>
                 <outlet property="delegate" destination="206" id="408"/>
             </connections>
+            <point key="canvasLocation" x="406" y="6"/>
         </window>
-        <window title="About Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="387" userLabel="About" customClass="NSPanel">
+        <window title="About Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="387" userLabel="About" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="120" y="206" width="278" height="432"/>
@@ -357,7 +400,7 @@ For updates and futher information see:</string>
                 <outlet property="initialFirstResponder" destination="389" id="402"/>
             </connections>
         </window>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="409" userLabel="Welcome" customClass="NSPanel">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="409" userLabel="Welcome" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="409" y="432" width="507" height="168"/>

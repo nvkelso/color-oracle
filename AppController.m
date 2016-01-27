@@ -93,18 +93,22 @@ enum {keyNone = -1, f1 = 0x7A, f2 = 0x78, f3 = 0x63, f4 = 0x76, f5 = 0x60,
 #define DEFAULTDEUTANHOTKEY f5
 #define DEFAULTPROTANHOTKEY f6
 #define DEFAULTTRITANHOTKEY keyNone
+#define DEFAULTGRAYSCALEHOTKEY keyNone
 
 // A bunch of defines to handle hotkeys
 const UInt32 kHotKeyIdentifier='blnd';
 UInt32 gProtanHotKey;
 UInt32 gDeutanHotKey;
 UInt32 gTritanHotKey;
+UInt32 gGrayscaleHotKey;
 EventHotKeyRef gProtanHotKeyRef;
 EventHotKeyRef gDeutanHotKeyRef;
 EventHotKeyRef gTritanHotKeyRef;
+EventHotKeyRef gGrayscaleHotKeyRef;
 EventHotKeyID gProtanHotKeyID;
 EventHotKeyID gDeutanHotKeyID;
 EventHotKeyID gTritanHotKeyID;
+EventHotKeyID gGrayscaleHotKeyID;
 EventHandlerUPP gAppHotKeyFunction;
 
 EventHotKeyID gWindowsCloseHotKeyID;
@@ -142,7 +146,13 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			else
 				[app selItemTritan:nil];
 			break;
-		case 4:	// close a window
+		case 4:
+			if (simulationID == grayscale)
+				[app selItemNormal:nil];
+			else
+				[app selItemGrayscale:nil];
+			break;
+		case 5:	// close a window
 			keyWindow = [NSApp keyWindow];
 			if (keyWindow != nil) {
 				[keyWindow orderOut:nil];
@@ -336,7 +346,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     eventType.eventKind=kEventHotKeyPressed;
     InstallApplicationEventHandler(gAppHotKeyFunction,1,&eventType,self,NULL);
     
-	// install first deutan, then protan, then tritan.
+	// install first deutan, then protan, then tritan, then grayscale.
 	// if two hot-keys use the same key, the first installed will be executed.
 	
 	if (gDeutanHotKey != keyNone) {
@@ -356,6 +366,12 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		gTritanHotKeyID.id=3;
 		RegisterEventHotKey(gTritanHotKey, 0, gTritanHotKeyID, GetApplicationEventTarget(), 0, &gTritanHotKeyRef);
 	}
+
+	if (gGrayscaleHotKey != keyNone) {
+		gGrayscaleHotKeyID.signature=kHotKeyIdentifier;
+		gGrayscaleHotKeyID.id=3;
+		RegisterEventHotKey(gGrayscaleHotKey, 0, gGrayscaleHotKeyID, GetApplicationEventTarget(), 0, &gGrayscaleHotKeyRef);
+	}
 }
 
 -(void)removeHotKeys
@@ -363,13 +379,14 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	UnregisterEventHotKey (gProtanHotKeyRef);
 	UnregisterEventHotKey (gDeutanHotKeyRef);
 	UnregisterEventHotKey (gTritanHotKeyRef);
+	UnregisterEventHotKey (gGrayscaleHotKeyRef);
 }
 
 -(void)installCloseWindowsHotKey
 {
 	// add hot key handler for closing windows (preferences panel and about box)
     gWindowsCloseHotKeyID.signature=kHotKeyIdentifier;
-    gWindowsCloseHotKeyID.id=4;
+    gWindowsCloseHotKeyID.id=5;
     RegisterEventHotKey(kWindowsCloseHotKey, cmdKey, gWindowsCloseHotKeyID, GetApplicationEventTarget(), 0, &gWindowsCloseHotKeyRef);
 }
 
@@ -382,7 +399,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 {
 	if (gProtanHotKey == DEFAULTPROTANHOTKEY
 		&& gDeutanHotKey == DEFAULTDEUTANHOTKEY
-		&& gTritanHotKey == DEFAULTTRITANHOTKEY)
+		&& gTritanHotKey == DEFAULTTRITANHOTKEY
+		&& gGrayscaleHotKey == DEFAULTGRAYSCALEHOTKEY)
 		[prefsDefaultsButton setEnabled:NO];
 	else
 		[prefsDefaultsButton setEnabled:YES];
@@ -602,6 +620,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		gDeutanHotKey = f5;
 		gProtanHotKey = f6;
 		gTritanHotKey = keyNone;
+		gGrayscaleHotKey = keyNone;
 		
 		loginItemsLock = [[NSLock alloc] init];
 	}
@@ -1087,6 +1106,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	NSString *deutanKeyStr = [self fkey2String:gDeutanHotKey];
 	NSString *protanKeyStr = [self fkey2String:gProtanHotKey];
 	NSString *tritanKeyStr = [self fkey2String:gTritanHotKey];
+	NSString *grayscaleKeyStr = [self fkey2String:gGrayscaleHotKey];
 	
 	NSString *deutanStr = @"";
 	if (gDeutanHotKey != keyNone) {
@@ -1106,11 +1126,14 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	
 	NSString *tritanStr = gTritanHotKey == keyNone ? @"" :
 		[NSString stringWithFormat: INFOMESSAGEPRESS_TRITAN, tritanKeyStr];
+
+	NSString *grayscaleStr = gGrayscaleHotKey == keyNone ? @"" :
+		[NSString stringWithFormat: INFOMESSAGEPRESS_GRAYSC, grayscaleKeyStr];
 	
 	NSString *fKeyStr = @"";
-	if (gDeutanHotKey != keyNone || gProtanHotKey != keyNone || gTritanHotKey != keyNone)
+	if (gDeutanHotKey != keyNone || gProtanHotKey != keyNone || gTritanHotKey != keyNone || gGrayscaleHotKey != keyNone)
 		fKeyStr = [NSString stringWithFormat: INFOMESSAGEPRESS,
-			deutanStr, protanStr, tritanStr];
+			deutanStr, protanStr, tritanStr, grayscaleStr];
 	
 	
 	NSString *infoStr = [NSString stringWithFormat: INFOMESSAGE, fKeyStr];
@@ -1173,10 +1196,25 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		[menuItem setState: simulationID == tritan ? NSOnState : NSOffState];
 		return YES;
 	}
+
+	if ([menuItem action] == @selector(selItemGrayscale:)) {
+		if (gGrayscaleHotKey != keyNone)
+		{
+			unichar ch[1];
+			ch[0] = [self fkey2Unicode: gGrayscaleHotKey];
+			[menuItem setKeyEquivalentModifierMask:NSFunctionKeyMask];
+			[menuItem setKeyEquivalent:[NSString stringWithCharacters:ch length:1]];
+		} else {
+			[menuItem setKeyEquivalent:@""];
+		}
+
+		[menuItem setState: simulationID == grayscale ? NSOnState : NSOffState];
+		return YES;
+	}
 	
 	if ([menuItem action] == @selector(selItemSave:)) {
 		return simulationID != normalView;
-	}	
+	}
 	
 	return YES;
 }
@@ -1564,6 +1602,8 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[protanHotKeyMenu selectItemAtIndex:[self fkey2menu:gProtanHotKey]];
 		[deutanHotKeyMenu selectItemAtIndex:[self fkey2menu:gDeutanHotKey]];
 		[tritanHotKeyMenu selectItemAtIndex:[self fkey2menu:gTritanHotKey]];
+		[grayscaleHotKeyMenu selectItemAtIndex:[self fkey2menu:gGrayscaleHotKey]];
+
 		
 		// disable "Start Color Oracle at Login" switch
 		// it will be enabled by another thread that periodically checks if
@@ -1938,10 +1978,12 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	gProtanHotKey = DEFAULTPROTANHOTKEY;
 	gDeutanHotKey = DEFAULTDEUTANHOTKEY;
 	gTritanHotKey = DEFAULTTRITANHOTKEY;
+	gGrayscaleHotKey = DEFAULTGRAYSCALEHOTKEY;
 
 	[protanHotKeyMenu selectItemAtIndex:[self fkey2menu:gProtanHotKey]];
 	[deutanHotKeyMenu selectItemAtIndex:[self fkey2menu:gDeutanHotKey]];
 	[tritanHotKeyMenu selectItemAtIndex:[self fkey2menu:gTritanHotKey]];
+	[grayscaleHotKeyMenu selectItemAtIndex:[self fkey2menu:gGrayscaleHotKey]];
 	
 	[self updatePreferencesDefaultsButton];
 }
@@ -2006,6 +2048,8 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 			return @"deutan";
 		case tritan:
 			return @"tritan";
+        case grayscale:
+            return @"grayscale";
 	}
     return nil;
 }
@@ -2043,6 +2087,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	
 	if ([key compare:@"tritan" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
 		[self selItemTritan:self];
+		return;
+	}
+
+	if ([key compare:@"grayscale" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
+		[self selItemGrayscale:self];
 		return;
 	}
 }
