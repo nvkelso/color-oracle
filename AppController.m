@@ -53,7 +53,6 @@
 #import "ClickableImageView.h"
 #import "KeyableWindow.h"
 #include "InfoText.h"
-#include "LoginItemsAE.h"
 
 /* Web site for this project */
 #define HOMEPAGE @"http://colororacle.org/"
@@ -165,7 +164,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 
 @implementation AppController
 
--(int)menu2fkey:(int)menuItemID
+-(int)menu2fkey:(NSInteger)menuItemID
 {
 	switch (menuItemID) {
 		case 0:
@@ -388,133 +387,11 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		[prefsDefaultsButton setEnabled:YES];
 }
 
--(OSStatus) appFSRef:(FSRef*) fsRefPtr
-{
-	// get path to application bundle
-	NSBundle * bundle = [NSBundle mainBundle];
-	const char * cpath = [[bundle bundlePath] fileSystemRepresentation];
-	// The returned C string will be automatically freed just as a returned object
-	// would be released;
-	
-	// convert path to FSRef
-	Boolean isDirectory;
-	return FSPathMakeRef((const UInt8 *)cpath, fsRefPtr, &isDirectory);
-}
-
--(int) loginItemIndex
-{
-	FSRef		appFSRef;
-	
-	OSStatus err = [self appFSRef: &appFSRef];
-	if (err != noErr)
-		return - 1;
-	
-	return findLoginItemIndex(&appFSRef);
-}
-
-// a thread that adds this application to the login items
--(void) addToLoginItemsThread:(id)owner
-{
-	// a thread has to allocate its own NSAutoreleasePool
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	// grab loginItemsLock, so that the thread that is periodically 
-	// updating the "Start Color Oracle at Login" switch will not interfere. 
-	[loginItemsLock lock];
-	
-	// get the FSRef of this application
-	FSRef fsRef;
-	OSStatus err = [self appFSRef: &fsRef];
-	if (err != noErr)
-		return;
-	
-	// register FSRef as login item
-	err = LIAEAddRefAtEnd(&fsRef, FALSE);
-	
-	// release the lock again
-	[loginItemsLock unlock];
-	
-	// release the NSAutoreleasePool
-	[pool release];
-}
-
-// a thread that removes this application from the login items
--(void) removeFromLoginItemsThread:(id)owner
-{
-	// a thread has to allocate its own NSAutoreleasePool
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	// grab loginItemsLock, so that the thread that is periodically 
-	// updating the "Start Color Oracle at Login" switch will not interfere.
-	[loginItemsLock lock];
-	
-	// get the position of this application in the list of login items
-	int itemIndex = [self loginItemIndex];
-	
-	// remove this app, if it is a registered login item
-	if (itemIndex >= 0)
-		LIAERemove(itemIndex);
-		
-	// release the lock again
-	[loginItemsLock unlock];
-	
-	// release the NSAutoreleasePool
-	[pool release];
-}
-
-// a thread that periodically checks if this app is a registered login item
-// and updates the "Start Color Oracle at Login" switch accordingly.
-// This thread is running during the whole life of this app.
--(void)configurePrefsThread:(id) ownwer
-{
-	// a thread has to allocate its own NSAutoreleasePool
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	// assign very low priority to this thread
-	[NSThread setThreadPriority: PREFS_THREAD_PRIORITY];
-	
-	// periodically check Login Items and configure the "Start Color Oracle at Login" 
-	// switch accordingly
-	while (true) {
-		// only work if lock is not busy. This is the case when 
-		// another thread adds or removes this app as a login item. 
-		if ([loginItemsLock tryLock]) {
-			// get the position of this app in the list of login items
-			int loginItemIndex = [self loginItemIndex];
-			
-			// update the "Start Color Oracle at Login" switch
-			if (loginItemIndex >= 0)
-				[startAtLoginSwitch setState:NSOnState];
-			else 
-				[startAtLoginSwitch setState:NSOffState];
-			
-			// release the lock
-			[loginItemsLock unlock];
-			
-			// enable the "Start Color Oracle at Login" switch, 
-			// which is disabled before the preferences panel is made visible.
-			[startAtLoginSwitch setEnabled:YES];
-		}
-				
-		// take a nap
-		[NSThread sleepUntilDate: [NSDate dateWithTimeIntervalSinceNow:PREFS_THREAD_SLEEP]];
-		
-		// test if the preferences panel is still visible (after taking a nap).
-		// if not, exit this loop and this thread.
-		if ([preferencesPanel isVisible] == NO || shouldQuit == YES) {
-			break;
-		}
-	}
-	
-	// release the NSAutoreleasePool
-	[pool release];
-}
-
 -(NSOpenGLContext*)createOpenGLContext
 {
 	NSOpenGLPixelFormatAttribute attributes[] =
     {
-        NSOpenGLPFAFullScreen,
+        //NSOpenGLPFAFullScreen,
         NSOpenGLPFASingleRenderer,
         NSOpenGLPFANoRecovery,
         NSOpenGLPFAScreenMask,
@@ -636,18 +513,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     [super dealloc];
 }
 
--(IBAction)selStartAtLogin:(id)sender
-{
-	if ([startAtLoginSwitch state] == NSOnState)
-		[NSThread detachNewThreadSelector:@selector(addToLoginItemsThread:)
-								 toTarget:self
-							   withObject:self];
-	else
-		[NSThread detachNewThreadSelector:@selector(removeFromLoginItemsThread:)
-								 toTarget:self
-							   withObject:self];
-}
-
 -(void)computeTritan
 {
 	/* Code for tritan simulation from GIMP 2.2
@@ -682,9 +547,9 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	
 	int r, c;
 	
-	int rows = [screenshot pixelsHigh];
-	int cols = [screenshot pixelsWide];
-	int bytesPerRow = [screenshot bytesPerRow];
+	NSInteger rows = [screenshot pixelsHigh];
+	NSInteger cols = [screenshot pixelsWide];
+	NSInteger bytesPerRow = [screenshot bytesPerRow];
 	unsigned char *srcBitmapData = [screenshot bitmapData];
 	if (srcBitmapData == nil)
 		return;
@@ -795,9 +660,9 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	// RGBA (OpenGL capture) or ARGB (Quartz capture)?
 	int alphaFirst = [screenshot bitmapFormat] & NSAlphaFirstBitmapFormat;
 	
-	int rows = [screenshot pixelsHigh];
-	int cols = [screenshot pixelsWide];
-	int bytesPerRow = [screenshot bytesPerRow];
+	NSInteger rows = [screenshot pixelsHigh];
+	NSInteger cols = [screenshot pixelsWide];
+	NSInteger bytesPerRow = [screenshot bytesPerRow];
 	unsigned char *srcBitmapData = [screenshot bitmapData];
 	if (srcBitmapData == nil)
 		return;
@@ -815,20 +680,20 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		simulationBufferHeight = rows;
 	}
 	
-	long *dstBitmapData = (long*)simulationBuffer;
+	u_int32_t *dstBitmapData = (u_int32_t*)simulationBuffer;
 	
-	long prevSrc = 0;
-	long color = 0x000000ff;
+	u_int32_t prevSrc = 0;
+	u_int32_t color = 0x000000ff;
 	
 	for (r = 0; r < rows; r++) {
 		const unsigned char * srcPtr = srcBitmapData;
 		for (c = 0; c < cols; c++) {
 			// this version has been optimized for speed.
 			// see at the begining of this file for a more readable version.
-			if (*((long*)srcPtr) == prevSrc) {
+			if (*((u_int32_t*)srcPtr) == prevSrc) {
 				*(dstBitmapData++) = color; // re-use cached previous value
 			} else {
-				prevSrc = *((long*)srcPtr);
+				prevSrc = *((u_int32_t*)srcPtr);
 				
 				// get linear rgb values in the range 0..2^15-1
 				const long r_lin = rgb2lin_red_LUT[srcPtr[0 + alphaFirst]];
@@ -855,8 +720,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 					b_blind = 255;
 				
 				// convert reduced linear rgb to gamma corrected rgb
-				const long red = lin2rgb_LUT[r_blind];
-				const long blue = lin2rgb_LUT[b_blind];
+				const u_int32_t red = lin2rgb_LUT[r_blind];
+				const u_int32_t blue = lin2rgb_LUT[b_blind];
 				
 #ifdef __BIG_ENDIAN__				
 				color = red << 24 | red << 16 | blue << 8 | 0x000000ff;
@@ -902,11 +767,11 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 //	double b2 = anchor_e2 * 0.1284  - anchor_e0 * 0.3636;
 //	double c2 = anchor_e0 * 0.2237  - anchor_e1 * 0.1284;
 	
-	int r, c;
+	NSInteger r, c;
 	
-	int rows = [screenshot pixelsHigh];
-	int cols = [screenshot pixelsWide];
-	int bytesPerRow = [screenshot bytesPerRow];
+	NSInteger rows = [screenshot pixelsHigh];
+	NSInteger cols = [screenshot pixelsWide];
+	NSInteger bytesPerRow = [screenshot bytesPerRow];
 	unsigned char *srcBitmapData = [screenshot bitmapData];
 	if (srcBitmapData == nil)
 		return;
@@ -924,18 +789,18 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		simulationBufferHeight = rows;
 	}
 	
-	long *dstBitmapData = (long*)simulationBuffer;
+	u_int32_t *dstBitmapData = (u_int32_t*)simulationBuffer;
 	
-	long prevSrc = 0;
-	long color = 0x000000ff;
+	u_int32_t prevSrc = 0;
+	u_int32_t color = 0x000000ff;
 	
 	for (r = 0; r < rows; r++) {
 		const unsigned char * srcPtr = srcBitmapData;
 		for (c = 0; c < cols; c++) {
-			if (*((long*)srcPtr) == prevSrc) {
+			if (*((u_int32_t*)srcPtr) == prevSrc) {
 				*(dstBitmapData++) = color;
 			} else {
-				prevSrc = *((long*)srcPtr);
+				prevSrc = *((u_int32_t*)srcPtr);
 				
 				// get linear rgb values in the range 0..2^15-1
 				double red = rgb2lin_red_LUT[srcPtr[0 + alphaFirst]] / 32767.;
@@ -970,9 +835,9 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 //					luminance = 1.055*pow(luminance, 1.0/2.4) - 0.055;
 
 				// Convert to RGB [0, 255]
-				long ired   = (int)(255. * luminance);
-				long igreen = (int)(255. * luminance);
-				long iblue  = (int)(255. * luminance);
+				int32_t ired   = (int)(255. * luminance);
+				int32_t igreen = (int)(255. * luminance);
+				int32_t iblue  = (int)(255. * luminance);
 				
 				// convert reduced linear rgb to gamma corrected rgb
 				if (ired < 0)
@@ -1035,8 +900,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			break;
 	}
 	
-	int rows = [screenshot pixelsHigh];
-	int cols = [screenshot pixelsWide];
+	NSInteger rows = [screenshot pixelsHigh];
+	NSInteger cols = [screenshot pixelsWide];
 	
 	[simulation release];
 	simulation = 
@@ -1059,7 +924,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	// create an NSImage and display it in the NSImageView
 	NSImage *image = [[[NSImage alloc] init] autorelease];
 	[image addRepresentation:simulation];
-	[image setFlipped:NO];
+	//[image setFlipped:NO];
 	[imageView setImage: image];
 }
 
@@ -1565,17 +1430,8 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[deutanHotKeyMenu selectItemAtIndex:[self fkey2menu:gDeutanHotKey]];
 		[tritanHotKeyMenu selectItemAtIndex:[self fkey2menu:gTritanHotKey]];
 		
-		// disable "Start Color Oracle at Login" switch
-		// it will be enabled by another thread that periodically checks if
-		// this application is registered as a login item
-		[startAtLoginSwitch setEnabled:NO];
-		
 		// enable / disable button for resetting preferences to default values.
 		[self updatePreferencesDefaultsButton];
-		
-		[NSThread detachNewThreadSelector:@selector(configurePrefsThread:)
-								 toTarget:self 
-							   withObject:self];
 	}
 	
 	// bring the preferences panel ot the foreground
@@ -1657,7 +1513,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	imageID++;
 	if (imageID > 24)
 		imageID = 1;
-	NSString *newName = [NSString stringWithFormat:@"%i", imageID];
+	NSString *newName = [NSString stringWithFormat:@"%ld", imageID];
 	[statusItem setImage:[NSImage imageNamed:newName]];
 }
 
@@ -1690,27 +1546,27 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 {
 	// retrieve the hot keys from the preference file
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	gProtanHotKey = [defaults integerForKey:@"protanHotKey"];
+	gProtanHotKey = (UInt32)[defaults integerForKey:@"protanHotKey"];
 	if (gProtanHotKey == 0)
 		gProtanHotKey = DEFAULTPROTANHOTKEY;
-	gDeutanHotKey = [defaults integerForKey:@"deutanHotKey"];
+	gDeutanHotKey = (UInt32)[defaults integerForKey:@"deutanHotKey"];
 	if (gDeutanHotKey == 0)
 		gDeutanHotKey = DEFAULTDEUTANHOTKEY;
-	gTritanHotKey = [defaults integerForKey:@"tritanHotKey"];
+	gTritanHotKey = (UInt32)[defaults integerForKey:@"tritanHotKey"];
 	if (gTritanHotKey == 0)
 		gTritanHotKey = DEFAULTTRITANHOTKEY;
 	[self installHotKeys];
 	
 	// get position of infoWindow from preferences file
-	int boxH = [defaults integerForKey:@"boxH"];
-	int boxV = [defaults integerForKey:@"boxV"];
+	NSInteger boxH = [defaults integerForKey:@"boxH"];
+	NSInteger boxV = [defaults integerForKey:@"boxV"];
     if (boxH == 0 || boxV == 0)
 		[infoWindow center];
 	else
 		[infoWindow setFrameOrigin:NSMakePoint(boxH, boxV)];
 	
 	// set height of infoWindow from preferences file
-	int height = [defaults integerForKey:@"boxHeight"];
+	NSInteger height = [defaults integerForKey:@"boxHeight"];
 	if (height > 0) {
 		NSRect frame = [infoWindow frame];
 		frame.size.height = height;

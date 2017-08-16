@@ -35,7 +35,6 @@
 	IBOutlet NSPopUpButton *deutanHotKeyMenu;
 	IBOutlet NSPopUpButton *protanHotKeyMenu;
 	IBOutlet NSPopUpButton *tritanHotKeyMenu;
-	IBOutlet NSButton *startAtLoginSwitch;
 	IBOutlet NSPanel *aboutBox;
 	IBOutlet NSButton *prefsDefaultsButton;
 	IBOutlet NSPanel *welcomeDialog;
@@ -48,8 +47,8 @@
 	unsigned screenShotBufferHeight;
 	
 	unsigned char *simulationBuffer;
-	unsigned simulationBufferWidth;
-	unsigned simulationBufferHeight;
+	NSUInteger simulationBufferWidth;
+	NSUInteger simulationBufferHeight;
 	
 	NSLock *loginItemsLock;
 	BOOL shouldQuit;
@@ -69,7 +68,6 @@
 -(IBAction)protanKey:(id)sender;
 -(IBAction)deutanKey:(id)sender;
 -(IBAction)tritanKey:(id)sender;
--(IBAction)selStartAtLogin:(id)sender;
 -(IBAction)showHomepage:(id)sender;
 -(IBAction)prefrencesDefaults:(id)sender;
 -(void)updateSimulation;

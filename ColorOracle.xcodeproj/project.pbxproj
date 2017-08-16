@@ -16,7 +16,6 @@
 		BA4E750A0A06BAE600CC2E04 /* ColorOracleScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */; };
 		BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA854B6C09C34CAB00BCBB77 /* RoundedView.m */; };
 		BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */; };
-		BAA0A74009F2DE1E000AACAB /* LoginItemsAE.c in Sources */ = {isa = PBXBuildFile; fileRef = BAA0A73E09F2DE1E000AACAB /* LoginItemsAE.c */; };
 		BAB435A00A07AED200173879 /* menuIconAnimation.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAB4359F0A07AED200173879 /* menuIconAnimation.tif */; };
 		BACFEE8308C760B900727089 /* AppController.m in Sources */ = {isa = PBXBuildFile; fileRef = BACFEE8208C760B900727089 /* AppController.m */; };
 		BAE1C23F09F7AE9A00A7009E /* menuIconTritan.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAE1C23E09F7AE9A00A7009E /* menuIconTritan.tif */; };
@@ -74,8 +73,6 @@
 		BA854B6C09C34CAB00BCBB77 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundedView.m; sourceTree = "<group>"; };
 		BA854B6D09C34CAB00BCBB77 /* TransparentWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TransparentWindow.h; sourceTree = "<group>"; };
 		BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = TransparentWindow.m; sourceTree = "<group>"; };
-		BAA0A73E09F2DE1E000AACAB /* LoginItemsAE.c */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.c; path = LoginItemsAE.c; sourceTree = "<group>"; };
-		BAA0A73F09F2DE1E000AACAB /* LoginItemsAE.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LoginItemsAE.h; sourceTree = "<group>"; };
 		BAB4359F0A07AED200173879 /* menuIconAnimation.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = menuIconAnimation.tif; sourceTree = "<group>"; };
 		BACFEE8108C760B900727089 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		BACFEE8208C760B900727089 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
@@ -147,8 +144,6 @@
 				BAE61D5F09C5B18A001C1FB4 /* InfoText.h */,
 				BAEF496209C56C2A00D1B983 /* Microseconds.h */,
 				BADD54B709C9679A00C76C20 /* WindowLevel.h */,
-				BAA0A73E09F2DE1E000AACAB /* LoginItemsAE.c */,
-				BAA0A73F09F2DE1E000AACAB /* LoginItemsAE.h */,
 				BA4E75080A06BAE600CC2E04 /* ColorOracleScriptCommand.h */,
 				BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */,
 			);
@@ -291,6 +286,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0900;
 			};
 			buildConfigurationList = BACFEE7308C75AC100727089 /* Build configuration list for PBXProject "ColorOracle" */;
 			compatibilityVersion = "Xcode 2.4";
@@ -381,7 +377,6 @@
 				BA1033E909C1C7880073BCE0 /* KeyableWindow.m in Sources */,
 				BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */,
 				BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */,
-				BAA0A74009F2DE1E000AACAB /* LoginItemsAE.c in Sources */,
 				BA4E750A0A06BAE600CC2E04 /* ColorOracleScriptCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,7 +406,6 @@
 		BACFEE7008C75AC100727089 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -424,11 +418,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.ethz.ika.colororacle;
 				PRODUCT_NAME = "Color Oracle";
 				SDKROOT = macosx;
-				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -437,7 +431,6 @@
 		BACFEE7108C75AC100727089 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_AUTO_VECTORIZATION = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -454,11 +447,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PREBINDING = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.ethz.ika.colororacle;
 				PRODUCT_NAME = "Color Oracle";
 				SDKROOT = macosx;
-				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = NO;
 			};
@@ -467,7 +460,6 @@
 		BACFEE7208C75AC100727089 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = test_Prefix.pch;
@@ -476,10 +468,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_BUNDLE_IDENTIFIER = ch.ethz.ika.colororacle;
 				PRODUCT_NAME = "Color Oracle";
 				SDKROOT = macosx;
-				VALID_ARCHS = i386;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
@@ -487,9 +479,35 @@
 		BACFEE7408C75AC100727089 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = stabs;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
 			};
@@ -498,13 +516,33 @@
 		BACFEE7508C75AC100727089 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -512,7 +550,31 @@
 		BACFEE7608C75AC100727089 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				SDKROOT = macosx;
 			};
 			name = Default;
