@@ -539,18 +539,18 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		simulationBufferHeight = rows;
 	}
 	
-	long *dstBitmapData = (long*)simulationBuffer;
+	u_int32_t *dstBitmapData = (u_int32_t*)simulationBuffer;
 	
-	long prevSrc = 0;
-	long color = 0x000000ff;
+	u_int32_t prevSrc = 0;
+	u_int32_t color = 0x000000ff;
 	
 	for (r = 0; r < rows; r++) {
 		const unsigned char * srcPtr = srcBitmapData;
 		for (c = 0; c < cols; c++) {
-			if (*((long*)srcPtr) == prevSrc) {
+			if (*((u_int32_t*)srcPtr) == prevSrc) {
 				*(dstBitmapData++) = color;
 			} else {
-				prevSrc = *((long*)srcPtr);
+				prevSrc = *((u_int32_t*)srcPtr);
 				
 				// get linear rgb values in the range 0..2^15-1
 				double red = rgb2lin_red_LUT[srcPtr[0 + alphaFirst]] / 32767.;
@@ -575,11 +575,11 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				/* Convert back to RGB (cross product with transform matrix) */
 				redOld   = red;
 				greenOld = green;
-				long ired   = (int)(255. * (redOld * 30.830854 - 
+				int32_t ired   = (int)(255. * (redOld * 30.830854 -
 											greenOld * 29.832659 + blue * 1.610474));
-				long igreen = (int)(255. * (-redOld * 6.481468 + 
+				int32_t igreen = (int)(255. * (-redOld * 6.481468 +
 											greenOld * 17.715578 - blue * 2.532642));
-				long iblue  = (int)(255. * (-redOld * 0.375690 - 
+				int32_t iblue  = (int)(255. * (-redOld * 0.375690 -
 											greenOld * 1.199062 + blue * 14.273846));
 				
 				// convert reduced linear rgb to gamma corrected rgb
@@ -846,7 +846,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			[self compute: 9591 k2: 23173 k3: -730];
 			break;
 		case tritan:
-			[self computeGrayscale];
+			[self computeTritan];
 			break;
 		case grayscale:
 			[self computeGrayscale];
