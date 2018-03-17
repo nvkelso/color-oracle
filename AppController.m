@@ -3,7 +3,6 @@
 //
 //  Created by Bernhard Jenny on 01.09.05.
 //  Copyright 2005 Bernhard Jenny. All rights reserved.
-//  OpenGL code from http://www.idevapps.com/forum/showthread.php?t=5240
 //  More info on screen capturing: http://www.cocoadev.com/index.pl?ScreenShotCode
 //  and http://www.idevapps.com/forum/archive/index.php/t-2895.html
 //  Window fading and tranparent rounded window from: http://mattgemmell.com/source/
@@ -47,7 +46,6 @@
  
  */
 
-#import <OpenGL/gl.h>
 #include "WindowLevel.h"
 #import "AppController.h"
 #import "ClickableImageView.h"
@@ -387,27 +385,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		[prefsDefaultsButton setEnabled:YES];
 }
 
--(NSOpenGLContext*)createOpenGLContext
-{
-	NSOpenGLPixelFormatAttribute attributes[] =
-    {
-        //NSOpenGLPFAFullScreen,
-        NSOpenGLPFASingleRenderer,
-        NSOpenGLPFANoRecovery,
-        NSOpenGLPFAScreenMask,
-        CGDisplayIDToOpenGLDisplayMask(CGMainDisplayID()),
-        0
-    };
-	
-    NSOpenGLPixelFormat *pixelFormat = [[[NSOpenGLPixelFormat alloc]
-        initWithAttributes:attributes] autorelease];
-    if (pixelFormat == nil)
-        return NULL;
-    
-    return [[NSOpenGLContext alloc] initWithFormat:pixelFormat
-											   shareContext:nil];
-}
-
 -(void)initLUTs
 {
 	const double gamma_inv = 1. / GAMMA;
@@ -526,9 +503,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	* (for tritans)
 	*/
 	
-	// OpenGL screen capture has to be vertically inverted, Quartz capture not.
-	int invertImage = CGDisplayCreateImage == NULL;
-	
 	// RGBA (OpenGL capture) or ARGB (Quartz capture)?
 	int alphaFirst = [screenshot bitmapFormat] & NSAlphaFirstBitmapFormat;
 
@@ -553,8 +527,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	unsigned char *srcBitmapData = [screenshot bitmapData];
 	if (srcBitmapData == nil)
 		return;
-	if (invertImage)
-		srcBitmapData += (rows - 1) * bytesPerRow;
 	
 	// recycle the buffer if it has been allocated before and if it's 
 	// the right size.
@@ -643,19 +615,13 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			
 			srcPtr+=4;
 		}
-		if (invertImage)
-			srcBitmapData-=bytesPerRow;
-		else
-			srcBitmapData+=bytesPerRow;
+		srcBitmapData+=bytesPerRow;
 	}
 }	
 
 -(void)compute:(long) k1 k2:(long)k2 k3:(long)k3 
 {
 	int r, c;
-	
-	// OpenGL screen capture has to be vertically inverted, Quartz capture not.
-	int invertImage = CGDisplayCreateImage == NULL;
 	
 	// RGBA (OpenGL capture) or ARGB (Quartz capture)?
 	int alphaFirst = [screenshot bitmapFormat] & NSAlphaFirstBitmapFormat;
@@ -666,8 +632,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	unsigned char *srcBitmapData = [screenshot bitmapData];
 	if (srcBitmapData == nil)
 		return;
-	if (invertImage)
-		srcBitmapData += (rows - 1) * bytesPerRow;
 	
 	// recycle the buffer if it has been allocated before and if it's 
 	// the right size.
@@ -734,10 +698,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			
 			srcPtr+=4;
 		}
-		if (invertImage)
-			srcBitmapData-=bytesPerRow;
-		else
-			srcBitmapData+=bytesPerRow;
+		srcBitmapData+=bytesPerRow;
 	}
 }
 
@@ -747,9 +708,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	 Based on https://en.wikipedia.org/wiki/Grayscale#Colorimetric_.28luminance-preserving.29_conversion_to_grayscale
 	 Tim van Werkhoven 20140318
 	 */
-	
-	// OpenGL screen capture has to be vertically inverted, Quartz capture not.
-	int invertImage = CGDisplayCreateImage == NULL;
 	
 	// RGBA (OpenGL capture) or ARGB (Quartz capture)?
 	int alphaFirst = [screenshot bitmapFormat] & NSAlphaFirstBitmapFormat;
@@ -775,8 +733,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	unsigned char *srcBitmapData = [screenshot bitmapData];
 	if (srcBitmapData == nil)
 		return;
-	if (invertImage)
-		srcBitmapData += (rows - 1) * bytesPerRow;
 	
 	// recycle the buffer if it has been allocated before and if it's
 	// the right size.
@@ -872,10 +828,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			
 			srcPtr+=4;
 		}
-		if (invertImage)
-			srcBitmapData-=bytesPerRow;
-		else
-			srcBitmapData+=bytesPerRow;
+		srcBitmapData+=bytesPerRow;
 	}
 }	
 
@@ -1652,100 +1605,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	}
 }
 
-/* Takes a screenshot with Quartz Display Services to capture a screen, using 
- CGDisplayCreateImage. This code works starting with OSX 10.6. It does not work 
- with OSX 10.5 or earlier.
- */
--(void)takeQuartzScreenShot
-{
-	// release previous screen capture, first the NSBitmapImageRep then the CGImage
-	if (screenshot != NULL)
-		[screenshot release];
-	if (quartzScreenCapture != NULL)
-		CGImageRelease(quartzScreenCapture);
-	
-	// an alternative screen could be specified here
-	quartzScreenCapture = CGDisplayCreateImage(kCGDirectMainDisplay);
-	// The caller of CGDisplayCreateImage is responsible for releasing the image
-	// by calling CGImageRelease.
-	if (quartzScreenCapture == NULL)
-		return;
-	
-	// convert to NSBitmapImageRep
-	screenshot = [[NSBitmapImageRep alloc] initWithCGImage:quartzScreenCapture];
-	// http://www.cocoadev.com/index.pl?NSBitmapImageRep
-	// NSBitmapImageRep does not make a copy of the bitmap planes, it uses them
-	// in-place, so make sure not to free them while screenshot is alive.
-}
-
-/* Takes a screenshot using OpenGL. This code is based on the 
- OpenGLScreenSnapshot code example. This current version is not the most
- efficient one.
- It works with OSX verions until 10.6. It does not work on OSX 10.7.
- */
--(void)takeOpenGLScreenShot
-{
-	NSOpenGLContext * openGLContext = [self createOpenGLContext];
-	if (openGLContext == NULL)
-		return;
-	[openGLContext setFullScreen];
-    [openGLContext makeCurrentContext];
-    
-    GLint viewport[4];
-    glGetIntegerv(GL_VIEWPORT, viewport);
-    
-    unsigned width = viewport[2];
-    unsigned height = viewport[3];
-    
-	// recycle the buffer if it has been allocated before and if it's 
-	// the right size.
-	if (width != screenShotBufferWidth || height != screenShotBufferHeight
-		|| screenShotBuffer == nil) {
-		if (screenShotBuffer != nil)
-			free (screenShotBuffer);
-		screenShotBuffer = malloc(width * height * 4);
-		screenShotBufferWidth = width;
-		screenShotBufferHeight = height;
-	}
-	
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-    
-	/* glReadPixels is very slow*/
-	/*
-	 http://www.idevgames.com/forum/archive/index.php/t-7463.html
-	 Use a native pixel format to avoid CPU bit swizzling.
-	 
-	 glReadPixels(0, 0, width, height, GL_BGRA, GL_UNSIGNED_SHORT_1_5_5_5_REV, pixels);
-	 or
-	 glReadPixels(0, 0, width, height, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, pixels);
-	 
-	 make sure the rowbytes is a multiple of 32, in case DMA alignment is an issue.
-	 
-	 Also see http://www.opengl.org/resources/faq/technical/performance.htm
-	 */
-    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, screenShotBuffer);
-    
-    [openGLContext clearDrawable];
-    
-	[screenshot release];
-    screenshot = [[NSBitmapImageRep alloc]
-				  initWithBitmapDataPlanes:&screenShotBuffer
-				  /* NSBitmapImageRep will only reference the image data; it won’t copy it. 
-				   The buffers won’t be freed when the NSBitmapImageRep is freed. */
-				  pixelsWide:width
-				  pixelsHigh:height
-				  bitsPerSample:8
-				  samplesPerPixel:4
-				  hasAlpha:YES
-				  isPlanar:NO
-				  colorSpaceName:NSDeviceRGBColorSpace
-				  bytesPerRow:width * 4
-				  bitsPerPixel:32];
-	
-	[openGLContext release];
-}
-
-/* Takes a screenshot. */
+/* Takes a screenshot using Quartz (available since 10.6). */
 -(void)takeScreenShot
 {
 	// don't take screenshot when the main window is visible
@@ -1757,17 +1617,24 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		return;
 	}
 	
-	// the deployment target of this project is 10.4
-	// the target SDK is the latest available (i.e. 10.6 or later)
-	// XCode is using weak links in this case. That is, CGDisplayCreateImage is
-	// weakly linked. The presence of CGDisplayCreateImage has to be tested
-	// before it is called in this case.
-	// http://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WeakLinking.html
-	if (CGDisplayCreateImage == NULL) {
-		[self takeOpenGLScreenShot];
-	} else {
-		[self takeQuartzScreenShot];
-	}
+    // release previous screen capture, first the NSBitmapImageRep then the CGImage
+    if (screenshot != NULL)
+        [screenshot release];
+    if (quartzScreenCapture != NULL)
+        CGImageRelease(quartzScreenCapture);
+    
+    // an alternative screen could be specified here
+    quartzScreenCapture = CGDisplayCreateImage(kCGDirectMainDisplay);
+    // The caller of CGDisplayCreateImage is responsible for releasing the image
+    // by calling CGImageRelease.
+    if (quartzScreenCapture == NULL)
+        return;
+    
+    // convert to NSBitmapImageRep
+    screenshot = [[NSBitmapImageRep alloc] initWithCGImage:quartzScreenCapture];
+    // http://www.cocoadev.com/index.pl?NSBitmapImageRep
+    // NSBitmapImageRep does not make a copy of the bitmap planes, it uses them
+    // in-place, so make sure not to free them while screenshot is alive.
 }
 
 // the user changed the screen resolution (and possibly other settings of 
