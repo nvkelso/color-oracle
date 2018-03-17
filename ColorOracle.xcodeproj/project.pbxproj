@@ -13,7 +13,6 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		BA10336609C1B3730073BCE0 /* ClickableImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA10336409C1B3730073BCE0 /* ClickableImageView.m */; };
 		BA1033E909C1C7880073BCE0 /* KeyableWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA1033E709C1C7880073BCE0 /* KeyableWindow.m */; };
-		BA4E750A0A06BAE600CC2E04 /* ColorOracleScriptCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */; };
 		BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA854B6C09C34CAB00BCBB77 /* RoundedView.m */; };
 		BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */; };
 		BAB435A00A07AED200173879 /* menuIconAnimation.tif in Resources */ = {isa = PBXBuildFile; fileRef = BAB4359F0A07AED200173879 /* menuIconAnimation.tif */; };
@@ -66,8 +65,6 @@
 		BA10336409C1B3730073BCE0 /* ClickableImageView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = ClickableImageView.m; sourceTree = "<group>"; };
 		BA1033E609C1C7880073BCE0 /* KeyableWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = KeyableWindow.h; sourceTree = "<group>"; };
 		BA1033E709C1C7880073BCE0 /* KeyableWindow.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = KeyableWindow.m; sourceTree = "<group>"; };
-		BA4E75080A06BAE600CC2E04 /* ColorOracleScriptCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorOracleScriptCommand.h; sourceTree = "<group>"; };
-		BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorOracleScriptCommand.m; sourceTree = "<group>"; };
 		BA854B6B09C34CAB00BCBB77 /* RoundedView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = RoundedView.h; sourceTree = "<group>"; };
 		BA854B6C09C34CAB00BCBB77 /* RoundedView.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RoundedView.m; sourceTree = "<group>"; };
 		BA854B6D09C34CAB00BCBB77 /* TransparentWindow.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = TransparentWindow.h; sourceTree = "<group>"; };
@@ -141,8 +138,6 @@
 				BAE61D5F09C5B18A001C1FB4 /* InfoText.h */,
 				BAEF496209C56C2A00D1B983 /* Microseconds.h */,
 				BADD54B709C9679A00C76C20 /* WindowLevel.h */,
-				BA4E75080A06BAE600CC2E04 /* ColorOracleScriptCommand.h */,
-				BA4E75090A06BAE600CC2E04 /* ColorOracleScriptCommand.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -373,7 +368,6 @@
 				BA1033E909C1C7880073BCE0 /* KeyableWindow.m in Sources */,
 				BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */,
 				BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */,
-				BA4E750A0A06BAE600CC2E04 /* ColorOracleScriptCommand.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
