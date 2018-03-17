@@ -145,14 +145,15 @@
 
 - (void)drawRect:(NSRect)rect
 {
-    NSColor *bgColor = [NSColor colorWithCalibratedWhite:0.0 alpha:BOXTRANSPARENCY];
-    NSRect bgRect = rect;
-    int minX = NSMinX(bgRect);
-    int midX = NSMidX(bgRect);
-    int maxX = NSMaxX(bgRect);
-    int minY = NSMinY(bgRect);
-    int midY = NSMidY(bgRect);
-    int maxY = NSMaxY(bgRect);
+    [[NSColor clearColor] set];
+    NSRectFill([self frame]);
+    
+    int minX = NSMinX(rect);
+    int midX = NSMidX(rect);
+    int maxX = NSMaxX(rect);
+    int minY = NSMinY(rect);
+    int midY = NSMidY(rect);
+    int maxY = NSMaxY(rect);
     float radius = BOXCORNERRADIUS; // 25 is correct value to duplicate Panther's App Switcher
     NSBezierPath *bgPath = [NSBezierPath bezierPath];
     
@@ -173,16 +174,22 @@
                                       radius:radius];
     
     // Left edge and bottom-left curve
-    [bgPath appendBezierPathWithArcFromPoint:bgRect.origin 
+    [bgPath appendBezierPathWithArcFromPoint:[self frame].origin
                                      toPoint:NSMakePoint(midX, minY) 
                                       radius:radius];
     [bgPath closePath];
     
-    [bgColor set];
+    NSColor *bgColor = [NSColor colorWithCalibratedWhite:0.0 alpha:BOXTRANSPARENCY];
+    [bgColor setFill];
     [bgPath fill];
 	
-	[self drawText:rect];
+	[self drawText: rect];
 	[self drawTrackingRectangle];
+    
+    // We need to invalidate window shadow for a window with transparent parts, after drawing
+    // The shadow is computed from the opaque (or mostly-opaque) parts and therefore depends on what gets drawn.
+    // If shadow is not recomputed, ghost labels will be visible.
+    [[self window] invalidateShadow];
 }
 
 - (void) setTitle:(NSString*)t
@@ -190,7 +197,7 @@
 	[t retain];
 	[title release];
 	title = t;
-	[self setNeedsDisplay:YES];
+    [self setNeedsDisplay:YES];
 }
 
 - (void) setInfo1:(NSString*)i
@@ -198,7 +205,7 @@
 	[i retain];
 	[info1 release];
 	info1 = i;
-	[self setNeedsDisplay:YES];
+    [self setNeedsDisplay:YES];
 }
 
 - (void) setInfo2:(NSString*)i
@@ -206,7 +213,7 @@
 	[i retain];
 	[info2 release];
 	info2 = i;
-	[self setNeedsDisplay:YES];
+    [self setNeedsDisplay:YES];
 }
 
 - (void)scrollWheel:(NSEvent *)theEvent

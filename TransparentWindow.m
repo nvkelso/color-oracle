@@ -17,16 +17,21 @@
                   backing:(NSBackingStoreType)bufferingType 
                     defer:(BOOL)flag {
     
+    // Using NSBorderlessWindowMask results in a window without a title bar.
     if (self = [super initWithContentRect:contentRect 
 								styleMask:NSBorderlessWindowMask 
 								  backing:NSBackingStoreBuffered 
 									defer:NO]) {
         [self setLevel: WINDOWLEVEL];
-        [self setBackgroundColor: [NSColor clearColor]];
+        
+        // Start with no transparency for all drawing into the window
         [self setAlphaValue:1.0];
+        //Set backgroundColor to clearColor
+        self.backgroundColor = NSColor.clearColor;
+        // Turn off opacity so that the parts of the window that are not drawn into are transparent.
         [self setOpaque:NO];
+        
         [self setHasShadow:YES];
-      		
         return self;
     }
     

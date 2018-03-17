@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1050" identifier="macosx"/>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -344,48 +344,38 @@ For updates and futher information see:</string>
                 <outlet property="delegate" destination="206" id="407"/>
                 <outlet property="initialFirstResponder" destination="389" id="402"/>
             </connections>
-            <point key="canvasLocation" x="132" y="559.5"/>
+            <point key="canvasLocation" x="-387" y="540"/>
         </window>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="409" userLabel="Welcome" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="409" y="432" width="507" height="168"/>
+            <rect key="contentRect" x="409" y="432" width="478" height="168"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="410">
-                <rect key="frame" x="0.0" y="0.0" width="507" height="168"/>
+            <view key="contentView" misplaced="YES" id="410">
+                <rect key="frame" x="0.0" y="0.0" width="478" height="168"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="411">
-                        <rect key="frame" x="159" y="131" width="184" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Welcome to Color Oracle!" id="436">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <imageView id="412">
                         <rect key="frame" x="20" y="20" width="128" height="128"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="437"/>
                     </imageView>
-                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="414">
-                        <rect key="frame" x="156" y="45" width="331" height="78"/>
+                    <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="414">
+                        <rect key="frame" x="161" y="71" width="297" height="52"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" id="aTz-tK-jMv">
-                            <rect key="frame" x="0.0" y="0.0" width="331" height="78"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <rect key="frame" x="0.0" y="0.0" width="297" height="52"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="415">
-                                    <rect key="frame" x="0.0" y="0.0" width="331" height="78"/>
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" smartInsertDelete="YES" id="415">
+                                    <rect key="frame" x="0.0" y="0.0" width="297" height="52"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="331" height="78"/>
+                                    <size key="minSize" width="297" height="52"/>
                                     <size key="maxSize" width="361" height="10000000"/>
                                     <attributedString key="textStorage">
-                                        <fragment>
-                                            <string key="content">Use the Color Oracle icon installed in the menubar at the top-right of your screen to simulate deutan, protan or tritan color blind vision.</string>
+                                        <fragment content="Use the Color Oracle icon in the menubar at the top-right of your screen to simulate colour blindness.">
                                             <attributes>
                                                 <font key="NSFont" size="13" name="LucidaGrande"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
@@ -406,8 +396,8 @@ For updates and futher information see:</string>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" id="417">
-                        <rect key="frame" x="406" y="11" width="82" height="32"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="417">
+                        <rect key="frame" x="373" y="13" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="438">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -420,11 +410,21 @@ DQ
                             <action selector="closeWelcomeDialog:" target="206" id="420"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="411">
+                        <rect key="frame" x="166" y="131" width="184" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Welcome to Color Oracle!" id="436">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="206" id="421"/>
             </connections>
+            <point key="canvasLocation" x="-406" y="162"/>
         </window>
     </objects>
     <resources>

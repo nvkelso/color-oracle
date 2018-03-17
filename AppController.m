@@ -74,7 +74,7 @@ enum simulation {normalView, protan, deutan, tritan, grayscale};
 
 // fading speed
 #define FADETIMEINTERVAL 0.05
-#define FADETRANSPARENCYSTEP 0.4
+#define FADETRANSPARENCYSTEP 0.3
 
 // Gamma for converting from screen rgb to linear rgb and back again.
 // The publication describing the algorithm uses a gamma value of 2.2, which
