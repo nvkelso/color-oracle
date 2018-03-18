@@ -48,6 +48,7 @@
 		BAE4186F0A08E948006994E7 /* ColorOracle.sdef in Resources */ = {isa = PBXBuildFile; fileRef = BAE4186E0A08E948006994E7 /* ColorOracle.sdef */; };
 		BAE7178309C316210030D896 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAE7178209C316210030D896 /* icon.icns */; };
 		BAF9124E09BF91E00035C73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF9124D09BF91E00035C73D /* Carbon.framework */; };
+		C33A2411205E0A7F004DE561 /* menuIconGrayscale.tif in Resources */ = {isa = PBXBuildFile; fileRef = C33A2410205E0A7F004DE561 /* menuIconGrayscale.tif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +108,7 @@
 		BAE7178209C316210030D896 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		BAEF496209C56C2A00D1B983 /* Microseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Microseconds.h; sourceTree = "<group>"; };
 		BAF9124D09BF91E00035C73D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		C33A2410205E0A7F004DE561 /* menuIconGrayscale.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = menuIconGrayscale.tif; path = "Icon/Color Blindness Test/menuIconGrayscale.tif"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				BAE1C24B09F7AF3100A7009E /* menuIconDeutan.tif */,
 				BAE1C24C09F7AF3100A7009E /* menuIconProtan.tif */,
 				BAE1C23E09F7AE9A00A7009E /* menuIconTritan.tif */,
+				C33A2410205E0A7F004DE561 /* menuIconGrayscale.tif */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
@@ -308,6 +311,7 @@
 				BAE7178309C316210030D896 /* icon.icns in Resources */,
 				BAE1C23F09F7AE9A00A7009E /* menuIconTritan.tif in Resources */,
 				BAE1C24D09F7AF3100A7009E /* menuIcon.tif in Resources */,
+				C33A2411205E0A7F004DE561 /* menuIconGrayscale.tif in Resources */,
 				BAE1C24E09F7AF3100A7009E /* menuIconDeutan.tif in Resources */,
 				BAE1C24F09F7AF3100A7009E /* menuIconProtan.tif in Resources */,
 				BAB435A00A07AED200173879 /* menuIconAnimation.tif in Resources */,

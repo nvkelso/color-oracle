@@ -1345,7 +1345,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	// close welcome dialog, should it still be open
 	[self closeWelcomeDialog:self];
 	simulationID = grayscale;
-	//[statusItem setImage:[NSImage imageNamed:@"menuIconTritan"]]; Ignore this for now
+	[statusItem setImage:[NSImage imageNamed:@"menuIconGrayscale"]];
 	
 	// hide the menu if this method was called from the menu
 	if (sender != nil && sender != self)
