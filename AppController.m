@@ -478,7 +478,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	[preferencesPanel center];
 	[self initWindows];
 	[self initMenu];
-}
+    
+    // button to resize info window needs transparent background outside the button area
+    [infoResizeButton setWantsLayer:YES];
+    infoResizeButton.layer.backgroundColor = [NSColor clearColor].CGColor;}
 
 - (void)dealloc
 {
@@ -1531,6 +1534,13 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
     [launchController setLaunchAtLogin:[loginButton state]];
     [launchController release];
+}
+
+// button to resize info window was pressed
+- (IBAction)resizeInfo:(id)sender {
+    NSControlStateValue buttonState = [infoView resizeInfo];
+    // non-standard use of disclosure button: need to adjust state to indicate direction of resizing
+    [infoResizeButton setState:buttonState];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification

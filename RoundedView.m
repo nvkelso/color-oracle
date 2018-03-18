@@ -28,8 +28,8 @@
 #define SHADOWBLURRADIUS 2
 #define SHADOWTRANSPARENCY 0.5
 
-#define MINHEIGHT  55
-#define MEDIUMHEIGHT  110
+#define MINHEIGHT  65
+#define MEDIUMHEIGHT  120
 #define TRACKBOXWIDTH 40
 #define TRACKBOXHEIGHT 10
 
@@ -79,20 +79,6 @@
 - (BOOL)canBecomeKeyView
 {
 	return YES;
-}
-
--(void)drawTrackingRectangle
-{
-	NSColor *bgColor = [NSColor colorWithCalibratedWhite:1.0 alpha:BOXTRANSPARENCY];
-	[bgColor set];
-	NSRect rect = [self trackingRect];
-	rect.size.height = 1;
-	rect.origin.y += 3;
-	[[NSBezierPath bezierPathWithRect:rect] fill];
-	rect = [self trackingRect];
-	rect.origin.y += rect.size.height - 4;
-	rect.size.height = 1;
-	[[NSBezierPath bezierPathWithRect:rect] fill]; 
 }
 
 -(void)drawText:(NSRect)rect
@@ -188,8 +174,7 @@
     [bgPath fill];
 	
 	[self drawText: rect];
-	[self drawTrackingRectangle];
-    
+	
     // We need to invalidate window shadow for a window with transparent parts, after drawing
     // The shadow is computed from the opaque (or mostly-opaque) parts and therefore depends on what gets drawn.
     // If shadow is not recomputed, ghost labels will be visible.
@@ -230,6 +215,52 @@
 	[delegate rightMouseDown:theEvent];
 }
 
+// resizes the info dialog
+// returns a button state for the resize button
+- (NSControlStateValue) resizeInfo
+{
+    NSRect windowFrame = [[self window] frame];
+    if (windowFrame.size.height == fullHeight) {
+        enlargingWindow = NO;
+        windowFrame.size.height = MEDIUMHEIGHT;
+    } else if (windowFrame.size.height > MEDIUMHEIGHT) {
+        if (enlargingWindow == YES)
+            windowFrame.size.height = fullHeight;
+        else
+            windowFrame.size.height = MEDIUMHEIGHT;
+    } else if (windowFrame.size.height > MINHEIGHT) {
+        if (enlargingWindow == YES) {
+            windowFrame.size.height = fullHeight;
+        } else {
+            windowFrame.size.height = MINHEIGHT;
+        }
+    } else if (windowFrame.size.height == MINHEIGHT) {
+        enlargingWindow = YES;
+        windowFrame.size.height = MEDIUMHEIGHT;
+    }
+    
+    // Prevent enlargement into the menu bar area
+    NSRect  screenFrame = [[NSScreen mainScreen] frame];
+    CGFloat mbarHeight = [[[NSApplication sharedApplication] mainMenu] menuBarHeight];
+    if( (windowFrame.origin.y + windowFrame.size.height) > (NSMaxY(screenFrame) - mbarHeight) ){
+        windowFrame.origin.y = NSMaxY(screenFrame) - windowFrame.size.height - mbarHeight;
+    }
+    
+    [[self window] setFrame:windowFrame display:YES animate:YES];
+    
+    // button state for resize button: the button status should indicate the direction in which the window will grow or shrink
+    NSControlStateValue state;
+    if (windowFrame.size.height == fullHeight)
+        state = NSOnState;
+    else if (windowFrame.size.height == MINHEIGHT) {
+        state = NSOffState;
+    } else {
+        // medium size
+        state = enlargingWindow ? NSOffState : NSOnState;
+    }
+    return state;
+}
+
 - (void)mouseUp:(NSEvent *)theEvent
 {
 	if (draggingTrackingRectangle == NO) {
@@ -237,35 +268,8 @@
 		// change size on click on tracking rectangle
 		if (NSMouseInRect ([theEvent locationInWindow], [self trackingRect], NO) == YES)
 		{
-			NSRect windowFrame = [[self window] frame];
-			if (windowFrame.size.height == fullHeight) {
-				enlargingWindow = NO;
-				windowFrame.size.height = MEDIUMHEIGHT;
-			} else if (windowFrame.size.height > MEDIUMHEIGHT) {
-				if (enlargingWindow == YES)
-					windowFrame.size.height = fullHeight;
-				else
-					windowFrame.size.height = MEDIUMHEIGHT;
-			} else if (windowFrame.size.height > MINHEIGHT) {
-				if (enlargingWindow == YES) {
-					windowFrame.size.height = fullHeight;
-				} else {
-					windowFrame.size.height = MINHEIGHT;
-				}
-			} else if (windowFrame.size.height == MINHEIGHT) {
-				enlargingWindow = YES;
-				windowFrame.size.height = MEDIUMHEIGHT;
-			}
-			
-			// Prevent enlargement into the menu bar area
-			NSRect  screenFrame = [[NSScreen mainScreen] frame];
-			CGFloat mbarHeight = [[[NSApplication sharedApplication] mainMenu] menuBarHeight];
-			if( (windowFrame.origin.y + windowFrame.size.height) > (NSMaxY(screenFrame) - mbarHeight) ){
-				windowFrame.origin.y = NSMaxY(screenFrame) - windowFrame.size.height - mbarHeight;
-			}
-			
-			[[self window] setFrame:windowFrame display:YES animate:YES];
-			return;
+            [self resizeInfo];
+            return;
 		}
 	}
 	

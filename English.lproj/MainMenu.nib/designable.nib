@@ -19,6 +19,7 @@
                 <outlet property="aboutBox" destination="387" id="393"/>
                 <outlet property="deutanHotKeyMenu" destination="324" id="344"/>
                 <outlet property="grayscaleHotKeyMenu" destination="HkC-th-2we" id="C7n-kZ-uGG"/>
+                <outlet property="infoResizeButton" destination="uMJ-8z-dIt" id="vdw-qn-fah"/>
                 <outlet property="infoView" destination="243" id="246"/>
                 <outlet property="infoWindow" destination="241" id="245"/>
                 <outlet property="loginButton" destination="PMR-mg-iD1" id="818-tH-ceZ"/>
@@ -33,23 +34,36 @@
         <window title="RoundedView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="241" userLabel="InfoWindow" customClass="TransparentWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="562" y="357" width="390" height="176"/>
+            <rect key="contentRect" x="562" y="357" width="390" height="189"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="167.465" height="50"/>
-            <view key="contentView" id="242">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="176"/>
+            <view key="contentView" misplaced="YES" id="242">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="189"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="243" customClass="RoundedView">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="176"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="189"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="uMJ-8z-dIt">
+                                <rect key="frame" x="187" y="2" width="17" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" imagePosition="only" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CAr-BO-X2p">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="resizeInfo:" target="206" id="Esq-qk-bPJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                     </customView>
                 </subviews>
             </view>
             <connections>
                 <outlet property="initialFirstResponder" destination="243" id="248"/>
             </connections>
-            <point key="canvasLocation" x="362" y="181"/>
+            <point key="canvasLocation" x="362" y="187.5"/>
         </window>
         <menu title="Menu" id="250" userLabel="Menu">
             <items>

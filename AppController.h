@@ -40,8 +40,9 @@
 	IBOutlet NSButton *prefsDefaultsButton;
 	IBOutlet NSPanel *welcomeDialog;
     IBOutlet NSButton *loginButton;
+    IBOutlet NSButton *infoResizeButton;
     
-	unsigned short * rgb2lin_red_LUT;
+    unsigned short * rgb2lin_red_LUT;
 	unsigned char * lin2rgb_LUT;
 	
 	unsigned char *screenShotBuffer;
@@ -79,5 +80,6 @@
 -(NSWindow*)aboutBox;
 -(IBAction)closeWelcomeDialog:(id)sender;
 - (IBAction)login:(id)sender;
+- (IBAction)resizeInfo:(id)sender;
 
 @end
