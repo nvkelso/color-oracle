@@ -7,18 +7,18 @@
 #import "RoundedView.h"
 
 // text size 
-#define TEXTSIZE 40
+#define TEXTSIZE 32
 #define INFOTEXTSIZE1 16
 #define INFOTEXTSIZE2 12
 
+#define V_TITLEOFFSET 5
+
 // horizontal and vertical offset of the lower info text
 #define H_INFOTEXTOFFSET1 20
-#define V_INFOTEXTOFFSET1 60
+#define V_INFOTEXTOFFSET1 50
 
 #define H_INFOTEXTOFFSET2 50
-#define V_INFOTEXTOFFSET2 115
-
-#define FONT @"Lucida Grande"
+#define V_INFOTEXTOFFSET2 105
 
 #define BOXCORNERRADIUS 15
 #define BOXTRANSPARENCY 0.6
@@ -107,7 +107,7 @@
 	[attrs setObject: shadow forKey: NSShadowAttributeName];
 	
 	// main text font
-	NSFont *font = [NSFont fontWithName:FONT size:TEXTSIZE];
+	NSFont *font = [NSFont systemFontOfSize:TEXTSIZE];
 	[attrs setObject: font forKey: NSFontAttributeName];
 	
 	// text color
@@ -119,25 +119,29 @@
 	[pStyle setAlignment:NSCenterTextAlignment];
 	[attrs setValue: pStyle forKey: NSParagraphStyleAttributeName];
 		
+    bool drawInfoText1 = rect.size.height >= MEDIUMHEIGHT;
+    bool drawInfoText2 = rect.size.height >= fullHeight - 5;
+    
 	// draw main text
+    rect.size.height -= V_TITLEOFFSET;
 	[title drawInRect:rect withAttributes: attrs];
 	
 	// info text 1
-	font = [NSFont fontWithName:FONT size:INFOTEXTSIZE1];
+	font = [NSFont systemFontOfSize:INFOTEXTSIZE1];
 	[attrs setObject: font forKey: NSFontAttributeName];
 	[attrs removeObjectForKey:NSShadowAttributeName];
 	
 	// draw info text 1
-	if (rect.size.height >= MEDIUMHEIGHT) {
+	if (drawInfoText1) {
 		rect.size.height -= V_INFOTEXTOFFSET1;
 		[info1 drawInRect:rect withAttributes: attrs];
 		rect.size.height += V_INFOTEXTOFFSET1; // reset rectangle height
 	}
 	
 	// draw info text 2
-	font = [NSFont fontWithName:FONT size:INFOTEXTSIZE2];
+	font = [NSFont systemFontOfSize:INFOTEXTSIZE2];
 	[attrs setObject: font forKey: NSFontAttributeName];
-	if (rect.size.height >= fullHeight - 5) {
+	if (drawInfoText2) {
 		rect.size.height -= V_INFOTEXTOFFSET2;
 		[info2 drawInRect:rect withAttributes: attrs];
 	}
