@@ -81,9 +81,9 @@ enum {keyNone = -1, f1 = 0x7A, f2 = 0x78, f3 = 0x63, f4 = 0x76, f5 = 0x60,
 	f12 = 0x6F, f13 = 0x69, f14 = 0x6B, f15 = 0x71, f16 = 0x6A};
 
 #define DEFAULTDEUTANHOTKEY f5
-#define DEFAULTPROTANHOTKEY f6
+#define DEFAULTPROTANHOTKEY keyNone
 #define DEFAULTTRITANHOTKEY keyNone
-#define DEFAULTGRAYSCALEHOTKEY f7
+#define DEFAULTGRAYSCALEHOTKEY f6
 
 // handle hotkeys
 const UInt32 kHotKeyIdentifier='blnd';
