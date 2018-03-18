@@ -39,7 +39,8 @@
 	IBOutlet NSPanel *aboutBox;
 	IBOutlet NSButton *prefsDefaultsButton;
 	IBOutlet NSPanel *welcomeDialog;
-	
+    IBOutlet NSButton *loginButton;
+    
 	unsigned short * rgb2lin_red_LUT;
 	unsigned char * lin2rgb_LUT;
 	
@@ -51,7 +52,6 @@
 	NSUInteger simulationBufferWidth;
 	NSUInteger simulationBufferHeight;
 	
-	NSLock *loginItemsLock;
 	BOOL shouldQuit;
 }
 
@@ -78,5 +78,6 @@
 -(NSWindow*)preferencesPanel;
 -(NSWindow*)aboutBox;
 -(IBAction)closeWelcomeDialog:(id)sender;
+- (IBAction)login:(id)sender;
 
 @end

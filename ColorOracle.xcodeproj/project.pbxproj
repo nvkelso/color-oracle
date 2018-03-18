@@ -49,6 +49,7 @@
 		BAE7178309C316210030D896 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAE7178209C316210030D896 /* icon.icns */; };
 		BAF9124E09BF91E00035C73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF9124D09BF91E00035C73D /* Carbon.framework */; };
 		C33A2411205E0A7F004DE561 /* menuIconGrayscale.tif in Resources */ = {isa = PBXBuildFile; fileRef = C33A2410205E0A7F004DE561 /* menuIconGrayscale.tif */; };
+		C33A2414205E2592004DE561 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A2413205E2592004DE561 /* LaunchAtLoginController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +110,8 @@
 		BAEF496209C56C2A00D1B983 /* Microseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Microseconds.h; sourceTree = "<group>"; };
 		BAF9124D09BF91E00035C73D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		C33A2410205E0A7F004DE561 /* menuIconGrayscale.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = menuIconGrayscale.tif; path = "Icon/Color Blindness Test/menuIconGrayscale.tif"; sourceTree = "<group>"; };
+		C33A2412205E2591004DE561 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
+		C33A2413205E2592004DE561 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +136,8 @@
 				BA10336409C1B3730073BCE0 /* ClickableImageView.m */,
 				BA1033E609C1C7880073BCE0 /* KeyableWindow.h */,
 				BA1033E709C1C7880073BCE0 /* KeyableWindow.m */,
+				C33A2412205E2591004DE561 /* LaunchAtLoginController.h */,
+				C33A2413205E2592004DE561 /* LaunchAtLoginController.m */,
 				BA854B6B09C34CAB00BCBB77 /* RoundedView.h */,
 				BA854B6C09C34CAB00BCBB77 /* RoundedView.m */,
 				BA854B6D09C34CAB00BCBB77 /* TransparentWindow.h */,
@@ -371,6 +376,7 @@
 				BA10336609C1B3730073BCE0 /* ClickableImageView.m in Sources */,
 				BA1033E909C1C7880073BCE0 /* KeyableWindow.m in Sources */,
 				BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */,
+				C33A2414205E2592004DE561 /* LaunchAtLoginController.m in Sources */,
 				BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

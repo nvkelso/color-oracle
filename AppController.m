@@ -51,17 +51,10 @@
 #import "ClickableImageView.h"
 #import "KeyableWindow.h"
 #include "InfoText.h"
+#import "LaunchAtLoginController.h"
 
 /* Web site for this project */
 #define HOMEPAGE @"http://colororacle.org/"
-
-/* Duration of the pause for the threat that is periodically checking for changes
-in the list of login items. In seconds.*/
-#define PREFS_THREAD_SLEEP 0.5
-
-/* The priority of the thread that is periodically checking for changes
-in the list of login items. Range of possible values [0..1]. */
-#define PREFS_THREAD_PRIORITY 0.05
 
 /* wait this long for the menu to hide */
 #define MILLISEC_TO_HIDE_MENU 50
@@ -475,9 +468,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		gProtanHotKey = f6;
 		gTritanHotKey = keyNone;
         gGrayscaleHotKey = keyNone;
-		
-		loginItemsLock = [[NSLock alloc] init];
-	}
+    }
 	return self;
 }
 
@@ -1420,6 +1411,12 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
         
 		// enable / disable button for resetting preferences to default values.
 		[self updatePreferencesDefaultsButton];
+        
+        // initialize "launch at login" checkbox
+        LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
+        [loginButton setState: [launchController launchAtLogin]];
+        [launchController release];
+        
 	}
 	
 	// bring the preferences panel ot the foreground
@@ -1528,6 +1525,12 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	
 	// make sure the icon is the default menu icon
 	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
+}
+
+- (IBAction)login:(id)sender {
+    LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
+    [launchController setLaunchAtLogin:[loginButton state]];
+    [launchController release];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
