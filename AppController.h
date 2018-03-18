@@ -35,6 +35,7 @@
 	IBOutlet NSPopUpButton *deutanHotKeyMenu;
 	IBOutlet NSPopUpButton *protanHotKeyMenu;
 	IBOutlet NSPopUpButton *tritanHotKeyMenu;
+    IBOutlet NSPopUpButton *grayscaleHotKeyMenu;
 	IBOutlet NSPanel *aboutBox;
 	IBOutlet NSButton *prefsDefaultsButton;
 	IBOutlet NSPanel *welcomeDialog;
@@ -68,6 +69,7 @@
 -(IBAction)protanKey:(id)sender;
 -(IBAction)deutanKey:(id)sender;
 -(IBAction)tritanKey:(id)sender;
+-(IBAction)grayscaleKey:(id)sender;
 -(IBAction)showHomepage:(id)sender;
 -(IBAction)prefrencesDefaults:(id)sender;
 -(void)updateSimulation;
@@ -76,10 +78,5 @@
 -(NSWindow*)preferencesPanel;
 -(NSWindow*)aboutBox;
 -(IBAction)closeWelcomeDialog:(id)sender;
-/*
--(void)normal;
--(void)deutan;
--(void)protan;
--(void)tritan;
-*/
+
 @end

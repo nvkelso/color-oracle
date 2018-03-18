@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="aboutBox" destination="387" id="393"/>
                 <outlet property="deutanHotKeyMenu" destination="324" id="344"/>
+                <outlet property="grayscaleHotKeyMenu" destination="HkC-th-2we" id="C7n-kZ-uGG"/>
                 <outlet property="infoView" destination="243" id="246"/>
                 <outlet property="infoWindow" destination="241" id="245"/>
                 <outlet property="m_menu" destination="250" id="260"/>
@@ -47,6 +48,7 @@
             <connections>
                 <outlet property="initialFirstResponder" destination="243" id="248"/>
             </connections>
+            <point key="canvasLocation" x="362" y="181"/>
         </window>
         <menu title="Menu" id="250" userLabel="Menu">
             <items>
@@ -110,23 +112,23 @@
         <window title="Color Oracle Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="269" userLabel="PrefsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="324" y="123" width="490" height="227"/>
+            <rect key="contentRect" x="324" y="123" width="490" height="241"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="270">
-                <rect key="frame" x="0.0" y="0.0" width="490" height="227"/>
+            <view key="contentView" misplaced="YES" id="270">
+                <rect key="frame" x="0.0" y="0.0" width="490" height="241"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <box title="Keyboard Shortcuts" id="273">
-                        <rect key="frame" x="170" y="44" width="303" height="163"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <box misplaced="YES" title="Keyboard Shortcuts" id="273">
+                        <rect key="frame" x="170" y="23" width="303" height="198"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <view key="contentView" id="GGv-6Y-6LE">
-                            <rect key="frame" x="2" y="2" width="299" height="146"/>
+                            <rect key="frame" x="2" y="2" width="299" height="181"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="275">
-                                    <rect key="frame" x="13" y="87" width="176" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="13" y="122" width="176" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Protanopia (Rare):" id="423">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -134,8 +136,8 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="277">
-                                    <rect key="frame" x="13" y="117" width="176" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="13" y="152" width="176" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Deuteranopia (Common):" id="424">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -143,8 +145,8 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" id="278">
-                                    <rect key="frame" x="191" y="81" width="77" height="26"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="191" y="116" width="77" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                     <popUpButtonCell key="cell" type="push" title="F6" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="280" id="425">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
@@ -178,8 +180,8 @@
                                     </connections>
                                 </popUpButton>
                                 <popUpButton verticalHuggingPriority="750" id="324">
-                                    <rect key="frame" x="191" y="111" width="77" height="26"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="191" y="146" width="77" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                     <popUpButtonCell key="cell" type="push" title="F5" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="336" id="426">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
@@ -213,8 +215,8 @@
                                     </connections>
                                 </popUpButton>
                                 <textField verticalHuggingPriority="750" id="351">
-                                    <rect key="frame" x="13" y="57" width="176" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="13" y="92" width="176" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Tritanopia (Very Rare):" id="427">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -222,8 +224,8 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" id="352">
-                                    <rect key="frame" x="191" y="51" width="77" height="26"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="191" y="86" width="77" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                     <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="369" id="428">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
@@ -256,9 +258,53 @@
                                         <action selector="tritanKey:" target="206" id="373"/>
                                     </connections>
                                 </popUpButton>
-                                <button verticalHuggingPriority="750" id="404">
-                                    <rect key="frame" x="123" y="7" width="148" height="32"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                <textField verticalHuggingPriority="750" misplaced="YES" id="y3j-Kw-Jf6">
+                                    <rect key="frame" x="13" y="63" width="176" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Grayscale" id="FzO-dx-5bm">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="HkC-th-2we">
+                                    <rect key="frame" x="191" y="57" width="77" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="TIG-DJ-GSB" id="YIj-NX-gDo">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="menu"/>
+                                        <menu key="menu" title="OtherViews" id="Pxv-xV-XtD">
+                                            <items>
+                                                <menuItem title="None" state="on" id="TIG-DJ-GSB"/>
+                                                <menuItem isSeparatorItem="YES" id="9xA-vC-8jD">
+                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                                                </menuItem>
+                                                <menuItem title="F1" id="Bq7-rr-VBz"/>
+                                                <menuItem title="F2" id="y28-BW-KV2"/>
+                                                <menuItem title="F3" id="ifa-dK-DAA"/>
+                                                <menuItem title="F4" id="B9M-HY-Mrh"/>
+                                                <menuItem title="F5" id="dPh-Tp-Y7K"/>
+                                                <menuItem title="F6" id="kxv-aX-7JC"/>
+                                                <menuItem title="F7" id="wjT-8i-3x2"/>
+                                                <menuItem title="F8" id="Tj2-QN-rUt"/>
+                                                <menuItem title="F9" id="wxv-Tm-WKV"/>
+                                                <menuItem title="F10" id="EYb-tY-LEh"/>
+                                                <menuItem title="F11" id="cYC-dd-z4H"/>
+                                                <menuItem title="F12" id="CRY-Cr-hvh"/>
+                                                <menuItem title="F13" id="nU3-V0-kiN"/>
+                                                <menuItem title="F14" id="hBW-YT-O2m"/>
+                                                <menuItem title="F15" id="aKX-1b-CZH"/>
+                                                <menuItem title="F16" id="1gD-Kd-kZb"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="grayscaleKey:" target="206" id="aox-An-gU4"/>
+                                    </connections>
+                                </popUpButton>
+                                <button verticalHuggingPriority="750" misplaced="YES" id="404">
+                                    <rect key="frame" x="123" y="13" width="148" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="push" title="Reset to Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="429">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -271,8 +317,8 @@
                         </view>
                     </box>
                     <imageView id="403">
-                        <rect key="frame" x="20" y="64" width="128" height="128"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="20" y="78" width="128" height="128"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="431"/>
                     </imageView>
                 </subviews>
@@ -280,6 +326,7 @@
             <connections>
                 <outlet property="delegate" destination="206" id="408"/>
             </connections>
+            <point key="canvasLocation" x="132" y="477.5"/>
         </window>
         <window title="About Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="387" userLabel="About" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
@@ -366,7 +413,7 @@ For updates and futher information see:</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" id="aTz-tK-jMv">
                             <rect key="frame" x="0.0" y="0.0" width="297" height="52"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" smartInsertDelete="YES" id="415">
                                     <rect key="frame" x="0.0" y="0.0" width="297" height="52"/>
