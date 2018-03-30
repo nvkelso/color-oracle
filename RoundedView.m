@@ -229,12 +229,11 @@
         windowFrame.size.height = MEDIUMHEIGHT;
     }
     
-    // Prevent enlargement into the menu bar area
-    NSRect  screenFrame = [[NSScreen mainScreen] frame];
-    CGFloat mbarHeight = [[[NSApplication sharedApplication] mainMenu] menuBarHeight];
-    if( (windowFrame.origin.y + windowFrame.size.height) > (NSMaxY(screenFrame) - mbarHeight) ){
-        windowFrame.origin.y = NSMaxY(screenFrame) - windowFrame.size.height - mbarHeight;
-    }
+    // Before macOS 10.9, windows without a title bar could cover the menu bar.
+    // Color Oracle before v1.1.5 had some extra code here to fix this, however,
+    // this code did not work properly with some versions of macOS.
+    // Color Oracle 1.1.5 now requires macOS 10.9 to avoid this problem.
+    // See "NSWindows constrained to not intersect the menu bar" of 10.9 AppKit Release Notes
     
     [[self window] setFrame:windowFrame display:YES animate:YES];
     
@@ -266,6 +265,7 @@
     // Color Oracle before v1.1.5 had some extra code here to fix this, however,
     // this code did not work properly with some versions of macOS.
     // Color Oracle 1.1.5 now requires macOS 10.9 to avoid this problem.
+    // See "NSWindows constrained to not intersect the menu bar" of 10.9 AppKit Release Notes
     
     // start new dragging
 	if (draggingWindow == NO)
@@ -293,6 +293,5 @@
 		[[self window] setFrameOrigin:newOrigin];
 	}
 }
-
 
 @end

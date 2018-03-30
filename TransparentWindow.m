@@ -58,4 +58,21 @@
 	return YES;
 }
 
+- (NSRect)constrainFrameRect:(NSRect)frameRect
+                    toScreen:(NSScreen *)screen
+{
+    NSRect screenFrame = [[NSScreen mainScreen] frame];
+    if (frameRect.origin.x < 0) {
+        frameRect.origin.x = 0;
+    }
+    if (frameRect.origin.x + frameRect.size.width > screenFrame.size.width) {
+        frameRect.origin.x = screenFrame.origin.x + screenFrame.size.width - frameRect.size.width;
+    }
+    if (frameRect.origin.y < 0) {
+        frameRect.origin.y = 0;
+    }
+
+    return [super constrainFrameRect: frameRect toScreen: screen];
+}
+
 @end
