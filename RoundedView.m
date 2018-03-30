@@ -281,18 +281,10 @@
     if (draggingWindow == YES) {
 		NSPoint currentLocation;
 		NSPoint newOrigin;
-		NSRect  screenFrame = [[NSScreen mainScreen] frame];
-		NSRect  windowFrame = [win frame];
 		
 		currentLocation = [win convertBaseToScreen:[win mouseLocationOutsideOfEventStream]];
 		newOrigin.x = currentLocation.x - dragInitialLocation.x;
 		newOrigin.y = currentLocation.y - dragInitialLocation.y;
-		
-		CGFloat mbarHeight = [[[NSApplication sharedApplication] mainMenu] menuBarHeight];
-		if( (newOrigin.y + windowFrame.size.height) > (NSMaxY(screenFrame) - mbarHeight) ){
-			// Prevent dragging into the menu bar area
-			newOrigin.y = NSMaxY(screenFrame) - windowFrame.size.height - mbarHeight;
-		}
 		[win setFrameOrigin:newOrigin];
 	}
 }
