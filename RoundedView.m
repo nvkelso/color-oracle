@@ -260,33 +260,39 @@
 	draggingWindow = NO;
 }
 
-- (void)mouseDragged:(NSEvent *)theEvent
+- (void)mouseDragged:(NSEvent *)event
 {
-	NSWindow *win = [self window];
-	
-	// start new dragging
+    // Before macOS 10.9, windows without a title bar could cover the menu bar.
+    // Color Oracle before v1.1.5 had some extra code here to fix this, however,
+    // this code did not work properly with some versions of macOS.
+    // Color Oracle 1.1.5 now requires macOS 10.9 to avoid this problem.
+    
+    // start new dragging
 	if (draggingWindow == NO)
 	{
 		draggingWindow = YES;
 		
-		initialWindowFrame = [win frame];
-		// Get mouse location in global coordinates
-		dragInitialLocation = [win convertBaseToScreen:[theEvent locationInWindow]];
+        initialWindowFrame = [[self window] frame];
+		// mouse location in global coordinates
+        dragInitialLocation = [NSEvent mouseLocation];
 		initialVOffset = dragInitialLocation.y - initialWindowFrame.origin.y;
 		dragInitialLocation.x -= initialWindowFrame.origin.x;
 		dragInitialLocation.y -= initialWindowFrame.origin.y;
 		return;
 	}
     
+    // continue dragging
     if (draggingWindow == YES) {
 		NSPoint currentLocation;
 		NSPoint newOrigin;
-		
-		currentLocation = [win convertBaseToScreen:[win mouseLocationOutsideOfEventStream]];
+        
+		// mouse location in global coordinates
+        currentLocation = [NSEvent mouseLocation];
 		newOrigin.x = currentLocation.x - dragInitialLocation.x;
 		newOrigin.y = currentLocation.y - dragInitialLocation.y;
-		[win setFrameOrigin:newOrigin];
+		[[self window] setFrameOrigin:newOrigin];
 	}
 }
+
 
 @end
