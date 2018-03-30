@@ -15,7 +15,6 @@
 	NSString *title;
 	NSString *info1;
 	NSString *info2;
-	BOOL draggingTrackingRectangle;
 	BOOL draggingWindow;
     NSPoint dragInitialLocation;
 	NSRect initialWindowFrame;

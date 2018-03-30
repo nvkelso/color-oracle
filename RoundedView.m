@@ -30,24 +30,14 @@
 
 #define MINHEIGHT  65
 #define MEDIUMHEIGHT  120
-#define TRACKBOXWIDTH 40
-#define TRACKBOXHEIGHT 10
 
 @implementation RoundedView
 
 - (void)awakeFromNib
 {
-	draggingTrackingRectangle = NO;
 	draggingWindow = NO;
 	fullHeight = [self frame].size.height;
 	enlargingWindow = NO;
-}
-
--(NSRect) trackingRect
-{
-	NSRect frame = [self frame];
-	return NSMakeRect(frame.size.width / 2 - TRACKBOXWIDTH / 2, 0, 
-					  TRACKBOXWIDTH, TRACKBOXHEIGHT);
 }
 
 - (void) setDelegate:(id)d
@@ -263,23 +253,11 @@
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
-	if (draggingTrackingRectangle == NO) {
-		
-		// change size on click on tracking rectangle
-		if (NSMouseInRect ([theEvent locationInWindow], [self trackingRect], NO) == YES)
-		{
-            [self resizeInfo];
-            return;
-		}
-	}
-	
-	if (draggingWindow == NO && draggingTrackingRectangle == NO) {	
+	if (draggingWindow == NO) {
 		if (delegate != nil)
 			[delegate mouseUp:theEvent];
 	}
-	
 	draggingWindow = NO;
-	draggingTrackingRectangle = NO;
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent
@@ -287,14 +265,9 @@
 	NSWindow *win = [self window];
 	
 	// start new dragging
-	if (draggingTrackingRectangle == NO && draggingWindow == NO)
+	if (draggingWindow == NO)
 	{
-		NSRect trackingRectangle = [self trackingRect];
-		if (NSMouseInRect ([theEvent locationInWindow], trackingRectangle, NO) == YES) {
-			draggingTrackingRectangle = YES;
-		} else {
-			draggingWindow = YES;
-		}
+		draggingWindow = YES;
 		
 		initialWindowFrame = [win frame];
 		// Get mouse location in global coordinates
@@ -304,25 +277,8 @@
 		dragInitialLocation.y -= initialWindowFrame.origin.y;
 		return;
 	}
-	
-	if (draggingTrackingRectangle == YES) {
-		NSRect windowFrame = [win frame];
-		int previousTop = windowFrame.origin.y + windowFrame.size.height;
-		windowFrame.origin.y = [win convertBaseToScreen:[theEvent locationInWindow]].y - initialVOffset;
-		windowFrame.size.height = initialWindowFrame.origin.y + initialWindowFrame.size.height - windowFrame.origin.y;
-		if (windowFrame.size.height < MINHEIGHT) {
-			windowFrame.size.height = MINHEIGHT;
-			windowFrame.origin.y = previousTop - MINHEIGHT;
-		}
-		if (windowFrame.size.height > fullHeight) {
-			windowFrame.size.height = fullHeight;
-			windowFrame.origin.y = previousTop - fullHeight;
-		}
-
-		[win setFrame:windowFrame display:YES];
-	}
-	
-	if (draggingWindow == YES) {
+    
+    if (draggingWindow == YES) {
 		NSPoint currentLocation;
 		NSPoint newOrigin;
 		NSRect  screenFrame = [[NSScreen mainScreen] frame];
