@@ -1352,7 +1352,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[self takeScreenshotAndUpdateSimulation];
 }
 
-
 -(IBAction)selItemSave:(id)sender
 {
 	// close welcome dialog, should it still be open
@@ -1545,8 +1544,10 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	// retrieve the hot keys from the preference file
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    // retreived defaults, object is created if it does not exist
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    // retrieve the hot keys from the preference file
 	gProtanHotKey = (UInt32)[defaults integerForKey:@"protanHotKey"];
 	if (gProtanHotKey == 0)
 		gProtanHotKey = DEFAULTPROTANHOTKEY;
@@ -1583,7 +1584,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[infoWindow center];
 	
 	// show welcome dialog if this is the first time Color Oracle is launched
-	// test for the protan hot key (could be any other item in the defaults).
 	BOOL launchedBefore = [defaults boolForKey:@"launchedBefore"];
 	if (launchedBefore == NO) {	
 		[welcomeDialog center];
@@ -1599,9 +1599,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-	// store the hot keys in the preference file
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setInteger:gProtanHotKey forKey:@"protanHotKey"];
+	// retreived defaults, object is created if it does not exist
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+    // store the hot keys in the preference file
+    [defaults setInteger:gProtanHotKey forKey:@"protanHotKey"];
 	[defaults setInteger:gDeutanHotKey forKey:@"deutanHotKey"];
 	[defaults setInteger:gTritanHotKey forKey:@"tritanHotKey"];
     [defaults setInteger:gGrayscaleHotKey forKey:@"grayscaleHotKey"];
@@ -1797,6 +1799,8 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 			return @"deutan";
 		case tritan:
 			return @"tritan";
+        case grayscale:
+            return @"grayscale";
 	}
     return nil;
 }
@@ -1836,6 +1840,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[self selItemTritan:self];
 		return;
 	}
+    
+    if ([key compare:@"grayscale" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
+        [self selItemGrayscale:self];
+        return;
+    }
 }
 
 @end
