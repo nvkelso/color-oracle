@@ -481,7 +481,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     
     // button to resize info window needs transparent background outside the button area
     [infoResizeButton setWantsLayer:YES];
-    infoResizeButton.layer.backgroundColor = [NSColor clearColor].CGColor;}
+    infoResizeButton.layer.backgroundColor = [NSColor clearColor].CGColor;
+}
 
 - (void)dealloc
 {
@@ -1254,13 +1255,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[self fadeOutWindow];
 }
 
--(void)takeScreenshotAndUpdateSimulation
-{
-	// take a screenshot
-	[self takeScreenShot];
-	[self updateSimulation];
-}
-
 -(void) sleep:(float) millisec
 {
 	struct timespec rqtp = { 0 };
@@ -1276,80 +1270,35 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[self sleep: MILLISEC_TO_HIDE_MENU];
 }
 
-/* sender == self indicates that this method is being called from an AppleScript */
+-(void)selItem: (int) simID withIcon:(NSString*) iconName{
+    // close welcome dialog, should it still be open
+    [self closeWelcomeDialog:self];
+    simulationID = simID;
+    [statusItem setImage:[NSImage imageNamed:iconName]];
+    [self hideMenu];
+    [mainWindow setLevel: WINDOWLEVEL];
+    [self takeScreenShot];
+    [self updateSimulation];
+}
+
 -(IBAction)selItemProtan:(id)sender
 {
-	// close welcome dialog, should it still be open
-	[self closeWelcomeDialog:self];
-	simulationID = protan;
-	[statusItem setImage:[NSImage imageNamed:@"menuIconProtan"]];
-	
-	// hide the menu if this method was called from the menu
-	if (sender != nil && sender != self)
-		[self hideMenu];
-		
-	// set the level of the main window to normal level if this method is called 
-	// from an AppleScript, set it to a level covering the dock otherwise.
-	[mainWindow setLevel:sender == self ? kCGNormalWindowLevel : WINDOWLEVEL];
-	
-	[self takeScreenshotAndUpdateSimulation];
+    [self selItem: protan withIcon: @"menuIconProtan"];
 }
 
-/* sender == self indicates that this method is being called from an AppleScript */
 -(IBAction)selItemDeutan:(id)sender
 {
-	// close welcome dialog, should it still be open
-	[self closeWelcomeDialog:self];
-	simulationID = deutan;
-	[statusItem setImage:[NSImage imageNamed:@"menuIconDeutan"]];
-	
-	// hide the menu if this method was called from the menu
-	if (sender != nil && sender != self)
-		[self hideMenu];
-	
-	// set the level of the main window to normal level if this method is called 
-	// from an AppleScript, set it to a level covering the dock otherwise.
-	[mainWindow setLevel:sender == self ? kCGNormalWindowLevel : WINDOWLEVEL];
-	
-	[self takeScreenshotAndUpdateSimulation];
+    [self selItem: deutan withIcon: @"menuIconDeutan"];
 }
 
-/* sender == self indicates that this method is being called from an AppleScript */
 -(IBAction)selItemTritan:(id)sender
 {
-	// close welcome dialog, should it still be open
-	[self closeWelcomeDialog:self];
-	simulationID = tritan;
-	[statusItem setImage:[NSImage imageNamed:@"menuIconTritan"]];
-	
-	// hide the menu if this method was called from the menu
-	if (sender != nil && sender != self)
-		[self hideMenu];
-	
-	// set the level of the main window to normal level if this method is called 
-	// from an AppleScript, set it to a level covering the dock otherwise.
-	[mainWindow setLevel:sender == self ? kCGNormalWindowLevel : WINDOWLEVEL];
-	
-	[self takeScreenshotAndUpdateSimulation];
+	[self selItem: tritan withIcon: @"menuIconTritan"];
 }
 
-/* sender == self indicates that this method is being called from an AppleScript */
 -(IBAction)selItemGrayscale:(id)sender
 {
-	// close welcome dialog, should it still be open
-	[self closeWelcomeDialog:self];
-	simulationID = grayscale;
-	[statusItem setImage:[NSImage imageNamed:@"menuIconGrayscale"]];
-	
-	// hide the menu if this method was called from the menu
-	if (sender != nil && sender != self)
-		[self hideMenu];
-	
-	// set the level of the main window to normal level if this method is called
-	// from an AppleScript, set it to a level covering the dock otherwise.
-	[mainWindow setLevel:sender == self ? kCGNormalWindowLevel : WINDOWLEVEL];
-	
-	[self takeScreenshotAndUpdateSimulation];
+	[self selItem: grayscale withIcon: @"menuIconGrayscale"];
 }
 
 -(IBAction)selItemSave:(id)sender
@@ -1371,22 +1320,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 											selector:@selector(fadeOutAndSave:) 
 											userInfo:nil repeats:YES] retain];
 }
-
-/*
- -(IBAction)selItemHelp:(id)sender
- {
-	// close welcome dialog, should it still be open
-	 [self closeWelcomeDialog:self];
-	 simulationID = normalView;
-	 [self fadeOutWindow];
-	 NSBundle * appBundle = [NSBundle mainBundle];
-	 NSString * nsPath = [appBundle pathForResource: [NSString stringWithCString: "help"]
-											 ofType:[NSString stringWithCString: "html"] 
-										inDirectory:[NSString stringWithCString: "help"]];
-	 if (nsPath)
-		 AHGotoPage (NULL, (CFStringRef)nsPath, NULL); 
- }
- */
 
 -(IBAction)selItemPreferences:(id)sender
 {
@@ -1774,77 +1707,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 -(NSWindow*)aboutBox
 {
 	return aboutBox;
-}
-
-/* return whether a applescript hanlder is supported */
-- (BOOL)application:(NSApplication *)sender 
- delegateHandlesKey:(NSString *)key
-{
-    if ([key isEqual:@"simulation"]) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
-
-// for AppleScript support
-- (NSString *)simulation
-{
-	switch (simulationID) {
-		case normalView:
-			return @"normal";
-		case protan:
-			return @"protan";
-		case deutan:
-			return @"deutan";
-		case tritan:
-			return @"tritan";
-        case grayscale:
-            return @"grayscale";
-	}
-    return nil;
-}
-
-// for AppleScript support
-- (void)setSimulation:(NSString *)key
-{
-	if (key == nil)
-		return;
-	
-	// test case insensitive for first 6 characters of key.
-	// i.e. 'deutan', 'deutanope', 'Deuteranopia' are all valid keys.
-	NSRange range = NSMakeRange (0, 6);
-	
-	if ([key compare:@"normal" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
-		[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
-		simulationID = normalView;
-		
-		// don't call [self finishFadeOut], which would call [NSApp hide:nil] to deactivate the app.
-		// Hiding this app will be done by the scripting engine.
-		// Instead, just order the mainWindow out. 
-		[mainWindow orderOut:self];
-		return;
-	}
-		
-	if ([key compare:@"deutan" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
-		[self selItemDeutan:self];
-		return;
-	}
-	
-	if ([key compare:@"protan" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
-		[self selItemProtan:self];
-		return;
-	}
-	
-	if ([key compare:@"tritan" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
-		[self selItemTritan:self];
-		return;
-	}
-    
-    if ([key compare:@"grayscale" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
-        [self selItemGrayscale:self];
-        return;
-    }
 }
 
 @end

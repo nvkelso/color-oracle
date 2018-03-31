@@ -45,7 +45,6 @@
 		BAE416BE0A0896BB006994E7 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A60A0896BB006994E7 /* 7.png */; };
 		BAE416BF0A0896BB006994E7 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A70A0896BB006994E7 /* 8.png */; };
 		BAE416C00A0896BB006994E7 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = BAE416A80A0896BB006994E7 /* 9.png */; };
-		BAE4186F0A08E948006994E7 /* ColorOracle.sdef in Resources */ = {isa = PBXBuildFile; fileRef = BAE4186E0A08E948006994E7 /* ColorOracle.sdef */; };
 		BAE7178309C316210030D896 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = BAE7178209C316210030D896 /* icon.icns */; };
 		BAF9124E09BF91E00035C73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF9124D09BF91E00035C73D /* Carbon.framework */; };
 		C33A2411205E0A7F004DE561 /* menuIconGrayscale.tif in Resources */ = {isa = PBXBuildFile; fileRef = C33A2410205E0A7F004DE561 /* menuIconGrayscale.tif */; };
@@ -60,7 +59,6 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		32CA4F630368D1EE00C91783 /* test_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Color Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Oracle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA10336309C1B3730073BCE0 /* ClickableImageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ClickableImageView.h; sourceTree = "<group>"; };
@@ -104,11 +102,10 @@
 		BAE416A60A0896BB006994E7 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		BAE416A70A0896BB006994E7 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
 		BAE416A80A0896BB006994E7 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
-		BAE4186E0A08E948006994E7 /* ColorOracle.sdef */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.sdef; path = ColorOracle.sdef; sourceTree = "<group>"; };
 		BAE61D5F09C5B18A001C1FB4 /* InfoText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoText.h; sourceTree = "<group>"; };
 		BAE7178209C316210030D896 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
-		BAEF496209C56C2A00D1B983 /* Microseconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Microseconds.h; sourceTree = "<group>"; };
 		BAF9124D09BF91E00035C73D /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		C331DB15206F1F9B00149B74 /* test_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test_Prefix.pch; sourceTree = "<group>"; };
 		C33A2410205E0A7F004DE561 /* menuIconGrayscale.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = menuIconGrayscale.tif; path = "Icon/Color Blindness Test/menuIconGrayscale.tif"; sourceTree = "<group>"; };
 		C33A2412205E2591004DE561 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		C33A2413205E2592004DE561 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
@@ -143,7 +140,6 @@
 				BA854B6D09C34CAB00BCBB77 /* TransparentWindow.h */,
 				BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */,
 				BAE61D5F09C5B18A001C1FB4 /* InfoText.h */,
-				BAEF496209C56C2A00D1B983 /* Microseconds.h */,
 				BADD54B709C9679A00C76C20 /* WindowLevel.h */,
 			);
 			name = Classes;
@@ -180,7 +176,6 @@
 		29B97314FDCFA39411CA2CEA /* test */ = {
 			isa = PBXGroup;
 			children = (
-				BAE4186E0A08E948006994E7 /* ColorOracle.sdef */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -193,8 +188,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				32CA4F630368D1EE00C91783 /* test_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				C331DB15206F1F9B00149B74 /* test_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -267,7 +262,6 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				BAE418810A08E9C9006994E7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -344,27 +338,10 @@
 				BAE416BE0A0896BB006994E7 /* 7.png in Resources */,
 				BAE416BF0A0896BB006994E7 /* 8.png in Resources */,
 				BAE416C00A0896BB006994E7 /* 9.png in Resources */,
-				BAE4186F0A08E948006994E7 /* ColorOracle.sdef in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		BAE418810A08E9C9006994E7 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/bin/sdp -f st -V 10.3 -o \"$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME/Contents/Resources\" \"$SOURCE_ROOT/ColorOracle.sdef\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D11072C0486CEB800E47090 /* Sources */ = {
@@ -508,7 +485,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -546,7 +523,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -580,7 +557,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
 			name = Default;
