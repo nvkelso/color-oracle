@@ -1166,21 +1166,18 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	
 	[savePanel setLevel:WINDOWLEVEL];
 	[savePanel orderFront:self];
-	[savePanel runModal];
-	
-	// get path to new file
-	NSURL *url = [savePanel URL];
+	NSInteger result = [savePanel runModal];
 	
 	// hides this app when no dialog is visible
 	[self finishFadeOut];
 	
-	// test for canceling by user
-	if ( url == NULL )
-		return;
-	
-	// write to tiff file
-	NSData *tiff = [simulation TIFFRepresentation];
-	[tiff writeToURL:url atomically:YES];
+    if (result == NSOKButton) {
+        // get path to new file
+        NSURL *url = [savePanel URL];
+        // write to tiff file
+        NSData *tiff = [simulation TIFFRepresentation];
+        [tiff writeToURL:url atomically:YES];
+    }
 }
 
 // based on http://mattgemmell.com/source/
