@@ -34,19 +34,19 @@
         <window title="RoundedView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="241" userLabel="InfoWindow" customClass="TransparentWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="562" y="357" width="390" height="189"/>
+            <rect key="contentRect" x="562" y="357" width="390" height="200"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="167.465" height="50"/>
             <view key="contentView" misplaced="YES" id="242">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="189"/>
+                <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="243" customClass="RoundedView">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="189"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="uMJ-8z-dIt">
-                                <rect key="frame" x="187" y="2" width="17" height="16"/>
+                                <rect key="frame" x="187" y="4" width="17" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" imagePosition="only" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CAr-BO-X2p">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -63,7 +63,7 @@
             <connections>
                 <outlet property="initialFirstResponder" destination="243" id="248"/>
             </connections>
-            <point key="canvasLocation" x="362" y="187.5"/>
+            <point key="canvasLocation" x="168" y="93"/>
         </window>
         <menu title="Menu" id="250" userLabel="Menu">
             <items>
@@ -352,7 +352,7 @@
             <connections>
                 <outlet property="delegate" destination="206" id="408"/>
             </connections>
-            <point key="canvasLocation" x="133" y="465.5"/>
+            <point key="canvasLocation" x="118" y="738"/>
         </window>
         <window title="About Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="387" userLabel="About" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>

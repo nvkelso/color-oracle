@@ -90,7 +90,7 @@ const UInt32 kHotKeyIdentifier='blnd';
 UInt32 gProtanHotKey;
 UInt32 gDeutanHotKey;
 UInt32 gTritanHotKey;
-UInt32 gGrayscaleHotKey;
+UInt32 gGrayscHotKey;
 EventHotKeyRef gProtanHotKeyRef;
 EventHotKeyRef gDeutanHotKeyRef;
 EventHotKeyRef gTritanHotKeyRef;
@@ -357,10 +357,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		RegisterEventHotKey(gTritanHotKey, 0, gTritanHotKeyID, GetApplicationEventTarget(), 0, &gTritanHotKeyRef);
 	}
     
-    if (gGrayscaleHotKey != keyNone) {
+    if (gGrayscHotKey != keyNone) {
         gGrayscaleHotKeyID.signature=kHotKeyIdentifier;
         gGrayscaleHotKeyID.id=4;
-        RegisterEventHotKey(gGrayscaleHotKey, 0, gGrayscaleHotKeyID, GetApplicationEventTarget(), 0, &gGrayscaleHotKeyRef);
+        RegisterEventHotKey(gGrayscHotKey, 0, gGrayscaleHotKeyID, GetApplicationEventTarget(), 0, &gGrayscaleHotKeyRef);
     }
 }
 
@@ -390,7 +390,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	if (gProtanHotKey == DEFAULTPROTANHOTKEY
 		&& gDeutanHotKey == DEFAULTDEUTANHOTKEY
 		&& gTritanHotKey == DEFAULTTRITANHOTKEY
-        && gGrayscaleHotKey == DEFAULTGRAYSCALEHOTKEY)
+        && gGrayscHotKey == DEFAULTGRAYSCALEHOTKEY)
 		[prefsDefaultsButton setEnabled:NO];
 	else
 		[prefsDefaultsButton setEnabled:YES];
@@ -467,7 +467,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		gDeutanHotKey = f5;
 		gProtanHotKey = f6;
 		gTritanHotKey = keyNone;
-        gGrayscaleHotKey = keyNone;
+        gGrayscHotKey = keyNone;
     }
 	return self;
 }
@@ -916,37 +916,46 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			break;
 	}
 	
-	NSString *deutanKeyStr = [self fkey2String:gDeutanHotKey];
-	NSString *protanKeyStr = [self fkey2String:gProtanHotKey];
-	NSString *tritanKeyStr = [self fkey2String:gTritanHotKey];
+    // build info text consisting of information about (1) how to exit simulation
+    // (2) drag info panel, and (3) hotkey mapping.
+    NSMutableString *infoString = [NSMutableString string];
+    [infoString appendString:INFOMESSAGE];
     
-	NSString *deutanStr = @"";
-	if (gDeutanHotKey != keyNone) {
-		deutanStr = [NSString stringWithFormat: INFOMESSAGEPRESS_DEUTAN, deutanKeyStr];
-		if (gProtanHotKey != keyNone && gTritanHotKey != keyNone)
-			deutanStr = [deutanStr stringByAppendingString: @","];
-		else if (gProtanHotKey != keyNone || gTritanHotKey != keyNone)
-			deutanStr = [deutanStr stringByAppendingString: @" and"];
-	}
-	
-	NSString *protanStr = @"";
-	if (gProtanHotKey != keyNone) {
-		protanStr = [NSString stringWithFormat: INFOMESSAGEPRESS_PROTAN, protanKeyStr];
-		if (gTritanHotKey != keyNone)
-			protanStr = [protanStr stringByAppendingString: @" and"];
-	}
-	
-	NSString *tritanStr = gTritanHotKey == keyNone ? @"" :
-		[NSString stringWithFormat: INFOMESSAGEPRESS_TRITAN, tritanKeyStr];
-	
-	NSString *fKeyStr = @"";
-	if (gDeutanHotKey != keyNone || gProtanHotKey != keyNone || gTritanHotKey != keyNone)
-		fKeyStr = [NSString stringWithFormat: INFOMESSAGEPRESS,
-			deutanStr, protanStr, tritanStr];
-	
-	
-	NSString *infoStr = [NSString stringWithFormat: INFOMESSAGE, fKeyStr];
-	[infoView setInfo2:infoStr];
+    // add info about hotkey mapping
+    BOOL hasHotKey = gDeutanHotKey != keyNone || gProtanHotKey != keyNone || gTritanHotKey != keyNone || gGrayscHotKey != keyNone;
+    if (hasHotKey) {
+        [infoString appendString: @"Press "];
+    }
+    if (gDeutanHotKey != keyNone) {
+        NSString *deutanKeyStr = [self fkey2String:gDeutanHotKey];
+        [infoString appendString:[NSString stringWithFormat: INFOMESSAGEPRESS_DEUTAN, deutanKeyStr]];
+        if (gProtanHotKey != keyNone || gTritanHotKey != keyNone || gGrayscHotKey != keyNone) {
+            [infoString appendString: @","];
+        }
+    }
+    if (gProtanHotKey != keyNone) {
+        NSString *protanKeyStr = [self fkey2String:gProtanHotKey];
+        [infoString appendString:[NSString stringWithFormat: INFOMESSAGEPRESS_PROTAN, protanKeyStr]];
+        if (gTritanHotKey != keyNone || gGrayscHotKey != keyNone) {
+            [infoString appendString: @","];
+        }
+    }
+    if (gTritanHotKey != keyNone) {
+        NSString *tritanKeyStr = [self fkey2String:gTritanHotKey];
+        [infoString appendString:[NSString stringWithFormat: INFOMESSAGEPRESS_TRITAN, tritanKeyStr]];
+        if (gGrayscHotKey != keyNone) {
+            [infoString appendString: @","];
+        }
+    }
+    if (gGrayscHotKey != keyNone) {
+        NSString *grayscKeyStr = [self fkey2String:gGrayscHotKey];
+        [infoString appendString:[NSString stringWithFormat: INFOMESSAGEPRESS_GRAYSC, grayscKeyStr]];
+    }
+    if (hasHotKey) {
+        [infoString appendString: @" vision."];
+    }
+    
+    [infoView setInfo2:infoString];
 }
 
 -(int)simulationID
@@ -1007,10 +1016,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	}
     
     if ([menuItem action] == @selector(selItemGrayscale:)) {
-        if (gGrayscaleHotKey != keyNone)
+        if (gGrayscHotKey != keyNone)
         {
             unichar ch[1];
-            ch[0] = [self fkey2Unicode: gGrayscaleHotKey];
+            ch[0] = [self fkey2Unicode: gGrayscHotKey];
             [menuItem setKeyEquivalentModifierMask:NSFunctionKeyMask];
             [menuItem setKeyEquivalent:[NSString stringWithCharacters:ch length:1]];
         } else {
@@ -1342,7 +1351,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[protanHotKeyMenu selectItemAtIndex:[self fkey2menu:gProtanHotKey]];
 		[deutanHotKeyMenu selectItemAtIndex:[self fkey2menu:gDeutanHotKey]];
 		[tritanHotKeyMenu selectItemAtIndex:[self fkey2menu:gTritanHotKey]];
-		[grayscaleHotKeyMenu selectItemAtIndex:[self fkey2menu:gGrayscaleHotKey]];
+		[grayscaleHotKeyMenu selectItemAtIndex:[self fkey2menu:gGrayscHotKey]];
         
 		// enable / disable button for resetting preferences to default values.
 		[self updatePreferencesDefaultsButton];
@@ -1490,9 +1499,9 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	gTritanHotKey = (UInt32)[defaults integerForKey:@"tritanHotKey"];
 	if (gTritanHotKey == 0)
 		gTritanHotKey = DEFAULTTRITANHOTKEY;
-    gGrayscaleHotKey = (UInt32)[defaults integerForKey:@"grayscaleHotKey"];
-    if (gGrayscaleHotKey == 0)
-        gGrayscaleHotKey = DEFAULTGRAYSCALEHOTKEY;
+    gGrayscHotKey = (UInt32)[defaults integerForKey:@"grayscaleHotKey"];
+    if (gGrayscHotKey == 0)
+        gGrayscHotKey = DEFAULTGRAYSCALEHOTKEY;
 	[self installHotKeys];
 	
 	// get position of infoWindow from preferences file
@@ -1539,7 +1548,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     [defaults setInteger:gProtanHotKey forKey:@"protanHotKey"];
 	[defaults setInteger:gDeutanHotKey forKey:@"deutanHotKey"];
 	[defaults setInteger:gTritanHotKey forKey:@"tritanHotKey"];
-    [defaults setInteger:gGrayscaleHotKey forKey:@"grayscaleHotKey"];
+    [defaults setInteger:gGrayscHotKey forKey:@"grayscaleHotKey"];
 	
 	// store position of infoWindow in preference file
 	NSRect frame = [infoWindow frame];
@@ -1597,9 +1606,9 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 {
     NSPopUpButton *menu = (NSPopUpButton*)sender;
     int key = [self menu2fkey:[menu indexOfSelectedItem]];
-    if (gGrayscaleHotKey != key) {
+    if (gGrayscHotKey != key) {
         [self removeHotKeys];
-        gGrayscaleHotKey = key;
+        gGrayscHotKey = key;
         [self installHotKeys];
         [self fillInfo];
         [self updatePreferencesDefaultsButton];
@@ -1662,12 +1671,12 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	gProtanHotKey = DEFAULTPROTANHOTKEY;
 	gDeutanHotKey = DEFAULTDEUTANHOTKEY;
 	gTritanHotKey = DEFAULTTRITANHOTKEY;
-    gGrayscaleHotKey = DEFAULTGRAYSCALEHOTKEY;
+    gGrayscHotKey = DEFAULTGRAYSCALEHOTKEY;
     
 	[protanHotKeyMenu selectItemAtIndex:[self fkey2menu:gProtanHotKey]];
 	[deutanHotKeyMenu selectItemAtIndex:[self fkey2menu:gDeutanHotKey]];
 	[tritanHotKeyMenu selectItemAtIndex:[self fkey2menu:gTritanHotKey]];
-    [grayscaleHotKeyMenu selectItemAtIndex:[self fkey2menu:gGrayscaleHotKey]];
+    [grayscaleHotKeyMenu selectItemAtIndex:[self fkey2menu:gGrayscHotKey]];
 	
 	[self updatePreferencesDefaultsButton];
 }
