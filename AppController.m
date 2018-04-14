@@ -851,8 +851,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 {
 	if (screenshot == nil)
 		return;
-	
-	switch (simulationID) {
+    switch (simulationID) {
 		case protan:
 			[self compute: 3683 k2: 29084 k3: 131];
 			break;

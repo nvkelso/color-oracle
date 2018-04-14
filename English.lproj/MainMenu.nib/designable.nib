@@ -357,33 +357,33 @@
         <window title="About Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="387" userLabel="About" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="120" y="206" width="278" height="423"/>
+            <rect key="contentRect" x="120" y="206" width="278" height="435"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" misplaced="YES" id="388">
-                <rect key="frame" x="0.0" y="0.0" width="278" height="423"/>
+                <rect key="frame" x="0.0" y="0.0" width="278" height="435"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView misplaced="YES" id="389">
-                        <rect key="frame" x="75" y="274" width="128" height="128"/>
+                        <rect key="frame" x="75" y="283" width="128" height="128"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="432"/>
                     </imageView>
                     <textField verticalHuggingPriority="750" misplaced="YES" id="390">
-                        <rect key="frame" x="74" y="238" width="129" height="18"/>
+                        <rect key="frame" x="74" y="247" width="129" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Color Oracle" id="433">
-                            <font key="font" metaFont="systemBold" size="14"/>
+                            <font key="font" metaFont="systemBold" size="16"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" misplaced="YES" id="392">
-                        <rect key="frame" x="16" y="55" width="246" height="182"/>
+                        <rect key="frame" x="16" y="60" width="246" height="182"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" id="434">
                             <font key="font" metaFont="smallSystem"/>
-                            <string key="title">Version 1.1.5
+                            <string key="title">Version 1.3.0
 
 Programming by
 Bernie Jenny, Monash University 
@@ -401,7 +401,7 @@ For updates and futher information see:</string>
                         </textFieldCell>
                     </textField>
                     <button misplaced="YES" id="400">
-                        <rect key="frame" x="59" y="20" width="158" height="27"/>
+                        <rect key="frame" x="59" y="19" width="158" height="27"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="square" title="http://colororacle.org" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" inset="2" id="435">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -417,7 +417,7 @@ For updates and futher information see:</string>
                 <outlet property="delegate" destination="206" id="407"/>
                 <outlet property="initialFirstResponder" destination="389" id="402"/>
             </connections>
-            <point key="canvasLocation" x="-387" y="540"/>
+            <point key="canvasLocation" x="-387" y="545.5"/>
         </window>
         <window title="Welcome to Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="409" userLabel="Welcome" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
