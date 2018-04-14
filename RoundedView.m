@@ -205,6 +205,12 @@
 	[delegate rightMouseDown:theEvent];
 }
 
+- (BOOL) isValidHeight:(NSInteger) height {
+    return height == fullHeight
+        || height == MEDIUMHEIGHT
+        || height == MINHEIGHT;
+}
+
 // resizes the info dialog
 // returns a button state for the resize button
 - (NSControlStateValue) resizeInfo

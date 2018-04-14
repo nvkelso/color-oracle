@@ -29,5 +29,6 @@
 - (void) setTitle:(NSString*)t;
 - (void) setInfo1:(NSString*)i;
 - (void) setInfo2:(NSString*)i;
+- (BOOL) isValidHeight:(NSInteger) height;
 
 @end

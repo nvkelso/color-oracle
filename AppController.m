@@ -1514,7 +1514,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	
 	// set height of infoWindow from preferences file
 	NSInteger height = [defaults integerForKey:@"boxHeight"];
-	if (height > 0) {
+    if ([infoView isValidHeight: height]) {
 		NSRect frame = [infoWindow frame];
 		frame.size.height = height;
 		[infoWindow setFrame:frame display:YES];
