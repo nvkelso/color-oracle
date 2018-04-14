@@ -1544,6 +1544,12 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	// retreived defaults, object is created if it does not exist
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
+    // write app version
+    // this was added to version 1.3.0 (April 2018)
+    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+    [defaults setObject: appVersion forKey:@"version"];
+    
     // store the hot keys in the preference file
     [defaults setInteger:gProtanHotKey forKey:@"protanHotKey"];
 	[defaults setInteger:gDeutanHotKey forKey:@"deutanHotKey"];
