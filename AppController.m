@@ -1339,6 +1339,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	if ([mainWindow isVisible])
 		[self selItemNormal:self];
 	
+    // show window in front of all other apps
 	[NSApp activateIgnoringOtherApps: YES];
 	
 	// bring the about box to the foreground if it is visible
@@ -1363,7 +1364,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
         
 	}
 	
-	// bring the preferences panel ot the foreground
+	// bring the preferences panel to the foreground
 	[preferencesPanel makeKeyAndOrderFront:self];
 	
 	// changing the alpha before has no effect.
@@ -1379,6 +1380,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	if ([mainWindow isVisible])
 		[self selItemNormal:self];
 		
+    // show window in front of all other apps
 	[NSApp activateIgnoringOtherApps: YES];
 	
 	// bring the preferencesPanel to the foreground if it is visible
@@ -1527,10 +1529,13 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	
 	// show welcome dialog if this is the first time Color Oracle is launched
 	BOOL launchedBefore = [defaults boolForKey:@"launchedBefore"];
-	if (launchedBefore == NO) {	
-		[welcomeDialog center];
-		[welcomeDialog setLevel:WINDOWLEVEL];
+	if (launchedBefore == NO) {
+        [welcomeDialog center];
 		[welcomeDialog makeKeyAndOrderFront:self];
+        
+        // show window in front of all other apps
+        [NSApp activateIgnoringOtherApps:YES];
+        
 		timer = [[NSTimer scheduledTimerWithTimeInterval:WELCOME_ANIMATION_INTERVAL 
 												  target:self 
 												selector:@selector(animateMenuIcon:) 
