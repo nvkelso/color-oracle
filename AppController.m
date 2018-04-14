@@ -1148,6 +1148,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		[savePanel setMessage:@"Save the screen with simulated deutan color vision to a TIFF file."];
 	else if (simulationID == tritan)
 		[savePanel setMessage:@"Save the screen with simulated tritan color vision to a TIFF file."];
+    else if (simulationID == grayscale)
+        [savePanel setMessage:@"Save the screen in grayscale to a TIFF file."];
 	
 	// setNameFieldStringValue available with OS X 10.6 or newer
 	if ([savePanel respondsToSelector:@selector(setNameFieldStringValue:)]) {
@@ -1157,6 +1159,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			[savePanel setNameFieldStringValue: @"Deuteranopia.tif"];
 		else if (simulationID == tritan)
 			[savePanel setNameFieldStringValue: @"Tritanopia.tif"];
+        else if (simulationID == grayscale)
+            [savePanel setNameFieldStringValue: @"Grayscale.tif"];
 	}
 	
 	simulationID = normal;
