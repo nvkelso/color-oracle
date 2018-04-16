@@ -49,6 +49,8 @@
 		BAF9124E09BF91E00035C73D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAF9124D09BF91E00035C73D /* Carbon.framework */; };
 		C33A2411205E0A7F004DE561 /* menuIconGrayscale.tif in Resources */ = {isa = PBXBuildFile; fileRef = C33A2410205E0A7F004DE561 /* menuIconGrayscale.tif */; };
 		C33A2414205E2592004DE561 /* LaunchAtLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33A2413205E2592004DE561 /* LaunchAtLoginController.m */; };
+		C372546D20823CA60023EA80 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = C372546C20823CA60023EA80 /* PFMoveApplication.m */; };
+		C372546F20823D000023EA80 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C372546E20823CFF0023EA80 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +111,9 @@
 		C33A2410205E0A7F004DE561 /* menuIconGrayscale.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = menuIconGrayscale.tif; path = "Icon/Color Blindness Test/menuIconGrayscale.tif"; sourceTree = "<group>"; };
 		C33A2412205E2591004DE561 /* LaunchAtLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchAtLoginController.h; sourceTree = "<group>"; };
 		C33A2413205E2592004DE561 /* LaunchAtLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchAtLoginController.m; sourceTree = "<group>"; };
+		C372546B20823CA50023EA80 /* PFMoveApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFMoveApplication.h; sourceTree = "<group>"; };
+		C372546C20823CA60023EA80 /* PFMoveApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFMoveApplication.m; sourceTree = "<group>"; };
+		C372546E20823CFF0023EA80 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C372546F20823D000023EA80 /* Security.framework in Frameworks */,
 				BAF9124E09BF91E00035C73D /* Carbon.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 			);
@@ -141,6 +147,8 @@
 				BA854B6E09C34CAB00BCBB77 /* TransparentWindow.m */,
 				BAE61D5F09C5B18A001C1FB4 /* InfoText.h */,
 				BADD54B709C9679A00C76C20 /* WindowLevel.h */,
+				C372546B20823CA50023EA80 /* PFMoveApplication.h */,
+				C372546C20823CA60023EA80 /* PFMoveApplication.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -215,6 +223,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C372546E20823CFF0023EA80 /* Security.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
@@ -355,6 +364,7 @@
 				BA854B7009C34CAB00BCBB77 /* RoundedView.m in Sources */,
 				C33A2414205E2592004DE561 /* LaunchAtLoginController.m in Sources */,
 				BA854B7209C34CAB00BCBB77 /* TransparentWindow.m in Sources */,
+				C372546D20823CA60023EA80 /* PFMoveApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +447,7 @@
 		BACFEE7208C75AC100727089 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COPY_PHASE_STRIP = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = test_Prefix.pch;

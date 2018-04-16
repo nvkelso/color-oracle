@@ -52,6 +52,7 @@
 #import "KeyableWindow.h"
 #include "InfoText.h"
 #import "LaunchAtLoginController.h"
+#import "PFMoveApplication.h"
 
 /* Web site for this project */
 #define HOMEPAGE @"http://colororacle.org/"
@@ -1361,10 +1362,9 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
         LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
         [loginButton setState: [launchController launchAtLogin]];
         [launchController release];
-        
-	}
-	
-	// bring the preferences panel to the foreground
+    }
+    
+    // bring the preferences panel to the foreground
 	[preferencesPanel makeKeyAndOrderFront:self];
 	
 	// changing the alpha before has no effect.
@@ -1474,9 +1474,19 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 }
 
 - (IBAction)login:(id)sender {
+    NSString* destinationPath = PFMoveToApplicationsFolderIfNecessary();
+    NSURL* appURL = destinationPath != nil ? [NSURL fileURLWithPath:destinationPath]
+        : [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+
+    // add Color Oracle to login items
     LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
-    [launchController setLaunchAtLogin:[loginButton state]];
+    [launchController setLaunchAtLogin:[loginButton state] forURL: appURL];
     [launchController release];
+    
+    // exit if Color Oracle moved itself to the Applications folder
+    if (destinationPath != nil) {
+        [NSApp terminate:nil];
+    }
 }
 
 // button to resize info window was pressed

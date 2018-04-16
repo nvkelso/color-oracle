@@ -34,15 +34,15 @@
         <window title="RoundedView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="241" userLabel="InfoWindow" customClass="TransparentWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="562" y="357" width="390" height="200"/>
+            <rect key="contentRect" x="562" y="357" width="390" height="203"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="167.465" height="50"/>
             <view key="contentView" misplaced="YES" id="242">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="390" height="203"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="243" customClass="RoundedView">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="203"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="uMJ-8z-dIt">
@@ -63,7 +63,7 @@
             <connections>
                 <outlet property="initialFirstResponder" destination="243" id="248"/>
             </connections>
-            <point key="canvasLocation" x="168" y="93"/>
+            <point key="canvasLocation" x="168" y="94.5"/>
         </window>
         <menu title="Menu" id="250" userLabel="Menu">
             <items>
@@ -127,15 +127,15 @@
         <window title="Color Oracle Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="269" userLabel="PrefsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="324" y="123" width="490" height="261"/>
+            <rect key="contentRect" x="324" y="123" width="490" height="256"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" misplaced="YES" id="270">
-                <rect key="frame" x="0.0" y="0.0" width="490" height="261"/>
+                <rect key="frame" x="0.0" y="0.0" width="490" height="256"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box misplaced="YES" title="Keyboard Shortcuts" id="273">
-                        <rect key="frame" x="170" y="49" width="303" height="192"/>
+                        <rect key="frame" x="170" y="44" width="303" height="192"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <view key="contentView" id="GGv-6Y-6LE">
                             <rect key="frame" x="2" y="2" width="299" height="175"/>
@@ -332,12 +332,12 @@
                         </view>
                     </box>
                     <imageView id="403">
-                        <rect key="frame" x="20" y="98" width="128" height="128"/>
+                        <rect key="frame" x="20" y="93" width="128" height="128"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="431"/>
                     </imageView>
                     <button verticalHuggingPriority="750" misplaced="YES" id="PMR-mg-iD1">
-                        <rect key="frame" x="182" y="23" width="274" height="18"/>
+                        <rect key="frame" x="182" y="18" width="274" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Add Color Oracle to the menu bar at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3iy-Cl-bpG">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -352,7 +352,7 @@
             <connections>
                 <outlet property="delegate" destination="206" id="408"/>
             </connections>
-            <point key="canvasLocation" x="118" y="738"/>
+            <point key="canvasLocation" x="118" y="735"/>
         </window>
         <window title="About Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="387" userLabel="About" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
@@ -370,7 +370,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="432"/>
                     </imageView>
                     <textField verticalHuggingPriority="750" misplaced="YES" id="390">
-                        <rect key="frame" x="74" y="247" width="129" height="18"/>
+                        <rect key="frame" x="74" y="246" width="129" height="19"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Color Oracle" id="433">
                             <font key="font" metaFont="systemBold" size="16"/>
