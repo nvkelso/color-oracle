@@ -229,7 +229,8 @@ NSString* PFMoveToApplicationsFolderIfNecessary(void) {
 	}
 
 	MoveInProgress = NO;
-
+    return nil;
+    
 fail:
 	{
 		// Show failure message

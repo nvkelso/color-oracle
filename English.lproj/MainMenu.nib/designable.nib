@@ -124,7 +124,7 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="Color Oracle Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="269" userLabel="PrefsPanel" customClass="NSPanel">
+        <window title="Color Oracle Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="269" userLabel="PrefsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="324" y="123" width="490" height="256"/>
@@ -422,11 +422,11 @@ For updates and futher information see:</string>
         <window title="Welcome to Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="409" userLabel="Welcome" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="409" y="432" width="540" height="168"/>
+            <rect key="contentRect" x="409" y="432" width="550" height="168"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" misplaced="YES" id="410">
-                <rect key="frame" x="0.0" y="0.0" width="540" height="168"/>
+                <rect key="frame" x="0.0" y="0.0" width="550" height="168"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView id="412">
@@ -435,23 +435,23 @@ For updates and futher information see:</string>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="437"/>
                     </imageView>
                     <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="414">
-                        <rect key="frame" x="161" y="44" width="359" height="104"/>
+                        <rect key="frame" x="171" y="43" width="359" height="105"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <clipView key="contentView" id="aTz-tK-jMv">
-                            <rect key="frame" x="0.0" y="0.0" width="359" height="104"/>
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="105"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" smartInsertDelete="YES" id="415">
-                                    <rect key="frame" x="0.0" y="0.0" width="359" height="104"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="359" height="105"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="359" height="104"/>
+                                    <size key="minSize" width="359" height="105"/>
                                     <size key="maxSize" width="361" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
                                             <string key="content">Click the Color Oracle icon in the menu bar at the top-right of your screen to simulate color impaired vision.
 
-Open the preferences dialog to add Color Oracle to the menu bar each time you log in.</string>
+Open the preferences dialog to add Color Oracle to the menu bar each time you log in, and to set keyboard shortcuts.</string>
                                             <attributes>
                                                 <font key="NSFont" size="13" name="LucidaGrande"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
@@ -473,7 +473,7 @@ Open the preferences dialog to add Color Oracle to the menu bar each time you lo
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" misplaced="YES" id="417">
-                        <rect key="frame" x="444" y="13" width="82" height="32"/>
+                        <rect key="frame" x="454" y="13" width="82" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="438">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -491,7 +491,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="206" id="421"/>
             </connections>
-            <point key="canvasLocation" x="-375" y="109"/>
+            <point key="canvasLocation" x="-370" y="109"/>
         </window>
     </objects>
     <resources>

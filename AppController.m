@@ -1359,9 +1359,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[self updatePreferencesDefaultsButton];
         
         // initialize "launch at login" checkbox
-        LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
-        [loginButton setState: [launchController launchAtLogin]];
-        [launchController release];
+        [self updateLoginButton: nil];
     }
     
     // bring the preferences panel to the foreground
@@ -1473,14 +1471,17 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
 }
 
+// button to launch Color Oracle at login
 - (IBAction)login:(id)sender {
+    BOOL launchAtLogin = ([sender state] == NSOnState);
+    
     NSString* destinationPath = PFMoveToApplicationsFolderIfNecessary();
     NSURL* appURL = destinationPath != nil ? [NSURL fileURLWithPath:destinationPath]
         : [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
 
     // add Color Oracle to login items
     LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
-    [launchController setLaunchAtLogin:[loginButton state] forURL: appURL];
+    [launchController setLaunchAtLogin:launchAtLogin forURL: appURL];
     [launchController release];
     
     // exit if Color Oracle moved itself to the Applications folder
@@ -1552,6 +1553,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 												userInfo:nil repeats:YES] retain];
 		[defaults setBool:YES forKey:@"launchedBefore"];
 	}
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateLoginButton:)
+                                                 name:NSWindowDidBecomeKeyNotification
+                                               object:preferencesPanel];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
@@ -1737,6 +1743,13 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 -(NSWindow*)aboutBox
 {
 	return aboutBox;
+}
+
+// update "launch at login" checkbox
+- (void)updateLoginButton:(NSNotification *)notification {
+    LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
+    [loginButton setState: [launchController launchAtLogin]];
+    [launchController release];
 }
 
 @end
