@@ -337,7 +337,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="431"/>
                     </imageView>
                     <button verticalHuggingPriority="750" misplaced="YES" id="PMR-mg-iD1">
-                        <rect key="frame" x="182" y="18" width="274" height="18"/>
+                        <rect key="frame" x="180" y="17" width="278" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Add Color Oracle to the menu bar at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3iy-Cl-bpG">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

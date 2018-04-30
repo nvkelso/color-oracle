@@ -1499,7 +1499,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // retreived defaults, object is created if it does not exist
+    // retrieve defaults, object is created if it does not exist
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
     // retrieve the hot keys from the preference file
@@ -1513,8 +1513,18 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	if (gTritanHotKey == 0)
 		gTritanHotKey = DEFAULTTRITANHOTKEY;
     gGrayscHotKey = (UInt32)[defaults integerForKey:@"grayscaleHotKey"];
-    if (gGrayscHotKey == 0)
-        gGrayscHotKey = DEFAULTGRAYSCALEHOTKEY;
+    if (gGrayscHotKey == 0) {
+        // If this is the first time version 1.3 with grayscale simulation
+        // is started, make sure the hot key for grayscale is not identical
+        // to any other previously set hot key.
+        if (gProtanHotKey == DEFAULTGRAYSCALEHOTKEY
+            || gDeutanHotKey == DEFAULTGRAYSCALEHOTKEY
+            || gTritanHotKey == DEFAULTGRAYSCALEHOTKEY) {
+                gGrayscHotKey = keyNone;
+        } else {
+            gGrayscHotKey = DEFAULTGRAYSCALEHOTKEY;
+        }
+    }
 	[self installHotKeys];
 	
 	// get position of infoWindow from preferences file
