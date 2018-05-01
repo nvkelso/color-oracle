@@ -73,6 +73,11 @@
 
 -(void)drawText:(NSRect)rect
 {
+    // make rectangle slightly smaller to make sure text does not touch border of view
+    int padding = 5;
+    rect.origin.x += padding;
+    rect.size.width -= 2 * padding;
+    
 	NSMutableDictionary * attrs = [NSMutableDictionary dictionary];
 	
 	// drop shadow for text
@@ -115,10 +120,10 @@
 	}
 	
 	// draw info text 2
-	font = [NSFont systemFontOfSize:INFOTEXTSIZE2];
-	[attrs setObject: font forKey: NSFontAttributeName];
 	if (drawInfoText2) {
-		rect.size.height -= V_INFOTEXTOFFSET2;
+        font = [NSFont systemFontOfSize:INFOTEXTSIZE2];
+        [attrs setObject: font forKey: NSFontAttributeName];
+        rect.size.height -= V_INFOTEXTOFFSET2;
 		[info2 drawInRect:rect withAttributes: attrs];
 	}
 }	

@@ -77,14 +77,12 @@ enum simulation {normalView, protan, deutan, tritan, grayscale};
 // hardly visible though.
 #define GAMMA 1.8
 
-enum {keyNone = -1, f1 = 0x7A, f2 = 0x78, f3 = 0x63, f4 = 0x76, f5 = 0x60, 
-	f6 = 0x61, f7 = 0x62, f8 = 0x64, f9 = 0x65, f10 = 0x6D, f11 = 0x67,
-	f12 = 0x6F, f13 = 0x69, f14 = 0x6B, f15 = 0x71, f16 = 0x6A};
+#define keyNone (-1)
 
-#define DEFAULTDEUTANHOTKEY f5
+#define DEFAULTDEUTANHOTKEY kVK_F5
 #define DEFAULTPROTANHOTKEY keyNone
 #define DEFAULTTRITANHOTKEY keyNone
-#define DEFAULTGRAYSCALEHOTKEY f6
+#define DEFAULTGRAYSCALEHOTKEY kVK_F6
 
 // handle hotkeys
 const UInt32 kHotKeyIdentifier='blnd';
@@ -92,15 +90,13 @@ UInt32 gProtanHotKey;
 UInt32 gDeutanHotKey;
 UInt32 gTritanHotKey;
 UInt32 gGrayscHotKey;
+
 EventHotKeyRef gProtanHotKeyRef;
 EventHotKeyRef gDeutanHotKeyRef;
 EventHotKeyRef gTritanHotKeyRef;
 EventHotKeyRef gGrayscaleHotKeyRef;
-EventHotKeyID gProtanHotKeyID;
-EventHotKeyID gDeutanHotKeyID;
-EventHotKeyID gTritanHotKeyID;
-EventHotKeyID gGrayscaleHotKeyID;
-EventHandlerUPP gAppHotKeyFunction;
+//EventHotKeyRef gRightArrowHotKeyRef;
+//EventHotKeyRef gLeftArrowHotKeyRef;
 
 EventHotKeyID gWindowsCloseHotKeyID;
 const UInt32 kWindowsCloseHotKey = 0xd;	// 'w'
@@ -143,7 +139,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
             else
                 [app selItemGrayscale:nil];
             break;
-		case 5:	// close a window
+        case 5: // close a window
 			keyWindow = [NSApp keyWindow];
 			if (keyWindow != nil) {
 				[keyWindow orderOut:nil];
@@ -172,37 +168,45 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		case 0:
 			return keyNone;
 		case 2:
-			return f1;
+			return kVK_F1;
 		case 3:
-			return f2;
+			return kVK_F2;
 		case 4:
-			return f3;
+			return kVK_F3;
 		case 5:
-			return f4;
+			return kVK_F4;
 		case 6:
-			return f5;
+			return kVK_F5;
 		case 7:
-			return f6;
+			return kVK_F6;
 		case 8:
-			return f7;
+			return kVK_F7;
 		case 9:
-			return f8;
+			return kVK_F8;
 		case 10:
-			return f9;
+			return kVK_F9;
 		case 11:
-			return f10;
+			return kVK_F10;
 		case 12:
-			return f11;
+			return kVK_F11;
 		case 13:
-			return f12;
+			return kVK_F12;
 		case 14:
-			return f13;
+			return kVK_F13;
 		case 15:
-			return f14;
+			return kVK_F14;
 		case 16:
-			return f15;
+			return kVK_F15;
 		case 17:
-			return f16;
+			return kVK_F16;
+        case 18:
+            return kVK_F17;
+        case 19:
+            return kVK_F18;
+        case 20:
+            return kVK_F19;
+        case 21:
+            return kVK_F20;
 	}
 	return keyNone;
 }
@@ -212,38 +216,46 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	switch (fkey) {
 		case keyNone:
 			return 0;
-		case f1:
+		case kVK_F1:
 			return 2;
-		case f2:
+		case kVK_F2:
 			return 3;
-		case f3:
+		case kVK_F3:
 			return 4;
-		case f4:
+		case kVK_F4:
 			return 5;
-		case f5:
+		case kVK_F5:
 			return 6;
-		case f6:
+		case kVK_F6:
 			return 7;
-		case f7:
+		case kVK_F7:
 			return 8;
-		case f8:
+		case kVK_F8:
 			return 9;
-		case f9:
+		case kVK_F9:
 			return 10;
-		case f10:
+		case kVK_F10:
 			return 11;
-		case f11:
+		case kVK_F11:
 			return 12;
-		case f12:
+		case kVK_F12:
 			return 13;
-		case f13:
+		case kVK_F13:
 			return 14;
-		case f14:
+		case kVK_F14:
 			return 15;
-		case f15:
+		case kVK_F15:
 			return 16;
-		case f16:
+		case kVK_F16:
 			return 17;
+        case kVK_F17:
+            return 18;
+        case kVK_F18:
+            return 19;
+        case kVK_F19:
+            return 20;
+        case kVK_F20:
+            return 21;
 	}
 	return -1;
 }
@@ -251,38 +263,46 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 -(NSString*)fkey2String:(int)fkey
 {
 	switch (fkey) {
-		case f1:
+		case kVK_F1:
 			return @"F1";
-		case f2:
+		case kVK_F2:
 			return @"F2";
-		case f3:
+		case kVK_F3:
 			return @"F3";
-		case f4:
+		case kVK_F4:
 			return @"F4";
-		case f5:
+		case kVK_F5:
 			return @"F5";
-		case f6:
+		case kVK_F6:
 			return @"F6";
-		case f7:
+		case kVK_F7:
 			return @"F7";
-		case f8:
+		case kVK_F8:
 			return @"F8";
-		case f9:
+		case kVK_F9:
 			return @"F9";
-		case f10:
+		case kVK_F10:
 			return @"F10";
-		case f11:
+		case kVK_F11:
 			return @"F11";
-		case f12:
+		case kVK_F12:
 			return @"F12";
-		case f13:
+		case kVK_F13:
 			return @"F13";
-		case f14:
+		case kVK_F14:
 			return @"F14";
-		case f15:
+		case kVK_F15:
 			return @"F15";
-		case f16:
+		case kVK_F16:
 			return @"F16";
+        case kVK_F17:
+            return @"F17";
+        case kVK_F18:
+            return @"F18";
+        case kVK_F19:
+            return @"F19";
+        case kVK_F20:
+            return @"F20";
 	}
 	return @"-";
 }
@@ -290,38 +310,46 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 -(long)fkey2Unicode:(int)fkey
 {
 	switch (fkey) {
-		case f1:
+		case kVK_F1:
 			return NSF1FunctionKey;
-		case f2:
+		case kVK_F2:
 			return NSF2FunctionKey;
-		case f3:
+		case kVK_F3:
 			return NSF3FunctionKey;
-		case f4:
+		case kVK_F4:
 			return NSF4FunctionKey;
-		case f5:
+		case kVK_F5:
 			return NSF5FunctionKey;
-		case f6:
+		case kVK_F6:
 			return NSF6FunctionKey;
-		case f7:
+		case kVK_F7:
 			return NSF7FunctionKey;
-		case f8:
+		case kVK_F8:
 			return NSF8FunctionKey;
-		case f9:
+		case kVK_F9:
 			return NSF9FunctionKey;
-		case f10:
+		case kVK_F10:
 			return NSF10FunctionKey;
-		case f11:
+		case kVK_F11:
 			return NSF11FunctionKey;
-		case f12:
+		case kVK_F12:
 			return NSF12FunctionKey;
-		case f13:
+		case kVK_F13:
 			return NSF13FunctionKey;
-		case f14:
+		case kVK_F14:
 			return NSF14FunctionKey;
-		case f15:
+		case kVK_F15:
 			return NSF15FunctionKey;
-		case f16:
+		case kVK_F16:
 			return NSF16FunctionKey;
+        case kVK_F17:
+            return NSF17FunctionKey;
+        case kVK_F18:
+            return NSF18FunctionKey;
+        case kVK_F19:
+            return NSF19FunctionKey;
+        case kVK_F20:
+            return NSF20FunctionKey;
 	}
 	return keyNone;
 }
@@ -332,36 +360,40 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 {
 	EventTypeSpec eventType;
     
-    gAppHotKeyFunction = NewEventHandlerUPP(hotKeyHandler);
-    eventType.eventClass=kEventClassKeyboard;
-    eventType.eventKind=kEventHotKeyPressed;
-    InstallApplicationEventHandler(gAppHotKeyFunction,1,&eventType,self,NULL);
+    EventHandlerUPP appHotKeyFunction = NewEventHandlerUPP(hotKeyHandler);
+    eventType.eventClass = kEventClassKeyboard;
+    eventType.eventKind = kEventHotKeyPressed;
+    InstallApplicationEventHandler(appHotKeyFunction,1,&eventType,self,NULL);
     
 	// install first deutan, then protan, then tritan, then grayscale.
 	// if two hot-keys use the same key, the first installed will be executed.
-	
+
 	if (gDeutanHotKey != keyNone) {
-		gDeutanHotKeyID.signature=kHotKeyIdentifier;
-		gDeutanHotKeyID.id=1;
-		RegisterEventHotKey(gDeutanHotKey, 0, gDeutanHotKeyID, GetApplicationEventTarget(), 0, &gDeutanHotKeyRef);
+        EventHotKeyID deutanHotKeyID;
+        deutanHotKeyID.signature = kHotKeyIdentifier;
+		deutanHotKeyID.id = 1;
+		RegisterEventHotKey(gDeutanHotKey, 0, deutanHotKeyID, GetApplicationEventTarget(), 0, &gDeutanHotKeyRef);
 	}
 	
 	if (gProtanHotKey != keyNone) {
-		gProtanHotKeyID.signature=kHotKeyIdentifier;
-		gProtanHotKeyID.id=2;
-    	RegisterEventHotKey(gProtanHotKey, 0, gProtanHotKeyID, GetApplicationEventTarget(), 0, &gProtanHotKeyRef);
+        EventHotKeyID protanHotKeyID;
+        protanHotKeyID.signature = kHotKeyIdentifier;
+		protanHotKeyID.id = 2;
+    	RegisterEventHotKey(gProtanHotKey, 0, protanHotKeyID, GetApplicationEventTarget(), 0, &gProtanHotKeyRef);
 	}
 	
 	if (gTritanHotKey != keyNone) {
-		gTritanHotKeyID.signature=kHotKeyIdentifier;
-		gTritanHotKeyID.id=3;
-		RegisterEventHotKey(gTritanHotKey, 0, gTritanHotKeyID, GetApplicationEventTarget(), 0, &gTritanHotKeyRef);
+        EventHotKeyID tritanHotKeyID;
+        tritanHotKeyID.signature = kHotKeyIdentifier;
+		tritanHotKeyID.id = 3;
+		RegisterEventHotKey(gTritanHotKey, 0, tritanHotKeyID, GetApplicationEventTarget(), 0, &gTritanHotKeyRef);
 	}
     
     if (gGrayscHotKey != keyNone) {
-        gGrayscaleHotKeyID.signature=kHotKeyIdentifier;
-        gGrayscaleHotKeyID.id=4;
-        RegisterEventHotKey(gGrayscHotKey, 0, gGrayscaleHotKeyID, GetApplicationEventTarget(), 0, &gGrayscaleHotKeyRef);
+        EventHotKeyID grayscaleHotKeyID;
+        grayscaleHotKeyID.signature = kHotKeyIdentifier;
+        grayscaleHotKeyID.id = 4;
+        RegisterEventHotKey(gGrayscHotKey, 0, grayscaleHotKeyID, GetApplicationEventTarget(), 0, &gGrayscaleHotKeyRef);
     }
 }
 
@@ -373,11 +405,12 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     UnregisterEventHotKey (gGrayscaleHotKeyRef);
 }
 
+// close about and preferences windows with command-w
 -(void)installCloseWindowsHotKey
 {
 	// add hot key handler for closing windows (preferences panel and about box)
     gWindowsCloseHotKeyID.signature=kHotKeyIdentifier;
-    gWindowsCloseHotKeyID.id=5;
+    gWindowsCloseHotKeyID.id = 5;
     RegisterEventHotKey(kWindowsCloseHotKey, cmdKey, gWindowsCloseHotKeyID, GetApplicationEventTarget(), 0, &gWindowsCloseHotKeyRef);
 }
 
@@ -465,10 +498,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		screenShotBuffer = nil;
 		simulationBuffer = nil;
 		
-		gDeutanHotKey = f5;
-		gProtanHotKey = f6;
-		gTritanHotKey = keyNone;
-        gGrayscHotKey = keyNone;
+		gDeutanHotKey = DEFAULTDEUTANHOTKEY;
+		gProtanHotKey = DEFAULTPROTANHOTKEY;
+		gTritanHotKey = DEFAULTTRITANHOTKEY;
+        gGrayscHotKey = DEFAULTGRAYSCALEHOTKEY;
     }
 	return self;
 }
@@ -919,12 +952,12 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     // build info text consisting of information about (1) how to exit simulation
     // (2) drag info panel, and (3) hotkey mapping.
     NSMutableString *infoString = [NSMutableString string];
-    [infoString appendString:INFOMESSAGE];
+    [infoString appendString:INFO_MESSAGE_PART1];
     
     // add info about hotkey mapping
     BOOL hasHotKey = gDeutanHotKey != keyNone || gProtanHotKey != keyNone || gTritanHotKey != keyNone || gGrayscHotKey != keyNone;
     if (hasHotKey) {
-        [infoString appendString: @"Press "];
+        [infoString appendString: @","];
     }
     if (gDeutanHotKey != keyNone) {
         NSString *deutanKeyStr = [self fkey2String:gDeutanHotKey];
@@ -952,8 +985,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
         [infoString appendString:[NSString stringWithFormat: INFOMESSAGEPRESS_GRAYSC, grayscKeyStr]];
     }
     if (hasHotKey) {
-        [infoString appendString: @" vision."];
+        [infoString appendString: @" vision"];
     }
+    [infoString appendString: @".\n"];
+    [infoString appendString: INFO_MESSAGE_PART2];
     
     [infoView setInfo2:infoString];
 }
@@ -1421,7 +1456,54 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 
 - (void)keyDown:(NSEvent *)theEvent
 {
-	[self selItemNormal:self];
+    // switch simulation when left or right arrow key is pressed
+    NSString *const character = [theEvent charactersIgnoringModifiers];
+    unichar const code = [character characterAtIndex:0];
+    switch (code) {
+        // right arrow
+        case NSRightArrowFunctionKey:
+            switch (simulationID) {
+                case deutan:
+                    [self selItemProtan:nil];
+                    break;
+                case protan:
+                    [self selItemTritan:nil];
+                    break;
+                case tritan:
+                    [self selItemGrayscale:nil];
+                    break;
+                case grayscale:
+                    [self selItemDeutan:nil];
+                    break;
+                default:
+                    break;
+            }
+            break;
+            
+        // left arrow
+        case NSLeftArrowFunctionKey:
+            switch (simulationID) {
+                case deutan:
+                    [self selItemGrayscale:nil];
+                    break;
+                case protan:
+                    [self selItemDeutan:nil];
+                    break;
+                case tritan:
+                    [self selItemProtan:nil];
+                    break;
+                case grayscale:
+                    [self selItemTritan:nil];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        
+        // hide simulation if any other key is pressed
+        default:
+            [self selItemNormal:self];
+    }
 }
 
 - (void)applicationWillResignActive:(NSNotification *)aNotification

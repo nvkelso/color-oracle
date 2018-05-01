@@ -17,8 +17,9 @@
 
 #define TOOLTIPTEXT @"Color Oracle - Simulate Color Blind Vision"
 
-#define INFOMESSAGE @"Click the mouse or press any key to return to normal vision.\n\
-Click and drag to move this panel.\n"
+#define INFO_MESSAGE_PART1 @"Press → or ← to switch modes"
+
+#define INFO_MESSAGE_PART2 @"Click and drag to move this panel.\nClick the mouse or press any other key to return to normal vision."
 
 #define INFOMESSAGEPRESS_DEUTAN @" %@ for deutan"
 #define INFOMESSAGEPRESS_PROTAN @" %@ for protan"

@@ -63,7 +63,7 @@
             <connections>
                 <outlet property="initialFirstResponder" destination="243" id="248"/>
             </connections>
-            <point key="canvasLocation" x="168" y="94.5"/>
+            <point key="canvasLocation" x="159" y="-123"/>
         </window>
         <menu title="Menu" id="250" userLabel="Menu">
             <items>
@@ -162,12 +162,12 @@
                                 <popUpButton verticalHuggingPriority="750" id="278">
                                     <rect key="frame" x="191" y="110" width="77" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                    <popUpButtonCell key="cell" type="push" title="F6" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="280" id="425">
+                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="348" id="425">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
                                         <menu key="menu" title="OtherViews" id="279">
                                             <items>
-                                                <menuItem title="None" id="348"/>
+                                                <menuItem title="None" state="on" id="348"/>
                                                 <menuItem isSeparatorItem="YES" id="347">
                                                     <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                                 </menuItem>
@@ -176,7 +176,7 @@
                                                 <menuItem title="F3" id="319"/>
                                                 <menuItem title="F4" id="320"/>
                                                 <menuItem title="F5" id="316"/>
-                                                <menuItem title="F6" state="on" id="280"/>
+                                                <menuItem title="F6" id="280"/>
                                                 <menuItem title="F7" id="282"/>
                                                 <menuItem title="F8" id="288"/>
                                                 <menuItem title="F9" id="295"/>
@@ -187,6 +187,9 @@
                                                 <menuItem title="F14" id="321"/>
                                                 <menuItem title="F15" id="322"/>
                                                 <menuItem title="F16" id="323"/>
+                                                <menuItem title="F17" id="67A-MW-DsY"/>
+                                                <menuItem title="F18" id="pLg-mP-JG8"/>
+                                                <menuItem title="F19" id="Nkn-0J-kYL"/>
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
@@ -197,7 +200,7 @@
                                 <popUpButton verticalHuggingPriority="750" id="324">
                                     <rect key="frame" x="191" y="140" width="77" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                    <popUpButtonCell key="cell" type="push" title="F5" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="336" id="426">
+                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="331" id="426">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
                                         <menu key="menu" title="OtherViews" id="325">
@@ -222,6 +225,9 @@
                                                 <menuItem title="F14" id="328"/>
                                                 <menuItem title="F15" id="339"/>
                                                 <menuItem title="F16" id="341"/>
+                                                <menuItem title="F17" id="97P-3E-E9A"/>
+                                                <menuItem title="F18" id="MuV-4A-tQy"/>
+                                                <menuItem title="F19" id="GYq-Fc-SdP"/>
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
@@ -266,6 +272,9 @@
                                                 <menuItem title="F14" id="366"/>
                                                 <menuItem title="F15" id="355"/>
                                                 <menuItem title="F16" id="361"/>
+                                                <menuItem title="F17" id="Csw-a2-By3"/>
+                                                <menuItem title="F18" id="0Si-i2-spP"/>
+                                                <menuItem title="F19" id="EtA-yd-D76"/>
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
@@ -285,12 +294,12 @@
                                 <popUpButton verticalHuggingPriority="750" misplaced="YES" id="HkC-th-2we">
                                     <rect key="frame" x="191" y="51" width="77" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="TIG-DJ-GSB" id="YIj-NX-gDo">
+                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="TIG-DJ-GSB" id="YIj-NX-gDo">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
                                         <menu key="menu" title="OtherViews" id="Pxv-xV-XtD">
                                             <items>
-                                                <menuItem title="None" state="on" id="TIG-DJ-GSB"/>
+                                                <menuItem title="None" id="TIG-DJ-GSB"/>
                                                 <menuItem isSeparatorItem="YES" id="9xA-vC-8jD">
                                                     <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                                 </menuItem>
@@ -299,7 +308,7 @@
                                                 <menuItem title="F3" id="ifa-dK-DAA"/>
                                                 <menuItem title="F4" id="B9M-HY-Mrh"/>
                                                 <menuItem title="F5" id="dPh-Tp-Y7K"/>
-                                                <menuItem title="F6" id="kxv-aX-7JC"/>
+                                                <menuItem title="F6" state="on" id="kxv-aX-7JC"/>
                                                 <menuItem title="F7" id="wjT-8i-3x2"/>
                                                 <menuItem title="F8" id="Tj2-QN-rUt"/>
                                                 <menuItem title="F9" id="wxv-Tm-WKV"/>
@@ -310,6 +319,9 @@
                                                 <menuItem title="F14" id="hBW-YT-O2m"/>
                                                 <menuItem title="F15" id="aKX-1b-CZH"/>
                                                 <menuItem title="F16" id="1gD-Kd-kZb"/>
+                                                <menuItem title="F17" id="CXN-fY-8gQ"/>
+                                                <menuItem title="F18" id="Kdo-NB-j76"/>
+                                                <menuItem title="F19" id="hgW-xs-GcK"/>
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
