@@ -1557,17 +1557,27 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 - (IBAction)login:(id)sender {
     BOOL launchAtLogin = ([sender state] == NSOnState);
     
-    NSString* destinationPath = PFMoveToApplicationsFolderIfNecessary();
-    NSURL* appURL = destinationPath != nil ? [NSURL fileURLWithPath:destinationPath]
+    NSString* pathToCopiedBundle = nil;
+    if (launchAtLogin) {
+        pathToCopiedBundle = PFMoveToApplicationsFolderIfNecessary();
+    }
+    
+    if (pathToCopiedBundle != nil && [pathToCopiedBundle isEqualToString:@"error"]) {
+        [loginButton setState:NSControlStateValueOff];
+        return;
+    }
+    
+    // URL of this app bundle. If app was moved, use the path to the copied bundle. Otherwise get bundle path.
+    NSURL* appURL = pathToCopiedBundle != nil ? [NSURL fileURLWithPath:pathToCopiedBundle]
         : [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
 
-    // add Color Oracle to login items
+    // add or remove Color Oracle to/from login items
     LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
     [launchController setLaunchAtLogin:launchAtLogin forURL: appURL];
     [launchController release];
     
     // exit if Color Oracle moved itself to the Applications folder
-    if (destinationPath != nil) {
+    if (pathToCopiedBundle != nil) {
         [NSApp terminate:nil];
     }
 }

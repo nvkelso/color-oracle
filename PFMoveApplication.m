@@ -40,6 +40,9 @@
 #define kStrMoveApplicationQuestionInfoWillRequirePasswd _I10NS(@"Note that this will require an administrator password.")
 #define kStrMoveApplicationQuestionInfoInDownloadsFolder _I10NS(@"This will keep your Downloads folder uncluttered.")
 
+#define kStrAppTranslocationProblem @"Color Oracle could not be moved. Please replace it with a copy that you unzip outside of the Applications directory."
+#define kStrError (@"error")
+
 // Needs to be defined for compiling under 10.5 SDK
 #ifndef NSAppKitVersionNumber10_5
 	#define NSAppKitVersionNumber10_5 949
@@ -67,6 +70,7 @@ static BOOL AuthorizedInstall(NSString *srcPath, NSString *dstPath, BOOL *cancel
 static BOOL CopyBundle(NSString *srcPath, NSString *dstPath);
 static NSString *ShellQuotedString(NSString *string);
 static void Relaunch(NSString *destinationPath);
+static BOOL isSameVersion(NSString* bundlePath);
 
 // Main worker function
 NSString* PFMoveToApplicationsFolderIfNecessary(void) {
@@ -158,6 +162,26 @@ NSString* PFMoveToApplicationsFolderIfNecessary(void) {
 		[NSApp activateIgnoringOtherApps:YES];
 	}
 
+    // Added by Bernie, May 2018
+    // If the user moves a ZIP file (or possibly another container) into the Applications directory
+    // and then unzips/unpacks the file, the resulting app bundle will have the quarantine flag set.
+    // The app will be launched from a read-only disk at /private/var/folders/[random]/AppTranslocation/.
+    // Copying this file to the Applications directory will fail because the two 'logical' paths
+    // point to the same app.
+    // Test for app translocation: (1) path contains "/AppTranslocation/" and (2) a copy of this
+    // app exists in the Applications directory.
+    //NSLog(@"src: %@", bundlePath);
+    //NSLog(@"dst: %@", destinationPath);
+    //NSLog(@"app translocation: %d", [bundlePath containsString:@"/AppTranslocation/"]);
+    //NSLog(@"same version: %d", isSameVersion(destinationPath));
+    if ([bundlePath containsString:@"/AppTranslocation/"] && isSameVersion(destinationPath)) {
+        alert = [[[NSAlert alloc] init] autorelease];
+        [alert setMessageText:kStrAppTranslocationProblem];
+        [alert runModal];
+        MoveInProgress = NO;
+        return kStrError;
+    }
+
 	if ([alert runModal] == NSAlertFirstButtonReturn) {
 		NSLog(@"INFO -- Moving myself to the Applications folder");
 
@@ -180,7 +204,7 @@ NSString* PFMoveToApplicationsFolderIfNecessary(void) {
 		else {
 			// If a copy already exists in the Applications folder, put it in the Trash
 			if ([fm fileExistsAtPath:destinationPath]) {
-				// But first, make sure that it's not running
+                // But first, make sure that it's not running
 				if (IsApplicationAtPathRunning(destinationPath)) {
 					// Give the running app focus and terminate myself
 					NSLog(@"INFO -- Switching to an already running version");
@@ -189,7 +213,7 @@ NSString* PFMoveToApplicationsFolderIfNecessary(void) {
                     return destinationPath; // this was exit(0);
 				}
 				else {
-					if (!Trash([applicationsDirectory stringByAppendingPathComponent:bundleName]))
+                   if (!Trash([applicationsDirectory stringByAppendingPathComponent:bundleName]))
 						goto fail;
 				}
 			}
@@ -240,7 +264,20 @@ fail:
 		MoveInProgress = NO;
 	}
     
-    return nil;
+    return kStrError;
+}
+
+// Added by Bernie, May 2018
+// returns true if the version string of the bundle at a given path is identical to the version of this app bundle
+static BOOL isSameVersion(NSString* bundlePath) {
+    NSDictionary *appInfoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = [appInfoDict objectForKey:@"CFBundleShortVersionString"];
+    //NSLog(@"current version: %@", appVersion);
+    NSDictionary *otherInfoDict = [[NSBundle bundleWithPath:bundlePath] infoDictionary];
+    NSString *otherVersion = [otherInfoDict objectForKey:@"CFBundleShortVersionString"];
+    //NSLog(@"other version: %@", otherVersion);
+    
+    return [appVersion caseInsensitiveCompare: otherVersion] == NSOrderedSame;
 }
 
 BOOL PFMoveIsInProgress() {
@@ -286,7 +323,7 @@ static NSString *PreferredInstallLocation(BOOL *isUserDirectory) {
 /*static*/ BOOL IsInApplicationsFolder(NSString *path) {
 	// Check all the normal Application directories
 	NSArray *applicationDirs = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSAllDomainsMask, YES);
-	for (NSString *appDir in applicationDirs) {
+    for (NSString *appDir in applicationDirs) {
 		if ([path hasPrefix:appDir]) return YES;
 	}
 
