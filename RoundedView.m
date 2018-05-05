@@ -74,7 +74,7 @@
 -(void)drawText:(NSRect)rect
 {
     // make rectangle slightly smaller to make sure text does not touch border of view
-    int padding = 5;
+    int padding = 10;
     rect.origin.x += padding;
     rect.size.width -= 2 * padding;
     
