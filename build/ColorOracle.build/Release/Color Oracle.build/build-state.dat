@@ -1,1275 +1,0 @@
-TColor Oracle
-v7
-r0
-t373749275.370530
-cCheck dependencies
-cProcessInfoPlistFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Info.plist" Info.plist
-cStripNIB "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/English.lproj/MainMenu.nib"
-cCopyStringsFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/icon.icns" icon.icns
-cCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconTritan.tif" menuIconTritan.tif
-cCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIcon.tif" menuIcon.tif
-cCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconDeutan.tif" menuIconDeutan.tif
-cCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconProtan.tif" menuIconProtan.tif
-cCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconAnimation.tif" menuIconAnimation.tif
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/1.png" animation_frames/1.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/10.png" animation_frames/10.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/11.png" animation_frames/11.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/12.png" animation_frames/12.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/13.png" animation_frames/13.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/14.png" animation_frames/14.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/15.png" animation_frames/15.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/16.png" animation_frames/16.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/17.png" animation_frames/17.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/18.png" animation_frames/18.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/19.png" animation_frames/19.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/2.png" animation_frames/2.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/20.png" animation_frames/20.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/21.png" animation_frames/21.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/22.png" animation_frames/22.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/23.png" animation_frames/23.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/24.png" animation_frames/24.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/3.png" animation_frames/3.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/4.png" animation_frames/4.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/5.png" animation_frames/5.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/6.png" animation_frames/6.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/7.png" animation_frames/7.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/8.png" animation_frames/8.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/9.png" animation_frames/9.png
-cCpResource "build/Release/Color Oracle.app/Contents/Resources/ColorOracle.sdef" ColorOracle.sdef
-cProcessPCH /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch.gch test_Prefix.pch normal ppc objective-c com.apple.compilers.gcc.4_0
-cProcessPCH /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bpbpubpqnbaapqbhosspwmufeeab/test_Prefix.pch.gch test_Prefix.pch normal ppc c com.apple.compilers.gcc.4_0
-cProcessPCH /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch.gch test_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_0
-cProcessPCH /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-aenyjllaapykrpdfwfgcsrdjjmld/test_Prefix.pch.gch test_Prefix.pch normal i386 c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/main.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/AppController.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ClickableImageView.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/KeyableWindow.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/RoundedView.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/TransparentWindow.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/LoginItemsAE.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c" normal ppc c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ColorOracleScriptCommand.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/main.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/AppController.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-cLd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle" normal ppc
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ClickableImageView.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/KeyableWindow.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/RoundedView.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/TransparentWindow.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/LoginItemsAE.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c" normal i386 c com.apple.compilers.gcc.4_0
-cCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ColorOracleScriptCommand.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-cLd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle" normal i386
-cCreateUniversalBinary "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/MacOS/Color Oracle" normal "ppc i386"
-cPhaseScriptExecution "Run Script" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Script-BAE418810A08E9C9006994E7.sh"
-cTouch "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app"
-
-N/Developer/SDKs/MacOSX10.6.sdk
-c000000004A769DAB00000000000000EE
-t1249287595
-s238
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/ApplicationServices.framework/Headers/ApplicationServices.h
-c000000004CC410E50000000000000477
-t1287917797
-s1143
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Carbon.framework/Headers/Carbon.h
-c000000004CC41EA700000000000005FF
-t1287921319
-s1535
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
-c0000000040C4AA6800000000000001E5
-t1086630504
-s485
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004A600B8400000000000013E6
-t1247808388
-s5094
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h
-c000000004A73D92A0000000000025B59
-t1249106218
-s154457
-
-N/Developer/SDKs/MacOSX10.6.sdk/usr/include/string.h
-c000000004A5C14A70000000000001731
-t1247548583
-s5937
-
-N/System/Library/Frameworks/Carbon.framework/Carbon
-c000000004C0FDD7E000000000000A5F0
-t1276108158
-s42480
-
-N/System/Library/Frameworks/Cocoa.framework/Cocoa
-c000000004A1F2D63000000000000A5E0
-t1243557219
-s42464
-
-N/System/Library/Frameworks/OpenGL.framework/OpenGL
-c000000004EDEBFD00000000000043360
-t1323220944
-s275296
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.h
-c000000004EA3B8BE00000000000008D3
-t1319352510
-s2259
-i<Cocoa/Cocoa.h>
-i<ApplicationServices/ApplicationServices.h>
-i<Foundation/Foundation.h>
-i"ClickableImageView.h"
-i"KeyableWindow.h"
-i"RoundedView.h"
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m
-c00000000508F56E3000000000000D364
-t1351571171
-s54116
-i<OpenGL/gl.h>
-i"WindowLevel.h"
-i"AppController.h"
-i"ClickableImageView.h"
-i"KeyableWindow.h"
-i"InfoText.h"
-i"LoginItemsAE.h"
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.h
-c000000004411CA4000000000000000A4
-t1142016576
-s164
-i<Cocoa/Cocoa.h>
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m
-c00000000508F572000000000000004AE
-t1351571232
-s1198
-i"ClickableImageView.h"
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracle.sdef
-c0000000044605EDA000000000000032E
-t1147166426
-s814
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.h
-c00000000445683890000000000000116
-t1146520457
-s278
-i<Cocoa/Cocoa.h>
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m
-c00000000445683CD0000000000000142
-t1146520525
-s322
-i"ColorOracleScriptCommand.h"
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/English.lproj/InfoPlist.strings
-c00000000508F5586000000000000010C
-t1351570822
-s268
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/English.lproj/MainMenu.nib
-c00000000508F55310000000000000088
-t1351570737
-s136
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/InfoText.h
-c000000004D45C5C9000000000000035D
-t1296418249
-s861
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.h
-c000000004411CA5B000000000000005B
-t1142016603
-s91
-i<Cocoa/Cocoa.h>
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m
-c00000000441991F90000000000000678
-t1142526457
-s1656
-i"KeyableWindow.h"
-i"WindowLevel.h"
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c
-c000000004EA4746600000000000062E4
-t1319400550
-s25316
-i"LoginItemsAE.h"
-i<Carbon/Carbon.h>
-i<string.h>
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.h
-c000000004442C1EA00000000000010D1
-t1145225706
-s4305
-i<ApplicationServices/ApplicationServices.h>
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.h
-c00000000443A5E35000000000000024D
-t1144675893
-s589
-i<Cocoa/Cocoa.h>
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m
-c000000004EA473CD000000000000233B
-t1319400397
-s9019
-i"RoundedView.h"
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.h
-c000000004415C32200000000000000D7
-t1142276898
-s215
-i<Cocoa/Cocoa.h>
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m
-c000000004419402E0000000000000432
-t1142505518
-s1074
-i"TransparentWindow.h"
-i"WindowLevel.h"
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/WindowLevel.h
-c00000000445F994500000000000003B5
-t1147115845
-s949
-i<Carbon/Carbon.h>
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/1.png
-c000000004458699C00000000000004AC
-t1146644892
-s1196
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/10.png
-c000000004458699C00000000000004A6
-t1146644892
-s1190
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/11.png
-c000000004458699C0000000000000493
-t1146644892
-s1171
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/12.png
-c000000004458699D0000000000000484
-t1146644893
-s1156
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/13.png
-c000000004458699D000000000000041F
-t1146644893
-s1055
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/14.png
-c000000004458699D0000000000000491
-t1146644893
-s1169
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/15.png
-c000000004458699D000000000000048C
-t1146644893
-s1164
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/16.png
-c000000004458699D00000000000004A8
-t1146644893
-s1192
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/17.png
-c000000004458699D0000000000000499
-t1146644893
-s1177
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/18.png
-c000000004458699D000000000000048B
-t1146644893
-s1163
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/19.png
-c000000004458699D000000000000046E
-t1146644893
-s1134
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/2.png
-c000000004458699C00000000000004A1
-t1146644892
-s1185
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/20.png
-c000000004458699D0000000000000488
-t1146644893
-s1160
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/21.png
-c000000004458699D0000000000000498
-t1146644893
-s1176
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/22.png
-c000000004458699D00000000000004A4
-t1146644893
-s1188
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/23.png
-c000000004458699D0000000000000498
-t1146644893
-s1176
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/24.png
-c000000004458699D000000000000049D
-t1146644893
-s1181
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/3.png
-c000000004458699C00000000000004A5
-t1146644892
-s1189
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/4.png
-c000000004458699C00000000000004AC
-t1146644892
-s1196
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/5.png
-c000000004458699C00000000000004A9
-t1146644892
-s1193
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/6.png
-c000000004458699C00000000000004B1
-t1146644892
-s1201
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/7.png
-c000000004458699C00000000000004A8
-t1146644892
-s1192
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/8.png
-c000000004458699C00000000000004A4
-t1146644892
-s1188
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/9.png
-c000000004458699C00000000000004A9
-t1146644892
-s1193
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/AppController.o
-t1352056473
-s48724
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ClickableImageView.o
-t1352056473
-s3996
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle
-t1352056475
-s65380
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle.LinkFileList
-c000000005096BE8F0000000000000510
-t1352056463
-s1296
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ColorOracleScriptCommand.o
-t1352056474
-s2600
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/KeyableWindow.o
-t1352056474
-s3320
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/LoginItemsAE.o
-t1352056474
-s8748
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/RoundedView.o
-t1352056474
-s12936
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/TransparentWindow.o
-t1352056474
-s3620
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/main.o
-t1352056473
-s1912
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/AppController.o
-t1352056472
-s68428
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ClickableImageView.o
-t1352056472
-s4360
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle
-t1352056474
-s66160
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle.LinkFileList
-c000000005096BE8F0000000000000508
-t1352056463
-s1288
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ColorOracleScriptCommand.o
-t1352056472
-s2796
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/KeyableWindow.o
-t1352056472
-s3616
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/LoginItemsAE.o
-t1352056473
-s12060
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/RoundedView.o
-t1352056472
-s16612
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/TransparentWindow.o
-t1352056472
-s4104
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/main.o
-t1352056471
-s2076
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Script-BAE418810A08E9C9006994E7.sh
-c000000005096BE8F0000000000000088
-t1352056463
-s136
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app
-t1352056475
-s102
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Info.plist
-t1352056463
-s1345
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/MacOS/Color Oracle
-t1352056475
-s139108
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/PkgInfo
-t1352056463
-s8
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/1.png
-t1352056464
-s1196
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/10.png
-t1352056464
-s1190
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/11.png
-t1352056464
-s1171
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/12.png
-t1352056464
-s1156
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/13.png
-t1352056464
-s1055
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/14.png
-t1352056464
-s1169
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/15.png
-t1352056464
-s1164
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/16.png
-t1352056464
-s1192
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/17.png
-t1352056464
-s1177
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/18.png
-t1352056464
-s1163
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/19.png
-t1352056464
-s1134
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/2.png
-t1352056464
-s1185
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/20.png
-t1352056464
-s1160
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/21.png
-t1352056464
-s1176
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/22.png
-t1352056464
-s1188
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/23.png
-t1352056464
-s1176
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/24.png
-t1352056464
-s1181
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/3.png
-t1352056464
-s1189
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/4.png
-t1352056464
-s1196
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/5.png
-t1352056464
-s1193
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/6.png
-t1352056464
-s1201
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/7.png
-t1352056464
-s1192
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/8.png
-t1352056464
-s1188
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/9.png
-t1352056464
-s1193
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/ColorOracle.sdef
-t1352056464
-s814
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/English.lproj/InfoPlist.strings
-t1352056464
-s268
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/English.lproj/MainMenu.nib
-t1352056465
-s34695
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/icon.icns
-t1352056464
-s67849
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIcon.tif
-t1352056464
-s32372
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconAnimation.tif
-t1352056464
-s32336
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconDeutan.tif
-t1352056464
-s32336
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconProtan.tif
-t1352056464
-s32424
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconTritan.tif
-t1352056464
-s32420
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/icon.icns
-c00000000444779390000000000010909
-t1145534777
-s67849
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m
-c00000000444F7C830000000000000115
-t1146059907
-s277
-i<Cocoa/Cocoa.h>
-i<Carbon/Carbon.h>
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIcon.tif
-c00000000444777700000000000007E74
-t1145534320
-s32372
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIconAnimation.tif
-c00000000444777850000000000007E50
-t1145534341
-s32336
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIconDeutan.tif
-c00000000444777850000000000007E50
-t1145534341
-s32336
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIconProtan.tif
-c00000000444777990000000000007EA8
-t1145534361
-s32424
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIconTritan.tif
-c00000000444777050000000000007EA4
-t1145534213
-s32420
-
-N/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/test_Prefix.pch
-c0000000043172322000000000000008B
-t1125589794
-s139
-i<Cocoa/Cocoa.h>
-
-N/var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-aenyjllaapykrpdfwfgcsrdjjmld/test_Prefix.pch.gch
-t1352056471
-s1069248
-
-N/var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bpbpubpqnbaapqbhosspwmufeeab/test_Prefix.pch.gch
-t1352056465
-s807104
-
-N/var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch.gch
-t1352056471
-s28010412
-
-N/var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch.gch
-t1352056470
-s26384104
-
-NInfo.plist
-c00000000508F55A100000000000003B0
-t1351570849
-s944
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies373749263#373749263#0(0"0(0#1#0"8603670208#0"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/AppController.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-s373749273.091082
-e373749273.720594
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/AppController.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@97"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m373749273#373749273#0(0"0(0#0#89"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m8608095712#1464"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/AppController.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ClickableImageView.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-s373749273.720699
-e373749273.815740
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ClickableImageView.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@102"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m373749273#373749273#0(0"0(0#0#94"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m8604854208#1474"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ClickableImageView.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ColorOracleScriptCommand.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-s373749274.301275
-e373749274.407608
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ColorOracleScriptCommand.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@108"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m373749274#373749274#0(0"0(0#0#100"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m8605254752#1486"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/ColorOracleScriptCommand.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/KeyableWindow.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-s373749273.815850
-e373749274.034786
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/KeyableWindow.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@97"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m373749273#373749274#0(0"0(0#0#89"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m8604259168#1464"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/KeyableWindow.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/LoginItemsAE.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c" normal i386 c com.apple.compilers.gcc.4_0
-s373749274.244347
-e373749274.890608
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/LoginItemsAE.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c
-xnormal
-xi386
-xc
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@96"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c373749274#373749274#0(0"0(0#0#88"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c8607731040#1426"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-aenyjllaapykrpdfwfgcsrdjjmld/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/LoginItemsAE.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/RoundedView.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-s373749274.034945
-e373749274.244237
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/RoundedView.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@95"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m373749274#373749274#0(0"0(0#0#87"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m8607669216#1460"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/RoundedView.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/TransparentWindow.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-s373749274.038309
-e373749274.301176
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/TransparentWindow.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@101"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m373749274#373749274#0(0"0(0#0#93"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m8604586432#1472"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/TransparentWindow.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/main.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m" normal i386 objective-c com.apple.compilers.gcc.4_0
-s373749272.811746
-e373749273.090979
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/main.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@88"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m373749272#373749273#0(0"0(0#0#80"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m8603240064#1446"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/main.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/AppController.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-s373749271.226923
-e373749272.493843
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/AppController.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@97"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m373749271#373749272#0(0"0(0#0#89"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m8603330208#1461"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/AppController.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/AppController.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ClickableImageView.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-s373749271.916872
-e373749272.013228
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ClickableImageView.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@102"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m373749271#373749272#0(0"0(0#0#94"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m8607702976#1471"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ClickableImageView.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ClickableImageView.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ColorOracleScriptCommand.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-s373749272.695781
-e373749272.811636
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ColorOracleScriptCommand.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@108"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m373749272#373749272#0(0"0(0#0#100"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m8604996832#1483"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracleScriptCommand.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/ColorOracleScriptCommand.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/KeyableWindow.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-s373749272.013338
-e373749272.244106
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/KeyableWindow.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@97"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m373749272#373749272#0(0"0(0#0#89"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m8603176736#1461"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/KeyableWindow.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/KeyableWindow.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/LoginItemsAE.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c" normal ppc c com.apple.compilers.gcc.4_0
-s373749272.493956
-e373749273.178185
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/LoginItemsAE.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c
-xnormal
-xppc
-xc
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@96"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c373749272#373749273#0(0"0(0#0#88"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c8607495616#1423"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bpbpubpqnbaapqbhosspwmufeeab/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/LoginItemsAE.c" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/LoginItemsAE.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/RoundedView.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-s373749272.244204
-e373749272.458053
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/RoundedView.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@95"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m373749272#373749272#0(0"0(0#0#87"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m8604972736#1457"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/RoundedView.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/RoundedView.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/TransparentWindow.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-s373749272.458217
-e373749272.695671
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/TransparentWindow.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@101"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m373749272#373749272#0(0"0(0#0#93"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m8608055904#1469"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/TransparentWindow.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/TransparentWindow.o"0#
-
-CCompileC "build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/main.o" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m" normal ppc objective-c com.apple.compilers.gcc.4_0
-s373749271.225368
-e373749271.916766
-r1
-xCompileC
-xbuild/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/main.o
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@88"Compile /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m373749271#373749271#0(0"0(0#0#80"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m8607183616#1443"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -include /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/main.m" -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/main.o"0#
-
-CCopyStringsFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/English.lproj/InfoPlist.strings" English.lproj/InfoPlist.strings
-s373749263.493263
-e373749264.186175
-r1
-xCopyStringsFile
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/English.lproj/InfoPlist.strings
-xEnglish.lproj/InfoPlist.strings
-lSLF07#2@36"Copy English.lproj/InfoPlist.strings373749263#373749264#0(0"0(0#0#105"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/English.lproj/InfoPlist.strings8603951808#447"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/English.lproj"0#
-
-CCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIcon.tif" menuIcon.tif
-s373749264.362915
-e373749264.385316
-r1
-xCopyTiffFile
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIcon.tif
-xmenuIcon.tif
-lSLF07#2@17"Copy menuIcon.tif373749264#373749264#0(0"0(0#0#86"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIcon.tif8608766592#321"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff menuIcon.tif --outdir "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconAnimation.tif" menuIconAnimation.tif
-s373749264.460847
-e373749264.478405
-r1
-xCopyTiffFile
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconAnimation.tif
-xmenuIconAnimation.tif
-lSLF07#2@26"Copy menuIconAnimation.tif373749264#373749264#0(0"0(0#0#95"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIconAnimation.tif8608537120#330"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff menuIconAnimation.tif --outdir "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconDeutan.tif" menuIconDeutan.tif
-s373749264.385415
-e373749264.437855
-r1
-xCopyTiffFile
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconDeutan.tif
-xmenuIconDeutan.tif
-lSLF07#2@23"Copy menuIconDeutan.tif373749264#373749264#0(0"0(0#0#92"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIconDeutan.tif8608089088#327"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff menuIconDeutan.tif --outdir "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconProtan.tif" menuIconProtan.tif
-s373749264.437948
-e373749264.460755
-r1
-xCopyTiffFile
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconProtan.tif
-xmenuIconProtan.tif
-lSLF07#2@23"Copy menuIconProtan.tif373749264#373749264#0(0"0(0#0#92"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIconProtan.tif8607160192#327"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff menuIconProtan.tif --outdir "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCopyTiffFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconTritan.tif" menuIconTritan.tif
-s373749264.187243
-e373749264.362781
-r1
-xCopyTiffFile
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/menuIconTritan.tif
-xmenuIconTritan.tif
-lSLF07#2@23"Copy menuIconTritan.tif373749264#373749264#0(0"0(0#0#92"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/menuIconTritan.tif8607241472#327"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copytiff menuIconTritan.tif --outdir "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/1.png" animation_frames/1.png
-s373749264.478554
-e373749264.530255
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/1.png
-xanimation_frames/1.png
-lSLF07#2@27"Copy animation_frames/1.png373749264#373749264#0(0"0(0#0#96"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/1.png8608274592#491"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/1.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/10.png" animation_frames/10.png
-s373749264.479167
-e373749264.529180
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/10.png
-xanimation_frames/10.png
-lSLF07#2@28"Copy animation_frames/10.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/10.png8607199840#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/10.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/11.png" animation_frames/11.png
-s373749264.480094
-e373749264.530372
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/11.png
-xanimation_frames/11.png
-lSLF07#2@28"Copy animation_frames/11.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/11.png8605439680#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/11.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/12.png" animation_frames/12.png
-s373749264.482182
-e373749264.530484
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/12.png
-xanimation_frames/12.png
-lSLF07#2@28"Copy animation_frames/12.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/12.png8604598880#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/12.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/13.png" animation_frames/13.png
-s373749264.485068
-e373749264.536259
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/13.png
-xanimation_frames/13.png
-lSLF07#2@28"Copy animation_frames/13.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/13.png8604422912#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/13.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/14.png" animation_frames/14.png
-s373749264.486504
-e373749264.582410
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/14.png
-xanimation_frames/14.png
-lSLF07#2@28"Copy animation_frames/14.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/14.png8603924640#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/14.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/15.png" animation_frames/15.png
-s373749264.490771
-e373749264.536454
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/15.png
-xanimation_frames/15.png
-lSLF07#2@28"Copy animation_frames/15.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/15.png8603771872#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/15.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/16.png" animation_frames/16.png
-s373749264.492506
-e373749264.536642
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/16.png
-xanimation_frames/16.png
-lSLF07#2@28"Copy animation_frames/16.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/16.png8607868064#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/16.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/17.png" animation_frames/17.png
-s373749264.494677
-e373749264.578609
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/17.png
-xanimation_frames/17.png
-lSLF07#2@28"Copy animation_frames/17.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/17.png8607740320#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/17.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/18.png" animation_frames/18.png
-s373749264.529267
-e373749264.581815
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/18.png
-xanimation_frames/18.png
-lSLF07#2@28"Copy animation_frames/18.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/18.png8607641312#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/18.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/19.png" animation_frames/19.png
-s373749264.530842
-e373749264.581611
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/19.png
-xanimation_frames/19.png
-lSLF07#2@28"Copy animation_frames/19.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/19.png8607515328#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/19.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/2.png" animation_frames/2.png
-s373749264.532220
-e373749264.582010
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/2.png
-xanimation_frames/2.png
-lSLF07#2@27"Copy animation_frames/2.png373749264#373749264#0(0"0(0#0#96"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/2.png8607410560#491"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/2.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/20.png" animation_frames/20.png
-s373749264.534094
-e373749264.582212
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/20.png
-xanimation_frames/20.png
-lSLF07#2@28"Copy animation_frames/20.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/20.png8607294752#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/20.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/21.png" animation_frames/21.png
-s373749264.536703
-e373749264.595600
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/21.png
-xanimation_frames/21.png
-lSLF07#2@28"Copy animation_frames/21.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/21.png8607232192#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/21.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/22.png" animation_frames/22.png
-s373749264.537829
-e373749264.595803
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/22.png
-xanimation_frames/22.png
-lSLF07#2@28"Copy animation_frames/22.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/22.png8605010592#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/22.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/23.png" animation_frames/23.png
-s373749264.538347
-e373749264.582605
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/23.png
-xanimation_frames/23.png
-lSLF07#2@28"Copy animation_frames/23.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/23.png8604565184#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/23.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/24.png" animation_frames/24.png
-s373749264.578772
-e373749264.628291
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/24.png
-xanimation_frames/24.png
-lSLF07#2@28"Copy animation_frames/24.png373749264#373749264#0(0"0(0#0#97"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/24.png8604411584#492"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/24.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/3.png" animation_frames/3.png
-s373749264.582709
-e373749264.628079
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/3.png
-xanimation_frames/3.png
-lSLF07#2@27"Copy animation_frames/3.png373749264#373749264#0(0"0(0#0#96"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/3.png8605393856#491"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/3.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/4.png" animation_frames/4.png
-s373749264.583563
-e373749264.629583
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/4.png
-xanimation_frames/4.png
-lSLF07#2@27"Copy animation_frames/4.png373749264#373749264#0(0"0(0#0#96"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/4.png8605036608#491"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/4.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/5.png" animation_frames/5.png
-s373749264.586825
-e373749264.629697
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/5.png
-xanimation_frames/5.png
-lSLF07#2@27"Copy animation_frames/5.png373749264#373749264#0(0"0(0#0#96"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/5.png8604689248#491"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/5.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/6.png" animation_frames/6.png
-s373749264.589640
-e373749264.630161
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/6.png
-xanimation_frames/6.png
-lSLF07#2@27"Copy animation_frames/6.png373749264#373749264#0(0"0(0#0#96"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/6.png8604157376#491"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/6.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/7.png" animation_frames/7.png
-s373749264.591610
-e373749264.630499
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/7.png
-xanimation_frames/7.png
-lSLF07#2@27"Copy animation_frames/7.png373749264#373749264#0(0"0(0#0#96"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/7.png8603326816#491"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/7.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/8.png" animation_frames/8.png
-s373749264.593270
-e373749264.630275
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/8.png
-xanimation_frames/8.png
-lSLF07#2@27"Copy animation_frames/8.png373749264#373749264#0(0"0(0#0#96"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/8.png8603134912#491"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/8.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/9.png" animation_frames/9.png
-s373749264.595865
-e373749264.632046
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/9.png
-xanimation_frames/9.png
-lSLF07#2@27"Copy animation_frames/9.png373749264#373749264#0(0"0(0#0#96"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/9.png8607876928#491"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/animation_frames/9.png" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/ColorOracle.sdef" ColorOracle.sdef
-s373749264.596893
-e373749264.644873
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/ColorOracle.sdef
-xColorOracle.sdef
-lSLF07#2@21"Copy ColorOracle.sdef373749264#373749264#0(0"0(0#0#90"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracle.sdef8604274848#485"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracle.sdef" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCpResource "build/Release/Color Oracle.app/Contents/Resources/icon.icns" icon.icns
-s373749264.186305
-e373749264.361027
-r1
-xCpResource
-xbuild/Release/Color Oracle.app/Contents/Resources/icon.icns
-xicon.icns
-lSLF07#2@14"Copy icon.icns373749264#373749264#0(0"0(0#0#83"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/icon.icns8607367840#478"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -strip-debug-symbols -resolve-src-symlinks "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/icon.icns" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources"0#
-
-CCreateUniversalBinary "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/MacOS/Color Oracle" normal "ppc i386"
-s373749275.114808
-e373749275.168142
-r1
-xCreateUniversalBinary
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/MacOS/Color Oracle
-xnormal
-xppc i386
-lSLF07#2@100"CreateUniversalBinary "build/Release/Color Oracle.app/Contents/MacOS/Color Oracle" normal "ppc i386"373749275#373749275#0(0"0(0#0#82"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ppc i3868605319392#571"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /usr/bin/lipo -create "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle" -output "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/MacOS/Color Oracle"0#
-
-CLd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle" normal i386
-s373749274.890697
-e373749275.114700
-r1
-xLd
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle
-xnormal
-xi386
-lSLF07#2@162"Link /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle373749274#373749275#0(0"0(0#0#0"8607219296#816"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Developer/usr/bin/gcc-4.0 -arch i386 -isysroot /Developer/SDKs/MacOSX10.6.sdk "-L/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" -filelist "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle.LinkFileList" -mmacosx-version-min=10.4 -framework Carbon -framework Cocoa -framework OpenGL -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle"0#
-
-CLd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle" normal ppc
-s373749273.178282
-e373749274.038222
-r1
-xLd
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle
-xnormal
-xppc
-lSLF07#2@161"Link /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle373749273#373749274#0(0"0(0#0#0"8607406912#813"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv MACOSX_DEPLOYMENT_TARGET 10.4    /Developer/usr/bin/gcc-4.0 -arch ppc -isysroot /Developer/SDKs/MacOSX10.6.sdk "-L/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" -filelist "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle.LinkFileList" -mmacosx-version-min=10.4 -framework Carbon -framework Cocoa -framework OpenGL -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle"0#
-
-CPhaseScriptExecution "Run Script" "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Script-BAE418810A08E9C9006994E7.sh"
-s373749275.168254
-e373749275.366162
-r1
-xPhaseScriptExecution
-xRun Script
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Script-BAE418810A08E9C9006994E7.sh
-lSLF07#2@36"Run custom shell script 'Run Script'373749275#373749275#0(0"0(0#0#0"8603953664#18729"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv ACTION build    setenv ALTERNATE_GROUP jenny    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER jenny    setenv ALWAYS_SEARCH_USER_PATHS YES    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS "ppc i386"    setenv ARCHS_STANDARD_32_64_BIT "x86_64 i386"    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_STANDARD_64_BIT x86_64    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build"    setenv BUILD_ROOT "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build"    setenv BUILD_STYLE Release    setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release"    setenv CACHE_ROOT /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502    setenv CCHROOT /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/JavaClasses"    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app"    setenv CODE_SIGNING_ALLOWED YES    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/CompositeSDKs    setenv CONFIGURATION Release    setenv CONFIGURATION_BUILD_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release"    setenv CONFIGURATION_TEMP_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release"    setenv CONTENTS_FOLDER_PATH "Color Oracle.app/Contents"    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP YES    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources"    setenv DERIVED_FILE_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources"    setenv DERIVED_SOURCES_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources"    setenv DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv DEVELOPER_BIN_DIR /Developer/usr/bin    setenv DEVELOPER_DIR /Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Developer/Library    setenv DEVELOPER_SDK_DIR /Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Developer/Tools    setenv DEVELOPER_USR_DIR /Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH "Color Oracle.app/Contents/Resources/English.lproj/Documentation"    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/ColorOracle.dst    setenv DWARF_DSYM_FILE_NAME "Color Oracle.app.dSYM"    setenv DWARF_DSYM_FOLDER_PATH "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release"    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv ENABLE_OPENMP_SUPPORT NO    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".svn .git CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) CVS .svn .git *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH "Color Oracle.app/Contents/Executables"    setenv EXECUTABLE_FOLDER_PATH "Color Oracle.app/Contents/MacOS"    setenv EXECUTABLE_NAME "Color Oracle"    setenv EXECUTABLE_PATH "Color Oracle.app/Contents/MacOS/Color Oracle"    setenv FILE_LIST "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects/LinkFileList"    setenv FIXED_FILES_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/FixedFiles"    setenv FRAMEWORKS_FOLDER_PATH "Color Oracle.app/Contents/Frameworks"    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME "Color Oracle.app"    setenv GCC3_VERSION 3.3    setenv GCC_AUTO_VECTORIZATION NO    setenv GCC_DYNAMIC_NO_PIC YES    setenv GCC_ENABLE_CPP_EXCEPTIONS YES    setenv GCC_ENABLE_CPP_RTTI YES    setenv GCC_ENABLE_FIX_AND_CONTINUE NO    setenv GCC_FAST_OBJC_DISPATCH NO    setenv GCC_FEEDBACK_DIRECTED_OPTIMIZATION Off    setenv GCC_GENERATE_DEBUGGING_SYMBOLS NO    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OPTIMIZATION_LEVEL s    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER test_Prefix.pch    setenv GCC_SYMBOLS_PRIVATE_EXTERN YES    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_UNROLL_LOOPS NO    setenv GCC_VERSION 4.0    setenv GCC_VERSION_IDENTIFIER __0    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 502    setenv GROUP jenny    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include\" "    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE Info.plist    setenv INFOPLIST_OUTPUT_FORMAT same-as-input    setenv INFOPLIST_PATH "Color Oracle.app/Contents/Info.plist"    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH "Color Oracle.app/Contents/Resources/English.lproj/InfoPlist.strings"    setenv INSTALL_DIR /tmp/ColorOracle.dst/Users/jenny/Applications    setenv INSTALL_GROUP jenny    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER jenny    setenv INSTALL_PATH /Users/jenny/Applications    setenv INSTALL_ROOT /tmp/ColorOracle.dst    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH "Color Oracle.app/Contents/Resources/Java"    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle-LinkMap-normal-i386.txt"    setenv LD_OPENMP_FLAGS -fopenmp    setenv LEX /Developer/usr/bin/lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/i386/Color Oracle.LinkFileList"    setenv LINK_FILE_LIST_normal_ppc "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal/ppc/Color Oracle.LinkFileList"    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH "Color Oracle.app/Contents/Resources/English.lproj"    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.4    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 10K549    setenv MAC_OS_X_VERSION_ACTUAL 1068    setenv MAC_OS_X_VERSION_MAJOR 1060    setenv MAC_OS_X_VERSION_MINOR 0608    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJECT_FILE_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects"    setenv OBJECT_FILE_DIR_normal "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Objects-normal"    setenv OBJROOT "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build"    setenv ONLY_ACTIVE_ARCH NO    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Developer/Headers /Developer/SDKs /Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH "Color Oracle.app/Contents/pbdevelopment.plist"    setenv PFE_FILE_C_DIALECTS "c objective-c"    setenv PKGINFO_FILE_PATH "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/PkgInfo"    setenv PKGINFO_PATH "Color Oracle.app/Contents/PkgInfo"    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Developer/usr    setenv PLATFORM_NAME macosx    setenv PLATFORM_PRODUCT_BUILD_VERSION 10M2518    setenv PLIST_FILE_OUTPUT_FORMAT same-as-input    setenv PLUGINS_FOLDER_PATH "Color Oracle.app/Contents/PlugIns"    setenv PREBINDING NO    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/PrefixHeaders"    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH "Color Oracle.app/Contents/PrivateHeaders"    setenv PRODUCT_NAME "Color Oracle"    setenv PRODUCT_SETTINGS_PATH "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/Info.plist"    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT ColorOracle    setenv PROJECT_DERIVED_FILE_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/DerivedSources"    setenv PROJECT_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv PROJECT_FILE_PATH "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/ColorOracle.xcodeproj"    setenv PROJECT_NAME ColorOracle    setenv PROJECT_TEMP_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build"    setenv PUBLIC_HEADERS_FOLDER_PATH "Color Oracle.app/Contents/Headers"    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/ResourceManagerResources"    setenv REZ_OBJECTS_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/ResourceManagerResources/Objects"    setenv REZ_SEARCH_PATHS "\"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH "Color Oracle.app/Contents/Resources/Scripts"    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Developer/SDKs/MacOSX10.6.sdk    setenv SDK_DIR /Developer/SDKs/MacOSX10.6.sdk    setenv SDK_NAME macosx10.6    setenv SDK_PRODUCT_BUILD_VERSION 10M2518    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/DerivedSources"    setenv SHARED_FRAMEWORKS_FOLDER_PATH "Color Oracle.app/Contents/SharedFrameworks"    setenv SHARED_PRECOMPS_DIR /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH "Color Oracle.app/Contents/SharedSupport"    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv SRCROOT "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv STANDARD_C_PLUS_PLUS_LIBRARY_TYPE dynamic    setenv STRINGS_FILE_OUTPUT_ENCODING UTF-16    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SYMBOL_REPOSITORY_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/SymbolRepositories"    setenv SYMROOT "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build"    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETNAME "Color Oracle"    setenv TARGET_BUILD_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release"    setenv TARGET_NAME "Color Oracle"    setenv TARGET_TEMP_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build"    setenv TEMP_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build"    setenv TEMP_FILES_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build"    setenv TEMP_FILE_DIR "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build"    setenv TEMP_ROOT "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build"    setenv UID 502    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH "Color Oracle.app/Contents/Resources"    setenv UNSTRIPPED_PRODUCT NO    setenv USER jenny    setenv USER_APPS_DIR /Users/jenny/Applications    setenv USER_LIBRARY_DIR /Users/jenny/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS "i386 ppc ppc64 ppc7400 ppc970 x86_64"    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH "Color Oracle.app/Contents/version.plist"    setenv VERSION_INFO_BUILDER jenny    setenv VERSION_INFO_FILE "Color Oracle_vers.c"    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:Color Oracle  PROJECT:ColorOracle-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME "Color Oracle.app"    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 10M2518    setenv XCODE_VERSION_ACTUAL 0400    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0400    setenv YACC /Developer/usr/bin/yacc    setenv ZERO_LINK NO    setenv _REAL_SDKROOT macosx    /bin/sh -c "\"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Script-BAE418810A08E9C9006994E7.sh\""0#
-
-CProcessInfoPlistFile "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Info.plist" Info.plist
-s373749263.461375
-e373749263.464375
-r1
-xProcessInfoPlistFile
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Info.plist
-xInfo.plist
-lSLF07#2@18"Process Info.plist373749263#373749263#0(0"0(0#0#84"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/Info.plist7810193322372264960#427"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    builtin-infoPlistUtility Info.plist -genpkginfo "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/PkgInfo" -expandbuildsettings -platform macosx -o "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Info.plist"0#
-
-CProcessPCH /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-aenyjllaapykrpdfwfgcsrdjjmld/test_Prefix.pch.gch test_Prefix.pch normal i386 c com.apple.compilers.gcc.4_0
-s373749270.896592
-e373749271.225187
-r1
-xProcessPCH
-x/var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-aenyjllaapykrpdfwfgcsrdjjmld/test_Prefix.pch.gch
-xtest_Prefix.pch
-xnormal
-xi386
-xc
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@26"Precompile test_Prefix.pch373749270#373749271#0(0"0(0#0#89"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/test_Prefix.pch8607844192#1267"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/test_Prefix.pch" -o /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-aenyjllaapykrpdfwfgcsrdjjmld/test_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bpbpubpqnbaapqbhosspwmufeeab/test_Prefix.pch.gch test_Prefix.pch normal ppc c com.apple.compilers.gcc.4_0
-s373749265.543131
-e373749265.672231
-r1
-xProcessPCH
-x/var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bpbpubpqnbaapqbhosspwmufeeab/test_Prefix.pch.gch
-xtest_Prefix.pch
-xnormal
-xppc
-xc
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@26"Precompile test_Prefix.pch373749265#373749265#0(0"0(0#0#89"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/test_Prefix.pch8607816768#1265"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x c-header -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/test_Prefix.pch" -o /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bpbpubpqnbaapqbhosspwmufeeab/test_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch.gch test_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_0
-s373749265.672374
-e373749271.043142
-r1
-xProcessPCH
-x/var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch.gch
-xtest_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@26"Precompile test_Prefix.pch373749265#373749271#0(0"0(0#0#89"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/test_Prefix.pch8607465664#1303"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/i386" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/test_Prefix.pch" -o /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-bzdnlnwlvdvbajaankodreyuayvk/test_Prefix.pch.gch0#
-
-CProcessPCH /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch.gch test_Prefix.pch normal ppc objective-c com.apple.compilers.gcc.4_0
-s373749265.541949
-e373749270.896409
-r1
-xProcessPCH
-x/var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch.gch
-xtest_Prefix.pch
-xnormal
-xppc
-xobjective-c
-xcom.apple.compilers.gcc.4_0
-lSLF07#2@26"Precompile test_Prefix.pch373749265#373749270#0(0"0(0#0#89"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/test_Prefix.pch8607995936#1301"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.0 -x objective-c-header -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -mdynamic-no-pic -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.6.sdk -fno-objc-direct-dispatch -fvisibility=hidden -mmacosx-version-min=10.4 "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/Color Oracle.hmap" "-F/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/include" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources/ppc" "-I/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/ColorOracle.build/Release/Color Oracle.build/DerivedSources" -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/test_Prefix.pch" -o /var/folders/Tv/TvqEPsA6HU8g955K3EjF9U+++TM/-Caches-/com.apple.Xcode.502/SharedPrecompiledHeaders/test_Prefix-feqpfpohqhlyofbklhmspmmaosdj/test_Prefix.pch.gch0#
-
-CStripNIB "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/English.lproj/MainMenu.nib"
-s373749263.464449
-e373749265.541690
-r1
-xStripNIB
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/English.lproj/MainMenu.nib
-lSLF07#2@35"StripNIB English.lproj/MainMenu.nib373749263#373749265#0(0"0(0#0#100"/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/English.lproj/MainMenu.nib8604209888#413"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /Developer/usr/bin/ibtool --strip "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app/Contents/Resources/English.lproj/MainMenu.nib" --output-format human-readable-text "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/English.lproj/MainMenu.nib"0#
-
-CTouch "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app"
-s373749275.366449
-e373749275.370460
-r1
-xTouch
-x/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app
-lSLF07#2@110"Touch /Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app373749275#373749275#0(0"0(0#0#0"8603040512#212"    cd "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4"    /usr/bin/touch -c "/Users/jenny/Documents/ColorBlindness/Color Oracle Mac/Color Oracle 1.1.4/build/Release/Color Oracle.app"0#
-

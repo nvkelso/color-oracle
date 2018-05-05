@@ -35,12 +35,14 @@
 	IBOutlet NSPopUpButton *deutanHotKeyMenu;
 	IBOutlet NSPopUpButton *protanHotKeyMenu;
 	IBOutlet NSPopUpButton *tritanHotKeyMenu;
-	IBOutlet NSButton *startAtLoginSwitch;
+    IBOutlet NSPopUpButton *grayscaleHotKeyMenu;
 	IBOutlet NSPanel *aboutBox;
 	IBOutlet NSButton *prefsDefaultsButton;
 	IBOutlet NSPanel *welcomeDialog;
-	
-	unsigned short * rgb2lin_red_LUT;
+    IBOutlet NSButton *loginButton;
+    IBOutlet NSButton *infoResizeButton;
+    
+    unsigned short * rgb2lin_red_LUT;
 	unsigned char * lin2rgb_LUT;
 	
 	unsigned char *screenShotBuffer;
@@ -48,10 +50,9 @@
 	unsigned screenShotBufferHeight;
 	
 	unsigned char *simulationBuffer;
-	unsigned simulationBufferWidth;
-	unsigned simulationBufferHeight;
+	NSUInteger simulationBufferWidth;
+	NSUInteger simulationBufferHeight;
 	
-	NSLock *loginItemsLock;
 	BOOL shouldQuit;
 }
 
@@ -69,7 +70,7 @@
 -(IBAction)protanKey:(id)sender;
 -(IBAction)deutanKey:(id)sender;
 -(IBAction)tritanKey:(id)sender;
--(IBAction)selStartAtLogin:(id)sender;
+-(IBAction)grayscaleKey:(id)sender;
 -(IBAction)showHomepage:(id)sender;
 -(IBAction)prefrencesDefaults:(id)sender;
 -(void)updateSimulation;
@@ -78,10 +79,7 @@
 -(NSWindow*)preferencesPanel;
 -(NSWindow*)aboutBox;
 -(IBAction)closeWelcomeDialog:(id)sender;
-/*
--(void)normal;
--(void)deutan;
--(void)protan;
--(void)tritan;
-*/
+- (IBAction)login:(id)sender;
+- (IBAction)resizeInfo:(id)sender;
+
 @end

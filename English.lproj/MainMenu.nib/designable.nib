@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1050" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -11,41 +13,57 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="206" userLabel="AppController" customClass="AppController">
             <connections>
                 <outlet property="aboutBox" destination="387" id="393"/>
                 <outlet property="deutanHotKeyMenu" destination="324" id="344"/>
+                <outlet property="grayscaleHotKeyMenu" destination="HkC-th-2we" id="C7n-kZ-uGG"/>
+                <outlet property="infoResizeButton" destination="uMJ-8z-dIt" id="vdw-qn-fah"/>
                 <outlet property="infoView" destination="243" id="246"/>
                 <outlet property="infoWindow" destination="241" id="245"/>
+                <outlet property="loginButton" destination="PMR-mg-iD1" id="818-tH-ceZ"/>
                 <outlet property="m_menu" destination="250" id="260"/>
                 <outlet property="preferencesPanel" destination="269" id="311"/>
                 <outlet property="prefsDefaultsButton" destination="404" id="406"/>
                 <outlet property="protanHotKeyMenu" destination="278" id="343"/>
-                <outlet property="startAtLoginSwitch" destination="374" id="375"/>
                 <outlet property="tritanHotKeyMenu" destination="352" id="372"/>
                 <outlet property="welcomeDialog" destination="409" id="419"/>
             </connections>
         </customObject>
-        <window title="RoundedView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="241" userLabel="InfoWindow" customClass="TransparentWindow">
+        <window title="RoundedView" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" deferred="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="241" userLabel="InfoWindow" customClass="TransparentWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="562" y="357" width="390" height="176"/>
+            <rect key="contentRect" x="562" y="357" width="390" height="203"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="167.465" height="50"/>
-            <view key="contentView" id="242">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="176"/>
+            <view key="contentView" misplaced="YES" id="242">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="203"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView id="243" customClass="RoundedView">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="176"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="203"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" id="uMJ-8z-dIt">
+                                <rect key="frame" x="187" y="4" width="17" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" imagePosition="only" alignment="center" controlSize="mini" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CAr-BO-X2p">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="resizeInfo:" target="206" id="Esq-qk-bPJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                     </customView>
                 </subviews>
             </view>
             <connections>
                 <outlet property="initialFirstResponder" destination="243" id="248"/>
             </connections>
+            <point key="canvasLocation" x="159" y="-123"/>
         </window>
         <menu title="Menu" id="250" userLabel="Menu">
             <items>
@@ -106,50 +124,50 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="Color Oracle Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="269" userLabel="PrefsPanel" customClass="NSPanel">
+        <window title="Color Oracle Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="269" userLabel="PrefsPanel" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="324" y="123" width="490" height="227"/>
+            <rect key="contentRect" x="324" y="123" width="490" height="256"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="270">
-                <rect key="frame" x="0.0" y="0.0" width="490" height="227"/>
+            <view key="contentView" misplaced="YES" id="270">
+                <rect key="frame" x="0.0" y="0.0" width="490" height="256"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <box title="Keyboard Shortcuts" id="273">
-                        <rect key="frame" x="170" y="44" width="303" height="163"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <view key="contentView">
-                            <rect key="frame" x="2" y="2" width="299" height="146"/>
+                    <box misplaced="YES" title="Keyboard Shortcuts" id="273">
+                        <rect key="frame" x="170" y="44" width="303" height="192"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                        <view key="contentView" id="GGv-6Y-6LE">
+                            <rect key="frame" x="2" y="2" width="299" height="175"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField verticalHuggingPriority="750" id="275">
-                                    <rect key="frame" x="13" y="87" width="176" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Protanopia (Rare):" id="423">
+                                    <rect key="frame" x="13" y="116" width="176" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Protanopia (rare):" id="423">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" id="277">
-                                    <rect key="frame" x="13" y="117" width="176" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Deuteranopia (Common):" id="424">
+                                    <rect key="frame" x="13" y="146" width="176" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Deuteranopia (common):" id="424">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" id="278">
-                                    <rect key="frame" x="191" y="81" width="77" height="26"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <popUpButtonCell key="cell" type="push" title="F6" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="280" id="425">
+                                    <rect key="frame" x="191" y="110" width="77" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="348" id="425">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
+                                        <font key="font" metaFont="menu"/>
                                         <menu key="menu" title="OtherViews" id="279">
                                             <items>
-                                                <menuItem title="None" id="348"/>
+                                                <menuItem title="None" state="on" id="348"/>
                                                 <menuItem isSeparatorItem="YES" id="347">
                                                     <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                                 </menuItem>
@@ -158,7 +176,7 @@
                                                 <menuItem title="F3" id="319"/>
                                                 <menuItem title="F4" id="320"/>
                                                 <menuItem title="F5" id="316"/>
-                                                <menuItem title="F6" state="on" id="280"/>
+                                                <menuItem title="F6" id="280"/>
                                                 <menuItem title="F7" id="282"/>
                                                 <menuItem title="F8" id="288"/>
                                                 <menuItem title="F9" id="295"/>
@@ -169,6 +187,9 @@
                                                 <menuItem title="F14" id="321"/>
                                                 <menuItem title="F15" id="322"/>
                                                 <menuItem title="F16" id="323"/>
+                                                <menuItem title="F17" id="67A-MW-DsY"/>
+                                                <menuItem title="F18" id="pLg-mP-JG8"/>
+                                                <menuItem title="F19" id="Nkn-0J-kYL"/>
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
@@ -177,11 +198,11 @@
                                     </connections>
                                 </popUpButton>
                                 <popUpButton verticalHuggingPriority="750" id="324">
-                                    <rect key="frame" x="191" y="111" width="77" height="26"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <popUpButtonCell key="cell" type="push" title="F5" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="336" id="426">
+                                    <rect key="frame" x="191" y="140" width="77" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="331" id="426">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
+                                        <font key="font" metaFont="menu"/>
                                         <menu key="menu" title="OtherViews" id="325">
                                             <items>
                                                 <menuItem title="None" id="331"/>
@@ -204,6 +225,9 @@
                                                 <menuItem title="F14" id="328"/>
                                                 <menuItem title="F15" id="339"/>
                                                 <menuItem title="F16" id="341"/>
+                                                <menuItem title="F17" id="97P-3E-E9A"/>
+                                                <menuItem title="F18" id="MuV-4A-tQy"/>
+                                                <menuItem title="F19" id="GYq-Fc-SdP"/>
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
@@ -212,20 +236,20 @@
                                     </connections>
                                 </popUpButton>
                                 <textField verticalHuggingPriority="750" id="351">
-                                    <rect key="frame" x="13" y="57" width="176" height="17"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Tritanopia (Very Rare):" id="427">
+                                    <rect key="frame" x="13" y="86" width="176" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Tritanopia (very rare):" id="427">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" id="352">
-                                    <rect key="frame" x="191" y="51" width="77" height="26"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                    <rect key="frame" x="191" y="80" width="77" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                     <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="369" id="428">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" metaFont="system"/>
+                                        <font key="font" metaFont="menu"/>
                                         <menu key="menu" title="OtherViews" id="353">
                                             <items>
                                                 <menuItem title="None" state="on" id="369"/>
@@ -248,6 +272,9 @@
                                                 <menuItem title="F14" id="366"/>
                                                 <menuItem title="F15" id="355"/>
                                                 <menuItem title="F16" id="361"/>
+                                                <menuItem title="F17" id="Csw-a2-By3"/>
+                                                <menuItem title="F18" id="0Si-i2-spP"/>
+                                                <menuItem title="F19" id="EtA-yd-D76"/>
                                             </items>
                                         </menu>
                                     </popUpButtonCell>
@@ -255,9 +282,56 @@
                                         <action selector="tritanKey:" target="206" id="373"/>
                                     </connections>
                                 </popUpButton>
-                                <button verticalHuggingPriority="750" id="404">
-                                    <rect key="frame" x="123" y="7" width="148" height="32"/>
-                                    <autoresizingMask key="autoresizingMask"/>
+                                <textField verticalHuggingPriority="750" misplaced="YES" id="y3j-Kw-Jf6">
+                                    <rect key="frame" x="13" y="57" width="176" height="17"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Grayscale:" id="FzO-dx-5bm">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="HkC-th-2we">
+                                    <rect key="frame" x="191" y="51" width="77" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                    <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="TIG-DJ-GSB" id="YIj-NX-gDo">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="menu"/>
+                                        <menu key="menu" title="OtherViews" id="Pxv-xV-XtD">
+                                            <items>
+                                                <menuItem title="None" id="TIG-DJ-GSB"/>
+                                                <menuItem isSeparatorItem="YES" id="9xA-vC-8jD">
+                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                                                </menuItem>
+                                                <menuItem title="F1" id="Bq7-rr-VBz"/>
+                                                <menuItem title="F2" id="y28-BW-KV2"/>
+                                                <menuItem title="F3" id="ifa-dK-DAA"/>
+                                                <menuItem title="F4" id="B9M-HY-Mrh"/>
+                                                <menuItem title="F5" id="dPh-Tp-Y7K"/>
+                                                <menuItem title="F6" state="on" id="kxv-aX-7JC"/>
+                                                <menuItem title="F7" id="wjT-8i-3x2"/>
+                                                <menuItem title="F8" id="Tj2-QN-rUt"/>
+                                                <menuItem title="F9" id="wxv-Tm-WKV"/>
+                                                <menuItem title="F10" id="EYb-tY-LEh"/>
+                                                <menuItem title="F11" id="cYC-dd-z4H"/>
+                                                <menuItem title="F12" id="CRY-Cr-hvh"/>
+                                                <menuItem title="F13" id="nU3-V0-kiN"/>
+                                                <menuItem title="F14" id="hBW-YT-O2m"/>
+                                                <menuItem title="F15" id="aKX-1b-CZH"/>
+                                                <menuItem title="F16" id="1gD-Kd-kZb"/>
+                                                <menuItem title="F17" id="CXN-fY-8gQ"/>
+                                                <menuItem title="F18" id="Kdo-NB-j76"/>
+                                                <menuItem title="F19" id="hgW-xs-GcK"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <connections>
+                                        <action selector="grayscaleKey:" target="206" id="aox-An-gU4"/>
+                                    </connections>
+                                </popUpButton>
+                                <button verticalHuggingPriority="750" misplaced="YES" id="404">
+                                    <rect key="frame" x="123" y="6" width="148" height="32"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                     <buttonCell key="cell" type="push" title="Reset to Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="429">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
@@ -268,79 +342,78 @@
                                 </button>
                             </subviews>
                         </view>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </box>
-                    <button id="374">
-                        <rect key="frame" x="181" y="18" width="189" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Start Color Oracle at Login" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="430">
+                    <imageView id="403">
+                        <rect key="frame" x="20" y="93" width="128" height="128"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="431"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="PMR-mg-iD1">
+                        <rect key="frame" x="180" y="17" width="278" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Add Color Oracle to the menu bar at login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3iy-Cl-bpG">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="selStartAtLogin:" target="206" id="376"/>
+                            <action selector="login:" target="206" id="47B-o8-B7t"/>
                         </connections>
                     </button>
-                    <imageView id="403">
-                        <rect key="frame" x="20" y="64" width="128" height="128"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="431"/>
-                    </imageView>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="206" id="408"/>
             </connections>
+            <point key="canvasLocation" x="118" y="735"/>
         </window>
-        <window title="About Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="387" userLabel="About" customClass="NSPanel">
+        <window title="About Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="387" userLabel="About" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="120" y="206" width="278" height="432"/>
+            <rect key="contentRect" x="120" y="206" width="278" height="435"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="388">
-                <rect key="frame" x="0.0" y="0.0" width="278" height="432"/>
+            <view key="contentView" misplaced="YES" id="388">
+                <rect key="frame" x="0.0" y="0.0" width="278" height="435"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView id="389">
-                        <rect key="frame" x="74" y="284" width="128" height="128"/>
+                    <imageView misplaced="YES" id="389">
+                        <rect key="frame" x="75" y="283" width="128" height="128"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="432"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" id="390">
-                        <rect key="frame" x="73" y="248" width="129" height="18"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="390">
+                        <rect key="frame" x="74" y="246" width="129" height="19"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Color Oracle" id="433">
-                            <font key="font" metaFont="systemBold" size="14"/>
+                            <font key="font" metaFont="systemBold" size="16"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="392">
-                        <rect key="frame" x="15" y="40" width="246" height="200"/>
+                    <textField verticalHuggingPriority="750" misplaced="YES" id="392">
+                        <rect key="frame" x="16" y="60" width="246" height="182"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" alignment="center" id="434">
                             <font key="font" metaFont="smallSystem"/>
-                            <string key="title">Version 1.1.4
+                            <string key="title">Version 1.3.0
 
 Programming by
-Bernhard Jenny,
-Oregon State University.
+Bernie Jenny, Monash University 
+and other contributors.
 
 Ideas, testing and icon by 
-Nathaniel Vaughn Kelso,
-Stamen Design, San Francisco.
+Nathaniel Vaughn Kelso
 
-© 2006-2012. All rights reserved.
+© B. Jenny &amp; N.V. Kelso, 2006–2018.
+CC-BY using the MIT License
 
 For updates and futher information see:</string>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button id="400">
-                        <rect key="frame" x="59" y="17" width="158" height="27"/>
+                    <button misplaced="YES" id="400">
+                        <rect key="frame" x="59" y="19" width="158" height="27"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="square" title="http://colororacle.org" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" inset="2" id="435">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -356,47 +429,41 @@ For updates and futher information see:</string>
                 <outlet property="delegate" destination="206" id="407"/>
                 <outlet property="initialFirstResponder" destination="389" id="402"/>
             </connections>
+            <point key="canvasLocation" x="-387" y="545.5"/>
         </window>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" wantsToBeColor="NO" visibleAtLaunch="NO" animationBehavior="default" id="409" userLabel="Welcome" customClass="NSPanel">
+        <window title="Welcome to Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="409" userLabel="Welcome" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="409" y="432" width="507" height="168"/>
+            <rect key="contentRect" x="409" y="432" width="550" height="168"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <value key="minSize" type="size" width="213" height="107"/>
-            <view key="contentView" id="410">
-                <rect key="frame" x="0.0" y="0.0" width="507" height="168"/>
+            <view key="contentView" misplaced="YES" id="410">
+                <rect key="frame" x="0.0" y="0.0" width="550" height="168"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="411">
-                        <rect key="frame" x="159" y="131" width="184" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Welcome to Color Oracle!" id="436">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <imageView id="412">
                         <rect key="frame" x="20" y="20" width="128" height="128"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="437"/>
                     </imageView>
-                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="414">
-                        <rect key="frame" x="156" y="45" width="331" height="78"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="414">
+                        <rect key="frame" x="171" y="43" width="359" height="105"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <clipView key="contentView" id="aTz-tK-jMv">
-                            <rect key="frame" x="0.0" y="0.0" width="331" height="78"/>
+                            <rect key="frame" x="0.0" y="0.0" width="359" height="105"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="415">
-                                    <rect key="frame" x="0.0" y="0.0" width="331" height="78"/>
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" smartInsertDelete="YES" id="415">
+                                    <rect key="frame" x="0.0" y="0.0" width="359" height="105"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="331" height="78"/>
+                                    <size key="minSize" width="359" height="105"/>
                                     <size key="maxSize" width="361" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
-                                            <string key="content">Use the Color Oracle icon installed in the menubar at the top-right of your screen to simulate deutan, protan or tritan color blind vision.</string>
+                                            <string key="content">Click the Color Oracle icon in the menu bar at the top-right of your screen to simulate color impaired vision.
+
+Open the preferences dialog to add Color Oracle to the menu bar each time you log in, and to set keyboard shortcuts.</string>
                                             <attributes>
                                                 <font key="NSFont" size="13" name="LucidaGrande"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
@@ -404,8 +471,6 @@ For updates and futher information see:</string>
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="331" height="78"/>
-                                    <size key="maxSize" width="361" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -419,9 +484,9 @@ For updates and futher information see:</string>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <button verticalHuggingPriority="750" id="417">
-                        <rect key="frame" x="406" y="11" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="417">
+                        <rect key="frame" x="454" y="13" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="438">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -438,6 +503,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="206" id="421"/>
             </connections>
+            <point key="canvasLocation" x="-370" y="109"/>
         </window>
     </objects>
     <resources>

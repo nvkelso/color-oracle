@@ -3,7 +3,6 @@
 //
 //  Created by Bernhard Jenny on 01.09.05.
 //  Copyright 2005 Bernhard Jenny. All rights reserved.
-//  OpenGL code from http://www.idevapps.com/forum/showthread.php?t=5240
 //  More info on screen capturing: http://www.cocoadev.com/index.pl?ScreenShotCode
 //  and http://www.idevapps.com/forum/archive/index.php/t-2895.html
 //  Window fading and tranparent rounded window from: http://mattgemmell.com/source/
@@ -47,24 +46,16 @@
  
  */
 
-#import <OpenGL/gl.h>
 #include "WindowLevel.h"
 #import "AppController.h"
 #import "ClickableImageView.h"
 #import "KeyableWindow.h"
 #include "InfoText.h"
-#include "LoginItemsAE.h"
+#import "LaunchAtLoginController.h"
+#import "PFMoveApplication.h"
 
 /* Web site for this project */
 #define HOMEPAGE @"http://colororacle.org/"
-
-/* Duration of the pause for the threat that is periodically checking for changes
-in the list of login items. In seconds.*/
-#define PREFS_THREAD_SLEEP 0.5
-
-/* The priority of the thread that is periodically checking for changes
-in the list of login items. Range of possible values [0..1]. */
-#define PREFS_THREAD_PRIORITY 0.05
 
 /* wait this long for the menu to hide */
 #define MILLISEC_TO_HIDE_MENU 50
@@ -77,7 +68,7 @@ enum simulation {normalView, protan, deutan, tritan, grayscale};
 
 // fading speed
 #define FADETIMEINTERVAL 0.05
-#define FADETRANSPARENCYSTEP 0.4
+#define FADETRANSPARENCYSTEP 0.3
 
 // Gamma for converting from screen rgb to linear rgb and back again.
 // The publication describing the algorithm uses a gamma value of 2.2, which
@@ -86,26 +77,26 @@ enum simulation {normalView, protan, deutan, tritan, grayscale};
 // hardly visible though.
 #define GAMMA 1.8
 
-enum {keyNone = -1, f1 = 0x7A, f2 = 0x78, f3 = 0x63, f4 = 0x76, f5 = 0x60, 
-	f6 = 0x61, f7 = 0x62, f8 = 0x64, f9 = 0x65, f10 = 0x6D, f11 = 0x67,
-	f12 = 0x6F, f13 = 0x69, f14 = 0x6B, f15 = 0x71, f16 = 0x6A};
+#define keyNone (-1)
 
-#define DEFAULTDEUTANHOTKEY f5
-#define DEFAULTPROTANHOTKEY f6
+#define DEFAULTDEUTANHOTKEY kVK_F5
+#define DEFAULTPROTANHOTKEY keyNone
 #define DEFAULTTRITANHOTKEY keyNone
+#define DEFAULTGRAYSCALEHOTKEY kVK_F6
 
-// A bunch of defines to handle hotkeys
+// handle hotkeys
 const UInt32 kHotKeyIdentifier='blnd';
 UInt32 gProtanHotKey;
 UInt32 gDeutanHotKey;
 UInt32 gTritanHotKey;
+UInt32 gGrayscHotKey;
+
 EventHotKeyRef gProtanHotKeyRef;
 EventHotKeyRef gDeutanHotKeyRef;
 EventHotKeyRef gTritanHotKeyRef;
-EventHotKeyID gProtanHotKeyID;
-EventHotKeyID gDeutanHotKeyID;
-EventHotKeyID gTritanHotKeyID;
-EventHandlerUPP gAppHotKeyFunction;
+EventHotKeyRef gGrayscaleHotKeyRef;
+//EventHotKeyRef gRightArrowHotKeyRef;
+//EventHotKeyRef gLeftArrowHotKeyRef;
 
 EventHotKeyID gWindowsCloseHotKeyID;
 const UInt32 kWindowsCloseHotKey = 0xd;	// 'w'
@@ -142,7 +133,13 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			else
 				[app selItemTritan:nil];
 			break;
-		case 4:	// close a window
+        case 4:
+            if (simulationID == grayscale)
+                [app selItemNormal:nil];
+            else
+                [app selItemGrayscale:nil];
+            break;
+        case 5: // close a window
 			keyWindow = [NSApp keyWindow];
 			if (keyWindow != nil) {
 				[keyWindow orderOut:nil];
@@ -165,43 +162,51 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 
 @implementation AppController
 
--(int)menu2fkey:(int)menuItemID
+-(int)menu2fkey:(NSInteger)menuItemID
 {
 	switch (menuItemID) {
 		case 0:
 			return keyNone;
 		case 2:
-			return f1;
+			return kVK_F1;
 		case 3:
-			return f2;
+			return kVK_F2;
 		case 4:
-			return f3;
+			return kVK_F3;
 		case 5:
-			return f4;
+			return kVK_F4;
 		case 6:
-			return f5;
+			return kVK_F5;
 		case 7:
-			return f6;
+			return kVK_F6;
 		case 8:
-			return f7;
+			return kVK_F7;
 		case 9:
-			return f8;
+			return kVK_F8;
 		case 10:
-			return f9;
+			return kVK_F9;
 		case 11:
-			return f10;
+			return kVK_F10;
 		case 12:
-			return f11;
+			return kVK_F11;
 		case 13:
-			return f12;
+			return kVK_F12;
 		case 14:
-			return f13;
+			return kVK_F13;
 		case 15:
-			return f14;
+			return kVK_F14;
 		case 16:
-			return f15;
+			return kVK_F15;
 		case 17:
-			return f16;
+			return kVK_F16;
+        case 18:
+            return kVK_F17;
+        case 19:
+            return kVK_F18;
+        case 20:
+            return kVK_F19;
+        case 21:
+            return kVK_F20;
 	}
 	return keyNone;
 }
@@ -211,38 +216,46 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	switch (fkey) {
 		case keyNone:
 			return 0;
-		case f1:
+		case kVK_F1:
 			return 2;
-		case f2:
+		case kVK_F2:
 			return 3;
-		case f3:
+		case kVK_F3:
 			return 4;
-		case f4:
+		case kVK_F4:
 			return 5;
-		case f5:
+		case kVK_F5:
 			return 6;
-		case f6:
+		case kVK_F6:
 			return 7;
-		case f7:
+		case kVK_F7:
 			return 8;
-		case f8:
+		case kVK_F8:
 			return 9;
-		case f9:
+		case kVK_F9:
 			return 10;
-		case f10:
+		case kVK_F10:
 			return 11;
-		case f11:
+		case kVK_F11:
 			return 12;
-		case f12:
+		case kVK_F12:
 			return 13;
-		case f13:
+		case kVK_F13:
 			return 14;
-		case f14:
+		case kVK_F14:
 			return 15;
-		case f15:
+		case kVK_F15:
 			return 16;
-		case f16:
+		case kVK_F16:
 			return 17;
+        case kVK_F17:
+            return 18;
+        case kVK_F18:
+            return 19;
+        case kVK_F19:
+            return 20;
+        case kVK_F20:
+            return 21;
 	}
 	return -1;
 }
@@ -250,38 +263,46 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 -(NSString*)fkey2String:(int)fkey
 {
 	switch (fkey) {
-		case f1:
+		case kVK_F1:
 			return @"F1";
-		case f2:
+		case kVK_F2:
 			return @"F2";
-		case f3:
+		case kVK_F3:
 			return @"F3";
-		case f4:
+		case kVK_F4:
 			return @"F4";
-		case f5:
+		case kVK_F5:
 			return @"F5";
-		case f6:
+		case kVK_F6:
 			return @"F6";
-		case f7:
+		case kVK_F7:
 			return @"F7";
-		case f8:
+		case kVK_F8:
 			return @"F8";
-		case f9:
+		case kVK_F9:
 			return @"F9";
-		case f10:
+		case kVK_F10:
 			return @"F10";
-		case f11:
+		case kVK_F11:
 			return @"F11";
-		case f12:
+		case kVK_F12:
 			return @"F12";
-		case f13:
+		case kVK_F13:
 			return @"F13";
-		case f14:
+		case kVK_F14:
 			return @"F14";
-		case f15:
+		case kVK_F15:
 			return @"F15";
-		case f16:
+		case kVK_F16:
 			return @"F16";
+        case kVK_F17:
+            return @"F17";
+        case kVK_F18:
+            return @"F18";
+        case kVK_F19:
+            return @"F19";
+        case kVK_F20:
+            return @"F20";
 	}
 	return @"-";
 }
@@ -289,38 +310,46 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 -(long)fkey2Unicode:(int)fkey
 {
 	switch (fkey) {
-		case f1:
+		case kVK_F1:
 			return NSF1FunctionKey;
-		case f2:
+		case kVK_F2:
 			return NSF2FunctionKey;
-		case f3:
+		case kVK_F3:
 			return NSF3FunctionKey;
-		case f4:
+		case kVK_F4:
 			return NSF4FunctionKey;
-		case f5:
+		case kVK_F5:
 			return NSF5FunctionKey;
-		case f6:
+		case kVK_F6:
 			return NSF6FunctionKey;
-		case f7:
+		case kVK_F7:
 			return NSF7FunctionKey;
-		case f8:
+		case kVK_F8:
 			return NSF8FunctionKey;
-		case f9:
+		case kVK_F9:
 			return NSF9FunctionKey;
-		case f10:
+		case kVK_F10:
 			return NSF10FunctionKey;
-		case f11:
+		case kVK_F11:
 			return NSF11FunctionKey;
-		case f12:
+		case kVK_F12:
 			return NSF12FunctionKey;
-		case f13:
+		case kVK_F13:
 			return NSF13FunctionKey;
-		case f14:
+		case kVK_F14:
 			return NSF14FunctionKey;
-		case f15:
+		case kVK_F15:
 			return NSF15FunctionKey;
-		case f16:
+		case kVK_F16:
 			return NSF16FunctionKey;
+        case kVK_F17:
+            return NSF17FunctionKey;
+        case kVK_F18:
+            return NSF18FunctionKey;
+        case kVK_F19:
+            return NSF19FunctionKey;
+        case kVK_F20:
+            return NSF20FunctionKey;
 	}
 	return keyNone;
 }
@@ -331,31 +360,41 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 {
 	EventTypeSpec eventType;
     
-    gAppHotKeyFunction = NewEventHandlerUPP(hotKeyHandler);
-    eventType.eventClass=kEventClassKeyboard;
-    eventType.eventKind=kEventHotKeyPressed;
-    InstallApplicationEventHandler(gAppHotKeyFunction,1,&eventType,self,NULL);
+    EventHandlerUPP appHotKeyFunction = NewEventHandlerUPP(hotKeyHandler);
+    eventType.eventClass = kEventClassKeyboard;
+    eventType.eventKind = kEventHotKeyPressed;
+    InstallApplicationEventHandler(appHotKeyFunction,1,&eventType,self,NULL);
     
-	// install first deutan, then protan, then tritan.
+	// install first deutan, then protan, then tritan, then grayscale.
 	// if two hot-keys use the same key, the first installed will be executed.
-	
+
 	if (gDeutanHotKey != keyNone) {
-		gDeutanHotKeyID.signature=kHotKeyIdentifier;
-		gDeutanHotKeyID.id=1;
-		RegisterEventHotKey(gDeutanHotKey, 0, gDeutanHotKeyID, GetApplicationEventTarget(), 0, &gDeutanHotKeyRef);
+        EventHotKeyID deutanHotKeyID;
+        deutanHotKeyID.signature = kHotKeyIdentifier;
+		deutanHotKeyID.id = 1;
+		RegisterEventHotKey(gDeutanHotKey, 0, deutanHotKeyID, GetApplicationEventTarget(), 0, &gDeutanHotKeyRef);
 	}
 	
 	if (gProtanHotKey != keyNone) {
-		gProtanHotKeyID.signature=kHotKeyIdentifier;
-		gProtanHotKeyID.id=2;
-    	RegisterEventHotKey(gProtanHotKey, 0, gProtanHotKeyID, GetApplicationEventTarget(), 0, &gProtanHotKeyRef);
+        EventHotKeyID protanHotKeyID;
+        protanHotKeyID.signature = kHotKeyIdentifier;
+		protanHotKeyID.id = 2;
+    	RegisterEventHotKey(gProtanHotKey, 0, protanHotKeyID, GetApplicationEventTarget(), 0, &gProtanHotKeyRef);
 	}
 	
 	if (gTritanHotKey != keyNone) {
-		gTritanHotKeyID.signature=kHotKeyIdentifier;
-		gTritanHotKeyID.id=3;
-		RegisterEventHotKey(gTritanHotKey, 0, gTritanHotKeyID, GetApplicationEventTarget(), 0, &gTritanHotKeyRef);
+        EventHotKeyID tritanHotKeyID;
+        tritanHotKeyID.signature = kHotKeyIdentifier;
+		tritanHotKeyID.id = 3;
+		RegisterEventHotKey(gTritanHotKey, 0, tritanHotKeyID, GetApplicationEventTarget(), 0, &gTritanHotKeyRef);
 	}
+    
+    if (gGrayscHotKey != keyNone) {
+        EventHotKeyID grayscaleHotKeyID;
+        grayscaleHotKeyID.signature = kHotKeyIdentifier;
+        grayscaleHotKeyID.id = 4;
+        RegisterEventHotKey(gGrayscHotKey, 0, grayscaleHotKeyID, GetApplicationEventTarget(), 0, &gGrayscaleHotKeyRef);
+    }
 }
 
 -(void)removeHotKeys
@@ -363,13 +402,15 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	UnregisterEventHotKey (gProtanHotKeyRef);
 	UnregisterEventHotKey (gDeutanHotKeyRef);
 	UnregisterEventHotKey (gTritanHotKeyRef);
+    UnregisterEventHotKey (gGrayscaleHotKeyRef);
 }
 
+// close about and preferences windows with command-w
 -(void)installCloseWindowsHotKey
 {
 	// add hot key handler for closing windows (preferences panel and about box)
     gWindowsCloseHotKeyID.signature=kHotKeyIdentifier;
-    gWindowsCloseHotKeyID.id=4;
+    gWindowsCloseHotKeyID.id = 5;
     RegisterEventHotKey(kWindowsCloseHotKey, cmdKey, gWindowsCloseHotKeyID, GetApplicationEventTarget(), 0, &gWindowsCloseHotKeyRef);
 }
 
@@ -382,153 +423,11 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 {
 	if (gProtanHotKey == DEFAULTPROTANHOTKEY
 		&& gDeutanHotKey == DEFAULTDEUTANHOTKEY
-		&& gTritanHotKey == DEFAULTTRITANHOTKEY)
+		&& gTritanHotKey == DEFAULTTRITANHOTKEY
+        && gGrayscHotKey == DEFAULTGRAYSCALEHOTKEY)
 		[prefsDefaultsButton setEnabled:NO];
 	else
 		[prefsDefaultsButton setEnabled:YES];
-}
-
--(OSStatus) appFSRef:(FSRef*) fsRefPtr
-{
-	// get path to application bundle
-	NSBundle * bundle = [NSBundle mainBundle];
-	const char * cpath = [[bundle bundlePath] fileSystemRepresentation];
-	// The returned C string will be automatically freed just as a returned object
-	// would be released;
-	
-	// convert path to FSRef
-	Boolean isDirectory;
-	return FSPathMakeRef((const UInt8 *)cpath, fsRefPtr, &isDirectory);
-}
-
--(int) loginItemIndex
-{
-	FSRef		appFSRef;
-	
-	OSStatus err = [self appFSRef: &appFSRef];
-	if (err != noErr)
-		return - 1;
-	
-	return findLoginItemIndex(&appFSRef);
-}
-
-// a thread that adds this application to the login items
--(void) addToLoginItemsThread:(id)owner
-{
-	// a thread has to allocate its own NSAutoreleasePool
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	// grab loginItemsLock, so that the thread that is periodically 
-	// updating the "Start Color Oracle at Login" switch will not interfere. 
-	[loginItemsLock lock];
-	
-	// get the FSRef of this application
-	FSRef fsRef;
-	OSStatus err = [self appFSRef: &fsRef];
-	if (err != noErr)
-		return;
-	
-	// register FSRef as login item
-	err = LIAEAddRefAtEnd(&fsRef, FALSE);
-	
-	// release the lock again
-	[loginItemsLock unlock];
-	
-	// release the NSAutoreleasePool
-	[pool release];
-}
-
-// a thread that removes this application from the login items
--(void) removeFromLoginItemsThread:(id)owner
-{
-	// a thread has to allocate its own NSAutoreleasePool
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	// grab loginItemsLock, so that the thread that is periodically 
-	// updating the "Start Color Oracle at Login" switch will not interfere.
-	[loginItemsLock lock];
-	
-	// get the position of this application in the list of login items
-	int itemIndex = [self loginItemIndex];
-	
-	// remove this app, if it is a registered login item
-	if (itemIndex >= 0)
-		LIAERemove(itemIndex);
-		
-	// release the lock again
-	[loginItemsLock unlock];
-	
-	// release the NSAutoreleasePool
-	[pool release];
-}
-
-// a thread that periodically checks if this app is a registered login item
-// and updates the "Start Color Oracle at Login" switch accordingly.
-// This thread is running during the whole life of this app.
--(void)configurePrefsThread:(id) ownwer
-{
-	// a thread has to allocate its own NSAutoreleasePool
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	// assign very low priority to this thread
-	[NSThread setThreadPriority: PREFS_THREAD_PRIORITY];
-	
-	// periodically check Login Items and configure the "Start Color Oracle at Login" 
-	// switch accordingly
-	while (true) {
-		// only work if lock is not busy. This is the case when 
-		// another thread adds or removes this app as a login item. 
-		if ([loginItemsLock tryLock]) {
-			// get the position of this app in the list of login items
-			int loginItemIndex = [self loginItemIndex];
-			
-			// update the "Start Color Oracle at Login" switch
-			if (loginItemIndex >= 0)
-				[startAtLoginSwitch setState:NSOnState];
-			else 
-				[startAtLoginSwitch setState:NSOffState];
-			
-			// release the lock
-			[loginItemsLock unlock];
-			
-			// enable the "Start Color Oracle at Login" switch, 
-			// which is disabled before the preferences panel is made visible.
-			[startAtLoginSwitch setEnabled:YES];
-		}
-				
-		// take a nap
-		[NSThread sleepUntilDate: [NSDate dateWithTimeIntervalSinceNow:PREFS_THREAD_SLEEP]];
-		
-		// test if the preferences panel is still visible (after taking a nap).
-		// if not, exit this loop and this thread.
-		if ([preferencesPanel isVisible] == NO || shouldQuit == YES) {
-			break;
-		}
-	}
-	
-	// release the NSAutoreleasePool
-	[pool release];
-}
-
--(NSOpenGLContext*)createOpenGLContext
-{
-	NSOpenGLPixelFormatAttribute attributes[] =
-    {
-        NSOpenGLPFAFullScreen,
-        NSOpenGLPFASingleRenderer,
-        NSOpenGLPFANoRecovery,
-        NSOpenGLPFAScreenMask,
-        CGDisplayIDToOpenGLDisplayMask(CGMainDisplayID()),
-        0
-    };
-	
-    NSOpenGLPixelFormat *pixelFormat = [[[NSOpenGLPixelFormat alloc]
-        initWithAttributes:attributes] autorelease];
-    if (pixelFormat == nil)
-        return NULL;
-    
-    return [[NSOpenGLContext alloc] initWithFormat:pixelFormat
-											   shareContext:nil];
 }
 
 -(void)initLUTs
@@ -599,12 +498,11 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		screenShotBuffer = nil;
 		simulationBuffer = nil;
 		
-		gDeutanHotKey = f5;
-		gProtanHotKey = f6;
-		gTritanHotKey = keyNone;
-		
-		loginItemsLock = [[NSLock alloc] init];
-	}
+		gDeutanHotKey = DEFAULTDEUTANHOTKEY;
+		gProtanHotKey = DEFAULTPROTANHOTKEY;
+		gTritanHotKey = DEFAULTTRITANHOTKEY;
+        gGrayscHotKey = DEFAULTGRAYSCALEHOTKEY;
+    }
 	return self;
 }
 
@@ -614,6 +512,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	[preferencesPanel center];
 	[self initWindows];
 	[self initMenu];
+    
+    // button to resize info window needs transparent background outside the button area
+    [infoResizeButton setWantsLayer:YES];
+    infoResizeButton.layer.backgroundColor = [NSColor clearColor].CGColor;
 }
 
 - (void)dealloc
@@ -636,18 +538,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     [super dealloc];
 }
 
--(IBAction)selStartAtLogin:(id)sender
-{
-	if ([startAtLoginSwitch state] == NSOnState)
-		[NSThread detachNewThreadSelector:@selector(addToLoginItemsThread:)
-								 toTarget:self
-							   withObject:self];
-	else
-		[NSThread detachNewThreadSelector:@selector(removeFromLoginItemsThread:)
-								 toTarget:self
-							   withObject:self];
-}
-
 -(void)computeTritan
 {
 	/* Code for tritan simulation from GIMP 2.2
@@ -660,9 +550,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	* protans & deutans) and the LMS values for lambda = 575 & 660 nm
 	* (for tritans)
 	*/
-	
-	// OpenGL screen capture has to be vertically inverted, Quartz capture not.
-	int invertImage = CGDisplayCreateImage == NULL;
 	
 	// RGBA (OpenGL capture) or ARGB (Quartz capture)?
 	int alphaFirst = [screenshot bitmapFormat] & NSAlphaFirstBitmapFormat;
@@ -682,14 +569,12 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	
 	int r, c;
 	
-	int rows = [screenshot pixelsHigh];
-	int cols = [screenshot pixelsWide];
-	int bytesPerRow = [screenshot bytesPerRow];
+	NSInteger rows = [screenshot pixelsHigh];
+	NSInteger cols = [screenshot pixelsWide];
+	NSInteger bytesPerRow = [screenshot bytesPerRow];
 	unsigned char *srcBitmapData = [screenshot bitmapData];
 	if (srcBitmapData == nil)
 		return;
-	if (invertImage)
-		srcBitmapData += (rows - 1) * bytesPerRow;
 	
 	// recycle the buffer if it has been allocated before and if it's 
 	// the right size.
@@ -702,18 +587,18 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		simulationBufferHeight = rows;
 	}
 	
-	long *dstBitmapData = (long*)simulationBuffer;
+	u_int32_t *dstBitmapData = (u_int32_t*)simulationBuffer;
 	
-	long prevSrc = 0;
-	long color = 0x000000ff;
+	u_int32_t prevSrc = 0;
+	u_int32_t color = 0x000000ff;
 	
 	for (r = 0; r < rows; r++) {
 		const unsigned char * srcPtr = srcBitmapData;
 		for (c = 0; c < cols; c++) {
-			if (*((long*)srcPtr) == prevSrc) {
+			if (*((u_int32_t*)srcPtr) == prevSrc) {
 				*(dstBitmapData++) = color;
 			} else {
-				prevSrc = *((long*)srcPtr);
+				prevSrc = *((u_int32_t*)srcPtr);
 				
 				// get linear rgb values in the range 0..2^15-1
 				double red = rgb2lin_red_LUT[srcPtr[0 + alphaFirst]] / 32767.;
@@ -738,11 +623,11 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				/* Convert back to RGB (cross product with transform matrix) */
 				redOld   = red;
 				greenOld = green;
-				long ired   = (int)(255. * (redOld * 30.830854 - 
+				int32_t ired   = (int)(255. * (redOld * 30.830854 -
 											greenOld * 29.832659 + blue * 1.610474));
-				long igreen = (int)(255. * (-redOld * 6.481468 + 
+				int32_t igreen = (int)(255. * (-redOld * 6.481468 +
 											greenOld * 17.715578 - blue * 2.532642));
-				long iblue  = (int)(255. * (-redOld * 0.375690 - 
+				int32_t iblue  = (int)(255. * (-redOld * 0.375690 -
 											greenOld * 1.199062 + blue * 14.273846));
 				
 				// convert reduced linear rgb to gamma corrected rgb
@@ -778,10 +663,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			
 			srcPtr+=4;
 		}
-		if (invertImage)
-			srcBitmapData-=bytesPerRow;
-		else
-			srcBitmapData+=bytesPerRow;
+		srcBitmapData+=bytesPerRow;
 	}
 }	
 
@@ -789,20 +671,15 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 {
 	int r, c;
 	
-	// OpenGL screen capture has to be vertically inverted, Quartz capture not.
-	int invertImage = CGDisplayCreateImage == NULL;
-	
 	// RGBA (OpenGL capture) or ARGB (Quartz capture)?
 	int alphaFirst = [screenshot bitmapFormat] & NSAlphaFirstBitmapFormat;
 	
-	int rows = [screenshot pixelsHigh];
-	int cols = [screenshot pixelsWide];
-	int bytesPerRow = [screenshot bytesPerRow];
+	NSInteger rows = [screenshot pixelsHigh];
+	NSInteger cols = [screenshot pixelsWide];
+	NSInteger bytesPerRow = [screenshot bytesPerRow];
 	unsigned char *srcBitmapData = [screenshot bitmapData];
 	if (srcBitmapData == nil)
 		return;
-	if (invertImage)
-		srcBitmapData += (rows - 1) * bytesPerRow;
 	
 	// recycle the buffer if it has been allocated before and if it's 
 	// the right size.
@@ -815,20 +692,20 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		simulationBufferHeight = rows;
 	}
 	
-	long *dstBitmapData = (long*)simulationBuffer;
+	u_int32_t *dstBitmapData = (u_int32_t*)simulationBuffer;
 	
-	long prevSrc = 0;
-	long color = 0x000000ff;
+	u_int32_t prevSrc = 0;
+	u_int32_t color = 0x000000ff;
 	
 	for (r = 0; r < rows; r++) {
 		const unsigned char * srcPtr = srcBitmapData;
 		for (c = 0; c < cols; c++) {
 			// this version has been optimized for speed.
 			// see at the begining of this file for a more readable version.
-			if (*((long*)srcPtr) == prevSrc) {
+			if (*((u_int32_t*)srcPtr) == prevSrc) {
 				*(dstBitmapData++) = color; // re-use cached previous value
 			} else {
-				prevSrc = *((long*)srcPtr);
+				prevSrc = *((u_int32_t*)srcPtr);
 				
 				// get linear rgb values in the range 0..2^15-1
 				const long r_lin = rgb2lin_red_LUT[srcPtr[0 + alphaFirst]];
@@ -855,8 +732,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 					b_blind = 255;
 				
 				// convert reduced linear rgb to gamma corrected rgb
-				const long red = lin2rgb_LUT[r_blind];
-				const long blue = lin2rgb_LUT[b_blind];
+				const u_int32_t red = lin2rgb_LUT[r_blind];
+				const u_int32_t blue = lin2rgb_LUT[b_blind];
 				
 #ifdef __BIG_ENDIAN__				
 				color = red << 24 | red << 16 | blue << 8 | 0x000000ff;
@@ -869,10 +746,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			
 			srcPtr+=4;
 		}
-		if (invertImage)
-			srcBitmapData-=bytesPerRow;
-		else
-			srcBitmapData+=bytesPerRow;
+		srcBitmapData+=bytesPerRow;
 	}
 }
 
@@ -882,9 +756,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	 Based on https://en.wikipedia.org/wiki/Grayscale#Colorimetric_.28luminance-preserving.29_conversion_to_grayscale
 	 Tim van Werkhoven 20140318
 	 */
-	
-	// OpenGL screen capture has to be vertically inverted, Quartz capture not.
-	int invertImage = CGDisplayCreateImage == NULL;
 	
 	// RGBA (OpenGL capture) or ARGB (Quartz capture)?
 	int alphaFirst = [screenshot bitmapFormat] & NSAlphaFirstBitmapFormat;
@@ -902,16 +773,14 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 //	double b2 = anchor_e2 * 0.1284  - anchor_e0 * 0.3636;
 //	double c2 = anchor_e0 * 0.2237  - anchor_e1 * 0.1284;
 	
-	int r, c;
+	NSInteger r, c;
 	
-	int rows = [screenshot pixelsHigh];
-	int cols = [screenshot pixelsWide];
-	int bytesPerRow = [screenshot bytesPerRow];
+	NSInteger rows = [screenshot pixelsHigh];
+	NSInteger cols = [screenshot pixelsWide];
+	NSInteger bytesPerRow = [screenshot bytesPerRow];
 	unsigned char *srcBitmapData = [screenshot bitmapData];
 	if (srcBitmapData == nil)
 		return;
-	if (invertImage)
-		srcBitmapData += (rows - 1) * bytesPerRow;
 	
 	// recycle the buffer if it has been allocated before and if it's
 	// the right size.
@@ -924,18 +793,18 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		simulationBufferHeight = rows;
 	}
 	
-	long *dstBitmapData = (long*)simulationBuffer;
+	u_int32_t *dstBitmapData = (u_int32_t*)simulationBuffer;
 	
-	long prevSrc = 0;
-	long color = 0x000000ff;
+	u_int32_t prevSrc = 0;
+	u_int32_t color = 0x000000ff;
 	
 	for (r = 0; r < rows; r++) {
 		const unsigned char * srcPtr = srcBitmapData;
 		for (c = 0; c < cols; c++) {
-			if (*((long*)srcPtr) == prevSrc) {
+			if (*((u_int32_t*)srcPtr) == prevSrc) {
 				*(dstBitmapData++) = color;
 			} else {
-				prevSrc = *((long*)srcPtr);
+				prevSrc = *((u_int32_t*)srcPtr);
 				
 				// get linear rgb values in the range 0..2^15-1
 				double red = rgb2lin_red_LUT[srcPtr[0 + alphaFirst]] / 32767.;
@@ -970,9 +839,9 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 //					luminance = 1.055*pow(luminance, 1.0/2.4) - 0.055;
 
 				// Convert to RGB [0, 255]
-				long ired   = (int)(255. * luminance);
-				long igreen = (int)(255. * luminance);
-				long iblue  = (int)(255. * luminance);
+				int32_t ired   = (int)(255. * luminance);
+				int32_t igreen = (int)(255. * luminance);
+				int32_t iblue  = (int)(255. * luminance);
 				
 				// convert reduced linear rgb to gamma corrected rgb
 				if (ired < 0)
@@ -1007,10 +876,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			
 			srcPtr+=4;
 		}
-		if (invertImage)
-			srcBitmapData-=bytesPerRow;
-		else
-			srcBitmapData+=bytesPerRow;
+		srcBitmapData+=bytesPerRow;
 	}
 }	
 
@@ -1019,8 +885,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 {
 	if (screenshot == nil)
 		return;
-	
-	switch (simulationID) {
+    switch (simulationID) {
 		case protan:
 			[self compute: 3683 k2: 29084 k3: 131];
 			break;
@@ -1028,15 +893,15 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			[self compute: 9591 k2: 23173 k3: -730];
 			break;
 		case tritan:
-			[self computeGrayscale];
+			[self computeTritan];
 			break;
 		case grayscale:
 			[self computeGrayscale];
 			break;
 	}
 	
-	int rows = [screenshot pixelsHigh];
-	int cols = [screenshot pixelsWide];
+	NSInteger rows = [screenshot pixelsHigh];
+	NSInteger cols = [screenshot pixelsWide];
 	
 	[simulation release];
 	simulation = 
@@ -1059,7 +924,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	// create an NSImage and display it in the NSImageView
 	NSImage *image = [[[NSImage alloc] init] autorelease];
 	[image addRepresentation:simulation];
-	[image setFlipped:NO];
+	//[image setFlipped:NO];
 	[imageView setImage: image];
 }
 
@@ -1084,37 +949,48 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			break;
 	}
 	
-	NSString *deutanKeyStr = [self fkey2String:gDeutanHotKey];
-	NSString *protanKeyStr = [self fkey2String:gProtanHotKey];
-	NSString *tritanKeyStr = [self fkey2String:gTritanHotKey];
-	
-	NSString *deutanStr = @"";
-	if (gDeutanHotKey != keyNone) {
-		deutanStr = [NSString stringWithFormat: INFOMESSAGEPRESS_DEUTAN, deutanKeyStr];
-		if (gProtanHotKey != keyNone && gTritanHotKey != keyNone)
-			deutanStr = [deutanStr stringByAppendingString: @","];
-		else if (gProtanHotKey != keyNone || gTritanHotKey != keyNone)
-			deutanStr = [deutanStr stringByAppendingString: @" and"];
-	}
-	
-	NSString *protanStr = @"";
-	if (gProtanHotKey != keyNone) {
-		protanStr = [NSString stringWithFormat: INFOMESSAGEPRESS_PROTAN, protanKeyStr];
-		if (gTritanHotKey != keyNone)
-			protanStr = [protanStr stringByAppendingString: @" and"];
-	}
-	
-	NSString *tritanStr = gTritanHotKey == keyNone ? @"" :
-		[NSString stringWithFormat: INFOMESSAGEPRESS_TRITAN, tritanKeyStr];
-	
-	NSString *fKeyStr = @"";
-	if (gDeutanHotKey != keyNone || gProtanHotKey != keyNone || gTritanHotKey != keyNone)
-		fKeyStr = [NSString stringWithFormat: INFOMESSAGEPRESS,
-			deutanStr, protanStr, tritanStr];
-	
-	
-	NSString *infoStr = [NSString stringWithFormat: INFOMESSAGE, fKeyStr];
-	[infoView setInfo2:infoStr];
+    // build info text consisting of information about (1) how to exit simulation
+    // (2) drag info panel, and (3) hotkey mapping.
+    NSMutableString *infoString = [NSMutableString string];
+    [infoString appendString:INFO_MESSAGE_PART1];
+    
+    // add info about hotkey mapping
+    BOOL hasHotKey = gDeutanHotKey != keyNone || gProtanHotKey != keyNone || gTritanHotKey != keyNone || gGrayscHotKey != keyNone;
+    if (hasHotKey) {
+        [infoString appendString: @","];
+    }
+    if (gDeutanHotKey != keyNone) {
+        NSString *deutanKeyStr = [self fkey2String:gDeutanHotKey];
+        [infoString appendString:[NSString stringWithFormat: INFOMESSAGEPRESS_DEUTAN, deutanKeyStr]];
+        if (gProtanHotKey != keyNone || gTritanHotKey != keyNone || gGrayscHotKey != keyNone) {
+            [infoString appendString: @","];
+        }
+    }
+    if (gProtanHotKey != keyNone) {
+        NSString *protanKeyStr = [self fkey2String:gProtanHotKey];
+        [infoString appendString:[NSString stringWithFormat: INFOMESSAGEPRESS_PROTAN, protanKeyStr]];
+        if (gTritanHotKey != keyNone || gGrayscHotKey != keyNone) {
+            [infoString appendString: @","];
+        }
+    }
+    if (gTritanHotKey != keyNone) {
+        NSString *tritanKeyStr = [self fkey2String:gTritanHotKey];
+        [infoString appendString:[NSString stringWithFormat: INFOMESSAGEPRESS_TRITAN, tritanKeyStr]];
+        if (gGrayscHotKey != keyNone) {
+            [infoString appendString: @","];
+        }
+    }
+    if (gGrayscHotKey != keyNone) {
+        NSString *grayscKeyStr = [self fkey2String:gGrayscHotKey];
+        [infoString appendString:[NSString stringWithFormat: INFOMESSAGEPRESS_GRAYSC, grayscKeyStr]];
+    }
+    if (hasHotKey) {
+        [infoString appendString: @" vision"];
+    }
+    [infoString appendString: @".\n"];
+    [infoString appendString: INFO_MESSAGE_PART2];
+    
+    [infoView setInfo2:infoString];
 }
 
 -(int)simulationID
@@ -1173,6 +1049,21 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		[menuItem setState: simulationID == tritan ? NSOnState : NSOffState];
 		return YES;
 	}
+    
+    if ([menuItem action] == @selector(selItemGrayscale:)) {
+        if (gGrayscHotKey != keyNone)
+        {
+            unichar ch[1];
+            ch[0] = [self fkey2Unicode: gGrayscHotKey];
+            [menuItem setKeyEquivalentModifierMask:NSFunctionKeyMask];
+            [menuItem setKeyEquivalent:[NSString stringWithCharacters:ch length:1]];
+        } else {
+            [menuItem setKeyEquivalent:@""];
+        }
+        
+        [menuItem setState: simulationID == grayscale ? NSOnState : NSOffState];
+        return YES;
+    }
 	
 	if ([menuItem action] == @selector(selItemSave:)) {
 		return simulationID != normalView;
@@ -1292,6 +1183,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		[savePanel setMessage:@"Save the screen with simulated deutan color vision to a TIFF file."];
 	else if (simulationID == tritan)
 		[savePanel setMessage:@"Save the screen with simulated tritan color vision to a TIFF file."];
+    else if (simulationID == grayscale)
+        [savePanel setMessage:@"Save the screen in grayscale to a TIFF file."];
 	
 	// setNameFieldStringValue available with OS X 10.6 or newer
 	if ([savePanel respondsToSelector:@selector(setNameFieldStringValue:)]) {
@@ -1301,27 +1194,26 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 			[savePanel setNameFieldStringValue: @"Deuteranopia.tif"];
 		else if (simulationID == tritan)
 			[savePanel setNameFieldStringValue: @"Tritanopia.tif"];
+        else if (simulationID == grayscale)
+            [savePanel setNameFieldStringValue: @"Grayscale.tif"];
 	}
 	
 	simulationID = normal;
 	
 	[savePanel setLevel:WINDOWLEVEL];
 	[savePanel orderFront:self];
-	[savePanel runModal];
-	
-	// get path to new file
-	NSURL *url = [savePanel URL];
+	NSInteger result = [savePanel runModal];
 	
 	// hides this app when no dialog is visible
 	[self finishFadeOut];
 	
-	// test for canceling by user
-	if ( url == NULL )
-		return;
-	
-	// write to tiff file
-	NSData *tiff = [simulation TIFFRepresentation];
-	[tiff writeToURL:url atomically:YES];
+    if (result == NSOKButton) {
+        // get path to new file
+        NSURL *url = [savePanel URL];
+        // write to tiff file
+        NSData *tiff = [simulation TIFFRepresentation];
+        [tiff writeToURL:url atomically:YES];
+    }
 }
 
 // based on http://mattgemmell.com/source/
@@ -1408,13 +1300,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[self fadeOutWindow];
 }
 
--(void)takeScreenshotAndUpdateSimulation
-{
-	// take a screenshot
-	[self takeScreenShot];
-	[self updateSimulation];
-}
-
 -(void) sleep:(float) millisec
 {
 	struct timespec rqtp = { 0 };
@@ -1430,82 +1315,36 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[self sleep: MILLISEC_TO_HIDE_MENU];
 }
 
-/* sender == self indicates that this method is being called from an AppleScript */
+-(void)selItem: (int) simID withIcon:(NSString*) iconName{
+    // close welcome dialog, should it still be open
+    [self closeWelcomeDialog:self];
+    simulationID = simID;
+    [statusItem setImage:[NSImage imageNamed:iconName]];
+    [self hideMenu];
+    [mainWindow setLevel: WINDOWLEVEL];
+    [self takeScreenShot];
+    [self updateSimulation];
+}
+
 -(IBAction)selItemProtan:(id)sender
 {
-	// close welcome dialog, should it still be open
-	[self closeWelcomeDialog:self];
-	simulationID = protan;
-	[statusItem setImage:[NSImage imageNamed:@"menuIconProtan"]];
-	
-	// hide the menu if this method was called from the menu
-	if (sender != nil && sender != self)
-		[self hideMenu];
-		
-	// set the level of the main window to normal level if this method is called 
-	// from an AppleScript, set it to a level covering the dock otherwise.
-	[mainWindow setLevel:sender == self ? kCGNormalWindowLevel : WINDOWLEVEL];
-	
-	[self takeScreenshotAndUpdateSimulation];
+    [self selItem: protan withIcon: @"menuIconProtan"];
 }
 
-/* sender == self indicates that this method is being called from an AppleScript */
 -(IBAction)selItemDeutan:(id)sender
 {
-	// close welcome dialog, should it still be open
-	[self closeWelcomeDialog:self];
-	simulationID = deutan;
-	[statusItem setImage:[NSImage imageNamed:@"menuIconDeutan"]];
-	
-	// hide the menu if this method was called from the menu
-	if (sender != nil && sender != self)
-		[self hideMenu];
-	
-	// set the level of the main window to normal level if this method is called 
-	// from an AppleScript, set it to a level covering the dock otherwise.
-	[mainWindow setLevel:sender == self ? kCGNormalWindowLevel : WINDOWLEVEL];
-	
-	[self takeScreenshotAndUpdateSimulation];
+    [self selItem: deutan withIcon: @"menuIconDeutan"];
 }
 
-/* sender == self indicates that this method is being called from an AppleScript */
 -(IBAction)selItemTritan:(id)sender
 {
-	// close welcome dialog, should it still be open
-	[self closeWelcomeDialog:self];
-	simulationID = tritan;
-	[statusItem setImage:[NSImage imageNamed:@"menuIconTritan"]];
-	
-	// hide the menu if this method was called from the menu
-	if (sender != nil && sender != self)
-		[self hideMenu];
-	
-	// set the level of the main window to normal level if this method is called 
-	// from an AppleScript, set it to a level covering the dock otherwise.
-	[mainWindow setLevel:sender == self ? kCGNormalWindowLevel : WINDOWLEVEL];
-	
-	[self takeScreenshotAndUpdateSimulation];
+	[self selItem: tritan withIcon: @"menuIconTritan"];
 }
 
-/* sender == self indicates that this method is being called from an AppleScript */
 -(IBAction)selItemGrayscale:(id)sender
 {
-	// close welcome dialog, should it still be open
-	[self closeWelcomeDialog:self];
-	simulationID = grayscale;
-	//[statusItem setImage:[NSImage imageNamed:@"menuIconTritan"]]; Ignore this for now
-	
-	// hide the menu if this method was called from the menu
-	if (sender != nil && sender != self)
-		[self hideMenu];
-	
-	// set the level of the main window to normal level if this method is called
-	// from an AppleScript, set it to a level covering the dock otherwise.
-	[mainWindow setLevel:sender == self ? kCGNormalWindowLevel : WINDOWLEVEL];
-	
-	[self takeScreenshotAndUpdateSimulation];
+	[self selItem: grayscale withIcon: @"menuIconGrayscale"];
 }
-
 
 -(IBAction)selItemSave:(id)sender
 {
@@ -1527,22 +1366,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 											userInfo:nil repeats:YES] retain];
 }
 
-/*
- -(IBAction)selItemHelp:(id)sender
- {
-	// close welcome dialog, should it still be open
-	 [self closeWelcomeDialog:self];
-	 simulationID = normalView;
-	 [self fadeOutWindow];
-	 NSBundle * appBundle = [NSBundle mainBundle];
-	 NSString * nsPath = [appBundle pathForResource: [NSString stringWithCString: "help"]
-											 ofType:[NSString stringWithCString: "html"] 
-										inDirectory:[NSString stringWithCString: "help"]];
-	 if (nsPath)
-		 AHGotoPage (NULL, (CFStringRef)nsPath, NULL); 
- }
- */
-
 -(IBAction)selItemPreferences:(id)sender
 {
 	// close welcome dialog, should it still be open
@@ -1552,6 +1375,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	if ([mainWindow isVisible])
 		[self selItemNormal:self];
 	
+    // show window in front of all other apps
 	[NSApp activateIgnoringOtherApps: YES];
 	
 	// bring the about box to the foreground if it is visible
@@ -1564,21 +1388,16 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[protanHotKeyMenu selectItemAtIndex:[self fkey2menu:gProtanHotKey]];
 		[deutanHotKeyMenu selectItemAtIndex:[self fkey2menu:gDeutanHotKey]];
 		[tritanHotKeyMenu selectItemAtIndex:[self fkey2menu:gTritanHotKey]];
-		
-		// disable "Start Color Oracle at Login" switch
-		// it will be enabled by another thread that periodically checks if
-		// this application is registered as a login item
-		[startAtLoginSwitch setEnabled:NO];
-		
+		[grayscaleHotKeyMenu selectItemAtIndex:[self fkey2menu:gGrayscHotKey]];
+        
 		// enable / disable button for resetting preferences to default values.
 		[self updatePreferencesDefaultsButton];
-		
-		[NSThread detachNewThreadSelector:@selector(configurePrefsThread:)
-								 toTarget:self 
-							   withObject:self];
-	}
-	
-	// bring the preferences panel ot the foreground
+        
+        // initialize "launch at login" checkbox
+        [self updateLoginButton: nil];
+    }
+    
+    // bring the preferences panel to the foreground
 	[preferencesPanel makeKeyAndOrderFront:self];
 	
 	// changing the alpha before has no effect.
@@ -1594,6 +1413,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	if ([mainWindow isVisible])
 		[self selItemNormal:self];
 		
+    // show window in front of all other apps
 	[NSApp activateIgnoringOtherApps: YES];
 	
 	// bring the preferencesPanel to the foreground if it is visible
@@ -1636,7 +1456,54 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 
 - (void)keyDown:(NSEvent *)theEvent
 {
-	[self selItemNormal:self];
+    // switch simulation when left or right arrow key is pressed
+    NSString *const character = [theEvent charactersIgnoringModifiers];
+    unichar const code = [character characterAtIndex:0];
+    switch (code) {
+        // right arrow
+        case NSRightArrowFunctionKey:
+            switch (simulationID) {
+                case deutan:
+                    [self selItemProtan:nil];
+                    break;
+                case protan:
+                    [self selItemTritan:nil];
+                    break;
+                case tritan:
+                    [self selItemGrayscale:nil];
+                    break;
+                case grayscale:
+                    [self selItemDeutan:nil];
+                    break;
+                default:
+                    break;
+            }
+            break;
+            
+        // left arrow
+        case NSLeftArrowFunctionKey:
+            switch (simulationID) {
+                case deutan:
+                    [self selItemGrayscale:nil];
+                    break;
+                case protan:
+                    [self selItemDeutan:nil];
+                    break;
+                case tritan:
+                    [self selItemProtan:nil];
+                    break;
+                case grayscale:
+                    [self selItemTritan:nil];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        
+        // hide simulation if any other key is pressed
+        default:
+            [self selItemNormal:self];
+    }
 }
 
 - (void)applicationWillResignActive:(NSNotification *)aNotification
@@ -1657,7 +1524,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	imageID++;
 	if (imageID > 24)
 		imageID = 1;
-	NSString *newName = [NSString stringWithFormat:@"%i", imageID];
+	NSString *newName = [NSString stringWithFormat:@"%ld", imageID];
 	[statusItem setImage:[NSImage imageNamed:newName]];
 }
 
@@ -1686,32 +1553,83 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
 }
 
+// button to launch Color Oracle at login
+- (IBAction)login:(id)sender {
+    BOOL launchAtLogin = ([sender state] == NSOnState);
+    
+    NSString* pathToCopiedBundle = nil;
+    if (launchAtLogin) {
+        pathToCopiedBundle = PFMoveToApplicationsFolderIfNecessary();
+    }
+    
+    if (pathToCopiedBundle != nil && [pathToCopiedBundle isEqualToString:@"error"]) {
+        [loginButton setState:NSControlStateValueOff];
+        return;
+    }
+    
+    // URL of this app bundle. If app was moved, use the path to the copied bundle. Otherwise get bundle path.
+    NSURL* appURL = pathToCopiedBundle != nil ? [NSURL fileURLWithPath:pathToCopiedBundle]
+        : [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
+
+    // add or remove Color Oracle to/from login items
+    LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
+    [launchController setLaunchAtLogin:launchAtLogin forURL: appURL];
+    [launchController release];
+    
+    // exit if Color Oracle moved itself to the Applications folder
+    if (pathToCopiedBundle != nil) {
+        [NSApp terminate:nil];
+    }
+}
+
+// button to resize info window was pressed
+- (IBAction)resizeInfo:(id)sender {
+    NSControlStateValue buttonState = [infoView resizeInfo];
+    // non-standard use of disclosure button: need to adjust state to indicate direction of resizing
+    [infoResizeButton setState:buttonState];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	// retrieve the hot keys from the preference file
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	gProtanHotKey = [defaults integerForKey:@"protanHotKey"];
+    // retrieve defaults, object is created if it does not exist
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    // retrieve the hot keys from the preference file
+	gProtanHotKey = (UInt32)[defaults integerForKey:@"protanHotKey"];
 	if (gProtanHotKey == 0)
 		gProtanHotKey = DEFAULTPROTANHOTKEY;
-	gDeutanHotKey = [defaults integerForKey:@"deutanHotKey"];
+	gDeutanHotKey = (UInt32)[defaults integerForKey:@"deutanHotKey"];
 	if (gDeutanHotKey == 0)
 		gDeutanHotKey = DEFAULTDEUTANHOTKEY;
-	gTritanHotKey = [defaults integerForKey:@"tritanHotKey"];
+	gTritanHotKey = (UInt32)[defaults integerForKey:@"tritanHotKey"];
 	if (gTritanHotKey == 0)
 		gTritanHotKey = DEFAULTTRITANHOTKEY;
+    gGrayscHotKey = (UInt32)[defaults integerForKey:@"grayscaleHotKey"];
+    if (gGrayscHotKey == 0) {
+        // If this is the first time version 1.3 with grayscale simulation
+        // is started, make sure the hot key for grayscale is not identical
+        // to any other previously set hot key.
+        if (gProtanHotKey == DEFAULTGRAYSCALEHOTKEY
+            || gDeutanHotKey == DEFAULTGRAYSCALEHOTKEY
+            || gTritanHotKey == DEFAULTGRAYSCALEHOTKEY) {
+                gGrayscHotKey = keyNone;
+        } else {
+            gGrayscHotKey = DEFAULTGRAYSCALEHOTKEY;
+        }
+    }
 	[self installHotKeys];
 	
 	// get position of infoWindow from preferences file
-	int boxH = [defaults integerForKey:@"boxH"];
-	int boxV = [defaults integerForKey:@"boxV"];
+	NSInteger boxH = [defaults integerForKey:@"boxH"];
+	NSInteger boxV = [defaults integerForKey:@"boxV"];
     if (boxH == 0 || boxV == 0)
 		[infoWindow center];
 	else
 		[infoWindow setFrameOrigin:NSMakePoint(boxH, boxV)];
 	
 	// set height of infoWindow from preferences file
-	int height = [defaults integerForKey:@"boxHeight"];
-	if (height > 0) {
+	NSInteger height = [defaults integerForKey:@"boxHeight"];
+    if ([infoView isValidHeight: height]) {
 		NSRect frame = [infoWindow frame];
 		frame.size.height = height;
 		[infoWindow setFrame:frame display:YES];
@@ -1723,27 +1641,43 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[infoWindow center];
 	
 	// show welcome dialog if this is the first time Color Oracle is launched
-	// test for the protan hot key (could be any other item in the defaults).
 	BOOL launchedBefore = [defaults boolForKey:@"launchedBefore"];
-	if (launchedBefore == NO) {	
-		[welcomeDialog center];
-		[welcomeDialog setLevel:WINDOWLEVEL];
+	if (launchedBefore == NO) {
+        [welcomeDialog center];
 		[welcomeDialog makeKeyAndOrderFront:self];
+        
+        // show window in front of all other apps
+        [NSApp activateIgnoringOtherApps:YES];
+        
 		timer = [[NSTimer scheduledTimerWithTimeInterval:WELCOME_ANIMATION_INTERVAL 
 												  target:self 
 												selector:@selector(animateMenuIcon:) 
 												userInfo:nil repeats:YES] retain];
 		[defaults setBool:YES forKey:@"launchedBefore"];
 	}
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateLoginButton:)
+                                                 name:NSWindowDidBecomeKeyNotification
+                                               object:preferencesPanel];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-	// store the hot keys in the preference file
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setInteger:gProtanHotKey forKey:@"protanHotKey"];
+	// retreived defaults, object is created if it does not exist
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+    // write app version
+    // this was added to version 1.3.0 (April 2018)
+    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+    NSString *appVersion = [infoDict objectForKey:@"CFBundleShortVersionString"];
+    [defaults setObject: appVersion forKey:@"version"];
+    
+    // store the hot keys in the preference file
+    [defaults setInteger:gProtanHotKey forKey:@"protanHotKey"];
 	[defaults setInteger:gDeutanHotKey forKey:@"deutanHotKey"];
 	[defaults setInteger:gTritanHotKey forKey:@"tritanHotKey"];
+    [defaults setInteger:gGrayscHotKey forKey:@"grayscaleHotKey"];
 	
 	// store position of infoWindow in preference file
 	NSRect frame = [infoWindow frame];
@@ -1796,100 +1730,21 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	}
 }
 
-/* Takes a screenshot with Quartz Display Services to capture a screen, using 
- CGDisplayCreateImage. This code works starting with OSX 10.6. It does not work 
- with OSX 10.5 or earlier.
- */
--(void)takeQuartzScreenShot
+// event handler for function key menu in preferences panel
+-(void)grayscaleKey:(id)sender
 {
-	// release previous screen capture, first the NSBitmapImageRep then the CGImage
-	if (screenshot != NULL)
-		[screenshot release];
-	if (quartzScreenCapture != NULL)
-		CGImageRelease(quartzScreenCapture);
-	
-	// an alternative screen could be specified here
-	quartzScreenCapture = CGDisplayCreateImage(kCGDirectMainDisplay);
-	// The caller of CGDisplayCreateImage is responsible for releasing the image
-	// by calling CGImageRelease.
-	if (quartzScreenCapture == NULL)
-		return;
-	
-	// convert to NSBitmapImageRep
-	screenshot = [[NSBitmapImageRep alloc] initWithCGImage:quartzScreenCapture];
-	// http://www.cocoadev.com/index.pl?NSBitmapImageRep
-	// NSBitmapImageRep does not make a copy of the bitmap planes, it uses them
-	// in-place, so make sure not to free them while screenshot is alive.
+    NSPopUpButton *menu = (NSPopUpButton*)sender;
+    int key = [self menu2fkey:[menu indexOfSelectedItem]];
+    if (gGrayscHotKey != key) {
+        [self removeHotKeys];
+        gGrayscHotKey = key;
+        [self installHotKeys];
+        [self fillInfo];
+        [self updatePreferencesDefaultsButton];
+    }
 }
 
-/* Takes a screenshot using OpenGL. This code is based on the 
- OpenGLScreenSnapshot code example. This current version is not the most
- efficient one.
- It works with OSX verions until 10.6. It does not work on OSX 10.7.
- */
--(void)takeOpenGLScreenShot
-{
-	NSOpenGLContext * openGLContext = [self createOpenGLContext];
-	if (openGLContext == NULL)
-		return;
-	[openGLContext setFullScreen];
-    [openGLContext makeCurrentContext];
-    
-    GLint viewport[4];
-    glGetIntegerv(GL_VIEWPORT, viewport);
-    
-    unsigned width = viewport[2];
-    unsigned height = viewport[3];
-    
-	// recycle the buffer if it has been allocated before and if it's 
-	// the right size.
-	if (width != screenShotBufferWidth || height != screenShotBufferHeight
-		|| screenShotBuffer == nil) {
-		if (screenShotBuffer != nil)
-			free (screenShotBuffer);
-		screenShotBuffer = malloc(width * height * 4);
-		screenShotBufferWidth = width;
-		screenShotBufferHeight = height;
-	}
-	
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-    
-	/* glReadPixels is very slow*/
-	/*
-	 http://www.idevgames.com/forum/archive/index.php/t-7463.html
-	 Use a native pixel format to avoid CPU bit swizzling.
-	 
-	 glReadPixels(0, 0, width, height, GL_BGRA, GL_UNSIGNED_SHORT_1_5_5_5_REV, pixels);
-	 or
-	 glReadPixels(0, 0, width, height, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, pixels);
-	 
-	 make sure the rowbytes is a multiple of 32, in case DMA alignment is an issue.
-	 
-	 Also see http://www.opengl.org/resources/faq/technical/performance.htm
-	 */
-    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, screenShotBuffer);
-    
-    [openGLContext clearDrawable];
-    
-	[screenshot release];
-    screenshot = [[NSBitmapImageRep alloc]
-				  initWithBitmapDataPlanes:&screenShotBuffer
-				  /* NSBitmapImageRep will only reference the image data; it won’t copy it. 
-				   The buffers won’t be freed when the NSBitmapImageRep is freed. */
-				  pixelsWide:width
-				  pixelsHigh:height
-				  bitsPerSample:8
-				  samplesPerPixel:4
-				  hasAlpha:YES
-				  isPlanar:NO
-				  colorSpaceName:NSDeviceRGBColorSpace
-				  bytesPerRow:width * 4
-				  bitsPerPixel:32];
-	
-	[openGLContext release];
-}
-
-/* Takes a screenshot. */
+/* Takes a screenshot using Quartz (available since 10.6). */
 -(void)takeScreenShot
 {
 	// don't take screenshot when the main window is visible
@@ -1901,17 +1756,24 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		return;
 	}
 	
-	// the deployment target of this project is 10.4
-	// the target SDK is the latest available (i.e. 10.6 or later)
-	// XCode is using weak links in this case. That is, CGDisplayCreateImage is
-	// weakly linked. The presence of CGDisplayCreateImage has to be tested
-	// before it is called in this case.
-	// http://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPFrameworks/Concepts/WeakLinking.html
-	if (CGDisplayCreateImage == NULL) {
-		[self takeOpenGLScreenShot];
-	} else {
-		[self takeQuartzScreenShot];
-	}
+    // release previous screen capture, first the NSBitmapImageRep then the CGImage
+    if (screenshot != NULL)
+        [screenshot release];
+    if (quartzScreenCapture != NULL)
+        CGImageRelease(quartzScreenCapture);
+    
+    // an alternative screen could be specified here
+    quartzScreenCapture = CGDisplayCreateImage(kCGDirectMainDisplay);
+    // The caller of CGDisplayCreateImage is responsible for releasing the image
+    // by calling CGImageRelease.
+    if (quartzScreenCapture == NULL)
+        return;
+    
+    // convert to NSBitmapImageRep
+    screenshot = [[NSBitmapImageRep alloc] initWithCGImage:quartzScreenCapture];
+    // http://www.cocoadev.com/index.pl?NSBitmapImageRep
+    // NSBitmapImageRep does not make a copy of the bitmap planes, it uses them
+    // in-place, so make sure not to free them while screenshot is alive.
 }
 
 // the user changed the screen resolution (and possibly other settings of 
@@ -1938,10 +1800,12 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	gProtanHotKey = DEFAULTPROTANHOTKEY;
 	gDeutanHotKey = DEFAULTDEUTANHOTKEY;
 	gTritanHotKey = DEFAULTTRITANHOTKEY;
-
+    gGrayscHotKey = DEFAULTGRAYSCALEHOTKEY;
+    
 	[protanHotKeyMenu selectItemAtIndex:[self fkey2menu:gProtanHotKey]];
 	[deutanHotKeyMenu selectItemAtIndex:[self fkey2menu:gDeutanHotKey]];
 	[tritanHotKeyMenu selectItemAtIndex:[self fkey2menu:gTritanHotKey]];
+    [grayscaleHotKeyMenu selectItemAtIndex:[self fkey2menu:gGrayscHotKey]];
 	
 	[self updatePreferencesDefaultsButton];
 }
@@ -1983,68 +1847,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	return aboutBox;
 }
 
-/* return whether a applescript hanlder is supported */
-- (BOOL)application:(NSApplication *)sender 
- delegateHandlesKey:(NSString *)key
-{
-    if ([key isEqual:@"simulation"]) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
-
-// for AppleScript support
-- (NSString *)simulation
-{
-	switch (simulationID) {
-		case normalView:
-			return @"normal";
-		case protan:
-			return @"protan";
-		case deutan:
-			return @"deutan";
-		case tritan:
-			return @"tritan";
-	}
-    return nil;
-}
-
-// for AppleScript support
-- (void)setSimulation:(NSString *)key
-{
-	if (key == nil)
-		return;
-	
-	// test case insensitive for first 6 characters of key.
-	// i.e. 'deutan', 'deutanope', 'Deuteranopia' are all valid keys.
-	NSRange range = NSMakeRange (0, 6);
-	
-	if ([key compare:@"normal" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
-		[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
-		simulationID = normalView;
-		
-		// don't call [self finishFadeOut], which would call [NSApp hide:nil] to deactivate the app.
-		// Hiding this app will be done by the scripting engine.
-		// Instead, just order the mainWindow out. 
-		[mainWindow orderOut:self];
-		return;
-	}
-		
-	if ([key compare:@"deutan" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
-		[self selItemDeutan:self];
-		return;
-	}
-	
-	if ([key compare:@"protan" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
-		[self selItemProtan:self];
-		return;
-	}
-	
-	if ([key compare:@"tritan" options:NSCaseInsensitiveSearch range:range] == NSOrderedSame) {
-		[self selItemTritan:self];
-		return;
-	}
+// update "launch at login" checkbox
+- (void)updateLoginButton:(NSNotification *)notification {
+    LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
+    [loginButton setState: [launchController launchAtLogin]];
+    [launchController release];
 }
 
 @end

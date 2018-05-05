@@ -15,7 +15,6 @@
 	NSString *title;
 	NSString *info1;
 	NSString *info2;
-	BOOL draggingTrackingRectangle;
 	BOOL draggingWindow;
     NSPoint dragInitialLocation;
 	NSRect initialWindowFrame;
@@ -26,9 +25,10 @@
 
 - (void) setDelegate:(id)d;
 - (id) delegate;
-
+- (NSControlStateValue) resizeInfo;
 - (void) setTitle:(NSString*)t;
 - (void) setInfo1:(NSString*)i;
 - (void) setInfo2:(NSString*)i;
+- (BOOL) isValidHeight:(NSInteger) height;
 
 @end
