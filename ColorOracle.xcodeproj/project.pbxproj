@@ -481,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3D54EEAC25A4A12800551CF5 /* Shared.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -522,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3D54EEAC25A4A12800551CF5 /* Shared.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -560,6 +562,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3D54EEAC25A4A12800551CF5 /* Shared.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
