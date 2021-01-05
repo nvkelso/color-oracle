@@ -1,3 +1,6 @@
 .DS_Store
 xcuserdata
 build
+
+# User-specific xcconfig files
+Xcode-config/DEVELOPMENT_TEAM.xcconfig

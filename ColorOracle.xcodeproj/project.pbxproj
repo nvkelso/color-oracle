@@ -61,6 +61,8 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		3D54EEAB25A4A12800551CF5 /* DEVELOPMENT_TEAM.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DEVELOPMENT_TEAM.xcconfig; sourceTree = "<group>"; };
+		3D54EEAC25A4A12800551CF5 /* Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Shared.xcconfig; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Color Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Color Oracle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA10336309C1B3730073BCE0 /* ClickableImageView.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = ClickableImageView.h; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				3D54EEAA25A4A12800551CF5 /* Xcode-config */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = test;
@@ -228,6 +231,15 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D54EEAA25A4A12800551CF5 /* Xcode-config */ = {
+			isa = PBXGroup;
+			children = (
+				3D54EEAB25A4A12800551CF5 /* DEVELOPMENT_TEAM.xcconfig */,
+				3D54EEAC25A4A12800551CF5 /* Shared.xcconfig */,
+			);
+			path = "Xcode-config";
 			sourceTree = "<group>";
 		};
 		BAE416900A0896BB006994E7 /* animation_frames */ = {
@@ -467,6 +479,7 @@
 		};
 		BACFEE7408C75AC100727089 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D54EEAC25A4A12800551CF5 /* Shared.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -507,6 +520,7 @@
 		};
 		BACFEE7508C75AC100727089 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D54EEAC25A4A12800551CF5 /* Shared.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -544,6 +558,7 @@
 		};
 		BACFEE7608C75AC100727089 /* Default */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D54EEAC25A4A12800551CF5 /* Shared.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
