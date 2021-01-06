@@ -1163,29 +1163,29 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	
 	// setup the save panel
 	NSSavePanel * savePanel = [NSSavePanel savePanel];
-	[savePanel setTitle:@"Save Image"];
+	[savePanel setTitle:NSLocalizedString(@"Save Image", @"Screenshot")];
 	[savePanel setCanSelectHiddenExtension:YES];
 	[savePanel setAllowedFileTypes:[NSArray arrayWithObjects:@"tif", @"tiff", nil]];
 
 	if (simulationID == protan)
-		[savePanel setMessage:@"Save the screen with simulated protan color vision to a TIFF file."];
+		[savePanel setMessage:NSLocalizedString(@"Save the screen with simulated protan color vision to a TIFF file.", @"Screenshot")];
 	else if (simulationID == deutan)
-		[savePanel setMessage:@"Save the screen with simulated deutan color vision to a TIFF file."];
+		[savePanel setMessage:NSLocalizedString(@"Save the screen with simulated deutan color vision to a TIFF file.", @"Screenshot")];
 	else if (simulationID == tritan)
-		[savePanel setMessage:@"Save the screen with simulated tritan color vision to a TIFF file."];
+		[savePanel setMessage:NSLocalizedString(@"Save the screen with simulated tritan color vision to a TIFF file.", @"Screenshot")];
     else if (simulationID == grayscale)
-        [savePanel setMessage:@"Save the screen in grayscale to a TIFF file."];
+        [savePanel setMessage:NSLocalizedString(@"Save the screen in grayscale to a TIFF file.", @"Screenshot")];
 	
 	// setNameFieldStringValue available with OS X 10.6 or newer
 	if ([savePanel respondsToSelector:@selector(setNameFieldStringValue:)]) {
 		if (simulationID == protan)
-			[savePanel setNameFieldStringValue: @"Protanopia.tif"];
+			[savePanel setNameFieldStringValue: NSLocalizedString(@"Protanopia.tif", @"Screenshot")];
 		else if (simulationID == deutan)
-			[savePanel setNameFieldStringValue: @"Deuteranopia.tif"];
+			[savePanel setNameFieldStringValue: NSLocalizedString(@"Deuteranopia.tif", @"Screenshot")];
 		else if (simulationID == tritan)
-			[savePanel setNameFieldStringValue: @"Tritanopia.tif"];
+			[savePanel setNameFieldStringValue: NSLocalizedString(@"Tritanopia.tif", @"Screenshot")];
         else if (simulationID == grayscale)
-            [savePanel setNameFieldStringValue: @"Grayscale.tif"];
+            [savePanel setNameFieldStringValue: NSLocalizedString(@"Grayscale.tif", @"Screenshot")];
 	}
 	
 	simulationID = normal;

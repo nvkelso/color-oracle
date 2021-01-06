@@ -40,7 +40,7 @@
 #define kStrMoveApplicationQuestionInfoWillRequirePasswd _I10NS(@"Note that this will require an administrator password.")
 #define kStrMoveApplicationQuestionInfoInDownloadsFolder _I10NS(@"This will keep your Downloads folder uncluttered.")
 
-#define kStrAppTranslocationProblem @"Color Oracle could not be moved. Please replace it with a copy that you unzip outside of the Applications directory."
+#define kStrAppTranslocationProblem _I10NS(@"Color Oracle could not be moved. Please replace it with a copy that you unzip outside of the Applications directory.")
 #define kStrError (@"error")
 
 // Needs to be defined for compiling under 10.5 SDK
