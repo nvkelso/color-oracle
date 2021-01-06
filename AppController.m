@@ -603,7 +603,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				double greenOld = green;
 				red   = redOld * 0.05059983 + greenOld * 0.08585369 + blue * 0.00952420;
 				green = redOld * 0.01893033 + greenOld * 0.08925308 + blue * 0.01370054;
-				blue  = redOld * 0.00292202 + greenOld * 0.00975732 + blue * 0.07145979;
+				//blue  = redOld * 0.00292202 + greenOld * 0.00975732 + blue * 0.07145979; // Static analysis: Value stored to 'blue' is never read
 				
 				double tmp = green / red;
 				
