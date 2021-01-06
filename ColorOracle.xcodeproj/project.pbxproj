@@ -407,6 +407,7 @@
 		BACFEE7008C75AC100727089 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "Color Oracle.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -436,6 +437,7 @@
 		BACFEE7108C75AC100727089 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "Color Oracle.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -468,6 +470,7 @@
 		BACFEE7208C75AC100727089 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "Color Oracle.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";

@@ -107,7 +107,7 @@ EventHotKeyRef gWindowsCloseHotKeyRef;
 pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
 {
 	// We can assume our hotkey was pressed
-	AppController *app = (AppController*)userData;
+	AppController *app = (__bridge AppController *)userData;
 	int simulationID = [app simulationID];
 	
 	EventHotKeyID hkCom;
@@ -363,7 +363,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     EventHandlerUPP appHotKeyFunction = NewEventHandlerUPP(hotKeyHandler);
     eventType.eventClass = kEventClassKeyboard;
     eventType.eventKind = kEventHotKeyPressed;
-    InstallApplicationEventHandler(appHotKeyFunction,1,&eventType,self,NULL);
+    InstallApplicationEventHandler(appHotKeyFunction, 1, &eventType, (__bridge void *)self, NULL);
     
 	// install first deutan, then protan, then tritan, then grayscale.
 	// if two hot-keys use the same key, the first installed will be executed.
@@ -477,8 +477,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	NSStatusBar *bar = [NSStatusBar systemStatusBar];
 	
 	// build the NSStatusBar for selecting the type of color blindness
-	statusItem = [[bar statusItemWithLength:NSSquareStatusItemLength] retain];
-	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];		
+	statusItem = [bar statusItemWithLength:NSSquareStatusItemLength];
+	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
 	[statusItem setHighlightMode:YES];
 	[statusItem setEnabled:YES];
 	[statusItem setMenu:m_menu];
@@ -487,7 +487,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 
 - (id)init
 {
-	[super init];
+	if (!(self = [super init]))  return nil;
 	if (self) {
 		
 		[self initLUTs];
@@ -520,12 +520,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 
 - (void)dealloc
 {
-	[statusItem release];
-	[mainWindow release];
-	[imageView release];
-	[screenshot release];
-	[simulation release];
-		
 	if (rgb2lin_red_LUT)
 		free (rgb2lin_red_LUT);
 	if (rgb2lin_red_LUT)
@@ -535,7 +529,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		free (screenShotBuffer);
 	if (simulationBuffer)
 		free (simulationBuffer);
-    [super dealloc];
 }
 
 -(void)computeTritan
@@ -903,7 +896,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	NSInteger rows = [screenshot pixelsHigh];
 	NSInteger cols = [screenshot pixelsWide];
 	
-	[simulation release];
 	simulation =
 		[[NSBitmapImageRep alloc] initWithBitmapDataPlanes: (unsigned char**)&simulationBuffer
 												pixelsWide: cols
@@ -922,7 +914,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	if (simulation == nil)
 		return;
 	// create an NSImage and display it in the NSImageView
-	NSImage *image = [[[NSImage alloc] init] autorelease];
+	NSImage *image = [[NSImage alloc] init];
 	[image addRepresentation:simulation];
 	//[image setFlipped:NO];
 	[imageView setImage: image];
@@ -1088,10 +1080,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	[infoWindow makeKeyAndOrderFront:self];
 		
 	// Set up the timer to periodically call the fadeIn: method.
-    timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
-											  target:self 
-											selector:@selector(fadeIn:) 
-											userInfo:nil repeats:YES] retain];
+	timer = [NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL
+											 target:self
+										   selector:@selector(fadeIn:)
+										   userInfo:nil repeats:YES];
 }
 
 -(void)finishFadeIn
@@ -1113,7 +1105,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     } else {
         // destroy the timer
         [timer invalidate];
-        [timer release];
         timer = nil;
 		
 		[self finishFadeIn];
@@ -1126,10 +1117,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		return;
 	
 	// Set up the timer to periodically call the fadeOut: method.
-	timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
-											  target:self 
-											selector:@selector(fadeOut:) 
-											userInfo:nil repeats:YES] retain];
+	timer = [NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL
+											 target:self
+										   selector:@selector(fadeOut:)
+										   userInfo:nil repeats:YES];
 }
 
 -(void)finishFadeOut
@@ -1137,7 +1128,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	[mainWindow orderOut:self];
 	
 	if (shouldQuit == YES) {
-		[[NSApplication sharedApplication] terminate:self]; 
+		[[NSApplication sharedApplication] terminate:self];
 		return;
 	}
 	
@@ -1161,7 +1152,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     } else {
         // Otherwise, if window is completely transparent, destroy the timer and close the window.
         [timer invalidate];
-        [timer release];
         timer = nil;
 		[self finishFadeOut];
 	}
@@ -1226,7 +1216,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     } else {
         // Otherwise, if window is completely transparent, destroy the timer and close the window.
         [timer invalidate];
-        [timer release];
         timer = nil;
 		[self finishFadeOutAndSave];
 	}
@@ -1248,10 +1237,10 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		return;
 	
 	// Set up the timer to periodically call the fadeOutPanelsAndTakeScreenshot: method.
-	timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
-											  target:self 
-											selector:@selector(fadeOutPanelsAndTakeScreenshot:) 
-											userInfo:nil repeats:YES] retain];
+	timer = [NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL
+											 target:self
+										   selector:@selector(fadeOutPanelsAndTakeScreenshot:)
+										   userInfo:nil repeats:YES];
 }
 
 -(void)finishfadeOutPanelsAndTakeScreenshot
@@ -1272,7 +1261,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     } else {
         // Otherwise, if window is completely transparent, destroy the timer and close the window.
         [timer invalidate];
-        [timer release];
         timer = nil;
 		[self finishfadeOutPanelsAndTakeScreenshot];
 	}
@@ -1360,10 +1348,10 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		return;
 	}
 	// Set up the timer to periodically call the fadeOut: method.
-	timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
-											  target:self 
-											selector:@selector(fadeOutAndSave:) 
-											userInfo:nil repeats:YES] retain];
+	timer = [NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL
+											 target:self
+										   selector:@selector(fadeOutAndSave:)
+										   userInfo:nil repeats:YES];
 }
 
 -(IBAction)selItemPreferences:(id)sender
@@ -1545,7 +1533,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	// stop the animation
 	if (timer != nil) {
 		[timer invalidate];
-		[timer release];
 		timer = nil;
 	}
 	
@@ -1574,7 +1561,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     // add or remove Color Oracle to/from login items
     LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
     [launchController setLaunchAtLogin:launchAtLogin forURL: appURL];
-    [launchController release];
     
     // exit if Color Oracle moved itself to the Applications folder
     if (pathToCopiedBundle != nil) {
@@ -1648,11 +1634,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
         
         // show window in front of all other apps
         [NSApp activateIgnoringOtherApps:YES];
-        
-		timer = [[NSTimer scheduledTimerWithTimeInterval:WELCOME_ANIMATION_INTERVAL 
-												  target:self 
-												selector:@selector(animateMenuIcon:) 
-												userInfo:nil repeats:YES] retain];
+		
+		timer = [NSTimer scheduledTimerWithTimeInterval:WELCOME_ANIMATION_INTERVAL
+												 target:self
+											   selector:@selector(animateMenuIcon:)
+											   userInfo:nil repeats:YES];
 		[defaults setBool:YES forKey:@"launchedBefore"];
 	}
     
@@ -1757,8 +1743,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	}
 	
     // release previous screen capture, first the NSBitmapImageRep then the CGImage
-    if (screenshot != NULL)
-        [screenshot release];
     if (quartzScreenCapture != NULL)
         CGImageRelease(quartzScreenCapture);
     
@@ -1851,7 +1835,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 - (void)updateLoginButton:(NSNotification *)notification {
     LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
     [loginButton setState: [launchController launchAtLogin]];
-    [launchController release];
 }
 
 @end

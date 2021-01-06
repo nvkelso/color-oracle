@@ -81,7 +81,7 @@
 	NSMutableDictionary * attrs = [NSMutableDictionary dictionary];
 	
 	// drop shadow for text
-	NSShadow *shadow = [[NSShadow alloc] autorelease];
+	NSShadow *shadow = [[NSShadow alloc] init];
 	[shadow setShadowOffset:NSMakeSize(SHADOWOFFSET, -SHADOWOFFSET)];
 	[shadow setShadowBlurRadius:SHADOWBLURRADIUS];
 	[shadow setShadowColor:[NSColor colorWithDeviceWhite:0.0 alpha:SHADOWTRANSPARENCY]];
@@ -96,7 +96,6 @@
 	
 	// text alignment
 	NSMutableParagraphStyle *pStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-	[pStyle autorelease];
 	[pStyle setAlignment:NSCenterTextAlignment];
 	[attrs setValue: pStyle forKey: NSParagraphStyleAttributeName];
 		
@@ -178,24 +177,18 @@
 
 - (void) setTitle:(NSString*)t
 {
-	[t retain];
-	[title release];
 	title = t;
     [self setNeedsDisplay:YES];
 }
 
 - (void) setInfo1:(NSString*)i
 {
-	[i retain];
-	[info1 release];
 	info1 = i;
     [self setNeedsDisplay:YES];
 }
 
 - (void) setInfo2:(NSString*)i
 {
-	[i retain];
-	[info2 release];
 	info2 = i;
     [self setNeedsDisplay:YES];
 }

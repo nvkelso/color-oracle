@@ -58,7 +58,6 @@ void sharedFileListDidChange(LSSharedFileListRef inList, void *context)
     LSSharedFileListRemoveObserver(loginItems, CFRunLoopGetMain(),
         (CFStringRef)NSDefaultRunLoopMode, sharedFileListDidChange, (__bridge void *)(self));
     CFRelease(loginItems);
-    [super dealloc];
 }
 
 #pragma mark Launch List Control
