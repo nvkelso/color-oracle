@@ -39,6 +39,7 @@
 	IBOutlet NSPanel *aboutBox;
 	IBOutlet NSButton *prefsDefaultsButton;
 	IBOutlet NSPanel *welcomeDialog;
+	IBOutlet NSPanel *permissionDialog;
     IBOutlet NSButton *loginButton;
     IBOutlet NSButton *infoResizeButton;
     
@@ -79,6 +80,7 @@
 -(NSWindow*)preferencesPanel;
 -(NSWindow*)aboutBox;
 -(IBAction)closeWelcomeDialog:(id)sender;
+-(IBAction)closePermissionDialog:(id)sender;
 - (IBAction)login:(id)sender;
 - (IBAction)resizeInfo:(id)sender;
 
