@@ -6,12 +6,12 @@
 //  More info on screen capturing: http://www.cocoadev.com/index.pl?ScreenShotCode
 //  and http://www.idevapps.com/forum/archive/index.php/t-2895.html
 //  Window fading and tranparent rounded window from: http://mattgemmell.com/source/
-//  Hot key handling: OverlayWindow.m in FunkyOverlayWindow sample code 
+//  Hot key handling: OverlayWindow.m in FunkyOverlayWindow sample code
 //  at http://developer.apple.com/samplecode/FunkyOverlayWindow/FunkyOverlayWindow.html
 //  For hot keys see also http://www.dbachrach.com/blog/2005/11/program-global-hotkeys-in-cocoa-easily.html
-// 
+//
 //  Simulation of color blindness:
-//  Protanopia simulation after Digital Video Colourmaps for Checking the 
+//  Protanopia simulation after Digital Video Colourmaps for Checking the
 //  Legibility of Displays by Dichromat. F, Viénot, Hans Brettel, John D. Mollon
 //  Color Research and Application, Vol 24, No 4, ...
 /*
@@ -60,7 +60,7 @@
 /* wait this long for the menu to hide */
 #define MILLISEC_TO_HIDE_MENU 50
 
-/* interval for animating the menu icon while displaying the welcome dialog. 
+/* interval for animating the menu icon while displaying the welcome dialog.
 In seconds */
 #define WELCOME_ANIMATION_INTERVAL 0.1
 
@@ -72,7 +72,7 @@ enum simulation {normalView, protan, deutan, tritan, grayscale};
 
 // Gamma for converting from screen rgb to linear rgb and back again.
 // The publication describing the algorithm uses a gamma value of 2.2, which
-// is the standard value on windows system and for sRGB. Macs mostly use a 
+// is the standard value on windows system and for sRGB. Macs mostly use a
 // gamma value of 1.8. Differences between the two gamma settings are
 // hardly visible though.
 #define GAMMA 1.8
@@ -355,7 +355,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 }
 
 
-// from OverlayWindow.m in FunkyOverlayWindow sample code 
+// from OverlayWindow.m in FunkyOverlayWindow sample code
 -(void)installHotKeys
 {
 	EventTypeSpec eventType;
@@ -447,7 +447,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	lin2rgb_LUT = malloc(sizeof(unsigned char) * 256);
 	for (i = 0; i < 256; i++) {
 		lin2rgb_LUT[i] = (unsigned char)(255. * pow(i / 255., gamma_inv));
-	}	
+	}
 }
 
 -(void)initWindows
@@ -459,7 +459,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	mainWindow = [[KeyableWindow alloc] initWithContentRect:screenRect
 												  styleMask:NSBorderlessWindowMask
 													backing:NSBackingStoreBuffered
-													  defer:NO 
+													  defer:NO
 													 screen:[NSScreen mainScreen]];
 	
 	imageView = [[ClickableImageView alloc] initWithFrame:screenRect];
@@ -507,7 +507,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 }
 
 - (void)awakeFromNib
-{	
+{
 	[aboutBox center];
 	[preferencesPanel center];
 	[self initWindows];
@@ -576,7 +576,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	if (srcBitmapData == nil)
 		return;
 	
-	// recycle the buffer if it has been allocated before and if it's 
+	// recycle the buffer if it has been allocated before and if it's
 	// the right size.
 	if (cols != simulationBufferWidth || rows != simulationBufferHeight
 		|| simulationBuffer == nil) {
@@ -636,7 +636,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				else if (ired > 255)
 					ired = 255;
 				else
-					ired = lin2rgb_LUT[(int)(ired)];			   
+					ired = lin2rgb_LUT[(int)(ired)];
 				
 				if (igreen < 0)
 					igreen = 0;
@@ -652,12 +652,12 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				else
 					iblue = lin2rgb_LUT[(int)(iblue)];
 				
-#ifdef __BIG_ENDIAN__				
+#ifdef __BIG_ENDIAN__
 				color = ired << 24 | igreen << 16 | iblue << 8 | 0x000000ff;
 #endif
 #ifdef __LITTLE_ENDIAN__
 				color = ired | igreen << 8 | iblue << 16 | 0xff000000;
-#endif	
+#endif
 				*(dstBitmapData++) = color;
 			}
 			
@@ -665,9 +665,9 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		srcBitmapData+=bytesPerRow;
 	}
-}	
+}
 
--(void)compute:(long) k1 k2:(long)k2 k3:(long)k3 
+-(void)compute:(long) k1 k2:(long)k2 k3:(long)k3
 {
 	int r, c;
 	
@@ -681,7 +681,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	if (srcBitmapData == nil)
 		return;
 	
-	// recycle the buffer if it has been allocated before and if it's 
+	// recycle the buffer if it has been allocated before and if it's
 	// the right size.
 	if (cols != simulationBufferWidth || rows != simulationBufferHeight
 		|| simulationBuffer == nil) {
@@ -717,7 +717,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				// divide after the computation by 2^15 to rescale.
 				// also divide by 2^15 and multiply by 2^8 to scale the linear rgb to 0..255
 				// total division is by 2^15 * 2^15 / 2^8 = 2^22
-				// shift the bits by 22 places instead of dividing 
+				// shift the bits by 22 places instead of dividing
 				long r_blind = (k1 * r_lin + k2 * g_lin)  >> 22;
 				long b_blind = (k3 * r_lin - k3 * g_lin + 32768 * b_lin) >> 22;
 				
@@ -735,7 +735,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				const u_int32_t red = lin2rgb_LUT[r_blind];
 				const u_int32_t blue = lin2rgb_LUT[b_blind];
 				
-#ifdef __BIG_ENDIAN__				
+#ifdef __BIG_ENDIAN__
 				color = red << 24 | red << 16 | blue << 8 | 0x000000ff;
 #endif
 #ifdef __LITTLE_ENDIAN__
@@ -764,7 +764,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 //	double anchor_e1 = 0.01893033 + 0.08925308 + 0.01370054;
 //	double anchor_e2 = 0.00292202 + 0.00975732 + 0.07145979;
 //	double inflection = anchor_e1 / anchor_e0;
-//	
+//
 //	/* Set 1: regions where lambda_a=575, set 2: lambda_a=475 */
 //	double a1 = -anchor_e2 * 0.007009;
 //	double b1 = anchor_e2 * 0.0914;
@@ -878,7 +878,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		srcBitmapData+=bytesPerRow;
 	}
-}	
+}
 
 
 -(void)simulate
@@ -904,15 +904,15 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	NSInteger cols = [screenshot pixelsWide];
 	
 	[simulation release];
-	simulation = 
+	simulation =
 		[[NSBitmapImageRep alloc] initWithBitmapDataPlanes: (unsigned char**)&simulationBuffer
-												pixelsWide: cols 
-												pixelsHigh: rows 
-											 bitsPerSample: 8 
+												pixelsWide: cols
+												pixelsHigh: rows
+											 bitsPerSample: 8
 										   samplesPerPixel: 4
-												  hasAlpha: YES 
-												  isPlanar: NO 
-											colorSpaceName: NSDeviceRGBColorSpace 
+												  hasAlpha: YES
+												  isPlanar: NO
+											colorSpaceName: NSDeviceRGBColorSpace
 											   bytesPerRow: cols * 4
 											  bitsPerPixel: 32];
 }
@@ -1067,7 +1067,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	
 	if ([menuItem action] == @selector(selItemSave:)) {
 		return simulationID != normalView;
-	}	
+	}
 	
 	return YES;
 }
@@ -1080,7 +1080,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	[mainWindow setAlphaValue:0];
 	[infoWindow setAlphaValue:0];
 	
-	// force the infoView to be redrawn. 
+	// force the infoView to be redrawn.
 	// Otherwise the infoWindow would be square, white, and not transparent
 	[infoView setNeedsDisplay:YES];
 	
@@ -1092,7 +1092,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 											  target:self 
 											selector:@selector(fadeIn:) 
 											userInfo:nil repeats:YES] retain];
-}	
+}
 
 -(void)finishFadeIn
 {
@@ -1142,7 +1142,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	}
 	
 	// deactivate this application, so that previous application owns the key window again.
-	// [NSApp deactivate]; is not enough, 
+	// [NSApp deactivate]; is not enough,
 	// see http://lists.apple.com/archives/Cocoa-dev/2005/Jul/msg01399.html
 	// don't deactivate this app when the preferences or the about panel is visible.
 	// This is the case when the user selected "Prefs" or "About" in the menu while
@@ -1238,14 +1238,14 @@ when the panels are not visible anymore.
 Hiding the panels before taking the screenshots is required to work around the problem related
 to deactivating this app. When the color blind simulation should stop, the main window is hidden.
 The previously active app should be made active again, so it has the key focus again. This is
-only possible by hiding this app using [NSApp hide]. The panel would disappear at this moment. 
+only possible by hiding this app using [NSApp hide]. The panel would disappear at this moment.
 */
 -(void) fadeOutPanelsAndTakeScreenshot
 {
 	if (timer != nil)
 		return;
 	if ([aboutBox isVisible] == NO && [preferencesPanel isVisible] == NO)
-		return; 
+		return;
 	
 	// Set up the timer to periodically call the fadeOutPanelsAndTakeScreenshot: method.
 	timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
@@ -1311,7 +1311,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 // in the color corrected image.
 -(void) hideMenu
 {
-	// have a little break. This should give Quartz enough time to completely hide the menu. 
+	// have a little break. This should give Quartz enough time to completely hide the menu.
 	[self sleep: MILLISEC_TO_HIDE_MENU];
 }
 
@@ -1352,13 +1352,13 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[self closeWelcomeDialog:self];
 	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
 	
-	if (simulationID == normalView 
+	if (simulationID == normalView
 		|| simulation == nil
-		|| [mainWindow isVisible] == NO 
+		|| [mainWindow isVisible] == NO
 		|| timer != nil) {
 		simulationID = normalView;
 		return;
-	} 
+	}
 	// Set up the timer to periodically call the fadeOut: method.
 	timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
 											  target:self 
@@ -1431,7 +1431,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[self fadeOutWindow];
 	} else {
 		[[NSApplication sharedApplication] terminate:self];
-	}	
+	}
 }
 
 - (void)scrollWheel:(NSEvent *)theEvent
@@ -1776,7 +1776,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     // in-place, so make sure not to free them while screenshot is alive.
 }
 
-// the user changed the screen resolution (and possibly other settings of 
+// the user changed the screen resolution (and possibly other settings of
 // the monitor). Fade out the mainWindow in this case.
 - (void)applicationDidChangeScreenParameters:(NSNotification *)aNotification
 {
@@ -1784,7 +1784,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     NSRect screenRect = [[NSScreen mainScreen] frame];
 	[mainWindow setFrame:screenRect display:YES];
 	
-	// hide the mainWindow if it is currently visible 
+	// hide the mainWindow if it is currently visible
 	[self fadeOutWindow];
 }
 
@@ -1820,7 +1820,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	if (window == welcomeDialog) {
 		// send nil as source. This is an ugly hack that makes sure we are not
 		// cascading close commands, which makes the app crash. This happens when
-		// the dialog is closed by a click in the red button at the top left of 
+		// the dialog is closed by a click in the red button at the top left of
 		// the window. If closeWelcomeDialog does [welcomeDialog: close], this
 		// method is called again, etc.
 		[self closeWelcomeDialog:nil];
