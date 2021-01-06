@@ -522,8 +522,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 {
 	if (rgb2lin_red_LUT)
 		free (rgb2lin_red_LUT);
-	if (rgb2lin_red_LUT)
-		free (rgb2lin_red_LUT);
+	if (lin2rgb_LUT)
+		free (lin2rgb_LUT);
 	
 	if (screenShotBuffer)
 		free (screenShotBuffer);
