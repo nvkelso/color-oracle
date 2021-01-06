@@ -549,7 +549,7 @@ For updates and futher information see:</string>
 Open the preferences dialog to add Color Oracle to the menu bar each time you log in, and to set keyboard shortcuts.</string>
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="13" name="LucidaGrande"/>
+                                                <font key="NSFont" metaFont="system"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
                                             </attributes>
                                         </fragment>
