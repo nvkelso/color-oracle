@@ -440,16 +440,16 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="120" y="206" width="279" height="435"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
-            <view key="contentView" id="388">
-                <rect key="frame" x="0.0" y="0.0" width="279" height="435"/>
+            <view key="contentView" misplaced="YES" id="388">
+                <rect key="frame" x="0.0" y="0.0" width="279" height="456"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView translatesAutoresizingMaskIntoConstraints="NO" id="389">
-                        <rect key="frame" x="76" y="283" width="128" height="128"/>
+                        <rect key="frame" x="76" y="304" width="128" height="128"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="432"/>
                     </imageView>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="390">
-                        <rect key="frame" x="87" y="246" width="105" height="19"/>
+                        <rect key="frame" x="87" y="267" width="105" height="19"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="center" title="Color Oracle" id="433">
                             <font key="font" metaFont="systemBold" size="16"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -457,22 +457,24 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="392">
-                        <rect key="frame" x="31" y="60" width="217" height="182"/>
+                        <rect key="frame" x="22" y="53" width="235" height="210"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="213" id="OdH-dC-1Qq"/>
                         </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" alignment="center" id="434">
                             <font key="font" metaFont="smallSystem"/>
-                            <string key="title">Version 1.3.0
+                            <string key="title">Version 1.3.1
 
 Programming by
 Bernie Jenny, Monash University 
 and other contributors.
 
 Ideas, testing and icon by 
-Nathaniel Vaughn Kelso
+Nathaniel Vaughn Kelso.
 
-© B. Jenny &amp; N.V. Kelso, 2006–2018.
+Port to macOS 10.15 and later by Jan Weiß.
+
+© B. Jenny &amp; N.V. Kelso, 2006–2021.
 CC-BY using the MIT License
 
 For updates and futher information see:</string>
@@ -481,7 +483,7 @@ For updates and futher information see:</string>
                         </textFieldCell>
                     </textField>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="400">
-                        <rect key="frame" x="33" y="19" width="213" height="27"/>
+                        <rect key="frame" x="33" y="19" width="213" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="213" id="mXW-gH-2pu"/>
                         </constraints>
