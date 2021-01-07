@@ -515,7 +515,7 @@ For updates and futher information see:</string>
             </connections>
             <point key="canvasLocation" x="-387" y="545.5"/>
         </window>
-        <window title="Welcome to Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="409" userLabel="Welcome" customClass="NSPanel">
+        <window title="Welcome to Color Oracle" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="409" userLabel="Welcome" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="409" y="432" width="550" height="170"/>
@@ -608,7 +608,7 @@ DQ
             </connections>
             <point key="canvasLocation" x="-370" y="112"/>
         </window>
-        <window title="Color Oracle Screen Recording" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="qbO-Dr-zoN" userLabel="Permission" customClass="NSPanel">
+        <window title="Color Oracle Screen Recording" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="qbO-Dr-zoN" userLabel="Permission" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="409" y="432" width="421" height="200"/>
