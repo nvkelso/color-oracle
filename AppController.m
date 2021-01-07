@@ -992,6 +992,9 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 
 -(BOOL) validateMenuItem:(NSMenuItem *)menuItem
 {
+	// enable menu items for simulating color impaired vision when capturing the screen is possible or the permission dialog is not currently visible
+	BOOL enableSimulationMenuItems = [self canCaptureScreen] || !permissionDialog.isVisible;
+	
 	if ([menuItem action] == @selector(selItemNormal:)) {
 		[menuItem setState: simulationID == normalView ? NSOnState : NSOffState];
 		return YES;
@@ -1009,7 +1012,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		
 		[menuItem setState: simulationID == protan ? NSOnState : NSOffState];
-		return YES;
+		return enableSimulationMenuItems;
 	}
 	
 	if ([menuItem action] == @selector(selItemDeutan:)) {
@@ -1024,7 +1027,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		
 		[menuItem setState: simulationID == deutan ? NSOnState : NSOffState];
-		return YES;
+		return enableSimulationMenuItems;
 	}
 	
 	if ([menuItem action] == @selector(selItemTritan:)) {
@@ -1039,7 +1042,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		
 		[menuItem setState: simulationID == tritan ? NSOnState : NSOffState];
-		return YES;
+		return enableSimulationMenuItems;
 	}
     
     if ([menuItem action] == @selector(selItemGrayscale:)) {
@@ -1054,7 +1057,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
         }
         
         [menuItem setState: simulationID == grayscale ? NSOnState : NSOffState];
-        return YES;
+        return enableSimulationMenuItems;
     }
 	
 	if ([menuItem action] == @selector(selItemSave:)) {
