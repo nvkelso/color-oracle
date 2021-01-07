@@ -35,7 +35,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="562" y="357" width="390" height="203"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="167.465" height="50"/>
             <view key="contentView" id="242">
                 <rect key="frame" x="0.0" y="0.0" width="390" height="203"/>
@@ -45,7 +45,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="203"/>
                         <subviews>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uMJ-8z-dIt">
-                                <rect key="frame" x="186" y="3" width="19" height="16"/>
+                                <rect key="frame" x="186" y="4" width="19" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="3d4-tE-qSO"/>
                                 </constraints>
@@ -140,20 +140,20 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="324" y="123" width="490" height="256"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="213" height="107"/>
             <view key="contentView" id="270">
                 <rect key="frame" x="0.0" y="0.0" width="490" height="256"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <box title="Keyboard Shortcuts" translatesAutoresizingMaskIntoConstraints="NO" id="273">
-                        <rect key="frame" x="170" y="49" width="303" height="187"/>
+                        <rect key="frame" x="170" y="44" width="303" height="192"/>
                         <view key="contentView" id="GGv-6Y-6LE">
-                            <rect key="frame" x="3" y="3" width="297" height="169"/>
+                            <rect key="frame" x="3" y="3" width="297" height="174"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="275">
-                                    <rect key="frame" x="13" y="112" width="176" height="17"/>
+                                    <rect key="frame" x="13" y="115" width="176" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="mBp-qw-vJ3"/>
                                     </constraints>
@@ -164,7 +164,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="277">
-                                    <rect key="frame" x="13" y="141" width="176" height="17"/>
+                                    <rect key="frame" x="13" y="145" width="176" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="rA4-39-L4J"/>
                                     </constraints>
@@ -175,7 +175,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="278">
-                                    <rect key="frame" x="190" y="105" width="79" height="26"/>
+                                    <rect key="frame" x="191" y="109" width="77" height="26"/>
                                     <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="348" id="425">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
@@ -212,7 +212,7 @@
                                     </connections>
                                 </popUpButton>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="324">
-                                    <rect key="frame" x="190" y="134" width="79" height="26"/>
+                                    <rect key="frame" x="191" y="139" width="77" height="26"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="P19-9c-PA1"/>
                                     </constraints>
@@ -252,7 +252,7 @@
                                     </connections>
                                 </popUpButton>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="351">
-                                    <rect key="frame" x="13" y="83" width="176" height="17"/>
+                                    <rect key="frame" x="13" y="85" width="176" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="Dkx-xG-TTf"/>
                                     </constraints>
@@ -263,7 +263,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="352">
-                                    <rect key="frame" x="190" y="76" width="79" height="26"/>
+                                    <rect key="frame" x="191" y="79" width="77" height="26"/>
                                     <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="369" id="428">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
@@ -300,7 +300,7 @@
                                     </connections>
                                 </popUpButton>
                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="y3j-Kw-Jf6">
-                                    <rect key="frame" x="13" y="55" width="176" height="17"/>
+                                    <rect key="frame" x="13" y="56" width="176" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="ltC-qU-mOa"/>
                                     </constraints>
@@ -311,7 +311,7 @@
                                     </textFieldCell>
                                 </textField>
                                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HkC-th-2we">
-                                    <rect key="frame" x="190" y="48" width="79" height="26"/>
+                                    <rect key="frame" x="191" y="50" width="77" height="26"/>
                                     <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="TIG-DJ-GSB" id="YIj-NX-gDo">
                                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="menu"/>
@@ -348,7 +348,7 @@
                                     </connections>
                                 </popUpButton>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="404">
-                                    <rect key="frame" x="122" y="6" width="150" height="32"/>
+                                    <rect key="frame" x="123" y="6" width="148" height="32"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="136" id="OZm-rp-EEW"/>
                                     </constraints>
@@ -404,7 +404,7 @@
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="431"/>
                     </imageView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PMR-mg-iD1">
-                        <rect key="frame" x="178" y="18" width="278" height="24"/>
+                        <rect key="frame" x="180" y="17" width="278" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="274" id="S89-jj-vRU"/>
                         </constraints>
@@ -439,17 +439,17 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="120" y="206" width="279" height="435"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
-            <view key="contentView" misplaced="YES" id="388">
-                <rect key="frame" x="0.0" y="0.0" width="279" height="470"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="388">
+                <rect key="frame" x="0.0" y="0.0" width="279" height="435"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView translatesAutoresizingMaskIntoConstraints="NO" id="389">
-                        <rect key="frame" x="76" y="318" width="128" height="128"/>
+                        <rect key="frame" x="76" y="283" width="128" height="128"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="432"/>
                     </imageView>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="390">
-                        <rect key="frame" x="87" y="281" width="105" height="19"/>
+                        <rect key="frame" x="87" y="246" width="105" height="19"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="center" title="Color Oracle" id="433">
                             <font key="font" metaFont="systemBold" size="16"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -457,7 +457,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="392">
-                        <rect key="frame" x="31" y="53" width="217" height="224"/>
+                        <rect key="frame" x="31" y="60" width="217" height="182"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="213" id="OdH-dC-1Qq"/>
                         </constraints>
@@ -484,7 +484,7 @@ For updates and futher information see:</string>
                         </textFieldCell>
                     </textField>
                     <button translatesAutoresizingMaskIntoConstraints="NO" id="400">
-                        <rect key="frame" x="33" y="19" width="213" height="20"/>
+                        <rect key="frame" x="33" y="19" width="213" height="27"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="213" id="mXW-gH-2pu"/>
                         </constraints>
@@ -519,7 +519,7 @@ For updates and futher information see:</string>
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="409" y="432" width="550" height="170"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="213" height="113"/>
             <view key="contentView" id="410">
                 <rect key="frame" x="0.0" y="0.0" width="550" height="170"/>
@@ -534,17 +534,17 @@ For updates and futher information see:</string>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="437"/>
                     </imageView>
                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="414">
-                        <rect key="frame" x="156" y="48" width="374" height="102"/>
+                        <rect key="frame" x="156" y="49" width="374" height="101"/>
                         <clipView key="contentView" id="aTz-tK-jMv">
-                            <rect key="frame" x="0.0" y="0.0" width="374" height="102"/>
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="101"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" smartInsertDelete="YES" id="415">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="102"/>
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" smartInsertDelete="YES" id="415">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="101"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="374" height="102"/>
+                                    <size key="minSize" width="374" height="101"/>
                                     <size key="maxSize" width="650" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -573,7 +573,7 @@ Open the preferences dialog to add Color Oracle to the menu bar each time you lo
                         </scroller>
                     </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="417">
-                        <rect key="frame" x="476" y="13" width="61" height="32"/>
+                        <rect key="frame" x="477" y="13" width="59" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="vo8-We-9oU"/>
                         </constraints>
@@ -608,26 +608,68 @@ DQ
             </connections>
             <point key="canvasLocation" x="-370" y="112"/>
         </window>
-        <window title="Color Oracle Screen Recording" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="qbO-Dr-zoN" userLabel="Permission" customClass="NSPanel">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="qbO-Dr-zoN" userLabel="Permission" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="409" y="432" width="421" height="200"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="contentRect" x="409" y="432" width="462" height="270"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="213" height="113"/>
             <view key="contentView" id="psb-4e-i6g">
-                <rect key="frame" x="0.0" y="0.0" width="421" height="200"/>
+                <rect key="frame" x="0.0" y="0.0" width="462" height="270"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView translatesAutoresizingMaskIntoConstraints="NO" id="IjM-hz-4cj">
-                        <rect key="frame" x="20" y="116" width="64" height="64"/>
+                        <rect key="frame" x="20" y="186" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="64" id="9Xr-PA-8hr"/>
                             <constraint firstAttribute="height" constant="64" id="uxs-Ix-2Lc"/>
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="6ev-yH-Bdv"/>
                     </imageView>
+                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="er6-V1-02Q" userLabel="Text">
+                        <rect key="frame" x="100" y="49" width="342" height="167"/>
+                        <clipView key="contentView" id="cBb-1k-peH">
+                            <rect key="frame" x="0.0" y="0.0" width="342" height="167"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="IlY-DD-1vl">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="176"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="342" height="167"/>
+                                    <size key="maxSize" width="650" height="10000000"/>
+                                    <attributedString key="textStorage">
+                                        <fragment>
+                                            <string key="content">Color Oracle uses screen recording for its preview.
+
+Without the required permissions, you'll only be able to see Color Oracle’s own windows and the desktop background on macOS Catalina (10.15) and later.
+
+To see all windows, open the “Security &amp; Privacy” panel in “System Preferences” and put a checkmark next to “Color Oracle” in the “Screen Recording” section.
+</string>
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="fwi-Zq-QcW">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Xf5-OX-KSe">
+                            <rect key="frame" x="-100" y="-100" width="15" height="56"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7A4-On-cIs">
-                        <rect key="frame" x="347" y="13" width="61" height="32"/>
+                        <rect key="frame" x="389" y="13" width="59" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="hqT-L4-2sc"/>
                         </constraints>
@@ -642,56 +684,25 @@ DQ
                             <action selector="closePermissionDialog:" target="206" id="C8M-jC-7bG"/>
                         </connections>
                     </button>
-                    <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzf-db-DiP" userLabel="Text">
-                        <rect key="frame" x="100" y="60" width="301" height="120"/>
+                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7D5-Ex-rSc" userLabel="Title">
+                        <rect key="frame" x="100" y="224" width="342" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" drawsBackground="NO" id="fIA-Sk-3Qm">
-                            <rect key="frame" x="0.0" y="0.0" width="301" height="120"/>
+                        <clipView key="contentView" id="j1A-NU-4Kw">
+                            <rect key="frame" x="0.0" y="0.0" width="342" height="26"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="gO5-Kd-xD2">
-                                    <rect key="frame" x="0.0" y="0.0" width="301" height="120"/>
+                                <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="oMW-Ca-1hZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="26"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="301" height="120"/>
+                                    <size key="minSize" width="342" height="26"/>
                                     <size key="maxSize" width="650" height="10000000"/>
                                     <attributedString key="textStorage">
-                                        <fragment>
-                                            <string key="content">Color Oracle uses screen recording to simulate color impaired vision.
-
-To allow Color Oracle to record the content of your screen, open Security &amp; Privacy, located in </string>
+                                        <fragment content="Screen Recording Permission is Required">
                                             <attributes>
                                                 <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="system"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="System Preferences">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content=". In the ">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="system"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="Screen Recording section, put a checkmark next to">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content=" Color Oracle.">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="system"/>
+                                                <font key="NSFont" metaFont="systemBold"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -701,11 +712,11 @@ To allow Color Oracle to record the content of your screen, open Security &amp; 
                             </subviews>
                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="D15-UV-uUB">
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="R9h-E6-8pC">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="e77-Jl-uGX">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="gLD-yJ-hJ7">
                             <rect key="frame" x="-100" y="-100" width="15" height="56"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -714,15 +725,25 @@ To allow Color Oracle to record the content of your screen, open Security &amp; 
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="7A4-On-cIs" secondAttribute="bottom" constant="20" symbolic="YES" id="5Wy-6a-TmI"/>
                     <constraint firstItem="7A4-On-cIs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IjM-hz-4cj" secondAttribute="trailing" constant="8" symbolic="YES" id="AMr-0U-i6I"/>
+                    <constraint firstItem="er6-V1-02Q" firstAttribute="top" secondItem="7D5-Ex-rSc" secondAttribute="bottom" constant="8" id="BQi-R5-lkU"/>
+                    <constraint firstItem="er6-V1-02Q" firstAttribute="leading" secondItem="7D5-Ex-rSc" secondAttribute="leading" id="EUO-LB-8Yy"/>
+                    <constraint firstItem="7D5-Ex-rSc" firstAttribute="top" secondItem="IjM-hz-4cj" secondAttribute="top" id="Hsj-7X-SlL"/>
+                    <constraint firstItem="7A4-On-cIs" firstAttribute="trailing" secondItem="er6-V1-02Q" secondAttribute="trailing" id="IkX-gg-3lg"/>
+                    <constraint firstItem="7D5-Ex-rSc" firstAttribute="top" secondItem="psb-4e-i6g" secondAttribute="top" constant="20" symbolic="YES" id="Sa7-NH-3GC"/>
+                    <constraint firstItem="er6-V1-02Q" firstAttribute="top" secondItem="psb-4e-i6g" secondAttribute="top" constant="54" id="V6F-ZK-SEb"/>
+                    <constraint firstItem="7D5-Ex-rSc" firstAttribute="trailing" secondItem="er6-V1-02Q" secondAttribute="trailing" id="a33-x3-i7R"/>
+                    <constraint firstAttribute="trailing" secondItem="er6-V1-02Q" secondAttribute="trailing" constant="20" symbolic="YES" id="kyT-4C-yLJ"/>
+                    <constraint firstItem="7A4-On-cIs" firstAttribute="top" secondItem="er6-V1-02Q" secondAttribute="bottom" constant="8" id="lf0-q4-qSl"/>
                     <constraint firstItem="IjM-hz-4cj" firstAttribute="leading" secondItem="psb-4e-i6g" secondAttribute="leading" constant="20" symbolic="YES" id="mqy-iP-cu0"/>
                     <constraint firstAttribute="trailing" secondItem="7A4-On-cIs" secondAttribute="trailing" constant="20" symbolic="YES" id="sEg-Dc-Hab"/>
+                    <constraint firstItem="7D5-Ex-rSc" firstAttribute="leading" secondItem="IjM-hz-4cj" secondAttribute="trailing" constant="16" id="srV-43-fpg"/>
                     <constraint firstItem="IjM-hz-4cj" firstAttribute="top" secondItem="psb-4e-i6g" secondAttribute="top" constant="20" symbolic="YES" id="sye-Tn-PIN"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="206" id="cft-pi-dBX"/>
             </connections>
-            <point key="canvasLocation" x="-438.5" y="-229"/>
+            <point key="canvasLocation" x="-418" y="-193.5"/>
         </window>
     </objects>
     <resources>
