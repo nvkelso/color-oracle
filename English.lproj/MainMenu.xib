@@ -441,15 +441,15 @@
             <rect key="contentRect" x="120" y="206" width="279" height="435"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" misplaced="YES" id="388">
-                <rect key="frame" x="0.0" y="0.0" width="279" height="456"/>
+                <rect key="frame" x="0.0" y="0.0" width="279" height="470"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView translatesAutoresizingMaskIntoConstraints="NO" id="389">
-                        <rect key="frame" x="76" y="304" width="128" height="128"/>
+                        <rect key="frame" x="76" y="318" width="128" height="128"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="432"/>
                     </imageView>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="390">
-                        <rect key="frame" x="87" y="267" width="105" height="19"/>
+                        <rect key="frame" x="87" y="281" width="105" height="19"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" alignment="center" title="Color Oracle" id="433">
                             <font key="font" metaFont="systemBold" size="16"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -457,7 +457,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="392">
-                        <rect key="frame" x="22" y="53" width="235" height="210"/>
+                        <rect key="frame" x="31" y="53" width="217" height="224"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="213" id="OdH-dC-1Qq"/>
                         </constraints>
@@ -472,7 +472,8 @@ and other contributors.
 Ideas, testing and icon by 
 Nathaniel Vaughn Kelso.
 
-Port to macOS 10.15 and later by Jan Weiß.
+Port to macOS 10.15 and later by
+Jan Weiß.
 
 © B. Jenny &amp; N.V. Kelso, 2006–2021.
 CC-BY using the MIT License
@@ -607,115 +608,26 @@ DQ
             </connections>
             <point key="canvasLocation" x="-370" y="112"/>
         </window>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="qbO-Dr-zoN" userLabel="Permission" customClass="NSPanel">
+        <window title="Color Oracle Screen Recording" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="qbO-Dr-zoN" userLabel="Permission" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="409" y="432" width="449" height="237"/>
+            <rect key="contentRect" x="409" y="432" width="421" height="200"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="213" height="113"/>
             <view key="contentView" id="psb-4e-i6g">
-                <rect key="frame" x="0.0" y="0.0" width="449" height="237"/>
+                <rect key="frame" x="0.0" y="0.0" width="421" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView translatesAutoresizingMaskIntoConstraints="NO" id="IjM-hz-4cj">
-                        <rect key="frame" x="20" y="153" width="64" height="64"/>
+                        <rect key="frame" x="20" y="116" width="64" height="64"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="64" id="9Xr-PA-8hr"/>
                             <constraint firstAttribute="height" constant="64" id="uxs-Ix-2Lc"/>
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon" id="6ev-yH-Bdv"/>
                     </imageView>
-                    <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="er6-V1-02Q" userLabel="Text">
-                        <rect key="frame" x="100" y="60" width="329" height="123"/>
-                        <clipView key="contentView" id="cBb-1k-peH">
-                            <rect key="frame" x="0.0" y="0.0" width="329" height="123"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="IlY-DD-1vl">
-                                    <rect key="frame" x="0.0" y="0.0" width="329" height="123"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="329" height="123"/>
-                                    <size key="maxSize" width="650" height="10000000"/>
-                                    <attributedString key="textStorage">
-                                        <fragment>
-                                            <string key="content">Color Oracle uses screen recording to simulate color impaired vision.
-
-To grant Color Oracle the permission for screen recording, open the “Security &amp; Privacy” panel in “System Preferences” and in the </string>
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="system"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="“Screen Recording” section ">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="put a checkmark next to “Color Oracle”.">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="system"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                </textView>
-                            </subviews>
-                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="fwi-Zq-QcW">
-                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Xf5-OX-KSe">
-                            <rect key="frame" x="-100" y="-100" width="15" height="56"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
-                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7D5-Ex-rSc" userLabel="Title">
-                        <rect key="frame" x="100" y="191" width="329" height="26"/>
-                        <clipView key="contentView" id="j1A-NU-4Kw">
-                            <rect key="frame" x="0.0" y="0.0" width="329" height="26"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="oMW-Ca-1hZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="329" height="26"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="329" height="26"/>
-                                    <size key="maxSize" width="650" height="10000000"/>
-                                    <attributedString key="textStorage">
-                                        <fragment content="Screen Recording Permission is Required">
-                                            <attributes>
-                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                <font key="NSFont" metaFont="systemBold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                </textView>
-                            </subviews>
-                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="R9h-E6-8pC">
-                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="gLD-yJ-hJ7">
-                            <rect key="frame" x="-100" y="-100" width="15" height="56"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </scroller>
-                    </scrollView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7A4-On-cIs">
-                        <rect key="frame" x="375" y="13" width="61" height="32"/>
+                        <rect key="frame" x="347" y="13" width="61" height="32"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="hqT-L4-2sc"/>
                         </constraints>
@@ -730,29 +642,87 @@ DQ
                             <action selector="closePermissionDialog:" target="206" id="C8M-jC-7bG"/>
                         </connections>
                     </button>
+                    <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzf-db-DiP" userLabel="Text">
+                        <rect key="frame" x="100" y="60" width="301" height="120"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" drawsBackground="NO" id="fIA-Sk-3Qm">
+                            <rect key="frame" x="0.0" y="0.0" width="301" height="120"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" drawsBackground="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" usesRuler="YES" spellingCorrection="YES" smartInsertDelete="YES" id="gO5-Kd-xD2">
+                                    <rect key="frame" x="0.0" y="0.0" width="301" height="120"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="301" height="120"/>
+                                    <size key="maxSize" width="650" height="10000000"/>
+                                    <attributedString key="textStorage">
+                                        <fragment>
+                                            <string key="content">Color Oracle uses screen recording to simulate color impaired vision.
+
+To allow Color Oracle to record the content of your screen, open Security &amp; Privacy, located in </string>
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="System Preferences">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=". In the ">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="Screen Recording section, put a checkmark next to">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="13" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" Color Oracle.">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="D15-UV-uUB">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="e77-Jl-uGX">
+                            <rect key="frame" x="-100" y="-100" width="15" height="56"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="7A4-On-cIs" secondAttribute="bottom" constant="20" symbolic="YES" id="5Wy-6a-TmI"/>
                     <constraint firstItem="7A4-On-cIs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IjM-hz-4cj" secondAttribute="trailing" constant="8" symbolic="YES" id="AMr-0U-i6I"/>
-                    <constraint firstItem="er6-V1-02Q" firstAttribute="top" secondItem="7D5-Ex-rSc" secondAttribute="bottom" constant="8" id="BQi-R5-lkU"/>
-                    <constraint firstItem="er6-V1-02Q" firstAttribute="leading" secondItem="7D5-Ex-rSc" secondAttribute="leading" id="EUO-LB-8Yy"/>
-                    <constraint firstItem="7D5-Ex-rSc" firstAttribute="top" secondItem="IjM-hz-4cj" secondAttribute="top" id="Hsj-7X-SlL"/>
-                    <constraint firstItem="7A4-On-cIs" firstAttribute="trailing" secondItem="er6-V1-02Q" secondAttribute="trailing" id="IkX-gg-3lg"/>
-                    <constraint firstItem="7D5-Ex-rSc" firstAttribute="top" secondItem="psb-4e-i6g" secondAttribute="top" constant="20" symbolic="YES" id="Sa7-NH-3GC"/>
-                    <constraint firstItem="er6-V1-02Q" firstAttribute="top" secondItem="psb-4e-i6g" secondAttribute="top" constant="54" id="V6F-ZK-SEb"/>
-                    <constraint firstItem="7D5-Ex-rSc" firstAttribute="trailing" secondItem="er6-V1-02Q" secondAttribute="trailing" id="a33-x3-i7R"/>
-                    <constraint firstAttribute="trailing" secondItem="er6-V1-02Q" secondAttribute="trailing" constant="20" symbolic="YES" id="kyT-4C-yLJ"/>
-                    <constraint firstItem="7A4-On-cIs" firstAttribute="top" secondItem="er6-V1-02Q" secondAttribute="bottom" constant="8" id="lf0-q4-qSl"/>
                     <constraint firstItem="IjM-hz-4cj" firstAttribute="leading" secondItem="psb-4e-i6g" secondAttribute="leading" constant="20" symbolic="YES" id="mqy-iP-cu0"/>
                     <constraint firstAttribute="trailing" secondItem="7A4-On-cIs" secondAttribute="trailing" constant="20" symbolic="YES" id="sEg-Dc-Hab"/>
-                    <constraint firstItem="7D5-Ex-rSc" firstAttribute="leading" secondItem="IjM-hz-4cj" secondAttribute="trailing" constant="16" id="srV-43-fpg"/>
                     <constraint firstItem="IjM-hz-4cj" firstAttribute="top" secondItem="psb-4e-i6g" secondAttribute="top" constant="20" symbolic="YES" id="sye-Tn-PIN"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="206" id="cft-pi-dBX"/>
             </connections>
-            <point key="canvasLocation" x="-424.5" y="-210.5"/>
+            <point key="canvasLocation" x="-438.5" y="-229"/>
         </window>
     </objects>
     <resources>

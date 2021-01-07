@@ -1268,6 +1268,9 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 
 -(void)updateSimulation
 {
+	if (screenshot == nil)
+		return; // we likely do not have the permission to capture the screen
+	
 	// simulate color blindness
 	[self simulate];
 	
@@ -1307,11 +1310,25 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     // close welcome dialog, should it still be open
     [self closeWelcomeDialog:self];
     simulationID = simID;
-    [statusItem setImage:[NSImage imageNamed:iconName]];
     [self hideMenu];
     [mainWindow setLevel: WINDOWLEVEL];
-    [self takeScreenShot];
-    [self updateSimulation];
+    [self takeScreenShot]; // on macOS 10.15 and later, this will trigger a system dialog asking the user to grant access to screen recording, if this is the first time Color Oracle is run.
+	if ([self canCaptureScreen]) {
+		[statusItem setImage:[NSImage imageNamed:iconName]];
+		[self updateSimulation];
+	} else {
+		[self selItemNormal:self];
+		if ([permissionDialog isVisible] == NO) {
+			[permissionDialog center];
+			// move the permission dialog down to make sure it does not overlap the system dialog informing the user that "Color Oracle would like to record this computer's screen".
+			NSRect frame = [permissionDialog frame];
+			[permissionDialog setFrameOrigin:NSMakePoint(frame.origin.x, frame.origin.y - 220)];
+			[permissionDialog makeKeyAndOrderFront:self];
+		}
+		
+		// show permission dialog in front of all other apps
+		[NSApp activateIgnoringOtherApps:YES];
+	}
 }
 
 -(IBAction)selItemProtan:(id)sender
@@ -1366,9 +1383,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     // show window in front of all other apps
 	[NSApp activateIgnoringOtherApps: YES];
 	
-	// bring the about box to the foreground if it is visible
+	// bring the other dialogs to the foreground if it they are visible
 	if ([aboutBox isVisible])
 		[aboutBox orderFront:self];
+	if ([permissionDialog isVisible])
+		[permissionDialog orderFront:self];
 	
 	// only configure GUI of preferences panel if the panel is not visible yet.
 	if ([preferencesPanel isVisible] == NO) {
@@ -1404,9 +1423,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     // show window in front of all other apps
 	[NSApp activateIgnoringOtherApps: YES];
 	
-	// bring the preferencesPanel to the foreground if it is visible
+	// bring the other dialogs to the foreground if they are visible
 	if ([preferencesPanel isVisible])
 		[preferencesPanel orderFront:self];
+	if ([permissionDialog isVisible])
+		[permissionDialog orderFront:self];
 	
 	[aboutBox makeKeyAndOrderFront:self];
 	[aboutBox setAlphaValue: 1];
@@ -1542,7 +1563,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 
 -(IBAction)closePermissionDialog:(id)sender
 {
-	[permissionDialog close];
+	[permissionDialog orderOut:self];
 }
 
 // button to launch Color Oracle at login
@@ -1647,6 +1668,14 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[defaults setBool:YES forKey:@"launchedBefore"];
 	}
     
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(updateLoginButton:)
+												 name:NSWindowDidBecomeKeyNotification
+											   object:preferencesPanel];
+}
+
+- (BOOL)canCaptureScreen
+{
 	// from:
 	// https://stackoverflow.com/questions/56597221/detecting-screen-recording-settings-on-macos-catalina/58786245#58786245
 	// https://stackoverflow.com/a/58985069
@@ -1689,19 +1718,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		}
 		CFRelease(windowList);
 	}
-	
-	if (hasScreenCapturePermissions == NO) {
-		[permissionDialog center];
-		[permissionDialog makeKeyAndOrderFront:self];
-		
-		// show window in front of all other apps
-		[NSApp activateIgnoringOtherApps:YES];
-	}
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(updateLoginButton:)
-												 name:NSWindowDidBecomeKeyNotification
-											   object:preferencesPanel];
+	return hasScreenCapturePermissions;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
@@ -1806,14 +1823,23 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     quartzScreenCapture = CGDisplayCreateImage(kCGDirectMainDisplay);
     // The caller of CGDisplayCreateImage is responsible for releasing the image
     // by calling CGImageRelease.
-    if (quartzScreenCapture == NULL)
-        return;
+	if (quartzScreenCapture == NULL) {
+		screenshot = nil;
+		return;
+	}
     
-    // convert to NSBitmapImageRep
-    screenshot = [[NSBitmapImageRep alloc] initWithCGImage:quartzScreenCapture];
-    // http://www.cocoadev.com/index.pl?NSBitmapImageRep
-    // NSBitmapImageRep does not make a copy of the bitmap planes, it uses them
-    // in-place, so make sure not to free them while screenshot is alive.
+	// if the user has not granted rights to capture the screen, do not compute and show simulated color impaired visions
+	if ([self canCaptureScreen] == NO) {
+		CGImageRelease(quartzScreenCapture);
+		quartzScreenCapture = NULL;
+		screenshot = nil;
+	} else {
+		// convert to NSBitmapImageRep
+		screenshot = [[NSBitmapImageRep alloc] initWithCGImage:quartzScreenCapture];
+		// http://www.cocoadev.com/index.pl?NSBitmapImageRep
+		// NSBitmapImageRep does not make a copy of the bitmap planes, it uses them
+		// in-place, so make sure not to free them while screenshot is alive.
+	}
 }
 
 // the user changed the screen resolution (and possibly other settings of
@@ -1850,18 +1876,14 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[self updatePreferencesDefaultsButton];
 }
 
-// the prefs panel or the about box or the welcome dialog will close
+// the preferences dialog, the about dialog, the permission dialog, or the welcome dialog will close.
 - (void)windowWillClose:(NSNotification *)aNotification
 {
 	// hide this app if no window is visible after closing the window that sent this event.
-	NSWindow *window = [aNotification object];
-	
-	if (window == permissionDialog) {
-		return;
-	}
+	NSWindow *windowToClose = [aNotification object];
 	
 	// closing the welcome dialog
-	if (window == welcomeDialog) {
+	if (windowToClose == welcomeDialog) {
 		// send nil as source. This is an ugly hack that makes sure we are not
 		// cascading close commands, which makes the app crash. This happens when
 		// the dialog is closed by a click in the red button at the top left of
@@ -1871,14 +1893,23 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		return;
 	}
 	
-	if ((window == aboutBox && [preferencesPanel isVisible] == NO)
-		|| (window == preferencesPanel && [aboutBox isVisible] == NO))
+	// find all other visible dialogs and bring one of them to the foreground
+	NSMutableArray *visibleDialogs = [[NSMutableArray alloc]init];
+	if ([permissionDialog isVisible]) {
+		[visibleDialogs addObject:permissionDialog];
+	}
+	if ([preferencesPanel isVisible]) {
+		[visibleDialogs addObject:preferencesPanel];
+	}
+	if ([aboutBox isVisible]) {
+		[visibleDialogs addObject:aboutBox];
+	}
+	[visibleDialogs removeObject: windowToClose];
+	if ([visibleDialogs count] == 0) {
 		[NSApp hide:self];
-	// bring the remaining window to the foreground
-	else if (window == aboutBox)
-		[preferencesPanel makeKeyAndOrderFront:nil];
-	else
-		[aboutBox makeKeyAndOrderFront:nil];
+	} else {
+		[[visibleDialogs firstObject] makeKeyAndOrderFront:nil]; // bring dialog to the foreground
+	}
 }
 
 -(NSWindow*)preferencesPanel
