@@ -6,12 +6,12 @@
 //  More info on screen capturing: http://www.cocoadev.com/index.pl?ScreenShotCode
 //  and http://www.idevapps.com/forum/archive/index.php/t-2895.html
 //  Window fading and tranparent rounded window from: http://mattgemmell.com/source/
-//  Hot key handling: OverlayWindow.m in FunkyOverlayWindow sample code 
+//  Hot key handling: OverlayWindow.m in FunkyOverlayWindow sample code
 //  at http://developer.apple.com/samplecode/FunkyOverlayWindow/FunkyOverlayWindow.html
 //  For hot keys see also http://www.dbachrach.com/blog/2005/11/program-global-hotkeys-in-cocoa-easily.html
-// 
+//
 //  Simulation of color blindness:
-//  Protanopia simulation after Digital Video Colourmaps for Checking the 
+//  Protanopia simulation after Digital Video Colourmaps for Checking the
 //  Legibility of Displays by Dichromat. F, Viénot, Hans Brettel, John D. Mollon
 //  Color Research and Application, Vol 24, No 4, ...
 /*
@@ -60,7 +60,7 @@
 /* wait this long for the menu to hide */
 #define MILLISEC_TO_HIDE_MENU 50
 
-/* interval for animating the menu icon while displaying the welcome dialog. 
+/* interval for animating the menu icon while displaying the welcome dialog.
 In seconds */
 #define WELCOME_ANIMATION_INTERVAL 0.1
 
@@ -72,7 +72,7 @@ enum simulation {normalView, protan, deutan, tritan, grayscale};
 
 // Gamma for converting from screen rgb to linear rgb and back again.
 // The publication describing the algorithm uses a gamma value of 2.2, which
-// is the standard value on windows system and for sRGB. Macs mostly use a 
+// is the standard value on windows system and for sRGB. Macs mostly use a
 // gamma value of 1.8. Differences between the two gamma settings are
 // hardly visible though.
 #define GAMMA 1.8
@@ -107,7 +107,7 @@ EventHotKeyRef gWindowsCloseHotKeyRef;
 pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
 {
 	// We can assume our hotkey was pressed
-	AppController *app = (AppController*)userData;
+	AppController *app = (__bridge AppController *)userData;
 	int simulationID = [app simulationID];
 	
 	EventHotKeyID hkCom;
@@ -355,7 +355,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 }
 
 
-// from OverlayWindow.m in FunkyOverlayWindow sample code 
+// from OverlayWindow.m in FunkyOverlayWindow sample code
 -(void)installHotKeys
 {
 	EventTypeSpec eventType;
@@ -363,7 +363,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     EventHandlerUPP appHotKeyFunction = NewEventHandlerUPP(hotKeyHandler);
     eventType.eventClass = kEventClassKeyboard;
     eventType.eventKind = kEventHotKeyPressed;
-    InstallApplicationEventHandler(appHotKeyFunction,1,&eventType,self,NULL);
+    InstallApplicationEventHandler(appHotKeyFunction, 1, &eventType, (__bridge void *)self, NULL);
     
 	// install first deutan, then protan, then tritan, then grayscale.
 	// if two hot-keys use the same key, the first installed will be executed.
@@ -447,7 +447,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	lin2rgb_LUT = malloc(sizeof(unsigned char) * 256);
 	for (i = 0; i < 256; i++) {
 		lin2rgb_LUT[i] = (unsigned char)(255. * pow(i / 255., gamma_inv));
-	}	
+	}
 }
 
 -(void)initWindows
@@ -459,7 +459,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	mainWindow = [[KeyableWindow alloc] initWithContentRect:screenRect
 												  styleMask:NSBorderlessWindowMask
 													backing:NSBackingStoreBuffered
-													  defer:NO 
+													  defer:NO
 													 screen:[NSScreen mainScreen]];
 	
 	imageView = [[ClickableImageView alloc] initWithFrame:screenRect];
@@ -477,8 +477,8 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	NSStatusBar *bar = [NSStatusBar systemStatusBar];
 	
 	// build the NSStatusBar for selecting the type of color blindness
-	statusItem = [[bar statusItemWithLength:NSSquareStatusItemLength] retain];
-	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];		
+	statusItem = [bar statusItemWithLength:NSSquareStatusItemLength];
+	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
 	[statusItem setHighlightMode:YES];
 	[statusItem setEnabled:YES];
 	[statusItem setMenu:m_menu];
@@ -487,7 +487,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 
 - (id)init
 {
-	[super init];
+	if (!(self = [super init]))  return nil;
 	if (self) {
 		
 		[self initLUTs];
@@ -507,7 +507,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 }
 
 - (void)awakeFromNib
-{	
+{
 	[aboutBox center];
 	[preferencesPanel center];
 	[self initWindows];
@@ -520,22 +520,15 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 
 - (void)dealloc
 {
-	[statusItem release];
-	[mainWindow release];
-	[imageView release];
-	[screenshot release];
-	[simulation release];
-		
 	if (rgb2lin_red_LUT)
 		free (rgb2lin_red_LUT);
-	if (rgb2lin_red_LUT)
-		free (rgb2lin_red_LUT);
+	if (lin2rgb_LUT)
+		free (lin2rgb_LUT);
 	
 	if (screenShotBuffer)
 		free (screenShotBuffer);
 	if (simulationBuffer)
 		free (simulationBuffer);
-    [super dealloc];
 }
 
 -(void)computeTritan
@@ -576,7 +569,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	if (srcBitmapData == nil)
 		return;
 	
-	// recycle the buffer if it has been allocated before and if it's 
+	// recycle the buffer if it has been allocated before and if it's
 	// the right size.
 	if (cols != simulationBufferWidth || rows != simulationBufferHeight
 		|| simulationBuffer == nil) {
@@ -610,7 +603,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				double greenOld = green;
 				red   = redOld * 0.05059983 + greenOld * 0.08585369 + blue * 0.00952420;
 				green = redOld * 0.01893033 + greenOld * 0.08925308 + blue * 0.01370054;
-				blue  = redOld * 0.00292202 + greenOld * 0.00975732 + blue * 0.07145979;
+				//blue  = redOld * 0.00292202 + greenOld * 0.00975732 + blue * 0.07145979; // Static analysis: Value stored to 'blue' is never read
 				
 				double tmp = green / red;
 				
@@ -636,7 +629,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				else if (ired > 255)
 					ired = 255;
 				else
-					ired = lin2rgb_LUT[(int)(ired)];			   
+					ired = lin2rgb_LUT[(int)(ired)];
 				
 				if (igreen < 0)
 					igreen = 0;
@@ -652,12 +645,12 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				else
 					iblue = lin2rgb_LUT[(int)(iblue)];
 				
-#ifdef __BIG_ENDIAN__				
+#ifdef __BIG_ENDIAN__
 				color = ired << 24 | igreen << 16 | iblue << 8 | 0x000000ff;
 #endif
 #ifdef __LITTLE_ENDIAN__
 				color = ired | igreen << 8 | iblue << 16 | 0xff000000;
-#endif	
+#endif
 				*(dstBitmapData++) = color;
 			}
 			
@@ -665,9 +658,9 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		srcBitmapData+=bytesPerRow;
 	}
-}	
+}
 
--(void)compute:(long) k1 k2:(long)k2 k3:(long)k3 
+-(void)compute:(long) k1 k2:(long)k2 k3:(long)k3
 {
 	int r, c;
 	
@@ -681,7 +674,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	if (srcBitmapData == nil)
 		return;
 	
-	// recycle the buffer if it has been allocated before and if it's 
+	// recycle the buffer if it has been allocated before and if it's
 	// the right size.
 	if (cols != simulationBufferWidth || rows != simulationBufferHeight
 		|| simulationBuffer == nil) {
@@ -717,7 +710,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				// divide after the computation by 2^15 to rescale.
 				// also divide by 2^15 and multiply by 2^8 to scale the linear rgb to 0..255
 				// total division is by 2^15 * 2^15 / 2^8 = 2^22
-				// shift the bits by 22 places instead of dividing 
+				// shift the bits by 22 places instead of dividing
 				long r_blind = (k1 * r_lin + k2 * g_lin)  >> 22;
 				long b_blind = (k3 * r_lin - k3 * g_lin + 32768 * b_lin) >> 22;
 				
@@ -735,7 +728,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 				const u_int32_t red = lin2rgb_LUT[r_blind];
 				const u_int32_t blue = lin2rgb_LUT[b_blind];
 				
-#ifdef __BIG_ENDIAN__				
+#ifdef __BIG_ENDIAN__
 				color = red << 24 | red << 16 | blue << 8 | 0x000000ff;
 #endif
 #ifdef __LITTLE_ENDIAN__
@@ -764,7 +757,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 //	double anchor_e1 = 0.01893033 + 0.08925308 + 0.01370054;
 //	double anchor_e2 = 0.00292202 + 0.00975732 + 0.07145979;
 //	double inflection = anchor_e1 / anchor_e0;
-//	
+//
 //	/* Set 1: regions where lambda_a=575, set 2: lambda_a=475 */
 //	double a1 = -anchor_e2 * 0.007009;
 //	double b1 = anchor_e2 * 0.0914;
@@ -878,7 +871,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		srcBitmapData+=bytesPerRow;
 	}
-}	
+}
 
 
 -(void)simulate
@@ -903,16 +896,15 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	NSInteger rows = [screenshot pixelsHigh];
 	NSInteger cols = [screenshot pixelsWide];
 	
-	[simulation release];
-	simulation = 
+	simulation =
 		[[NSBitmapImageRep alloc] initWithBitmapDataPlanes: (unsigned char**)&simulationBuffer
-												pixelsWide: cols 
-												pixelsHigh: rows 
-											 bitsPerSample: 8 
+												pixelsWide: cols
+												pixelsHigh: rows
+											 bitsPerSample: 8
 										   samplesPerPixel: 4
-												  hasAlpha: YES 
-												  isPlanar: NO 
-											colorSpaceName: NSDeviceRGBColorSpace 
+												  hasAlpha: YES
+												  isPlanar: NO
+											colorSpaceName: NSDeviceRGBColorSpace
 											   bytesPerRow: cols * 4
 											  bitsPerPixel: 32];
 }
@@ -922,7 +914,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	if (simulation == nil)
 		return;
 	// create an NSImage and display it in the NSImageView
-	NSImage *image = [[[NSImage alloc] init] autorelease];
+	NSImage *image = [[NSImage alloc] init];
 	[image addRepresentation:simulation];
 	//[image setFlipped:NO];
 	[imageView setImage: image];
@@ -1000,6 +992,9 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 
 -(BOOL) validateMenuItem:(NSMenuItem *)menuItem
 {
+	// enable menu items for simulating color impaired vision when capturing the screen is possible or the permission dialog is not currently visible
+	BOOL enableSimulationMenuItems = [self canCaptureScreen] || !permissionDialog.isVisible;
+	
 	if ([menuItem action] == @selector(selItemNormal:)) {
 		[menuItem setState: simulationID == normalView ? NSOnState : NSOffState];
 		return YES;
@@ -1017,7 +1012,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		
 		[menuItem setState: simulationID == protan ? NSOnState : NSOffState];
-		return YES;
+		return enableSimulationMenuItems;
 	}
 	
 	if ([menuItem action] == @selector(selItemDeutan:)) {
@@ -1032,7 +1027,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		
 		[menuItem setState: simulationID == deutan ? NSOnState : NSOffState];
-		return YES;
+		return enableSimulationMenuItems;
 	}
 	
 	if ([menuItem action] == @selector(selItemTritan:)) {
@@ -1047,7 +1042,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		}
 		
 		[menuItem setState: simulationID == tritan ? NSOnState : NSOffState];
-		return YES;
+		return enableSimulationMenuItems;
 	}
     
     if ([menuItem action] == @selector(selItemGrayscale:)) {
@@ -1062,12 +1057,12 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
         }
         
         [menuItem setState: simulationID == grayscale ? NSOnState : NSOffState];
-        return YES;
+        return enableSimulationMenuItems;
     }
 	
 	if ([menuItem action] == @selector(selItemSave:)) {
 		return simulationID != normalView;
-	}	
+	}
 	
 	return YES;
 }
@@ -1080,7 +1075,7 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	[mainWindow setAlphaValue:0];
 	[infoWindow setAlphaValue:0];
 	
-	// force the infoView to be redrawn. 
+	// force the infoView to be redrawn.
 	// Otherwise the infoWindow would be square, white, and not transparent
 	[infoView setNeedsDisplay:YES];
 	
@@ -1088,11 +1083,11 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	[infoWindow makeKeyAndOrderFront:self];
 		
 	// Set up the timer to periodically call the fadeIn: method.
-    timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
-											  target:self 
-											selector:@selector(fadeIn:) 
-											userInfo:nil repeats:YES] retain];
-}	
+	timer = [NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL
+											 target:self
+										   selector:@selector(fadeIn:)
+										   userInfo:nil repeats:YES];
+}
 
 -(void)finishFadeIn
 {
@@ -1113,7 +1108,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     } else {
         // destroy the timer
         [timer invalidate];
-        [timer release];
         timer = nil;
 		
 		[self finishFadeIn];
@@ -1126,10 +1120,10 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 		return;
 	
 	// Set up the timer to periodically call the fadeOut: method.
-	timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
-											  target:self 
-											selector:@selector(fadeOut:) 
-											userInfo:nil repeats:YES] retain];
+	timer = [NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL
+											 target:self
+										   selector:@selector(fadeOut:)
+										   userInfo:nil repeats:YES];
 }
 
 -(void)finishFadeOut
@@ -1137,12 +1131,12 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	[mainWindow orderOut:self];
 	
 	if (shouldQuit == YES) {
-		[[NSApplication sharedApplication] terminate:self]; 
+		[[NSApplication sharedApplication] terminate:self];
 		return;
 	}
 	
 	// deactivate this application, so that previous application owns the key window again.
-	// [NSApp deactivate]; is not enough, 
+	// [NSApp deactivate]; is not enough,
 	// see http://lists.apple.com/archives/Cocoa-dev/2005/Jul/msg01399.html
 	// don't deactivate this app when the preferences or the about panel is visible.
 	// This is the case when the user selected "Prefs" or "About" in the menu while
@@ -1161,7 +1155,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     } else {
         // Otherwise, if window is completely transparent, destroy the timer and close the window.
         [timer invalidate];
-        [timer release];
         timer = nil;
 		[self finishFadeOut];
 	}
@@ -1173,29 +1166,29 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
 	
 	// setup the save panel
 	NSSavePanel * savePanel = [NSSavePanel savePanel];
-	[savePanel setTitle:@"Save Image"];
+	[savePanel setTitle:NSLocalizedString(@"Save Image", @"Screenshot")];
 	[savePanel setCanSelectHiddenExtension:YES];
 	[savePanel setAllowedFileTypes:[NSArray arrayWithObjects:@"tif", @"tiff", nil]];
 
 	if (simulationID == protan)
-		[savePanel setMessage:@"Save the screen with simulated protan color vision to a TIFF file."];
+		[savePanel setMessage:NSLocalizedString(@"Save the screen with simulated protan color vision to a TIFF file.", @"Screenshot")];
 	else if (simulationID == deutan)
-		[savePanel setMessage:@"Save the screen with simulated deutan color vision to a TIFF file."];
+		[savePanel setMessage:NSLocalizedString(@"Save the screen with simulated deutan color vision to a TIFF file.", @"Screenshot")];
 	else if (simulationID == tritan)
-		[savePanel setMessage:@"Save the screen with simulated tritan color vision to a TIFF file."];
+		[savePanel setMessage:NSLocalizedString(@"Save the screen with simulated tritan color vision to a TIFF file.", @"Screenshot")];
     else if (simulationID == grayscale)
-        [savePanel setMessage:@"Save the screen in grayscale to a TIFF file."];
+        [savePanel setMessage:NSLocalizedString(@"Save the screen in grayscale to a TIFF file.", @"Screenshot")];
 	
 	// setNameFieldStringValue available with OS X 10.6 or newer
 	if ([savePanel respondsToSelector:@selector(setNameFieldStringValue:)]) {
 		if (simulationID == protan)
-			[savePanel setNameFieldStringValue: @"Protanopia.tif"];
+			[savePanel setNameFieldStringValue: NSLocalizedString(@"Protanopia.tif", @"Screenshot")];
 		else if (simulationID == deutan)
-			[savePanel setNameFieldStringValue: @"Deuteranopia.tif"];
+			[savePanel setNameFieldStringValue: NSLocalizedString(@"Deuteranopia.tif", @"Screenshot")];
 		else if (simulationID == tritan)
-			[savePanel setNameFieldStringValue: @"Tritanopia.tif"];
+			[savePanel setNameFieldStringValue: NSLocalizedString(@"Tritanopia.tif", @"Screenshot")];
         else if (simulationID == grayscale)
-            [savePanel setNameFieldStringValue: @"Grayscale.tif"];
+            [savePanel setNameFieldStringValue: NSLocalizedString(@"Grayscale.tif", @"Screenshot")];
 	}
 	
 	simulationID = normal;
@@ -1226,7 +1219,6 @@ pascal OSStatus hotKeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent
     } else {
         // Otherwise, if window is completely transparent, destroy the timer and close the window.
         [timer invalidate];
-        [timer release];
         timer = nil;
 		[self finishFadeOutAndSave];
 	}
@@ -1238,20 +1230,20 @@ when the panels are not visible anymore.
 Hiding the panels before taking the screenshots is required to work around the problem related
 to deactivating this app. When the color blind simulation should stop, the main window is hidden.
 The previously active app should be made active again, so it has the key focus again. This is
-only possible by hiding this app using [NSApp hide]. The panel would disappear at this moment. 
+only possible by hiding this app using [NSApp hide]. The panel would disappear at this moment.
 */
 -(void) fadeOutPanelsAndTakeScreenshot
 {
 	if (timer != nil)
 		return;
 	if ([aboutBox isVisible] == NO && [preferencesPanel isVisible] == NO)
-		return; 
+		return;
 	
 	// Set up the timer to periodically call the fadeOutPanelsAndTakeScreenshot: method.
-	timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
-											  target:self 
-											selector:@selector(fadeOutPanelsAndTakeScreenshot:) 
-											userInfo:nil repeats:YES] retain];
+	timer = [NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL
+											 target:self
+										   selector:@selector(fadeOutPanelsAndTakeScreenshot:)
+										   userInfo:nil repeats:YES];
 }
 
 -(void)finishfadeOutPanelsAndTakeScreenshot
@@ -1272,7 +1264,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     } else {
         // Otherwise, if window is completely transparent, destroy the timer and close the window.
         [timer invalidate];
-        [timer release];
         timer = nil;
 		[self finishfadeOutPanelsAndTakeScreenshot];
 	}
@@ -1280,6 +1271,9 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 
 -(void)updateSimulation
 {
+	if (screenshot == nil)
+		return; // we likely do not have the permission to capture the screen
+	
 	// simulate color blindness
 	[self simulate];
 	
@@ -1311,7 +1305,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 // in the color corrected image.
 -(void) hideMenu
 {
-	// have a little break. This should give Quartz enough time to completely hide the menu. 
+	// have a little break. This should give Quartz enough time to completely hide the menu.
 	[self sleep: MILLISEC_TO_HIDE_MENU];
 }
 
@@ -1319,11 +1313,25 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     // close welcome dialog, should it still be open
     [self closeWelcomeDialog:self];
     simulationID = simID;
-    [statusItem setImage:[NSImage imageNamed:iconName]];
     [self hideMenu];
     [mainWindow setLevel: WINDOWLEVEL];
-    [self takeScreenShot];
-    [self updateSimulation];
+    [self takeScreenShot]; // on macOS 10.15 and later, this will trigger a system dialog asking the user to grant access to screen recording, if this is the first time Color Oracle is run.
+	if ([self canCaptureScreen]) {
+		[statusItem setImage:[NSImage imageNamed:iconName]];
+		[self updateSimulation];
+	} else {
+		[self selItemNormal:self];
+		if ([permissionDialog isVisible] == NO) {
+			[permissionDialog center];
+			// move the permission dialog down to make sure it does not overlap the system dialog informing the user that "Color Oracle would like to record this computer's screen".
+			NSRect frame = [permissionDialog frame];
+			[permissionDialog setFrameOrigin:NSMakePoint(frame.origin.x, frame.origin.y - 220)];
+			[permissionDialog makeKeyAndOrderFront:self];
+		}
+		
+		// show permission dialog in front of all other apps
+		[NSApp activateIgnoringOtherApps:YES];
+	}
 }
 
 -(IBAction)selItemProtan:(id)sender
@@ -1352,18 +1360,18 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[self closeWelcomeDialog:self];
 	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
 	
-	if (simulationID == normalView 
+	if (simulationID == normalView
 		|| simulation == nil
-		|| [mainWindow isVisible] == NO 
+		|| [mainWindow isVisible] == NO
 		|| timer != nil) {
 		simulationID = normalView;
 		return;
-	} 
+	}
 	// Set up the timer to periodically call the fadeOut: method.
-	timer = [[NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL 
-											  target:self 
-											selector:@selector(fadeOutAndSave:) 
-											userInfo:nil repeats:YES] retain];
+	timer = [NSTimer scheduledTimerWithTimeInterval:FADETIMEINTERVAL
+											 target:self
+										   selector:@selector(fadeOutAndSave:)
+										   userInfo:nil repeats:YES];
 }
 
 -(IBAction)selItemPreferences:(id)sender
@@ -1378,9 +1386,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     // show window in front of all other apps
 	[NSApp activateIgnoringOtherApps: YES];
 	
-	// bring the about box to the foreground if it is visible
+	// bring the other dialogs to the foreground if it they are visible
 	if ([aboutBox isVisible])
 		[aboutBox orderFront:self];
+	if ([permissionDialog isVisible])
+		[permissionDialog orderFront:self];
 	
 	// only configure GUI of preferences panel if the panel is not visible yet.
 	if ([preferencesPanel isVisible] == NO) {
@@ -1416,9 +1426,11 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     // show window in front of all other apps
 	[NSApp activateIgnoringOtherApps: YES];
 	
-	// bring the preferencesPanel to the foreground if it is visible
+	// bring the other dialogs to the foreground if they are visible
 	if ([preferencesPanel isVisible])
 		[preferencesPanel orderFront:self];
+	if ([permissionDialog isVisible])
+		[permissionDialog orderFront:self];
 	
 	[aboutBox makeKeyAndOrderFront:self];
 	[aboutBox setAlphaValue: 1];
@@ -1431,7 +1443,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 		[self fadeOutWindow];
 	} else {
 		[[NSApplication sharedApplication] terminate:self];
-	}	
+	}
 }
 
 - (void)scrollWheel:(NSEvent *)theEvent
@@ -1545,12 +1557,16 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	// stop the animation
 	if (timer != nil) {
 		[timer invalidate];
-		[timer release];
 		timer = nil;
 	}
 	
 	// make sure the icon is the default menu icon
 	[statusItem setImage:[NSImage imageNamed:@"menuIcon"]];
+}
+
+-(IBAction)closePermissionDialog:(id)sender
+{
+	[permissionDialog orderOut:self];
 }
 
 // button to launch Color Oracle at login
@@ -1574,7 +1590,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     // add or remove Color Oracle to/from login items
     LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
     [launchController setLaunchAtLogin:launchAtLogin forURL: appURL];
-    [launchController release];
     
     // exit if Color Oracle moved itself to the Applications folder
     if (pathToCopiedBundle != nil) {
@@ -1648,18 +1663,65 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
         
         // show window in front of all other apps
         [NSApp activateIgnoringOtherApps:YES];
-        
-		timer = [[NSTimer scheduledTimerWithTimeInterval:WELCOME_ANIMATION_INTERVAL 
-												  target:self 
-												selector:@selector(animateMenuIcon:) 
-												userInfo:nil repeats:YES] retain];
+		
+		timer = [NSTimer scheduledTimerWithTimeInterval:WELCOME_ANIMATION_INTERVAL
+												 target:self
+											   selector:@selector(animateMenuIcon:)
+											   userInfo:nil repeats:YES];
 		[defaults setBool:YES forKey:@"launchedBefore"];
 	}
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateLoginButton:)
-                                                 name:NSWindowDidBecomeKeyNotification
-                                               object:preferencesPanel];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(updateLoginButton:)
+												 name:NSWindowDidBecomeKeyNotification
+											   object:preferencesPanel];
+}
+
+- (BOOL)canCaptureScreen
+{
+	// from:
+	// https://stackoverflow.com/questions/56597221/detecting-screen-recording-settings-on-macos-catalina/58786245#58786245
+	// https://stackoverflow.com/a/58985069
+	// by @chockenberry.
+	BOOL hasScreenCapturePermissions = YES;
+	if (@available(macOS 10.15, *)) {
+		hasScreenCapturePermissions = NO;
+		NSRunningApplication *runningApplication = NSRunningApplication.currentApplication;
+		NSNumber *ourProcessIdentifier = [NSNumber numberWithInteger:runningApplication.processIdentifier];
+		
+		CFArrayRef windowList = CGWindowListCopyWindowInfo(kCGWindowListOptionOnScreenOnly, kCGNullWindowID);
+		NSUInteger numberOfWindows = CFArrayGetCount(windowList);
+		for (int index = 0; index < numberOfWindows; index++) {
+			// get information for each window
+			NSDictionary *windowInfo = (NSDictionary *)CFArrayGetValueAtIndex(windowList, index);
+			NSString *windowName = windowInfo[(id)kCGWindowName];
+			NSNumber *processIdentifier = windowInfo[(id)kCGWindowOwnerPID];
+			
+			// don't check windows owned by this process
+			if (! [processIdentifier isEqual:ourProcessIdentifier]) {
+				// get process information for each window
+				pid_t pid = processIdentifier.intValue;
+				NSRunningApplication *windowRunningApplication = [NSRunningApplication runningApplicationWithProcessIdentifier:pid];
+				if (! windowRunningApplication) {
+					// ignore processes we don't have access to, such as WindowServer, which manages the windows named "Menubar" and "Backstop Menubar"
+				}
+				else {
+					NSString *windowExecutableName = windowRunningApplication.executableURL.lastPathComponent;
+					if (windowName) {
+						if ([windowExecutableName isEqual:@"Dock"]) {
+							// ignore the Dock, which provides the desktop picture
+						}
+						else {
+							hasScreenCapturePermissions = YES;
+							break;
+						}
+					}
+				}
+			}
+		}
+		CFRelease(windowList);
+	}
+	return hasScreenCapturePermissions;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
@@ -1757,8 +1819,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	}
 	
     // release previous screen capture, first the NSBitmapImageRep then the CGImage
-    if (screenshot != NULL)
-        [screenshot release];
     if (quartzScreenCapture != NULL)
         CGImageRelease(quartzScreenCapture);
     
@@ -1766,17 +1826,26 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     quartzScreenCapture = CGDisplayCreateImage(kCGDirectMainDisplay);
     // The caller of CGDisplayCreateImage is responsible for releasing the image
     // by calling CGImageRelease.
-    if (quartzScreenCapture == NULL)
-        return;
+	if (quartzScreenCapture == NULL) {
+		screenshot = nil;
+		return;
+	}
     
-    // convert to NSBitmapImageRep
-    screenshot = [[NSBitmapImageRep alloc] initWithCGImage:quartzScreenCapture];
-    // http://www.cocoadev.com/index.pl?NSBitmapImageRep
-    // NSBitmapImageRep does not make a copy of the bitmap planes, it uses them
-    // in-place, so make sure not to free them while screenshot is alive.
+	// if the user has not granted rights to capture the screen, do not compute and show simulated color impaired visions
+	if ([self canCaptureScreen] == NO) {
+		CGImageRelease(quartzScreenCapture);
+		quartzScreenCapture = NULL;
+		screenshot = nil;
+	} else {
+		// convert to NSBitmapImageRep
+		screenshot = [[NSBitmapImageRep alloc] initWithCGImage:quartzScreenCapture];
+		// http://www.cocoadev.com/index.pl?NSBitmapImageRep
+		// NSBitmapImageRep does not make a copy of the bitmap planes, it uses them
+		// in-place, so make sure not to free them while screenshot is alive.
+	}
 }
 
-// the user changed the screen resolution (and possibly other settings of 
+// the user changed the screen resolution (and possibly other settings of
 // the monitor). Fade out the mainWindow in this case.
 - (void)applicationDidChangeScreenParameters:(NSNotification *)aNotification
 {
@@ -1784,7 +1853,7 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
     NSRect screenRect = [[NSScreen mainScreen] frame];
 	[mainWindow setFrame:screenRect display:YES];
 	
-	// hide the mainWindow if it is currently visible 
+	// hide the mainWindow if it is currently visible
 	[self fadeOutWindow];
 }
 
@@ -1810,31 +1879,40 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 	[self updatePreferencesDefaultsButton];
 }
 
-// the prefs panel or the about box or the welcome dialog will close
+// the preferences dialog, the about dialog, the permission dialog, or the welcome dialog will close.
 - (void)windowWillClose:(NSNotification *)aNotification
 {
 	// hide this app if no window is visible after closing the window that sent this event.
-	NSWindow *window = [aNotification object];
+	NSWindow *windowToClose = [aNotification object];
 	
 	// closing the welcome dialog
-	if (window == welcomeDialog) {
+	if (windowToClose == welcomeDialog) {
 		// send nil as source. This is an ugly hack that makes sure we are not
 		// cascading close commands, which makes the app crash. This happens when
-		// the dialog is closed by a click in the red button at the top left of 
+		// the dialog is closed by a click in the red button at the top left of
 		// the window. If closeWelcomeDialog does [welcomeDialog: close], this
 		// method is called again, etc.
 		[self closeWelcomeDialog:nil];
 		return;
 	}
 	
-	if ((window == aboutBox && [preferencesPanel isVisible] == NO)
-		|| (window == preferencesPanel && [aboutBox isVisible] == NO))
+	// find all other visible dialogs and bring one of them to the foreground
+	NSMutableArray *visibleDialogs = [[NSMutableArray alloc]init];
+	if ([permissionDialog isVisible]) {
+		[visibleDialogs addObject:permissionDialog];
+	}
+	if ([preferencesPanel isVisible]) {
+		[visibleDialogs addObject:preferencesPanel];
+	}
+	if ([aboutBox isVisible]) {
+		[visibleDialogs addObject:aboutBox];
+	}
+	[visibleDialogs removeObject: windowToClose];
+	if ([visibleDialogs count] == 0) {
 		[NSApp hide:self];
-	// bring the remaining window to the foreground
-	else if (window == aboutBox)
-		[preferencesPanel makeKeyAndOrderFront:nil];
-	else
-		[aboutBox makeKeyAndOrderFront:nil];
+	} else {
+		[[visibleDialogs firstObject] makeKeyAndOrderFront:nil]; // bring dialog to the foreground
+	}
 }
 
 -(NSWindow*)preferencesPanel
@@ -1851,7 +1929,6 @@ only possible by hiding this app using [NSApp hide]. The panel would disappear a
 - (void)updateLoginButton:(NSNotification *)notification {
     LaunchAtLoginController *launchController = [[LaunchAtLoginController alloc] init];
     [loginButton setState: [launchController launchAtLogin]];
-    [launchController release];
 }
 
 @end
